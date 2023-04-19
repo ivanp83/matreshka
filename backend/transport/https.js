@@ -12,7 +12,7 @@ const receiveArgs = async (req) => {
 };
 const crud = { get: 'read', post: 'create', put: 'update', delete: 'delete' };
 
-module.exports = (routing, port) => {
+module.exports = (routing, port, console) => {
   const HEADERS = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true,
