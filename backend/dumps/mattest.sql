@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 15.2 (Ubuntu 15.2-1.pgdg20.04+1)
--- Dumped by pg_dump version 15.2 (Ubuntu 15.2-1.pgdg20.04+1)
+-- Dumped from database version 15.2
+-- Dumped by pg_dump version 15.2
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -667,17 +667,17 @@ GRANT ALL ON TABLE public.products TO admin;
 
 
 --
--- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: public; Owner: admin
---
-
-ALTER DEFAULT PRIVILEGES FOR ROLE admin IN SCHEMA public GRANT ALL ON TABLES  TO admin;
-
-
---
 -- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: public; Owner: postgres
 --
 
 ALTER DEFAULT PRIVILEGES FOR ROLE postgres IN SCHEMA public GRANT ALL ON TABLES  TO admin;
+
+
+--
+-- Name: DEFAULT PRIVILEGES FOR TABLES; Type: DEFAULT ACL; Schema: public; Owner: admin
+--
+
+ALTER DEFAULT PRIVILEGES FOR ROLE admin IN SCHEMA public GRANT ALL ON TABLES  TO admin;
 
 
 --
