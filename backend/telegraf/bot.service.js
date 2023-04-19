@@ -1,7 +1,7 @@
 const { Telegraf } = require('telegraf');
 const path = require('node:path');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
-const { pool } = require('../db');
+// const { pool } = require('../db');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
 const isAdmin = (userId) => {
@@ -80,43 +80,43 @@ bot.on('document', (ctx) => {
   }
 });
 
-bot.on('pre_checkout_query', async (ctx) => {
-  try {
-    await ctx.answerPreCheckoutQuery(true);
-  } catch (err) {
-    throw new Error(err);
-  }
-});
+// bot.on('pre_checkout_query', async (ctx) => {
+//   try {
+//     await ctx.answerPreCheckoutQuery(true);
+//   } catch (err) {
+//     throw new Error(err);
+//   }
+// });
 
-bot.on('successful_payment', async (ctx) => {
-  try {
-    const orderData = {
-      name: ctx.update.message.from,
-      order: ctx.update.message.successful_payment.order_info,
-    };
+// bot.on('successful_payment', async (ctx) => {
+//   try {
+//     const orderData = {
+//       name: ctx.update.message.from,
+//       order: ctx.update.message.successful_payment.order_info,
+//     };
 
-    const sql = `INSERT INTO orders ("data")
-      VALUES('{ "order": ${JSON.stringify(orderData, null, 2)}
-    }')`;
+//     const sql = `INSERT INTO orders ("data")
+//       VALUES('{ "order": ${JSON.stringify(orderData, null, 2)}
+//     }')`;
 
-    pool.query(sql);
+//     pool.query(sql);
 
-    const message_html = `<b>Новый заказ</b>
-<span class='tg-spoiler'>${orderData.name.username}</span> 
-<span class='tg-spoiler'>${orderData.name.first_name}</span>
-<span class='tg-spoiler'>${orderData.name.last_name}</span>
-<strong class='tg-spoiler'>Адрес доставки</strong>
-<span class='tg-spoiler'>${orderData.order.shipping_address.state}</span>
-<span class='tg-spoiler'>${orderData.order.shipping_address.city}</span>
-<span class='tg-spoiler'>${orderData.order.shipping_address.street_line1}</span>
-<span class='tg-spoiler'>${orderData.order.shipping_address.street_line2}</span>`;
+//     const message_html = `<b>Новый заказ</b>
+// <span class='tg-spoiler'>${orderData.name.username}</span>
+// <span class='tg-spoiler'>${orderData.name.first_name}</span>
+// <span class='tg-spoiler'>${orderData.name.last_name}</span>
+// <strong class='tg-spoiler'>Адрес доставки</strong>
+// <span class='tg-spoiler'>${orderData.order.shipping_address.state}</span>
+// <span class='tg-spoiler'>${orderData.order.shipping_address.city}</span>
+// <span class='tg-spoiler'>${orderData.order.shipping_address.street_line1}</span>
+// <span class='tg-spoiler'>${orderData.order.shipping_address.street_line2}</span>`;
 
-    return await bot.telegram.sendMessage(process.env.ADMIN_ID, message_html, {
-      parse_mode: 'html',
-    });
-  } catch (err) {
-    console.log(err);
-  }
-});
+//     return await bot.telegram.sendMessage(process.env.ADMIN_ID, message_html, {
+//       parse_mode: 'html',
+//     });
+//   } catch (err) {
+//     console.log(err);
+//   }
+// });
 
 module.exports = { bot };

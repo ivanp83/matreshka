@@ -1,7 +1,7 @@
 'use strict';
 
 const pg = require('pg');
-const config = require('./config');
+const config = require('./config.js');
 const pool = new pg.Pool({ ...config.db });
 
 const db = (table) => ({
