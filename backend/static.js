@@ -70,7 +70,7 @@ const prepareFile = async (url) => {
   return { found, ext };
 };
 
-const listener = async (req, res) => {
+const listener = async (req, res, console) => {
   try {
     const url = req.url.substring(11);
 
@@ -89,7 +89,7 @@ const listener = async (req, res) => {
   }
 };
 
-module.exports = (root, port) => {
+module.exports = (root, port, console) => {
   http.createServer(listener).listen(port);
   console.log(`Static on port ${port}`);
 };

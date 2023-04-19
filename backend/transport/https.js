@@ -66,7 +66,7 @@ module.exports = (routing, port, console) => {
 
         res.end(JSON.stringify(result, null, 2));
       } catch (error) {
-        console.dir({ error });
+        console.log({ error });
         httpError(res, 500, 'Server error');
       }
     })
