@@ -20,5 +20,9 @@ const routing = {};
 
   staticServer('./public', config.static.port, logger);
   transport(routing, config.api.port, logger);
-  bot.launch();
+  try {
+    bot.launch();
+  } catch (error) {
+    console.log(error);
+  }
 })();
