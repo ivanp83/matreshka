@@ -1,5 +1,6 @@
 const { Telegraf } = require('telegraf');
-require('dotenv').config();
+const path = require('node:path');
+require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const { pool } = require('../db');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
