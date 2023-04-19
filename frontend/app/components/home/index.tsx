@@ -1,11 +1,5 @@
 "use client";
-import React, {
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-  WheelEvent,
-} from "react";
+import React, { useEffect, useRef, useState, WheelEvent } from "react";
 import dynamic from "next/dynamic";
 
 const Loader = dynamic(() => import("../loader/loader"), { ssr: false });
@@ -22,29 +16,8 @@ type Props = { data: Array<Category> };
 
 export default function Index({ data }: Props) {
   const wheel = useRef<HTMLDivElement | null>(null);
-
   const [state, setState] = useState({ radius: 400, tmpTheta: 0, theta: 0 });
-  const [indicator, setIndicator] = useState(true);
   const { isMobile } = useWindowSize();
-  // function createWheelStopListener(
-  //   element: HTMLDivElement,
-  //   callback: () => void,
-  //   timeout?: number
-  // ) {
-  //   let handle: ReturnType<typeof setTimeout> | null = null;
-  //   const onScroll = function () {
-  //     if (handle) {
-  //       clearTimeout(handle);
-  //     }
-  //     handle = setTimeout(callback, timeout || 1000);
-  //   };
-  //   element.addEventListener("wheel", onScroll);
-  //   return function () {
-  //     element.removeEventListener("wheel", onScroll);
-  //   };
-  // }
-
-  // useEffect(() => {}, []);
   const handleScroll = (e: WheelEvent) => {
     if (isMobile) return;
     let scrollSpeed = (e.deltaY / 360) * 10;
@@ -90,32 +63,6 @@ export default function Index({ data }: Props) {
           color: var(--main-red);
         }
 
-        .mouse {
-          display: block;
-          width: 28px;
-          height: 48px;
-          border-radius: 11px 11px 15px 15px;
-          border: 2px solid var(--main-dark);
-          position: absolute;
-          left: 50%;
-          z-index: 10;
-          bottom: 2rem;
-        }
-
-        .mouse span {
-          display: block;
-          margin: 6px auto;
-          width: 4px;
-          height: 8px;
-          border-radius: 4px;
-          background: var(--main-red);
-          border: 1px solid transparent;
-          animation-duration: 1s;
-          animation-fill-mode: both;
-          animation-iteration-count: infinite;
-          animation-name: scroll;
-        }
-
         @media all and (orientation: portrait) {
           h1 {
             position: relative;
@@ -152,11 +99,7 @@ export default function Index({ data }: Props) {
           <span className="red">&nbsp;цветам</span>
         </span>
       </h1>
-      {!isMobile && (
-        <div className="mouse">
-          <span></span>
-        </div>
-      )}
+
       {isMobile ? <GalleryMobile data={data} /> : <Gallery data={data} />}
     </article>
   );

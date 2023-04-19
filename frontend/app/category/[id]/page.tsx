@@ -23,7 +23,7 @@ export default async function Product({ params }: Params) {
 
   return (
     <>
-      <SubNav />
+      {/* <SubNav /> */}
       <Gallery data={data} />
     </>
   );

@@ -103,12 +103,14 @@ export default function Index({ data: product, faturedData }: Props) {
             title="В корзину"
             onClick={() => addToCart(product)}
           />
-          {cartItems.length && (
+          {cartItems.length ? (
             <Button
               actionType="finish"
               title="Завершить"
               onClick={() => router.push("/shipping")}
             />
+          ) : (
+            ""
           )}
         </div>
       </section>

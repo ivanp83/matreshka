@@ -56,9 +56,6 @@ function Card({ theta, center, radius, data, index }: Props) {
           figure:hover .image {
             filter: brightness(1);
           }
-          figure:hover figcaption {
-            color: var(--main-red);
-          }
         }
         @media all and (orientation: portrait) {
           figcaption {

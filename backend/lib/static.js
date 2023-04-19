@@ -59,11 +59,12 @@ const prepareFile = async (url) => {
     .access(url, fs.constants.F_OK)
     .then(() => true)
     .catch((err) => {
-      console.log(err);
+      console.log('ERRRoR', err);
       return false;
     });
 
   const found = !pathTraversal && exists;
+
   const streamPath = found ? url : new Error('Not allowed');
   const ext = path.extname(streamPath).substring(1).toLowerCase();
 
@@ -83,9 +84,10 @@ const listener = async (req, res, console) => {
 
     const stream = Readable.from(data);
     res.writeHead(statusCode, { ...HEADERS, 'Content-Type': mimeType });
-    return stream.pipe(res);
+    stream.pipe(res);
   } catch (error) {
-    console.log(error);
+    res.statusCode = 404;
+    res.end('"File is not found"');
   }
 };
 
@@ -93,3 +95,24 @@ module.exports = (root, port, console) => {
   http.createServer(listener).listen(port);
   console.log(`Static on port ${port}`);
 };
+
+// module.exports = (root, port, console) => {
+//   http
+//     .createServer(async (req, res) => {
+//       const url = req.url === '/' ? '/index.html' : req.url;
+//       const filePath = path.join(root, url);
+//       try {
+//         const data = await fs.promises.readFile(filePath);
+//         const fileExt = path.extname(filePath).substring(1);
+//         const mimeType = MIME_TYPES[fileExt] || MIME_TYPES.html;
+//         res.writeHead(200, { ...HEADERS, 'Content-Type': mimeType });
+//         res.end(data);
+//       } catch (err) {
+//         res.statusCode = 404;
+//         res.end('"File is not found"');
+//       }
+//     })
+//     .listen(port);
+
+//   console.log(`Static on port ${port}`);
+// };

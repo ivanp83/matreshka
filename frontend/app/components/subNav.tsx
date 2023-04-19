@@ -17,7 +17,7 @@ export default function SubNav({ categoryId }: Props) {
     (async () => {
       if (categoryId) {
         const data = await fetch(
-          `http://localhost:8000/api/categories/${categoryId}`
+          `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/categories/${categoryId}`
         ).then((res) => res.json());
 
         setCategory(data[0]);

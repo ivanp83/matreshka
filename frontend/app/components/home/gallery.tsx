@@ -10,14 +10,27 @@ export default function Gallery({ data }: Props) {
   const wheel = useRef<HTMLDivElement | null>(null);
   const [state, setState] = useState({ radius: 400, tmpTheta: 0, theta: 0 });
   const [centerOfTheWheel, setCenterOfTheWheele] = useState({ x: 0, y: 0 });
-
+  const [indicator, setIndicator] = useState(true);
   useEffect(() => {
     setCenterOfTheWheele({
       x: 0,
       y: 0,
     });
   }, []);
-
+  useEffect(() => {
+    let handle: ReturnType<typeof setTimeout> | null = null;
+    const onScroll = function () {
+      setIndicator(false);
+      if (handle) {
+        clearTimeout(handle);
+      }
+      handle = setTimeout(() => setIndicator(true), 5000);
+    };
+    window.addEventListener("wheel", onScroll);
+    return function () {
+      window.removeEventListener("wheel", onScroll);
+    };
+  }, []);
   const handleScroll = (e: any) => {
     let scrollSpeed = (e.deltaY / 360) * 20;
     setState({ ...state, tmpTheta: (state.tmpTheta += scrollSpeed) });
@@ -35,8 +48,34 @@ export default function Gallery({ data }: Props) {
     }
   };
   return (
-    <div className="wheel" ref={wheel} onWheel={handleScroll}>
+    <>
       <style jsx>{`
+        .mouse {
+          opacity: ${indicator ? 1 : 0};
+          transition: opacity 1s;
+          width: 28px;
+          height: 48px;
+          border-radius: 11px 11px 15px 15px;
+          border: 2px solid var(--main-dark);
+          position: absolute;
+          left: 50%;
+          z-index: 10;
+          bottom: 2rem;
+        }
+
+        .mouse span {
+          display: block;
+          margin: 6px auto;
+          width: 4px;
+          height: 8px;
+          border-radius: 4px;
+          background: var(--main-red);
+          border: 1px solid transparent;
+          animation-duration: 1s;
+          animation-fill-mode: both;
+          animation-iteration-count: infinite;
+          animation-name: scroll;
+        }
         .wheel {
           width: 400px;
           height: 400px;
@@ -67,16 +106,21 @@ export default function Gallery({ data }: Props) {
           }
         }
       `}</style>
-      {data.map((item, i) => (
-        <Card
-          data={item}
-          key={item.id}
-          theta={((2 * Math.PI) / data.length) * i}
-          radius={state.radius}
-          center={centerOfTheWheel}
-          index={i}
-        />
-      ))}
-    </div>
+      <div className="mouse">
+        <span></span>
+      </div>
+      <div className="wheel" ref={wheel} onWheel={handleScroll}>
+        {data.map((item, i) => (
+          <Card
+            data={item}
+            key={item.id}
+            theta={((2 * Math.PI) / data.length) * i}
+            radius={state.radius}
+            center={centerOfTheWheel}
+            index={i}
+          />
+        ))}
+      </div>
+    </>
   );
 }

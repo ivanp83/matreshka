@@ -18,10 +18,10 @@ export default function CustomImage({
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
-          <stop stop-color="rgba(244, 241, 238, 1)" offset="0%" />
-          <stop stop-color="rgba(242, 242, 236, 1)" offset="35%" />
-          <stop stop-color="rgba(212, 233, 237, 1)" offset="75%" />
-          <stop stop-color="rgba(241, 241, 241, 1)" offset="97%" />
+        <stop stop-color="rgba(241, 238, 244, 1)" offset="0%" />
+        <stop stop-color="rgba(241, 238, 244, 0.8)" offset="35%" />
+        <stop stop-color="rgba(241, 238, 244, 0.6)" offset="75%" />
+        <stop stop-color="rgba(241, 238, 244, 0.4)" offset="97%" />
         </linearGradient>
       </defs>
       <rect width="${w}" height="${h}" fill="rgb(244, 241, 238)" />

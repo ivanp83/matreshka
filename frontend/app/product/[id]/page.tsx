@@ -2,15 +2,12 @@ import Index from "@/app/components/product";
 import SubNav from "@/app/components/subNav";
 import { ProductItem } from "@/types";
 import React from "react";
-// import apiWrapper from "../../transport";
+
 type Params = {
   params: { id: number };
 };
 
 async function getData(id: number) {
-  // const { api } = apiWrapper;
-  // const dd = await api.auth.signin("name", "password");
-  // console.log(dd);
   const productsRes: ProductItem[] = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`,
     {
@@ -29,7 +26,6 @@ export default async function Page({ params }: Params) {
 
   return (
     <>
-      <SubNav categoryId={product.category_id} />
       <Index data={product} faturedData={products} />
     </>
   );
