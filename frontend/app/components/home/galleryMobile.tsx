@@ -9,7 +9,7 @@ type Props = {
 
 export default function GalleryMobile({ data }: Props) {
   return (
-    <div className="wheel">
+    <section className="wheel">
       <style jsx>{`
         .wheel {
           width: 100%;
@@ -17,6 +17,7 @@ export default function GalleryMobile({ data }: Props) {
           display: grid;
           grid-template-columns: repeat(2, 1fr);
           grid-gap: 10px;
+          padding-bottom: var(--space-med);
         }
 
         @media all and (orientation: portrait) {
@@ -43,6 +44,6 @@ export default function GalleryMobile({ data }: Props) {
       {data.map((item, i) => (
         <CardMobile data={item} key={item.id} />
       ))}
-    </div>
+    </section>
   );
 }

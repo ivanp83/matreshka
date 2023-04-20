@@ -102,14 +102,14 @@ bot.on('successful_payment', async (ctx) => {
     await pool.query(sql);
 
     const message_html = `<b>Новый заказ</b>
-<span class='tg-spoiler'>${orderData.name.username}</span>
-<span class='tg-spoiler'>${orderData.name.first_name}</span>
-<span class='tg-spoiler'>${orderData.name.last_name}</span>
-<strong class='tg-spoiler'>Адрес доставки</strong>
-<span class='tg-spoiler'>${orderData.order.shipping_address.state}</span>
-<span class='tg-spoiler'>${orderData.order.shipping_address.city}</span>
-<span class='tg-spoiler'>${orderData.order.shipping_address.street_line1}</span>
-<span class='tg-spoiler'>${orderData.order.shipping_address.street_line2}</span>`;
+<pre>${orderData.name.username}</pre>
+<pre>${orderData.name.first_name}</pre>
+<pre>${orderData.name.last_name}</pre>
+<b >Адрес доставки</b>
+<pre>${orderData.order.shipping_address.state}</pre>
+<pre>${orderData.order.shipping_address.city}</pre>
+<pre>${orderData.order.shipping_address.street_line1}</pre>
+<pre>${orderData.order.shipping_address.street_line2}</pre>`;
 
     return await bot.telegram.sendMessage(process.env.ADMIN_ID, message_html, {
       parse_mode: 'html',

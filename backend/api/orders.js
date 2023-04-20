@@ -3,7 +3,7 @@
 const { db } = require('../db');
 const orders = db('products');
 const carts = db('products');
-const { bot } = require('../telegraf/bot.service');
+const { bot } = require('../lib/bot');
 const getInvoice = (id, products) => {
   const invoice = {
     chat_id: id,

@@ -7,14 +7,12 @@ export default function Humburger() {
   const { menuIsOpen, setMenuIsOpen } = useAppContext();
 
   return (
-    <div
-      className="humburger"
-      onClick={() => {
-        setMenuIsOpen(!menuIsOpen);
-      }}
-    >
+    <button className="humburger" onClick={() => setMenuIsOpen(!menuIsOpen)}>
       <style jsx>{`
         .humburger {
+          border: none;
+          outline: none;
+          background: transparent;
           width: fit-content;
           height: fit-content;
           grid-column: 3/4;
@@ -25,6 +23,9 @@ export default function Humburger() {
         @media all and (max-width: 700px) and (orientation: portrait) {
           .humburger {
             display: inline-flex;
+            position: absolute;
+            right: 0;
+            top: 3px;
           }
         } ;
       `}</style>
@@ -38,6 +39,6 @@ export default function Humburger() {
           style={{ width: "27px", height: "27px", fill: "var(--main-dark)" }}
         />
       )}
-    </div>
+    </button>
   );
 }

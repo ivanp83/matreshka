@@ -8,7 +8,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
           margin-top: var(--space-med);
           padding: 0 20px;
           margin: var(--space-big) auto var(--space-med);
-          max-width: 400px;
+          max-width: 500px;
         }
       `}</style>
 

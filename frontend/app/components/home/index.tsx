@@ -1,23 +1,31 @@
 "use client";
 import React, { useEffect, useRef, useState, WheelEvent } from "react";
 import dynamic from "next/dynamic";
-
-const Loader = dynamic(() => import("../loader/loader"), { ssr: false });
+import { Category } from "@/types";
+import useWindowSize from "@/app/hooks/useWindowSize";
+import useMediaQuery from "@/app/hooks/useMediaQuery";
+const Loader = dynamic(() => import("../loader"), { ssr: false });
 const GalleryMobile = dynamic(() => import("./galleryMobile"), {
   loading: () => <Loader />,
 });
 const Gallery = dynamic(() => import("./gallery"), {
   loading: () => <Loader />,
 });
-import { Category } from "@/types";
-import useWindowSize from "@/app/hooks/useWindowSize";
 
 type Props = { data: Array<Category> };
+export type State = { radius: number; tmpTheta: number; theta: number };
 
 export default function Index({ data }: Props) {
   const wheel = useRef<HTMLDivElement | null>(null);
-  const [state, setState] = useState({ radius: 400, tmpTheta: 0, theta: 0 });
+  const [state, setState] = useState<State>({
+    radius: 400,
+    tmpTheta: 0,
+    theta: 0,
+  });
   const { isMobile } = useWindowSize();
+  const msdSizeScreen = useMediaQuery(
+    "(max-width: 1250px) and (orientation: landscape)"
+  );
   const handleScroll = (e: WheelEvent) => {
     if (isMobile) return;
     let scrollSpeed = (e.deltaY / 360) * 10;
@@ -35,6 +43,15 @@ export default function Index({ data }: Props) {
     }
   };
 
+  useEffect(() => {
+    function handleResize() {
+      setState({ ...state, radius: !msdSizeScreen ? 400 : 300 });
+    }
+
+    if (msdSizeScreen) handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, [msdSizeScreen]);
   return (
     <article onWheel={handleScroll}>
       <style jsx>{`
@@ -100,7 +117,11 @@ export default function Index({ data }: Props) {
         </span>
       </h1>
 
-      {isMobile ? <GalleryMobile data={data} /> : <Gallery data={data} />}
+      {isMobile ? (
+        <GalleryMobile data={data} />
+      ) : (
+        <Gallery {...{ data, state, setState }} />
+      )}
     </article>
   );
 }

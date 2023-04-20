@@ -8,7 +8,7 @@ import { useAppContext } from "@/app/context/app.context";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 
-const Loader = dynamic(() => import("../loader/loader"), { ssr: false });
+const Loader = dynamic(() => import("../loader"), { ssr: false });
 const FeaturedProducts = dynamic(() => import("./featuredProducts"), {
   ssr: false,
   loading: () => <Loader />,
@@ -75,6 +75,9 @@ export default function Index({ data: product, faturedData }: Props) {
           .content {
             width: 100%;
             grid-template-columns: 1fr;
+          }
+          h1 {
+            font-size: 22px;
           }
         }
         @media all and (max-width: 1024px) and (orientation: landscape) {

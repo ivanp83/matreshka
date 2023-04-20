@@ -1,7 +1,10 @@
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+
 import React from "react";
 
 export default function Nav() {
+  const pathname = usePathname();
   return (
     <nav>
       <style jsx>{`
@@ -24,6 +27,9 @@ export default function Nav() {
           display: flex;
           grid-gap: 10px;
         }
+        nav ul li.active {
+          color: var(--main-red);
+        }
         @media all and (max-width: 700px) and (orientation: portrait) {
           nav {
             display: none;
@@ -31,10 +37,10 @@ export default function Nav() {
         } ;
       `}</style>
       <ul>
-        <li>
+        <li className={pathname === "/" ? "active" : ""}>
           <Link href="/">Категории</Link>
         </li>
-        <li>
+        <li className={pathname === "/about" ? "active" : ""}>
           <Link href="/about">About</Link>
         </li>
       </ul>

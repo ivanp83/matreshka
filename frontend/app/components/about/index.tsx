@@ -13,8 +13,8 @@ export default function Index() {
           grid-gap: var(--space-med);
           height: fit-content;
           margin: 0 auto;
-          max-width: 1000px;
-          width: auto;
+          max-width: 500px;
+          width: 100%;
         }
         h1 {
           grid-column: 1/3;
@@ -27,7 +27,7 @@ export default function Index() {
           color: var(--main-red);
         }
         .left {
-          grid-column: 1/2;
+          grid-column: 1/3;
           display: grid;
           grid-gap: var(--space-small);
           height: fit-content;
@@ -36,10 +36,11 @@ export default function Index() {
           position: relative;
           width: 20rem;
           height: 20rem;
+          margin: 0 auto;
         }
 
         .text {
-          grid-column: 2/3;
+          grid-column: 1/3;
           height: fit-content;
           width: 100%;
           display: grid;
@@ -55,8 +56,8 @@ export default function Index() {
             grid-column: 1/3;
           }
           .image {
-            width: calc(100vw - var(--space-small) * 2);
-            height: calc(100vw - var(--space-small) * 2);
+            width: calc(80vw - var(--space-small) * 2);
+            height: calc(80vw - var(--space-small) * 2);
           }
         }
       `}</style>
@@ -71,11 +72,6 @@ export default function Index() {
             fill
             style={{ objectFit: "cover", objectPosition: "top" }}
           />
-        </div>
-        <div className="inst">
-          <a href="http://instagram.com/_u/yulianalegkodumova/">
-            @yulianalegkodumova
-          </a>
         </div>
       </div>
 

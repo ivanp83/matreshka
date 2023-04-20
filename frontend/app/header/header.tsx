@@ -4,7 +4,7 @@ import React from "react";
 import Logo from "./logo";
 import { useAppContext } from "../context/app.context";
 import Humburger from "./humburger";
-import { BsBag } from "react-icons/bs";
+import { FaShoppingBag } from "react-icons/fa";
 import Nav from "./nav";
 
 export default function Header() {
@@ -28,7 +28,7 @@ export default function Header() {
         }
         .logo {
           grid-column: 1/2;
-          width: 10rem;
+          width: 9rem;
           grid-row: 1;
           line-height: 1;
         }
@@ -39,16 +39,17 @@ export default function Header() {
           position: relative;
           justify-self: end;
           display: flex;
-          align-items: center;
+          align-items: flex-start;
         }
         .num {
           position: absolute;
-          top: 60%;
+          top: 65%;
           left: 50%;
           transform: translate(-50%, -50%);
           display: flex;
           align-items: center;
           justify-content: center;
+          color: var(--main-light);
         }
         .num span {
           font-size: 13px;
@@ -65,13 +66,12 @@ export default function Header() {
       <div className="logo" onClick={() => setMenuIsOpen(false)}>
         <Logo />
       </div>
-
       <Nav />
       <Humburger />
 
       <div className="cart-icon">
         <Link href="/cart">
-          <BsBag style={{ width: "24px", height: "24px" }} />
+          <FaShoppingBag style={{ width: "24px", height: "24px" }} />
           <div className="num">
             <span>{sum()}</span>
           </div>

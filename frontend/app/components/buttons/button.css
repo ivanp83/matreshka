@@ -1,5 +1,5 @@
 .button {
-  font-size: 1rem;
+  font-size: 1.2rem;
   text-align: center;
   border: none;
   outline: none;
@@ -15,6 +15,7 @@
   width: 100%;
   background-color: var(--main-dark);
 }
+
 .button.finish {
   padding: 10px 45px;
   width: 100%;
@@ -52,24 +53,31 @@
   transform: scale(0.98);
 }
 
-.button.add:hover {
-  background-color: var(--dark-green);
-}
-
 .button.add:active {
   background-color: var(--main-green);
 }
 
-.button.remove:hover {
-  background-color: var(--dark-red);
-}
 .button.remove:active {
   background-color: var(--main-red);
 }
 
-.button.checkout:hover {
-  background-color: var(--dark-green);
-}
 .button.checkout:active {
   background-color: var(--main-green);
+}
+@media (hover: hover) and (pointer: fine) {
+  .button.shop:hover {
+    background-color: var(--dark-green);
+  }
+  .button.finish:hover {
+    background-color: var(--dark-green);
+  }
+  .button.add:hover {
+    background-color: var(--dark-green);
+  }
+  .button.checkout:hover {
+    background-color: var(--dark-green);
+  }
+  .button.remove:hover {
+    background-color: var(--dark-red);
+  }
 }

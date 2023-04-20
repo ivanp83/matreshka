@@ -17,19 +17,20 @@ export default function CartItem({ item }: Props) {
   return (
     <li key={item.id}>
       <style jsx>{`
-        .image {
-          position: relative;
-          width: 8rem;
-          height: calc(8rem * 4 / 3);
-        }
-
         figure {
           display: grid;
           grid-auto-flow: column;
           grid-gap: var(--space-med);
           width: fit-content;
           position: relative;
+          overflow: hidden;
         }
+        .image {
+          position: relative;
+          width: 8rem;
+          height: calc(8rem * 4 / 3);
+        }
+
         figcaption {
           display: grid;
           height: fit-content;
@@ -54,6 +55,7 @@ export default function CartItem({ item }: Props) {
           align-items: center;
           justify-content: center;
         }
+
         @media all and (max-width: 600px) and (orientation: portrait) {
           figure {
             grid-gap: var(--space-small);

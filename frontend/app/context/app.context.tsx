@@ -19,7 +19,8 @@ interface AppContext {
   onUpdate: (product: ProductItem) => void;
   onIncrement: (product: ProductItem) => void;
   onDecrement: (product: ProductItem) => void;
-  // onRemove: (user: any, product_id: Pick<ProductItem, "id">) => void;
+  onCartClear: () => void;
+  //onRemove: (product_id: Pick<ProductItem, "id">) => void;
 }
 
 interface AppProps {
@@ -36,6 +37,7 @@ const defaultStatePage: AppContext = {
   onUpdate: () => {},
   onIncrement: () => {},
   onDecrement: () => {},
+  onCartClear: () => [],
   // onRemove: () => {},
 };
 
@@ -85,7 +87,7 @@ export const AppProvider = ({ children }: AppProps) => {
             ? { ...exist, quantity: exist.quantity + 1 }
             : prod
         );
-
+        localStorage.setItem("cartItems", JSON.stringify(data));
         setCartItems(data);
       }
     } catch (error) {
@@ -111,6 +113,7 @@ export const AppProvider = ({ children }: AppProps) => {
             : prod
         );
       }
+      localStorage.setItem("cartItems", JSON.stringify(data));
       setCartItems(data);
     } catch (error) {
       throw Error("Произошла ошибка");
@@ -118,7 +121,9 @@ export const AppProvider = ({ children }: AppProps) => {
       setLoading(false);
     }
   };
-
+  const onCartClear = async () => {
+    localStorage.setItem("cartItems", JSON.stringify([]));
+  };
   useEffect(() => {
     const items = localStorage.getItem("cartItems");
     if (items) setCartItems(JSON.parse(items));
@@ -134,6 +139,7 @@ export const AppProvider = ({ children }: AppProps) => {
     onDecrement,
     menuIsOpen,
     setMenuIsOpen,
+    onCartClear,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

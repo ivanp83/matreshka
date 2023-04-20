@@ -4,17 +4,17 @@ const { db } = require('../db');
 const orders = db('orders');
 const products = db('products');
 const customers = db('customers');
-const { bot } = require('../telegraf/bot.service');
+const { bot } = require('../lib/bot');
 
 module.exports = {
   async create({ shippingAddress, orderProducts }) {
-    console.log({ shippingAddress, orderProducts });
     // Validate Incoming Products
     const ids = [...orderProducts.map((p) => p.id)];
+
     const productInDb = await products.queryRows(
-      `SELECT * FROM products WHERE id IN($1, $2) LIMIT 2;`,
-      [...ids],
+      `SELECT *  FROM products WHERE id = ANY (ARRAY[${ids}])`,
     );
+
     const map = new Map();
 
     for (let prod of productInDb) {
@@ -35,7 +35,12 @@ module.exports = {
 
     if (!customer.length) {
       customer = await customers.queryRows(
-        `INSERT INTO customers ("first_name", "last_name", "phone", "token") VALUES ('${shippingAddress.first_name}','${shippingAddress.last_name}','${shippingAddress.phone}', '${shippingAddress.first_name}');`,
+        `INSERT INTO customers ("first_name", "last_name", "phone", "token") VALUES ('${
+          shippingAddress.first_name
+        }','${shippingAddress.last_name}','${shippingAddress.phone.replace(
+          /[^0-9]/g,
+          '',
+        )}', '${shippingAddress.first_name}');`,
       );
     }
 

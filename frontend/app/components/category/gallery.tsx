@@ -19,10 +19,14 @@ export default function Gallery({ data }: Props) {
           grid-row-gap: 30px;
           grid-column-gap: var(--space-small);
         }
-
+        figure {
+          overflow: hidden;
+        }
         .image {
+          transition: 0.5s ease;
           position: relative;
           width: 100%;
+          transform-origin: bottom;
           height: calc((100vw / 5 - var(--space-small) * 2) * 4 / 3);
         }
         figcaption {
@@ -31,6 +35,11 @@ export default function Gallery({ data }: Props) {
         }
         figcaption span {
           font-size: 16px;
+        }
+        @media (hover: hover) and (pointer: fine) {
+          li:hover .image {
+            transform: scale(1.02);
+          }
         }
         @media all and (max-width: 1024px) {
           ul {

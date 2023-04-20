@@ -1,8 +1,10 @@
 import Index from "@/app/components/product";
-import SubNav from "@/app/components/subNav";
 import { ProductItem } from "@/types";
 import React from "react";
-
+import dynamic from "next/dynamic";
+const SubNav = dynamic(() => import("@/app/components/subNav"), {
+  ssr: false,
+});
 type Params = {
   params: { id: number };
 };
@@ -26,6 +28,7 @@ export default async function Page({ params }: Params) {
 
   return (
     <>
+      <SubNav categoryId={product.category_id} />
       <Index data={product} faturedData={products} />
     </>
   );

@@ -13,7 +13,7 @@ export default function Index() {
       <style jsx>{`
         .cart-content {
           display: grid;
-          grid-gap: var(--space-med);
+          grid-gap: 3rem;
         }
         ul {
           display: grid;
@@ -38,6 +38,11 @@ export default function Index() {
         }
         .empty-text {
           text-align: center;
+        }
+        @media all and (max-width: 760px) and (orientation: portrait) {
+          h1 {
+            font-size: 22px;
+          }
         }
       `}</style>
       {cartItems.length ? (

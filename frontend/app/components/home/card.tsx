@@ -35,7 +35,7 @@ function Card({ theta, center, radius, data, index }: Props) {
         }
         .image {
           transition: 0.5s;
-          filter: brightness(0.8);
+          filter: brightness(0.9);
           position: ${isMobile ? "relative" : "absolute"};
           width: 100%;
           aspect-ratio: ${isMobile ? "3/4" : "1"};
@@ -52,9 +52,14 @@ function Card({ theta, center, radius, data, index }: Props) {
           font-size: 2rem;
           text-align: center;
         }
+
         @media (hover: hover) and (pointer: fine) {
           figure:hover .image {
             filter: brightness(1);
+            transform: scale(1.1);
+          }
+          figure:hover . {
+            box-shadow: 10px, 10px, 10px rgba(0, 0, 0, 0.2);
           }
         }
         @media all and (orientation: portrait) {

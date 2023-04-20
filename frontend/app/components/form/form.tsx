@@ -2,7 +2,6 @@
 import { FormEvent, useEffect, useState } from "react";
 import FormInput from "./formInput";
 import Button from "../buttons/button";
-
 import { useAppContext } from "@/app/context/app.context";
 import { InputType, OrderCreateResponeType, ShippingType } from "@/types";
 import { Api } from "@/api";
@@ -81,13 +80,21 @@ const Form = () => {
   });
   const router = useRouter();
 
-  const { cartItems } = useAppContext();
+  const { cartItems, onCartClear } = useAppContext();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
+      if (!cartItems.length) {
+        if (window.confirm("Нет добавленных букетов. Перейти в каталог?")) {
+          router.push("/");
+        }
+      }
       const { data } = await Api().checkout.create({
-        shippingAddress: shippingData,
+        shippingAddress: {
+          ...shippingData,
+          phone: shippingData.phone.replace(/[^0-9]/g, ""),
+        },
         orderProducts: cartItems,
       });
 
@@ -97,11 +104,14 @@ const Form = () => {
       //TODO fixe error response
       handleErrors(error);
     }
-
-    // console.log({ shippingData, products: cartItems });
   };
 
   const onChange = (e: any) => {
+    if (e.target.name === "phone")
+      setShippingData({
+        ...shippingData,
+        phone: e.target.value.replace(/[^0-9]/g, ""),
+      });
     setShippingData({ ...shippingData, [e.target.name]: e.target.value });
   };
   function getProperty<UserType, Key extends keyof UserType>(
@@ -114,37 +124,50 @@ const Form = () => {
   useEffect(() => {
     if (responseData?.status === "pending") {
       router.push(responseData.confirmationUrl);
+      onCartClear();
     }
   }, [responseData]);
   return (
-    <div className="form-wrapp">
+    <section>
       <style jsx>{`
-        .form-wrapp {
+        section {
+          display: grid;
+          grid-gap: 3rem;
+        }
+        form {
+          display: grid;
+          grid-gap: var(--space-small);
+        }
+        .wrapp {
           display: grid;
           grid-gap: var(--space-small);
         }
         h1 {
           font-size: 30px;
         }
-        form {
-          display: grid;
-          grid-gap: var(--space-small);
+
+        @media all and (max-width: 760px) and (orientation: portrait) {
+          h1 {
+            font-size: 22px;
+          }
         }
       `}</style>
+      <h1>Данные покупателя</h1>
       <form onSubmit={handleSubmit}>
-        <h1>Данные покупателя</h1>
-        {inputs.map((input) => (
-          <FormInput
-            key={input.id}
-            {...input}
-            value={getProperty(shippingData, input.name as any) || ""}
-            onChange={onChange}
-          />
-        ))}
+        <div className="wrapp">
+          {inputs.map((input) => (
+            <FormInput
+              key={input.id}
+              {...input}
+              value={getProperty(shippingData, input.name as any) || ""}
+              onChange={onChange}
+            />
+          ))}
+        </div>
 
         <Button actionType="checkout" title="К оплате" type="submit" />
       </form>
-    </div>
+    </section>
   );
 };
 

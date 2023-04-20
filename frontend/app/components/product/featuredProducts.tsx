@@ -28,12 +28,15 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
 
         .card-wrapp {
           width: 100%;
+          overflow: hidden;
         }
         .image {
           position: relative;
           width: 100%;
           height: calc(((50rem - 20px * 2) / 3) / 3 * 4);
           object-position: top;
+          transition: 0.5s ease;
+          transform-origin: bottom;
         }
         img {
           width: 100%;
@@ -47,6 +50,11 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
         }
         .details span {
           font-size: 14px;
+        }
+        @media (hover: hover) and (pointer: fine) {
+          .card-wrapp:hover .image {
+            transform: scale(1.02);
+          }
         }
         @media screen and (max-width: 1024px) {
           .image {

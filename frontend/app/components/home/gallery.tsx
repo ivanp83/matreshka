@@ -1,16 +1,20 @@
 import React, { useEffect, useRef, useState } from "react";
 import Card from "./card";
 import { Category } from "@/types";
+import { State } from "./index";
 
 type Props = {
   data: Array<Category>;
+  state: State;
+  setState: any;
 };
 
-export default function Gallery({ data }: Props) {
+export default function Gallery({ data, state, setState }: Props) {
   const wheel = useRef<HTMLDivElement | null>(null);
-  const [state, setState] = useState({ radius: 400, tmpTheta: 0, theta: 0 });
+
   const [centerOfTheWheel, setCenterOfTheWheele] = useState({ x: 0, y: 0 });
   const [indicator, setIndicator] = useState(true);
+
   useEffect(() => {
     setCenterOfTheWheele({
       x: 0,
@@ -27,12 +31,13 @@ export default function Gallery({ data }: Props) {
       handle = setTimeout(() => setIndicator(true), 5000);
     };
     window.addEventListener("wheel", onScroll);
+
     return function () {
       window.removeEventListener("wheel", onScroll);
     };
   }, []);
   const handleScroll = (e: any) => {
-    let scrollSpeed = (e.deltaY / 360) * 20;
+    let scrollSpeed = (e.deltaY / 360) * 7;
     setState({ ...state, tmpTheta: (state.tmpTheta += scrollSpeed) });
     if (wheel.current) {
       wheel.current.style.transitionDelay = `0s`;
@@ -85,6 +90,12 @@ export default function Gallery({ data }: Props) {
           left: 50%;
         }
 
+        @media all and (max-width: 1250px) and (orientation: landscape) {
+          .wheel {
+            width: 300px;
+            height: 300px;
+          }
+        }
         @media all and (orientation: portrait) {
           h1 {
             position: relative;
@@ -109,7 +120,7 @@ export default function Gallery({ data }: Props) {
       <div className="mouse">
         <span></span>
       </div>
-      <div className="wheel" ref={wheel} onWheel={handleScroll}>
+      <section className="wheel" ref={wheel} onWheel={handleScroll}>
         {data.map((item, i) => (
           <Card
             data={item}
@@ -120,7 +131,7 @@ export default function Gallery({ data }: Props) {
             index={i}
           />
         ))}
-      </div>
+      </section>
     </>
   );
 }

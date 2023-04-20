@@ -1,6 +1,5 @@
 "use client";
 
-import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { Category } from "@/types";
 import { useEffect, useState } from "react";
@@ -10,7 +9,6 @@ type Props = {
 };
 
 export default function SubNav({ categoryId }: Props) {
-  const router = useRouter();
   const [category, setCategory] = useState<Category | null>(null);
 
   useEffect(() => {
