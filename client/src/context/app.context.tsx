@@ -50,13 +50,13 @@ export const AppProvider = ({ children }: AppProps) => {
   const { user, init_data } = useTelegram();
   useEffect(() => {
     const abortController = new AbortController();
-    const user_info = {
-      telegram_id: 1294200727,
-      first_name: "Ivan",
-      last_name: "",
-      username: "eachpw",
-      init_data,
-    };
+    // const user_info = {
+    //   telegram_id: 1294200727,
+    //   first_name: "Ivan",
+    //   last_name: "",
+    //   username: "eachpw",
+    //   init_data,
+    // };
     const fetchUser = async () => {
       try {
         //const data = await Api().customer.findOne(user_info);
@@ -66,6 +66,7 @@ export const AppProvider = ({ children }: AppProps) => {
           username: user.username,
           init_data,
         });
+        console.log("data");
         localStorage.setItem("user_token", data[0].token);
         setUserData(data[0]);
         setCartItems(data[0].cart_items);

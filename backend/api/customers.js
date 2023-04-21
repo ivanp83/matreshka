@@ -8,6 +8,7 @@ const { getHashToken } = require('../utils/crypto');
 
 module.exports = {
   async create({ init_data, ...rest }) {
+    console.log(init_data);
     const user_info = checkAuthorization(init_data);
     // const user_info = {
     //   id: 1294200727,

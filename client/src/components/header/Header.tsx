@@ -47,7 +47,7 @@ const Header: FC = () => {
           </Link>
         </div>
         <div className={"cart"}>
-          <span className={"username"}>{user?.username ?? "Привет Ivan!"}</span>
+          <span className={"username"}>{user?.username ?? "Привет!"}</span>
           <Link to={"/cart"}>
             <div className={"icon"}>
               <span className={"icon_num"}>{cartTotal}</span>
