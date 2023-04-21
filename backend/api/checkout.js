@@ -73,21 +73,19 @@ module.exports = {
       description: `Заказ ${JSON.stringify(map.values(), null, 2)}`,
     };
 
-    const myHeaders = new Headers();
-    myHeaders.append('Idempotence-Key', `${new Date().getTime()}`);
-    myHeaders.set(
+    const headers = new Headers();
+    headers.append('Idempotence-Key', `${new Date().getTime()}`);
+    headers.set(
       'Authorization',
       'Basic ' +
         Buffer.from(
           process.env.YOOKASSA_SHOPID + ':' + process.env.YOOKASSA_TOKEN,
         ).toString('base64'),
     );
-
-    myHeaders.append('Content-Type', 'application/json');
-
+    headers.append('Content-Type', 'application/json');
     const requestOptions = {
       method: 'POST',
-      headers: myHeaders,
+      headers: headers,
       body: JSON.stringify(payload),
       redirect: 'follow',
     };
@@ -119,24 +117,6 @@ module.exports = {
         JSON.stringify(orderProducts, null, 2),
       ],
     );
-
-    // const order = await orders.queryRows(
-    //   `SELECT * FROM orders WHERE orders.id= $1 INSERT INTO orders ( "yookassa_id", "amount", "currency", "order_status", "shipping_address", "order_items")
-    //     VALUES ('${yookassaResponse.id}', '${Number(
-    //     yookassaResponse.amount.value,
-    //   )}', '${yookassaResponse.amount.currency}', '${
-    //     yookassaResponse.status
-    //   }', '${JSON.stringify(
-    //     {
-    //       city: shippingAddress.city,
-    //       zip: shippingAddress.zip,
-    //       address: shippingAddress.address,
-    //     },
-    //     null,
-    //     2,
-    //   )}', '${JSON.stringify(orderProducts, null, 2)}')`,
-    //   [newOrder[0].id],
-    // );
 
     return {
       status: yookassaResponse.status,

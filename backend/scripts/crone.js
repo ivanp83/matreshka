@@ -1,10 +1,13 @@
 'use strict';
 
+const { sendAlertOrderSuccess } = require('../utils/helpers');
 const { db } = require('../db');
 const orders = db('orders');
+const customers = db('customers');
+const { bot } = require('../lib/bot');
 const path = require('node:path');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
-const getYookassaOrderStatus = async (id) => {
+const getStatusPaymentProvider = async (id) => {
   const myHeaders = new Headers();
   myHeaders.append('Idempotence-Key', `${new Date().getTime()}`);
   myHeaders.set(
@@ -26,72 +29,52 @@ const getYookassaOrderStatus = async (id) => {
     .then((result) => result);
 };
 (async () => {
-  const allOrders = await orders.queryRows(
-    `SELECT * FROM orders WHERE order_status = 'pending'`,
+  const ordersInPending = await orders.queryRows(
+    `SELECT * FROM orders WHERE order_status ='pending';`,
   );
-  console.log(allOrders);
-  if (!allOrders.length) return;
+
+  if (!ordersInPending.length) return;
   let maxIndex = 100;
 
-  for (const order of allOrders) {
+  for await (const order of ordersInPending) {
     if (maxIndex <= 0) continue;
     if (new Date(order.created_at).getTime() < Date.now()) {
       maxIndex -= 1;
-      const orderYookassaStatus = await getYookassaOrderStatus(
+      const orderPaymentDetails = await getStatusPaymentProvider(
         order.yookassa_id,
       );
-      console.log(orderYookassaStatus);
+
+      // await orders.update(order.id, {
+      //   order_status: orderPaymentDetails.status,
+      // });
+
+      if (orderPaymentDetails.status === 'succeeded') {
+        // console.log(orderPaymentDetails.status);
+
+        const order = await orders.queryRows(
+          `SELECT * FROM orders WHERE orders.yookassa_id = $1`,
+          [orderPaymentDetails.id],
+        );
+
+        const customer = await customers.queryRows(
+          `SELECT * FROM customers WHERE id = $1`,
+          [order[0].customer_id],
+        );
+        const getorderItems = (items) =>
+          items.map((item) => ({
+            product: item.name,
+            quantity: item.quantity,
+            price: item.price,
+          }));
+        sendAlertOrderSuccess(getorderItems(order[0].order_items));
+        // console.log(
+        //   'process.env.ADMIN_ID',
+        //   'bot',
+        //   customer[0],
+        //   order[0].shipping_address,
+        //   order[0].order_items,
+        // );
+      }
     }
   }
-  //   for (const order of allOrders) {
-  //     if (maxIndex <= 0) continue;
-
-  //     if (new Date(order.createAt).getTime() < Date.now()) {
-  //       maxIndex -= 1;
-  //       const orderYookassaStatus =
-  //         await this.apiService.getStatusInitializedYookassaOrder(
-  //           order.yookassaId,
-  //         );
-  //       await this.logsService.addLog(
-  //         order,
-  //         {
-  //           method: 'GET',
-  //           uri: this.configService.get < string > 'YOOKASSA_URI',
-  //           payload: null,
-  //         },
-  //         orderYookassaStatus,
-  //         orderYookassaStatus.status,
-  //       );
-  //       const updatedOrder = await this.ordersService.update(order.id, {
-  //         status: orderYookassaStatus.status,
-  //       });
-  //       if (updatedOrder.status === 'succeeded') {
-  //         this.eventEmitter.emit('order.created', updatedOrder);
-  //       } else {
-  //         const orderYookassaStatus =
-  //           await this.apiService.getStatusInitializedYookassaOrder(
-  //             order.yookassaId,
-  //           );
-  //         await this.logsService.addLog(
-  //           order,
-  //           {
-  //             method: 'GET',
-  //             uri: this.configService.get < string > 'YOOKASSA_URI',
-  //             payload: null,
-  //           },
-  //           orderYookassaStatus,
-  //           orderYookassaStatus.status,
-  //         );
-  //         if (orderYookassaStatus.status !== 'pending') {
-  //           let updatedOrder2 = await this.ordersService.update(order.id, {
-  //             status: orderYookassaStatus.status,
-  //           });
-  //           maxIndex -= 1;
-  //           if (updatedOrder2.status === 'succeeded') {
-  //             this.eventEmitter.emit('order.created', updatedOrder2);
-  //           }
-  //         }
-  //       }
-  //     }
-  //   }
 })();
