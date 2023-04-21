@@ -40,10 +40,10 @@ const convertImage = async (base64, folder, size) =>
 const sendAlertOrderSuccess = async (orderItems) => {
   console.log(orderItems);
 
-  const message_html = `<b>Новый заказ</b>
-  ${orderItems.map((item) => {
-    item.forEach((el) => <pre>{el}</pre>);
-  })}`;
+  // const message_html = `<b>Новый заказ</b>
+  // ${orderItems.map((item) => {
+  //   item.forEach((el) => <pre>{el}</pre>);
+  // })}`;
   // const message_html = `<b>Новый заказ</b>
   //   <pre>${orderItems}</pre>
   //   <pre>${phone}</pre>
@@ -53,9 +53,9 @@ const sendAlertOrderSuccess = async (orderItems) => {
   //   <pre>${city}</pre>
   //   <pre>${street_line1}</pre>
   //   <pre>${street_line2}</pre>`;
-  return await bot.telegram.sendMessage(id, message_html, {
-    parse_mode: 'html',
-  });
+  // return await bot.telegram.sendMessage(id, message_html, {
+  //   parse_mode: 'html',
+  // });
 };
 
 module.exports = { convertImage, sendAlertOrderSuccess };
