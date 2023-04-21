@@ -7,7 +7,7 @@ const nextConfig = {
   },
 
   images: {
-    domains: ["localhost", "static.matreshka39.ru"],
+    domains: ["localhost", "static.matryoshkaflowers.ru"],
     formats: ["image/webp"],
   },
 };
