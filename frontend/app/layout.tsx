@@ -5,6 +5,7 @@ import Header from "./header/header";
 import StyledJsxRegistry from "./registry";
 import { AppProvider } from "./context/app.context";
 import MobileAsideNav from "./components/aside/mobileAside";
+import Footer from "./components/footer";
 
 const inter = Inter({ subsets: ["cyrillic"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({
             <Header />
             <MobileAsideNav />
             <main>{children}</main>
+            <Footer />
           </body>
         </AppProvider>
       </StyledJsxRegistry>

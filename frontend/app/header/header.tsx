@@ -24,11 +24,11 @@ export default function Header() {
           top: 0;
           width: 100vw;
           grid-template-columns: 1fr 1fr 1fr;
-          align-items: center;
+          align-items: flex-end;
         }
         .logo {
           grid-column: 1/2;
-          width: 9rem;
+          width: 30px;
           grid-row: 1;
           line-height: 1;
         }
@@ -52,7 +52,7 @@ export default function Header() {
           color: var(--main-light);
         }
         .num span {
-          font-size: 13px;
+          font-size: 16px;
         }
         a {
           display: contents;
@@ -71,7 +71,7 @@ export default function Header() {
 
       <div className="cart-icon">
         <Link href="/cart">
-          <FaShoppingBag style={{ width: "24px", height: "24px" }} />
+          <FaShoppingBag style={{ width: "34px", height: "34px" }} />
           <div className="num">
             <span>{sum()}</span>
           </div>

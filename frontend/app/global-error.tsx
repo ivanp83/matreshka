@@ -24,10 +24,14 @@ export default function GlobalError({
           }}
         >
           <h2>Что-то пошло не так!</h2>
-          <Button
-            actionType="shop"
+          <button
             title="Попробуй снова"
             onClick={() => reset()}
+            style={{
+              backgroundColor: "#000",
+              color: "var(--main-light)",
+              borderRadius: "30px",
+            }}
           />
         </div>
       </body>

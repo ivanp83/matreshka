@@ -17,11 +17,11 @@ export default function Nav() {
         }
 
         nav ul {
+          font-size: var(--main-fs);
           display: grid;
           grid-auto-flow: column;
           grid-gap: 1rem;
           width: fit-content;
-          font-size: 1.2rem;
         }
         nav ul li {
           display: flex;
@@ -34,7 +34,7 @@ export default function Nav() {
           nav {
             display: none;
           }
-        } ;
+        }
       `}</style>
       <ul>
         <li className={pathname === "/" ? "active" : ""}>
