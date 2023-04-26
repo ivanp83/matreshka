@@ -74,9 +74,14 @@ h5 {
   }
 }
 
-@media all and (max-width: 1024px) and (orientation: portrait) {
+@media all and (max-width: 1500px) {
   :root {
-    --space-small: 1rem;
     --main-fs: 20px;
+    --big-fs: 5vw;
+  }
+}
+@media all and (max-width: 600px) and (orientation: portrait) {
+  :root {
+    --big-fs: 6vw;
   }
 }

@@ -16,6 +16,11 @@ export default function Text({ text1, text2 }: Props) {
         .bot-text {
           grid-column: 1/4;
         }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          .top-text {
+            grid-column: 1/4;
+          }
+        }
       `}</style>
       <span className="top-text"> {text1}</span>
       <span className="bot-text">{text2}</span>

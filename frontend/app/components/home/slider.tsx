@@ -18,9 +18,8 @@ export default function Slider({ products }: Props) {
           grid-gap: var(--space-small);
         }
 
-        .title {
-          height: 100%;
-          grid-column: 2/3;
+        .btn-link {
+          grid-column: 2/4;
         }
 
         h3 {
@@ -33,8 +32,8 @@ export default function Slider({ products }: Props) {
           height: 100%;
         }
         .image {
-          width: calc(100vw / 5 - 40px);
-          height: calc(((100vw / 5) - 40px) * 4 / 3);
+          width: calc(100vw / 5 - 20px);
+          height: calc(((100vw / 5) - 20px) * 4 / 3);
           position: relative;
           border-radius: 20px;
           overflow: hidden;
@@ -51,8 +50,8 @@ export default function Slider({ products }: Props) {
           margin-top: 10px;
           text-align: center;
         }
-        .details span {
-          font-size: 20px;
+        .price {
+          font-size: 18px;
         }
         h3 {
           grid-column: 1/2;
@@ -60,15 +59,48 @@ export default function Slider({ products }: Props) {
         h4 {
           grid-column: 2/4;
         }
+        @media all and (max-width: 1024px) {
+          .image {
+            width: calc(100vw / 4 - 20px);
+            height: calc(((100vw / 4) - 20px) * 4 / 3);
+          }
+        }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          .btn-link {
+            grid-column: 1/4;
+          }
+          .image {
+            width: calc(100vw / 2 - 30px);
+            height: calc(((100vw / 2) - 30px) * 4 / 3);
+          }
+          .details,
+          .price {
+            font-size: 16px;
+          }
+        }
       `}</style>
 
-      <div className="title">
+      <div className="btn-link">
         <LinkTo href="categories" text="Смотреть все" />
       </div>
       <Swiper
         spaceBetween={10}
         slidesPerView={5}
         style={{ width: "100%", gridColumn: "1/4" }}
+        breakpoints={{
+          // when window width is >= 640px
+          320: {
+            slidesPerView: 2,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 4,
+          },
+
+          1200: {
+            slidesPerView: 5,
+          },
+        }}
       >
         {products.map((prod) => (
           <SwiperSlide key={prod.id}>
@@ -82,8 +114,8 @@ export default function Slider({ products }: Props) {
                 </div>
               </Link>
               <div className="details">
-                <h5>{prod.name}</h5>
-                <span>{currencyFormat(prod.price)}</span>
+                <h4>{prod.name}</h4>
+                <span className="price">{currencyFormat(prod.price)}</span>
               </div>
             </div>
           </SwiperSlide>

@@ -8,9 +8,8 @@ export default function Сontent() {
     <section className="content  container">
       <style jsx>{`
         .content {
-          border-radius: 0 40px 40px 40px;
           background-color: var(--main-pink);
-          padding: var(--space-small) var(--space-small) var(--space-med);
+          padding: var(--space-small) 1rem var(--space-med);
           grid-row-gap: var(--space-small);
           position: relative;
           margin-top: 97vh;
@@ -21,14 +20,14 @@ export default function Сontent() {
           top: -30px;
           left: 0;
           background: var(--main-pink);
-          padding: 10px 20px 0;
-          border-radius: 40px 40px 0 0;
+          padding: 10px 1rem;
+          border-radius: 26px 26px 0 0;
         }
         .image {
           position: relative;
           grid-column: 2/4;
           height: calc((100vw * 0.7) * 4 / 3);
-          border-radius: 40px;
+          border-radius: 20px;
           overflow: hidden;
         }
         h3 {
@@ -37,6 +36,13 @@ export default function Сontent() {
         @media all and (orientation: portrait) {
           .content {
             grid-row-gap: 1rem;
+          }
+        }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          h3,
+          .image {
+            position: relative;
+            grid-column: 1/4;
           }
         }
       `}</style>

@@ -8,7 +8,7 @@ export default function Footer() {
     <footer className="footer container">
       <style jsx>{`
         .footer {
-          padding: var(--space-med) 30px var(--space-small);
+          padding: var(--space-med) 1rem var(--space-small);
           font-size: 20px;
         }
         .matrehska-logo {
@@ -23,11 +23,10 @@ export default function Footer() {
           grid-column: 3/4;
         }
         .creds {
+          grid-row: 1;
           display: grid;
           grid-template-columns: 1fr 1fr;
           grid-gap: var(--space-small);
-        }
-        .address {
         }
 
         .contacts a {
@@ -35,6 +34,36 @@ export default function Footer() {
         }
         span {
           color: var(--main-gray);
+        }
+        @media all and (max-width: 1024px) {
+          .social,
+          .creds {
+            grid-column: 2/4;
+          }
+        }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          .matrehska-logo {
+            grid-row: 1;
+            grid-column: 1/4;
+            margin-bottom: 1rem;
+          }
+          .social,
+          .creds {
+            grid-column: 1/4;
+          }
+          .social {
+            grid-row: 2;
+            margin-bottom: 1rem;
+          }
+
+          .address {
+            margin-bottom: 0;
+          }
+          .creds {
+            grid-gap: 1rem;
+            grid-row: 3;
+            grid-template-columns: 1fr;
+          }
         }
       `}</style>
       <div className="matrehska-logo">

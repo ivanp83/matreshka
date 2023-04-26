@@ -13,18 +13,18 @@ export default function Events({}: Props) {
           grid-column: 1/4;
           padding-top: var(--space-med);
           display: grid;
-          grid-gap: var(--space-small);
-          padding: var(--space-small);
+          grid-row-gap: var(--space-small);
+          padding: var(--space-small) 1rem var(--space-med);
           background: var(--main-blue);
           color: var(--main-light);
-          border-radius: 0 40px 40px 40px;
+          border-radius: 0 0 26px 26px;
           position: relative;
         }
         .image {
           position: relative;
           grid-column: 1/4;
-          height: 100vh;
-          border-radius: 40px;
+          height: calc(90vw / 4 * 3);
+          border-radius: 20px;
           overflow: hidden;
         }
         .text-bold {
@@ -33,16 +33,34 @@ export default function Events({}: Props) {
         .par {
           grid-column: 3/4;
           display: grid;
-          grid-gap: var(--space-small);
+          grid-gap: 1rem;
         }
         h2 {
           position: absolute;
           top: -30px;
           left: 0;
           background: var(--main-blue);
-
-          border-radius: 40px 40px 0 0;
-          padding: 10px 20px 0;
+          border-radius: 26px 26px 0 0;
+          padding: 10px 1rem;
+        }
+        @media all and (max-width: 768px) and (orientation: portrait) {
+          .text-bold {
+            grid-column: 1/2;
+          }
+          .par {
+            grid-column: 2/4;
+          }
+        }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          .events {
+            grid-row-gap: 1rem;
+          }
+          .text-bold {
+            grid-column: 1/4;
+          }
+          .par {
+            grid-column: 1/4;
+          }
         }
       `}</style>
       <h2>Для торжества</h2>
@@ -55,7 +73,7 @@ export default function Events({}: Props) {
         <Image
           fill
           style={{ objectFit: "cover" }}
-          src="/images/3.jpg"
+          src="/images/6.jpg"
           alt="Девушка с цветами"
           sizes="(max-width: 768px) 100vw,
 (max-width: 1200px) 50vw"

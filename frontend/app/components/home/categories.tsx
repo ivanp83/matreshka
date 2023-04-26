@@ -23,7 +23,6 @@ export default function Categories({ categories }: Props) {
           grid-column: 2/4;
           display: grid;
           grid-template-columns: 1fr;
-          font-size: 40px;
         }
         li {
           display: flex;
@@ -34,7 +33,7 @@ export default function Categories({ categories }: Props) {
         li .text {
           line-height: 1;
           font-weight: 500;
-          font-size: 2rem;
+          font-size: var(--big-fs);
           text-transform: uppercase;
         }
         li .num {
@@ -62,6 +61,14 @@ export default function Categories({ categories }: Props) {
         @media (hover: hover) and (pointer: fine) {
           li:hover .image {
             opacity: 1;
+          }
+        }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          h2 {
+            margin-bottom: var(--space-small);
+          }
+          ul {
+            grid-column: 1/4;
           }
         }
       `}</style>

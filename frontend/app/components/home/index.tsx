@@ -5,7 +5,7 @@ import { Category, ProductItem } from "@/types";
 import Banner from "./banner";
 import Content from "./content";
 import Events from "./events";
-import Production from "./production";
+import Products from "./products";
 
 type Props = { products: Array<ProductItem>; categories: Array<Category> };
 
@@ -20,7 +20,7 @@ export default function Index({ products, categories }: Props) {
       `}</style>
       <Banner />
       <Content />
-      <Production {...{ products, categories }} />
+      <Products {...{ products, categories }} />
       <Events />
     </article>
   );
