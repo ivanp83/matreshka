@@ -39,10 +39,9 @@ export default function Gallery({ data }: Props) {
         figcaption {
           text-align: center;
           margin-top: 5px;
-          font-size: 20px;
         }
         .price {
-          font-size: 18px;
+          font-size: 20px;
         }
         @media (hover: hover) and (pointer: fine) {
           li:hover .inner {

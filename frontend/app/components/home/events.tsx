@@ -45,7 +45,7 @@ export default function Events({}: Props) {
           padding: 10px 20px 0;
         }
       `}</style>
-      <h2>Букеты для торжества</h2>
+      <h2>Для торжества</h2>
       <Text
         text1=" Свадьба, день рождения"
         text2="или корпоратив. Подари букет любимому

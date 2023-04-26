@@ -13,6 +13,7 @@ export default function Сontent() {
           padding: var(--space-small) var(--space-small) var(--space-med);
           grid-row-gap: var(--space-small);
           position: relative;
+          margin-top: 97vh;
         }
 
         h2 {
@@ -39,7 +40,7 @@ export default function Сontent() {
           }
         }
       `}</style>
-      <h2>Открой мир цветов заново</h2>
+      <h2>Мир цветов</h2>
 
       <h3>Ведь всё начинается с любви к себе, дому и цветам</h3>
       <div className="image">

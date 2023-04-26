@@ -75,7 +75,7 @@ export default function Index() {
             </div>
             <Button
               actionType="checkout"
-              title="К оплате"
+              title="Оформить заказ"
               type="button"
               onClick={() => router.push("/shipping")}
             />
