@@ -20,10 +20,10 @@ const FormInput = (props: IProps) => {
         .form-input {
           display: flex;
           flex-direction: column;
-          font-size: 1rem;
+          font-size: 20px;
           font-family: inherit;
           color: inherit;
-          border-radius: 10px;
+
           background-color: none;
           border: none;
           border-bottom: 1px solid transparent;
@@ -49,16 +49,16 @@ const FormInput = (props: IProps) => {
           display: block;
         }
         .form-input {
-          padding: 1rem;
+          padding: 20px;
           margin: 5px 0px;
-          border-radius: 5px;
+          border-radius: 10px;
           border: 1px solid gray;
         }
         .input-label {
           margin-top: 5px;
           display: block;
           transition: all 0.3s;
-          padding-left: 1rem;
+          padding-left: 20px;
           font-size: 16px;
           color: gray;
         }
@@ -70,7 +70,7 @@ const FormInput = (props: IProps) => {
         .input-error {
           font-size: 14px;
           padding: 3px;
-          padding-left: 15px;
+          padding-left: 20px;
           color: var(--main-red);
           display: none;
         }

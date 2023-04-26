@@ -14,30 +14,38 @@ export default function Gallery({ data }: Props) {
     <ul>
       <style jsx>{`
         ul {
+          grid-column: 2/4;
           display: grid;
-          grid-template-columns: repeat(5, 1fr);
-          grid-row-gap: 30px;
-          grid-column-gap: var(--space-small);
+          grid-template-columns: repeat(3, 1fr);
+          grid-row-gap: var(--space-small);
+          grid-column-gap: 20px;
         }
         figure {
           overflow: hidden;
         }
         .image {
-          transition: 0.5s ease;
-          position: relative;
+          border-radius: 20px;
+          overflow: hidden;
           width: 100%;
+          height: calc((100vw * 0.6 / 3) * 4 / 3);
+        }
+        .inner {
+          width: 100%;
+          height: 100%;
+          position: relative;
+          transition: 0.5s ease;
           transform-origin: bottom;
-          height: calc((100vw / 5 - var(--space-small) * 2) * 4 / 3);
         }
         figcaption {
           text-align: center;
           margin-top: 5px;
+          font-size: 20px;
         }
-        figcaption span {
-          font-size: 16px;
+        .price {
+          font-size: 18px;
         }
         @media (hover: hover) and (pointer: fine) {
-          li:hover .image {
+          li:hover .inner {
             transform: scale(1.02);
           }
         }
@@ -49,10 +57,9 @@ export default function Gallery({ data }: Props) {
             grid-column-gap: 1rem;
           }
           .image {
-            height: calc((100vw / 2 - var(--space-small) * 2) * 4 / 3);
+            height: calc((100vw / 2 - var(--space-small)) * 4 / 3);
           }
           figcaption span {
-            font-size: 16px;
           }
         }
       `}</style>
@@ -61,17 +68,19 @@ export default function Gallery({ data }: Props) {
           <Link href={String(`product/${prod.id}`)}>
             <figure>
               <div className="image">
-                <CustomImage
-                  src={prod.big}
-                  alt={prod.name}
-                  sizes="(max-width: 768px) 100vw,
+                <div className="inner">
+                  <CustomImage
+                    src={prod.big}
+                    alt={prod.name}
+                    sizes="(max-width: 768px) 100vw,
 (max-width: 1200px) 50vw,
 20vw"
-                />
+                  />
+                </div>
               </div>
               <figcaption>
-                <h3>{prod.name}</h3>
-                <span>{currencyFormat(prod.price)}</span>
+                <h4>{prod.name}</h4>
+                <span className="price">{currencyFormat(prod.price)}</span>
               </figcaption>
             </figure>
           </Link>

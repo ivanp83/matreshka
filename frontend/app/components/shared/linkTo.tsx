@@ -15,17 +15,16 @@ export default function LinkTo({ href, text }: Props) {
             display: grid;
             display: inline-block;
             width: fit-content;
+            border: 2px solid var(--main-dark);
             border-radius: 50px;
             padding: 0.6rem 2rem;
-            background: var(--main-red);
-            color: var(--main-light);
             transition: all 0.3s linear 0s;
           }
           @media (hover: hover) and (pointer: fine) {
             .link:hover {
-              color: #fff;
+              color: var(--main-light);
               text-decoration: none;
-              background: var(--dark-red);
+              background: var(--main-red);
             }
           }
         `}</style>

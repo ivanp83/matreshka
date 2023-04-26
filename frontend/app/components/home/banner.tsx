@@ -7,7 +7,7 @@ export default function Banner() {
       <style jsx>{`
         .banner {
           width: 100%;
-          height: 95vh;
+          height: 97vh;
           padding: 0 30px;
           display: grid;
           place-content: center;

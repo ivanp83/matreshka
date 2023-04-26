@@ -5,6 +5,7 @@ import { Category, ProductItem } from "@/types";
 import Banner from "./banner";
 import Content from "./content";
 import Events from "./events";
+import Production from "./production";
 
 type Props = { products: Array<ProductItem>; categories: Array<Category> };
 
@@ -18,7 +19,8 @@ export default function Index({ products, categories }: Props) {
         }
       `}</style>
       <Banner />
-      <Content {...{ products, categories }} />
+      <Content />
+      <Production {...{ products, categories }} />
       <Events />
     </article>
   );

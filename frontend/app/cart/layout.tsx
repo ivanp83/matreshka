@@ -5,10 +5,8 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <article className="layout">
       <style jsx>{`
         .layout {
-          padding: 0 20px;
+          padding: 0 1rem;
           margin: var(--space-big) auto var(--space-med);
-          max-width: 500px;
-          width: auto;
         }
       `}</style>
 

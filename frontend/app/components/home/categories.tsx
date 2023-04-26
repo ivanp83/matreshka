@@ -15,7 +15,7 @@ export default function Categories({ categories }: Props) {
           grid-column: 1/4;
           padding: var(--space-small) 0 0;
         }
-        h3 {
+        h2 {
           grid-column: 1/2;
         }
 
@@ -30,10 +30,11 @@ export default function Categories({ categories }: Props) {
           border-bottom: 1px solid;
           padding: 1rem 0;
           position: relative;
-          height: 4rem;
         }
         li .text {
           line-height: 1;
+          font-weight: 500;
+          font-size: 2rem;
           text-transform: uppercase;
         }
         li .num {
@@ -64,11 +65,11 @@ export default function Categories({ categories }: Props) {
           }
         }
       `}</style>
-      <h3>Категории</h3>
+      <h2>Категории</h2>
       <ul>
         {categories.map((cat, i) => (
           <li key={cat.id}>
-            <Link href={`category/${cat.id}`}>
+            <Link href={`categories`}>
               <div className="image">
                 <CustomImage src={cat.image} alt={cat.name} />
               </div>

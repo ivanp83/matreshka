@@ -136,11 +136,11 @@ const Form = () => {
         }
         form {
           display: grid;
-          grid-gap: var(--space-small);
+          grid-gap: 1rem;
         }
         .wrapp {
           display: grid;
-          grid-gap: var(--space-small);
+          grid-gap: 1rem;
         }
         h1 {
           font-size: 30px;

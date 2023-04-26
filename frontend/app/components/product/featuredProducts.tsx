@@ -14,7 +14,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
     <section>
       <style jsx>{`
         section {
-          width: 100%;
+          grid-column: 1/4;
           display: grid;
           grid-gap: var(--space-small);
         }
@@ -33,7 +33,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
         .image {
           position: relative;
           width: 100%;
-          height: calc(((50rem - 20px * 2) / 3) / 3 * 4);
+          height: calc(((50rem - 20px * 2) / 5) / 3 * 4);
           object-position: top;
           transition: 0.5s ease;
           transform-origin: bottom;
@@ -49,7 +49,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
           text-align: center;
         }
         .details span {
-          font-size: 14px;
+          font-size: 18px;
         }
         @media (hover: hover) and (pointer: fine) {
           .card-wrapp:hover .image {
@@ -66,7 +66,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
       `}</style>
       <h2> Другие букеты</h2>
 
-      <Swiper spaceBetween={20} slidesPerView={3} style={{ width: "100%" }}>
+      <Swiper spaceBetween={20} slidesPerView={5} style={{ width: "100%" }}>
         {data.map((prod) => (
           <SwiperSlide key={prod.id}>
             <div className="card-wrapp">
@@ -79,7 +79,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
                 </div>
               </Link>
               <div className="details">
-                <h3>{prod.name}</h3>
+                <h4>{prod.name}</h4>
                 <span>{currencyFormat(prod.price)}</span>
               </div>
             </div>

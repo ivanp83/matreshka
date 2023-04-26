@@ -38,7 +38,10 @@ export default function Nav() {
       `}</style>
       <ul>
         <li className={pathname === "/" ? "active" : ""}>
-          <Link href="/">Категории</Link>
+          <Link href="/">Главная</Link>
+        </li>
+        <li className={pathname === "/categories" ? "active" : ""}>
+          <Link href="/categories">Букеты</Link>
         </li>
         <li className={pathname === "/about" ? "active" : ""}>
           <Link href="/about">About</Link>

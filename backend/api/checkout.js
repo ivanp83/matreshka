@@ -65,7 +65,7 @@ module.exports = {
         return_url: `${
           process.env.NODE_ENV === 'development'
             ? 'http://localhost:3000/order/${newOrder[0].id}'
-            : 'https://matryoshkaflowers.ru.conf.ru'
+            : 'https://matryoshkaflowers.ru'
         }/order/${newOrder[0].id}`,
       },
 

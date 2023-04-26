@@ -25,10 +25,17 @@ export default function Page({ params }: Params) {
   }, []);
 
   return (
-    <article>
+    <section className="order container">
       <style jsx>{`
+        .order {
+          min-height: 95vh;
+          grid-column: 1/4;
+        }
         .wrap {
+          text-align: center;
+          grid-column: 2/3;
           display: grid;
+          height: fit-content;
         }
       `}</style>
       <div className="wrap">
@@ -48,6 +55,6 @@ export default function Page({ params }: Params) {
           </>
         )}
       </div>
-    </article>
+    </section>
   );
 }

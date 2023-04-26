@@ -9,6 +9,7 @@ export default function Footer() {
       <style jsx>{`
         .footer {
           padding: var(--space-med) 30px var(--space-small);
+          font-size: 20px;
         }
         .matrehska-logo {
           grid-column: 1/2;
@@ -17,17 +18,18 @@ export default function Footer() {
         .address {
           margin-bottom: 1rem;
         }
-        .social {
-          grid-column: 2/3;
+        .social,
+        .creds {
+          grid-column: 3/4;
+        }
+        .creds {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          grid-gap: var(--space-small);
+        }
+        .address {
         }
 
-        .address {
-          grid-column: 3/4;
-        }
-        .contacts {
-          grid-row: 1;
-          grid-column: 3/4;
-        }
         .contacts a {
           display: block;
         }
@@ -40,7 +42,7 @@ export default function Footer() {
       </div>
 
       <div className="social">
-        <h3>Мы в соцсетях</h3>
+        <h4>Мы в соцсетях</h4>
         <ul>
           <li>
             <span>
@@ -77,17 +79,18 @@ export default function Footer() {
           </li>
         </ul>
       </div>
-
-      <div className="address">
-        <h3>Адрес</h3>
-        <span>Калининград, улица Виктора Гакуна, 5Б</span>
-      </div>
-      <div className="contacts">
-        <h3>Контакты</h3>
-        <span>
-          <a href="tel:+79114939999">7 911 493-99-99</a>
-          <a href="mail:+79114939999">matreshkaflower@bk.ru</a>
-        </span>
+      <div className="creds">
+        <div className="address">
+          <h4>Адрес</h4>
+          <span>Калининград, улица Виктора Гакуна, 5Б</span>
+        </div>
+        <div className="contacts">
+          <h4>Контакты</h4>
+          <span>
+            <a href="tel:+79114939999">7 911 493-99-99</a>
+            <a href="mail:+79114939999">matreshkaflower@bk.ru</a>
+          </span>
+        </div>
       </div>
     </footer>
   );

@@ -1,70 +1,49 @@
 "use client";
+import Logo from "@/app/header/logo";
 import Image from "next/image";
 
 export default function Index() {
   return (
-    <section>
+    <section className="about container">
       <style jsx>{`
         section {
           width: 100%;
           position: relative;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: var(--space-med);
           height: fit-content;
-          margin: 0 auto;
-          max-width: 500px;
           width: 100%;
+          grid-row-gap: var(--space-small);
         }
-        h1 {
-          grid-column: 1/3;
+        .title {
+          grid-column: 1/4;
           grid-row: 1;
           z-index: 1;
-          margin-top: var(--space-small);
-          text-align: center;
+          font-size: 10rem;
+          text-transform: uppercase;
+          display: flex;
+          line-height: 1;
         }
-        h1 .red {
-          color: var(--main-red);
+        .logo {
+          grid-column: 3/4;
         }
-        .left {
-          grid-column: 1/3;
-          display: grid;
-          grid-gap: var(--space-small);
-          height: fit-content;
-        }
+
         .image {
           position: relative;
-          width: 20rem;
-          height: 20rem;
-          margin: 0 auto;
+          width: 10rem;
+          height: 10rem;
         }
 
         .text {
-          grid-column: 1/3;
-          height: fit-content;
-          width: 100%;
+          grid-column: 1/2;
+          grid-row: 2;
           display: grid;
           grid-gap: var(--space-small);
         }
         @media all and (max-width: 760px) and (orientation: portrait) {
-          section {
-            grid-gap: var(--space-small);
-          }
-
-          .left,
-          .text {
-            grid-column: 1/3;
-          }
-          .image {
-            width: calc(80vw - var(--space-small) * 2);
-            height: calc(80vw - var(--space-small) * 2);
-          }
         }
       `}</style>
-      <h1>
-        Почему бы и да!!! - <span className="red">Why&Yes</span>
-      </h1>
-      <div className="left">
+      <div className="title">
+        <span>a</span>
+        <span>b</span>
         <div className="image">
           <Image
             src="/images/1.png"
@@ -73,8 +52,31 @@ export default function Index() {
             style={{ objectFit: "cover", objectPosition: "top" }}
           />
         </div>
+        <span>u</span>
+        <span>t</span>
       </div>
-
+      {/* Почему бы и да!!! - <span className="red">Why&Yes</span> */}
+      <div className="logo">
+        <Logo />
+      </div>
+      {/* <div className="image">
+        <Image
+          src="/images/1.png"
+          alt="Юлиана Легкодумова"
+          fill
+          style={{ objectFit: "cover", objectPosition: "top" }}
+        />
+      </div> */}
+      {/* <div className="left">
+        <div className="image">
+          <Image
+            src="/images/1.png"
+            alt="Юлиана Легкодумова"
+            fill
+            style={{ objectFit: "cover", objectPosition: "top" }}
+          />
+        </div>
+      </div> */}
       <div className="text">
         <span>
           Привет! Меня зовут, Юлиана. Мне 35, у меня 4-ро детей и все мои

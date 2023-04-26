@@ -1,12 +1,13 @@
 "use client";
 import { ProductItem } from "@/types";
-import React from "react";
+import React, { useEffect } from "react";
 import CustomImage from "../image";
 import { currencyFormat } from "@/utils/helpers";
 import Button from "../buttons/button";
 import { useAppContext } from "@/app/context/app.context";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
+import SubNav from "../subNav";
 
 const Loader = dynamic(() => import("../loader"), { ssr: false });
 const FeaturedProducts = dynamic(() => import("./featuredProducts"), {
@@ -19,33 +20,33 @@ type Props = {
 };
 
 export default function Index({ data: product, faturedData }: Props) {
-  const { onUpdate, cartItems } = useAppContext();
+  const { onUpdate, cartItems, setActiveCategory } = useAppContext();
   const addToCart = (product: ProductItem) => {
     onUpdate(product);
   };
   const router = useRouter();
+  useEffect(() => {
+    setActiveCategory(product.category_id);
+  }, [product]);
   return (
-    <div className="wrapp">
+    <section className="wrapp container">
       <style jsx>{`
         .wrapp {
-          width: 50rem;
-          margin: 0 auto;
+          grid-column: 2/4;
           display: grid;
           grid-gap: var(--space-med);
         }
 
-        .content {
-          width: 100%;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          grid-gap: var(--space-small) var(--space-med);
-        }
         .image {
+          overflow: hidden;
+          border-radius: 30px;
+          grid-column: 2/3;
           position: relative;
-          width: 30rem;
-          height: calc(30rem * 4 / 3);
+          width: 65vh;
+          height: calc(65vh * 4 / 3);
         }
         .details {
+          grid-column: 3/4;
           display: grid;
           height: fit-content;
           grid-gap: var(--space-small);
@@ -56,11 +57,16 @@ export default function Index({ data: product, faturedData }: Props) {
           grid-gap: 5px;
         }
         h1 {
-          line-height: 1.2;
-          font-size: 30px;
+          text-transform: uppercase;
+          font-size: 2rem;
+          font-weight: 500;
         }
         .descr {
-          margin-bottom: var(--space-small);
+          margin-bottom: 1rem;
+        }
+        .btns {
+          display: grid;
+          grid-gap: 1rem;
         }
         @media all and (max-width: 1024px) and (orientation: portrait) {
           .wrapp {
@@ -86,21 +92,23 @@ export default function Index({ data: product, faturedData }: Props) {
           }
         }
       `}</style>
-      <section className="content">
-        <div className="image">
-          <CustomImage
-            src={product.big}
-            alt={product.name}
-            sizes="(max-width: 768px) 100vw,
+      <SubNav categoryId={product.category_id} />
+
+      <div className="image">
+        <CustomImage
+          src={product.big}
+          alt={product.name}
+          sizes="(max-width: 768px) 100vw,
 (max-width: 1200px) 50vw"
-          />
+        />
+      </div>
+      <div className="details">
+        <div className="top">
+          <h1>{product.name}</h1>
+          <span>{currencyFormat(product.price)}</span>
         </div>
-        <div className="details">
-          <div className="top">
-            <h1>{product.name}</h1>
-            <span>{currencyFormat(product.price)}</span>
-          </div>
-          <span className="descr">{product.description}</span>
+        <span className="descr">{product.description}</span>
+        <div className="btns">
           <Button
             actionType="shop"
             title="В корзину"
@@ -116,8 +124,9 @@ export default function Index({ data: product, faturedData }: Props) {
             ""
           )}
         </div>
-      </section>
+      </div>
+
       <FeaturedProducts data={faturedData} />
-    </div>
+    </section>
   );
 }

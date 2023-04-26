@@ -1,7 +1,7 @@
 'use strict';
 
 const { db } = require('../db');
-const categories = db('category_with_products');
+const categories = db('category-with-products');
 
 module.exports = {
   async read(id, isAdmin, fields = ['*']) {

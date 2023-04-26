@@ -2,83 +2,95 @@
 
 import Link from "next/link";
 import { Category } from "@/types";
-import { useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Api } from "@/api";
+import { useAppContext } from "../context/app.context";
 
 type Props = {
+  categories?: Array<Category>;
   categoryId?: number;
+  handleProducts?: (id: number) => void;
+  getAllProducts?: any;
 };
 
-export default function SubNav({ categoryId }: Props) {
+function SubNav({
+  categoryId,
+  categories,
+  handleProducts,
+  getAllProducts,
+}: Props) {
+  const { activeCategory, setActiveCategory } = useAppContext();
   const [category, setCategory] = useState<Category | null>(null);
 
   useEffect(() => {
     (async () => {
       if (categoryId) {
-        const data = await fetch(
-          `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/categories/${categoryId}`
-        ).then((res) => res.json());
-
+        const data = await Api().category.find(categoryId);
         setCategory(data[0]);
       }
     })();
   }, [categoryId]);
 
   return (
-    <nav aria-label="Дополнительная навигация">
+    <div className="sub-nav">
       <style jsx>{`
-        nav {
-          margin: 5rem 0 1rem 0;
+        .sub-nav {
+          position: sticky;
+          top: var(--space-med);
+          grid-column: 1/2;
+          display: grid;
+          grid-gap: var(--space-small);
         }
-        ul {
+        .nav ul {
           display: grid;
           grid-auto-flow: column;
           grid-gap: 10px;
           width: fit-content;
         }
-        li {
+        .nav ul li {
           display: grid;
           grid-auto-flow: column;
           align-items: end;
-          font-size: 16px;
+          font-size: 18px;
           color: var(--main-gray);
           display: flex;
           align-items: flex-end;
           line-height: 1;
         }
 
-        li svg {
+        .nav ul li svg {
           display: block;
-          width: 14px;
-          height: 14px;
+          width: 16px;
+          height: 16px;
+        }
+        .categories-list {
+          display: grid;
+          grid-gap: 10px;
+        }
+        .list-item {
+          width: fit-content;
+          display: grid;
+          place-content: center;
+        }
+
+        .list-item button {
+          border: 1px solid;
+          border-radius: 30px;
+          padding: 10px 2rem;
+          outline: none;
+          background: transparent;
+          font-size: 16px;
+          cursor: pointer;
+        }
+        .list-item button.active {
+          background: var(--main-green);
         }
       `}</style>
-      <ul>
-        <li>
-          <Link href="/">
-            <span> Главная</span>
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <title />
-              <g id="Complete">
-                <g id="F-Chevron">
-                  <polyline
-                    fill="none"
-                    id="Right"
-                    points="8.5 5 15.5 12 8.5 19"
-                    stroke="var(--main-gray)"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                  />
-                </g>
-              </g>
-            </svg>
-          </Link>
-        </li>
-
-        {!!category && (
+      <nav aria-label="Дополнительная навигация по товарам" className="nav">
+        <ul>
           <li>
-            <Link href={`category/${category.id}`}>
-              <span>{category.name}</span>
+            <Link href="/">
+              <span> Главная</span>
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title />
                 <g id="Complete">
@@ -97,8 +109,61 @@ export default function SubNav({ categoryId }: Props) {
               </svg>
             </Link>
           </li>
-        )}
-      </ul>
-    </nav>
+
+          {!!category && (
+            <li>
+              <Link href={`categories`}>
+                <span>{category.name}</span>
+                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <title />
+                  <g id="Complete">
+                    <g id="F-Chevron">
+                      <polyline
+                        fill="none"
+                        id="Right"
+                        points="8.5 5 15.5 12 8.5 19"
+                        stroke="var(--main-gray)"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
+                      />
+                    </g>
+                  </g>
+                </svg>
+              </Link>
+            </li>
+          )}
+        </ul>
+      </nav>
+      {!!handleProducts && (
+        <ul className="categories-list">
+          <li className={`list-item`}>
+            <button
+              className={`${activeCategory === 0 ? "active" : ""}`}
+              onClick={() => {
+                setActiveCategory(0);
+                getAllProducts();
+              }}
+            >
+              Все категории
+            </button>
+          </li>
+          {categories?.map((cat) => (
+            <li key={cat.id} className={`list-item`}>
+              <button
+                className={`${activeCategory === cat.id ? "active" : ""}`}
+                onClick={() => {
+                  handleProducts(cat.id);
+                  setActiveCategory(cat.id);
+                }}
+              >
+                {cat.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }
+export default React.memo(SubNav);

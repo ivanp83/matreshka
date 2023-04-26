@@ -15,9 +15,9 @@ export default function Events({}: Props) {
           display: grid;
           grid-gap: var(--space-small);
           padding: var(--space-small);
-          background: #7569ff;
+          background: var(--main-blue);
           color: var(--main-light);
-          border-radius: 40px;
+          border-radius: 0 40px 40px 40px;
           position: relative;
         }
         .image {
@@ -37,11 +37,12 @@ export default function Events({}: Props) {
         }
         h2 {
           position: absolute;
-          top: -38px;
+          top: -30px;
           left: 0;
           background: var(--main-blue);
-          padding: 1rem;
+
           border-radius: 40px 40px 0 0;
+          padding: 10px 20px 0;
         }
       `}</style>
       <h2>Букеты для торжества</h2>

@@ -9,32 +9,47 @@ export default function Index() {
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   const router = useRouter();
   return (
-    <div className="cart-content">
+    <div className="cart-content container">
       <style jsx>{`
         .cart-content {
           display: grid;
-          grid-gap: 3rem;
+          grid-row-gap: 3rem;
         }
-        ul {
-          display: grid;
-          grid-auto-flow: row;
-          grid-gap: var(--space-small);
+        h1 {
+          font-size: var(--heading-fs);
+          grid-column: 1/4;
+          line-height: 1;
+          text-transform: uppercase;
         }
+
         .total {
           display: grid;
           grid-auto-flow: row;
           grid-gap: var(--space-small);
-          border-top: 1px solid;
+          border: 2px dashed;
           padding: var(--space-small) 0;
           font-weight: 600;
+          height: fit-content;
+          padding: 1rem;
+          border-radius: 30px;
+          grid-column: 3/4;
+          background: var(--main-green);
         }
-        h1 {
-          font-size: 30px;
-        }
+
         .heading {
           width: 100%;
           display: flex;
           justify-content: space-between;
+        }
+        .items-list {
+          border: 2px solid;
+          grid-column: 1/3;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          background: var(--main-pink);
+          padding: 1rem;
+          border-radius: 30px;
+          grid-gap: var(--space-small);
         }
         .empty-text {
           text-align: center;
@@ -48,7 +63,7 @@ export default function Index() {
       {cartItems.length ? (
         <>
           <h1>Корзина</h1>
-          <ul>
+          <ul className="items-list">
             {cartItems.map((item) => (
               <CartItem item={item} key={item.id} />
             ))}

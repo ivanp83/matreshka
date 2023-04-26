@@ -1,10 +1,14 @@
 import axios from "axios";
 import { CheckoutApi } from "./checkout";
 import { OrderApi } from "./order";
+import { CategoryApi } from "./category";
+import { ProductApi } from "./product";
 
 export type ApiReturnType = {
   order: ReturnType<typeof OrderApi>;
   checkout: ReturnType<typeof CheckoutApi>;
+  category: ReturnType<typeof CategoryApi>;
+  product: ReturnType<typeof ProductApi>;
 };
 
 export const Api = (): ApiReturnType => {
@@ -22,6 +26,8 @@ export const Api = (): ApiReturnType => {
   const apis = {
     order: OrderApi,
     checkout: CheckoutApi,
+    category: CategoryApi,
+    product: ProductApi,
   };
 
   const result = Object.entries(apis).reduce((prev, [key, f]) => {

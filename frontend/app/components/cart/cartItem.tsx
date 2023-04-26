@@ -20,12 +20,14 @@ export default function CartItem({ item }: Props) {
         figure {
           display: grid;
           grid-auto-flow: column;
-          grid-gap: var(--space-med);
+          grid-gap: 1rem;
           width: fit-content;
           position: relative;
           overflow: hidden;
         }
         .image {
+          border-radius: 20px;
+          overflow: hidden;
           position: relative;
           width: 8rem;
           height: calc(8rem * 4 / 3);
@@ -36,21 +38,21 @@ export default function CartItem({ item }: Props) {
           height: fit-content;
           grid-gap: var(--space-small);
         }
-        .proce {
-          font-size: 16px;
+        .price {
+          font-size: 20px;
         }
         .count {
           position: absolute;
           top: 5px;
           left: 5px;
-          font-size: 14px;
+          font-size: 18px;
           padding: 4px;
           z-index: 1;
           border-radius: 50%;
           background: var(--main-dark);
           color: var(--main-light);
-          width: 20px;
-          height: 20px;
+          width: 26px;
+          height: 26px;
           display: flex;
           align-items: center;
           justify-content: center;
@@ -60,7 +62,7 @@ export default function CartItem({ item }: Props) {
           figure {
             grid-gap: var(--space-small);
           }
-        } ;
+        }
       `}</style>
       <figure>
         <Link href={`product/${item.id}`}>
@@ -75,7 +77,7 @@ export default function CartItem({ item }: Props) {
         </Link>
         <figcaption>
           <div>
-            <h3>{item.name}</h3>
+            <h4>{item.name}</h4>
             <span className="price">{currencyFormat(item.price)}</span>
           </div>
           <span className="count">{count?.quantity}</span>

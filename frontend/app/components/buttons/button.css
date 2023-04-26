@@ -1,10 +1,10 @@
 .button {
-  font-size: 1.2rem;
+  font-size: 1rem;
   text-align: center;
   border: none;
   outline: none;
   border-radius: 1rem;
-  font-weight: 700;
+  font-weight: 600;
   cursor: pointer;
   color: var(--main-light);
   border-radius: 50px;

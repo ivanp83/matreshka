@@ -11,13 +11,11 @@ type Props = { products: Array<ProductItem> };
 
 export default function Slider({ products }: Props) {
   return (
-    <section className="slider container">
+    <div className="slider container">
       <style jsx>{`
         .slider {
           grid-column: 1/4;
           grid-gap: var(--space-small);
-          padding-top: var(--space-med);
-          border-top: 1px solid;
         }
 
         .title {
@@ -63,12 +61,9 @@ export default function Slider({ products }: Props) {
           grid-column: 2/4;
         }
       `}</style>
-      <h3>Роскошные букеты </h3>
-
-      <h4>Работаем только с качественными цветами</h4>
 
       <div className="title">
-        <LinkTo href="products" text="Смотреть все" />
+        <LinkTo href="categories" text="Смотреть все" />
       </div>
       <Swiper
         spaceBetween={10}
@@ -94,6 +89,6 @@ export default function Slider({ products }: Props) {
           </SwiperSlide>
         ))}
       </Swiper>
-    </section>
+    </div>
   );
 }

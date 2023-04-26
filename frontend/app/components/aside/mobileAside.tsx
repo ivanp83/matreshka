@@ -87,12 +87,23 @@ const MobileAside: FC = () => {
                   className={className}
                   onClick={() => setMenuIsOpen(false)}
                 >
-                  <Link href="/">Категории</Link>
+                  <Link href="/">Главная</Link>
                 </motion.div>
               </li>
               <li className={className} onClick={() => setMenuIsOpen(false)}>
                 <motion.div
                   custom={2}
+                  initial="hidden"
+                  animate="visible"
+                  variants={variants}
+                  className={className}
+                >
+                  <Link href="/categories">Букеты</Link>
+                </motion.div>
+              </li>
+              <li className={className} onClick={() => setMenuIsOpen(false)}>
+                <motion.div
+                  custom={3}
                   initial="hidden"
                   animate="visible"
                   variants={variants}

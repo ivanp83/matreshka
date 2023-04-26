@@ -16,11 +16,12 @@ interface AppContext {
   setMenuIsOpen: Dispatch<SetStateAction<boolean>>;
   cartItems: CartItemType[];
   setCartItems: Dispatch<SetStateAction<CartItemType[]>>;
+  activeCategory: number;
+  setActiveCategory: Dispatch<SetStateAction<number>>;
   onUpdate: (product: ProductItem) => void;
   onIncrement: (product: ProductItem) => void;
   onDecrement: (product: ProductItem) => void;
   onCartClear: () => void;
-  //onRemove: (product_id: Pick<ProductItem, "id">) => void;
 }
 
 interface AppProps {
@@ -34,11 +35,12 @@ const defaultStatePage: AppContext = {
   setLoading: () => {},
   cartItems: [],
   setCartItems: () => {},
+  activeCategory: 0,
+  setActiveCategory: () => {},
   onUpdate: () => {},
   onIncrement: () => {},
   onDecrement: () => {},
   onCartClear: () => [],
-  // onRemove: () => {},
 };
 
 const AppContext = createContext<AppContext>(defaultStatePage);
@@ -47,6 +49,7 @@ export const AppProvider = ({ children }: AppProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const [activeCategory, setActiveCategory] = useState<number>(0);
   const onUpdate = async (product: ProductItem) => {
     try {
       setLoading(true);
@@ -140,6 +143,8 @@ export const AppProvider = ({ children }: AppProps) => {
     menuIsOpen,
     setMenuIsOpen,
     onCartClear,
+    activeCategory,
+    setActiveCategory,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
