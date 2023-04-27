@@ -200,7 +200,9 @@ function SubNav({
           >
             <option value={0}>Все категории</option>
             {categories?.map((cat) => (
-              <option value={cat.id}>{cat.name}</option>
+              <option value={cat.id} key={cat.id}>
+                {cat.name}
+              </option>
             ))}
           </select>
         </>
