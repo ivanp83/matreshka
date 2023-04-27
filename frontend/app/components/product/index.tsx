@@ -73,7 +73,7 @@ export default function Index({ data: product, faturedData }: Props) {
           .image {
             width: 100%;
             grid-column: 1/4;
-            height: calc((100vw - var(--space-small) * 2) * 4 / 3);
+            height: calc((100vw - 40px) * 4 / 3);
           }
           .top {
             margin-top: 1rem;

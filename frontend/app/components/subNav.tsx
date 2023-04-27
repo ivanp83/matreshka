@@ -57,6 +57,7 @@ function SubNav({
           display: flex;
           align-items: flex-end;
           line-height: 1;
+          width: max-content;
         }
 
         .nav ul li svg {
@@ -198,9 +199,22 @@ function SubNav({
             className="select"
             onChange={(e) => handleProducts(Number(e.target.value))}
           >
-            <option value={0}>Все категории</option>
+            <option value={0} selected={activeCategory == 0}>
+              Все категории
+            </option>
             {categories?.map((cat) => (
-              <option value={cat.id} key={cat.id}>
+              <option
+                value={cat.id}
+                key={cat.id}
+                selected={Boolean(
+                  categories?.find((cat) => {
+                    console.log(cat.id, activeCategory);
+                    if (cat.id == activeCategory) {
+                      return cat.name;
+                    }
+                  })
+                )}
+              >
                 {cat.name}
               </option>
             ))}
