@@ -33,13 +33,11 @@ export default function Index({ data: product, faturedData }: Props) {
       <style jsx>{`
         .wrapp {
           grid-column: 2/4;
-          display: grid;
-          grid-gap: var(--space-med);
         }
 
         .image {
           overflow: hidden;
-          border-radius: 30px;
+          border-radius: 10px;
           grid-column: 2/3;
           position: relative;
           width: 65vh;
@@ -74,7 +72,14 @@ export default function Index({ data: product, faturedData }: Props) {
           }
           .image {
             width: 100%;
+            grid-column: 1/4;
             height: calc((100vw - var(--space-small) * 2) * 4 / 3);
+          }
+          .top {
+            margin-top: 1rem;
+          }
+          .details {
+            grid-column: 1/4;
           }
         }
         @media all and (max-width: 768px) and (orientation: portrait) {

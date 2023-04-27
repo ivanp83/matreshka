@@ -17,10 +17,11 @@ export default function Index({ categories }: Props) {
   const { loading, setLoading, activeCategory } = useAppContext();
   const [stateProducts, setStateProducts] = useState<Array<ProductItem>>();
   const handleProducts = async (id: number) => {
+    console.log(id);
     try {
       let res;
       setLoading(true);
-      if (id === 0) {
+      if (id == 0) {
         res = await Api().product.findAll();
       } else {
         res = await Api().category.findByIdWithProducts(id);

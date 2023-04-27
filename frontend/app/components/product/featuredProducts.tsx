@@ -17,6 +17,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
           grid-column: 1/4;
           display: grid;
           grid-gap: var(--space-small);
+          margin-top: var(--space-med);
         }
         .swiper {
           width: 100%;
@@ -36,7 +37,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
           height: calc(((100vw - 20px * 5) / 5) / 3 * 4);
           object-position: top;
           transform-origin: bottom;
-          border-radius: 20px;
+          border-radius: 10px;
           overflow: hidden;
         }
         img {
@@ -62,13 +63,37 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
           .image {
             position: relative;
             width: 100%;
-            height: calc(((100vw - 20px * 4) / 3) / 3 * 4);
+            height: calc(((100vw - 20px * 3) / 4) / 3 * 4);
+          }
+        }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          .image {
+            width: calc(100vw / 2 - 30px);
+            height: calc(((100vw / 2) - 30px) * 4 / 3);
           }
         }
       `}</style>
       <h2> Другие букеты</h2>
 
-      <Swiper spaceBetween={20} slidesPerView={5} style={{ width: "100%" }}>
+      <Swiper
+        spaceBetween={20}
+        slidesPerView={5}
+        style={{ width: "100%" }}
+        breakpoints={{
+          // when window width is >= 640px
+          320: {
+            slidesPerView: 2,
+          },
+          // when window width is >= 768px
+          768: {
+            slidesPerView: 4,
+          },
+
+          1200: {
+            slidesPerView: 5,
+          },
+        }}
+      >
         {data.map((prod) => (
           <SwiperSlide key={prod.id}>
             <div className="card-wrapp">

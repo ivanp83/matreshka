@@ -24,7 +24,7 @@ export default function Events({}: Props) {
           position: relative;
           grid-column: 1/4;
           height: calc(90vw / 4 * 3);
-          border-radius: 20px;
+          border-radius: 30px;
           overflow: hidden;
         }
         .text-bold {

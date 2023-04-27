@@ -41,11 +41,16 @@ export default function Footer() {
             grid-column: 2/4;
           }
         }
+        @media all and (max-width: 768px) and (orientation: portrait) {
+          .footer {
+            font-size: 16px;
+          }
+        }
         @media all and (max-width: 600px) and (orientation: portrait) {
           .matrehska-logo {
-            grid-row: 1;
+            grid-row: 5;
             grid-column: 1/4;
-            margin-bottom: 1rem;
+            margin-top: 2rem;
           }
           .social,
           .creds {

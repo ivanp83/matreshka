@@ -16,10 +16,11 @@ type Props = {
 function SubNav({
   categoryId,
   categories,
-  handleProducts,
   getAllProducts,
+  handleProducts,
 }: Props) {
   const { activeCategory, setActiveCategory } = useAppContext();
+
   const [category, setCategory] = useState<Category | null>(null);
 
   useEffect(() => {
@@ -85,6 +86,35 @@ function SubNav({
         .list-item button.active {
           background: var(--main-green);
         }
+        .select {
+          display: none;
+        }
+        @media all and (max-width: 1024px) and (orientation: portrait) {
+          .sub-nav {
+            grid-column: 1/4;
+            background: var(--main-light);
+            z-index: 1;
+            padding: 1rem 0;
+            top: 4rem;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1rem;
+            align-items: center;
+          }
+          .categories-list {
+            display: none;
+          }
+          .select {
+            display: block;
+            grid-column: 3/4;
+            font-size: 16px;
+            color: var(--main-gray);
+          }
+        }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          .select {
+            grid-column: 2/4;
+          }
+        }
       `}</style>
       <nav aria-label="Дополнительная навигация по товарам" className="nav">
         <ul>
@@ -136,32 +166,44 @@ function SubNav({
         </ul>
       </nav>
       {!!handleProducts && (
-        <ul className="categories-list">
-          <li className={`list-item`}>
-            <button
-              className={`${activeCategory === 0 ? "active" : ""}`}
-              onClick={() => {
-                setActiveCategory(0);
-                getAllProducts();
-              }}
-            >
-              Все категории
-            </button>
-          </li>
-          {categories?.map((cat) => (
-            <li key={cat.id} className={`list-item`}>
+        <>
+          <ul className="categories-list">
+            <li className={`list-item`}>
               <button
-                className={`${activeCategory === cat.id ? "active" : ""}`}
+                className={`${activeCategory == 0 ? "active" : ""}`}
                 onClick={() => {
-                  handleProducts(cat.id);
-                  setActiveCategory(cat.id);
+                  setActiveCategory(0);
+                  getAllProducts();
                 }}
               >
-                {cat.name}
+                Все категории
               </button>
             </li>
-          ))}
-        </ul>
+            {categories?.map((cat) => (
+              <li key={cat.id} className={`list-item`}>
+                <button
+                  className={`${activeCategory == cat.id ? "active" : ""}`}
+                  onClick={() => {
+                    handleProducts(cat.id);
+                    setActiveCategory(cat.id);
+                  }}
+                >
+                  {cat.name}
+                </button>
+              </li>
+            ))}
+          </ul>
+          <select
+            name="categories-list"
+            className="select"
+            onChange={(e) => handleProducts(Number(e.target.value))}
+          >
+            <option value={0}>Все категории</option>
+            {categories?.map((cat) => (
+              <option value={cat.id}>{cat.name}</option>
+            ))}
+          </select>
+        </>
       )}
     </div>
   );

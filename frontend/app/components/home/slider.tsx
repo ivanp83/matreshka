@@ -35,7 +35,7 @@ export default function Slider({ products }: Props) {
           width: calc(100vw / 5 - 20px);
           height: calc(((100vw / 5) - 20px) * 4 / 3);
           position: relative;
-          border-radius: 20px;
+          border-radius: 10px;
           overflow: hidden;
         }
         img {
@@ -50,9 +50,7 @@ export default function Slider({ products }: Props) {
           margin-top: 10px;
           text-align: center;
         }
-        .price {
-          font-size: 18px;
-        }
+
         h3 {
           grid-column: 1/2;
         }
@@ -73,8 +71,7 @@ export default function Slider({ products }: Props) {
             width: calc(100vw / 2 - 30px);
             height: calc(((100vw / 2) - 30px) * 4 / 3);
           }
-          .details,
-          .price {
+          .details {
             font-size: 16px;
           }
         }

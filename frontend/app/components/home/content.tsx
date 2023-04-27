@@ -27,7 +27,7 @@ export default function Сontent() {
           position: relative;
           grid-column: 2/4;
           height: calc((100vw * 0.7) * 4 / 3);
-          border-radius: 20px;
+          border-radius: 30px;
           overflow: hidden;
         }
         h3 {

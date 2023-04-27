@@ -24,7 +24,7 @@ export default function Gallery({ data }: Props) {
           overflow: hidden;
         }
         .image {
-          border-radius: 20px;
+          border-radius: 10px;
           overflow: hidden;
           width: 100%;
           height: calc((100vw * 0.6 / 3) * 4 / 3);
@@ -40,9 +40,7 @@ export default function Gallery({ data }: Props) {
           text-align: center;
           margin-top: 5px;
         }
-        .price {
-          font-size: 20px;
-        }
+
         @media (hover: hover) and (pointer: fine) {
           li:hover .inner {
             transform: scale(1.02);
@@ -56,9 +54,19 @@ export default function Gallery({ data }: Props) {
             grid-column-gap: 1rem;
           }
           .image {
-            height: calc((100vw / 2 - var(--space-small)) * 4 / 3);
+            height: calc((100vw / 2 - 20px) * 4 / 3);
           }
           figcaption span {
+          }
+        }
+        @media all and (max-width: 1024px) and (orientation: portrait) {
+          ul {
+            grid-column: 1/4;
+          }
+        }
+        @media all and (max-width: 1024px) and (orientation: landscape) {
+          .image {
+            height: calc((70vw / 2 - var(--space-small)) * 4 / 3);
           }
         }
       `}</style>

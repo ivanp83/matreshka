@@ -39,6 +39,17 @@ export default function Index() {
           grid-gap: var(--space-small);
         }
         @media all and (max-width: 760px) and (orientation: portrait) {
+          .title {
+            grid-column: 1/4;
+            font-size: 24vw;
+          }
+          .image {
+            width: 23vw;
+            height: 23vw;
+          }
+          .text {
+            grid-column: 1/4;
+          }
         }
       `}</style>
       <div className="title">
