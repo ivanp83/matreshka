@@ -23,13 +23,16 @@ const FormInput = (props: IProps) => {
           font-size: 20px;
           font-family: inherit;
           color: inherit;
-
           background-color: none;
           border: none;
           border-bottom: 1px solid transparent;
           width: 100%;
           display: block;
           transition: all 0.3s;
+          padding: 10px 20px;
+          margin: 5px 0px;
+          border-radius: 10px;
+          border: 1px solid gray;
         }
 
         .form-input:focus {
@@ -48,12 +51,7 @@ const FormInput = (props: IProps) => {
         input:invalid[data-focused="true"] ~ .input-error {
           display: block;
         }
-        .form-input {
-          padding: 20px;
-          margin: 5px 0px;
-          border-radius: 10px;
-          border: 1px solid gray;
-        }
+
         .input-label {
           margin-top: 5px;
           display: block;
@@ -73,6 +71,11 @@ const FormInput = (props: IProps) => {
           padding-left: 20px;
           color: var(--main-red);
           display: none;
+        }
+        @media all and (max-width: 760px) and (orientation: portrait) {
+          .form-input {
+            font-size: 16px;
+          }
         }
       `}</style>
 

@@ -94,9 +94,9 @@ function SubNav({
           .sub-nav {
             grid-column: 1/4;
             background: var(--main-light);
-            z-index: 1;
+            z-index: 10;
             padding: 1rem 0;
-            top: 4rem;
+            top: 3rem;
             grid-template-columns: repeat(3, 1fr);
             grid-gap: 1rem;
             align-items: center;

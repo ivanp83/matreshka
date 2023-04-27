@@ -7,6 +7,7 @@ import { InputType, OrderCreateResponeType, ShippingType } from "@/types";
 import { Api } from "@/api";
 import { useRouter } from "next/navigation";
 import { handleErrors } from "@/utils/helpers";
+import Loader from "../loader";
 
 const inputs: InputType[] = [
   {
@@ -78,12 +79,13 @@ const Form = () => {
     city: "",
     address: "",
   });
+  const { loading, setLoading } = useAppContext();
   const router = useRouter();
 
   const { cartItems, onCartClear } = useAppContext();
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-
+    setLoading(true);
     try {
       if (!cartItems.length) {
         if (window.confirm("Нет добавленных букетов. Перейти в каталог?")) {
@@ -103,6 +105,8 @@ const Form = () => {
       console.log(error);
       //TODO fixe error response
       handleErrors(error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -129,10 +133,11 @@ const Form = () => {
   }, [responseData]);
   return (
     <section>
+      {loading && <Loader />}
       <style jsx>{`
         section {
           display: grid;
-          grid-gap: 3rem;
+          grid-gap: 1rem;
         }
         form {
           display: grid;
@@ -140,19 +145,10 @@ const Form = () => {
         }
         .wrapp {
           display: grid;
-          grid-gap: 1rem;
-        }
-        h1 {
-          font-size: 30px;
-        }
-
-        @media all and (max-width: 760px) and (orientation: portrait) {
-          h1 {
-            font-size: 22px;
-          }
+          grid-gap: 10px;
         }
       `}</style>
-      <h1>Данные покупателя</h1>
+      <h2>Данные покупателя</h2>
       <form onSubmit={handleSubmit}>
         <div className="wrapp">
           {inputs.map((input) => (

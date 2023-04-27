@@ -31,7 +31,7 @@ export default function Index() {
           grid-column: 1/3;
           display: grid;
           grid-template-columns: 1fr 1fr;
-          background: var(--main-pink);
+          background: var(--light-pink);
           padding: 1rem;
           border-radius: 20px;
           grid-gap: 1rem;

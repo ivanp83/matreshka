@@ -9,6 +9,7 @@ export default function Nav() {
     <nav>
       <style jsx>{`
         nav {
+          justify-items: center;
           grid-column: 2/3;
           grid-row: 1;
           display: grid;
