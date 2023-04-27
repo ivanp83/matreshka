@@ -38,6 +38,8 @@ export default function Index() {
         }
         .empty-text {
           text-align: center;
+          min-height: calc(100vh - var(--space-med) * 2);
+          grid-column: 1/4;
         }
         .total {
           display: grid;
