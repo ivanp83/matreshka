@@ -19,24 +19,22 @@ export default function Humburger() {
           grid-row: 1;
           justify-self: end;
           display: none;
+          transform: translateY(2px);
         }
         @media all and (max-width: 700px) and (orientation: portrait) {
           .humburger {
             display: inline-flex;
-            position: absolute;
-            right: 0;
-            top: 3px;
           }
-        } ;
+        }
       `}</style>
 
       {!menuIsOpen ? (
         <AiOutlineMenu
-          style={{ width: "27px", height: "27px", fill: "var(--main-dark)" }}
+          style={{ width: "28px", height: "28px", fill: "var(--main-dark)" }}
         />
       ) : (
         <GrClose
-          style={{ width: "27px", height: "27px", fill: "var(--main-dark)" }}
+          style={{ width: "28px", height: "28px", fill: "var(--main-dark)" }}
         />
       )}
     </button>

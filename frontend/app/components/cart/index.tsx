@@ -22,6 +22,23 @@ export default function Index() {
           text-transform: uppercase;
         }
 
+        .heading {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+        }
+        .items-list {
+          grid-column: 1/3;
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          background: var(--main-pink);
+          padding: 1rem;
+          border-radius: 20px;
+          grid-gap: 1rem;
+        }
+        .empty-text {
+          text-align: center;
+        }
         .total {
           display: grid;
           grid-auto-flow: row;
@@ -31,32 +48,17 @@ export default function Index() {
           font-weight: 600;
           height: fit-content;
           padding: 1rem;
-          border-radius: 30px;
+          border-radius: 20px;
           grid-column: 3/4;
           background: var(--main-green);
         }
-
-        .heading {
-          width: 100%;
-          display: flex;
-          justify-content: space-between;
-        }
-        .items-list {
-          border: 2px solid;
-          grid-column: 1/3;
-          display: grid;
-          grid-template-columns: 1fr 1fr;
-          background: var(--main-pink);
-          padding: 1rem;
-          border-radius: 30px;
-          grid-gap: var(--space-small);
-        }
-        .empty-text {
-          text-align: center;
-        }
-        @media all and (max-width: 760px) and (orientation: portrait) {
-          h1 {
-            font-size: 22px;
+        @media all and (max-width: 768px) and (orientation: portrait) {
+          .items-list {
+            grid-template-columns: 1fr;
+            grid-column: 1/4;
+          }
+          .total {
+            grid-column: 1/4;
           }
         }
       `}</style>

@@ -17,10 +17,11 @@ export default function Index() {
           grid-column: 1/4;
           grid-row: 1;
           z-index: 1;
-          font-size: 10rem;
+          font-size: var(--heading-fs);
           text-transform: uppercase;
           display: flex;
           line-height: 1;
+          align-items: center;
         }
         .logo {
           grid-column: 3/4;
@@ -41,11 +42,10 @@ export default function Index() {
         @media all and (max-width: 760px) and (orientation: portrait) {
           .title {
             grid-column: 1/4;
-            font-size: 24vw;
           }
           .image {
-            width: 23vw;
-            height: 23vw;
+            width: 26vw;
+            height: 26vw;
           }
           .text {
             grid-column: 1/4;
