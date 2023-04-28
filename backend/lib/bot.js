@@ -94,7 +94,7 @@ bot.on('successful_payment', async (ctx) => {
       name: ctx.update.message.from,
       order: ctx.update.message.successful_payment.order_info,
     };
-
+    console.log({ orderData, admin: process.env.ADMIN_ID });
     const sql = `INSERT INTO orders ("data")
       VALUES('{ "order": ${JSON.stringify(orderData, null, 2)}
     }')`;
