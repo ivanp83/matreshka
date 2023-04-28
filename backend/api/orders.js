@@ -2,7 +2,7 @@
 
 const { db } = require('../db');
 const orders = db('products');
-const carts = db('products');
+const products = db('products');
 const { bot } = require('../lib/bot');
 const getInvoice = (id, products) => {
   const invoice = {
@@ -68,16 +68,16 @@ module.exports = {
     return await orders.queryRows(`${sql} WHERE orders.id = $1`, [order[0].id]);
   },
 
-  async create({ products, userId }) {
+  async create({ products: productsReq, userId }) {
     try {
       let orderProducts = [];
-      for await (let product of products) {
+      for await (let product of productsReq) {
         const productInDb = await products.read(product.product_id);
         orderProducts.push(productInDb.rows[0]);
       }
 
       await bot.telegram.sendInvoice(userId, getInvoice(userId, products));
-      await carts.query(
+      await products.query(
         `UPDATE carts SET cart_items='${JSON.stringify(
           [],
         )}' WHERE customer_id=$1;`,
