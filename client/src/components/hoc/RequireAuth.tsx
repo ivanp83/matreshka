@@ -7,12 +7,12 @@ interface RequireAuthProps {
 }
 
 export default function RequireAuth({ children }: RequireAuthProps) {
-  // const location = useLocation();
-  // const { user } = useTelegram();
-  // const isAuth: boolean = user.id == import.meta.env.CLIENT_ADMIN_ID;
+  const location = useLocation();
+  const { user } = useTelegram();
+  const isAuth: boolean = user.id == import.meta.env.CLIENT_ADMIN_ID;
 
-  // if (!isAuth) {
-  //   return <Navigate to="/" state={{ from: location }} />;
-  // }
+  if (!isAuth) {
+    return <Navigate to="/" state={{ from: location }} />;
+  }
   return children;
 }
