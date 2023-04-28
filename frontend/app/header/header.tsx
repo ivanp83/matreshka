@@ -44,7 +44,7 @@ export default function Header() {
         }
         .num {
           position: absolute;
-          top: 65%;
+          top: 17px;
           left: 50%;
           transform: translate(-50%, -50%);
           display: flex;
