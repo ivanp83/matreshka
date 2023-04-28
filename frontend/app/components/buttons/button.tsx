@@ -1,7 +1,7 @@
 import { FC } from "react";
 import "./button.css";
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  actionType: "add" | "remove" | "shop" | "checkout" | "back" | "finish";
+  actionType: "add" | "remove" | "shop" | "checkout" | "back" | "proceed";
   title?: string;
   disable?: boolean;
 }
@@ -19,7 +19,7 @@ const Button: FC<ButtonProps> = ({
         (actionType === "add" && "add") ||
         (actionType === "remove" && "remove") ||
         (actionType === "shop" && "shop") ||
-        (actionType === "finish" && "finish") ||
+        (actionType === "proceed" && "proceed") ||
         (actionType === "checkout" && "checkout") ||
         (actionType === "back" && "back")
       }`}

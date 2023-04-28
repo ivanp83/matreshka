@@ -27,9 +27,9 @@ export default function Index() {
           justify-content: space-between;
         }
         .items-list {
-          grid-column: 1/3;
+          grid-column: 1/2;
           display: grid;
-          grid-template-columns: 1fr 1fr;
+          grid-template-columns: 1fr;
           background: var(--light-pink);
           padding: 1rem;
           border-radius: 20px;
@@ -44,14 +44,14 @@ export default function Index() {
           display: grid;
           grid-auto-flow: row;
           grid-gap: var(--space-small);
-          border: 2px dashed;
+          border: 1px dashed;
           padding: var(--space-small) 0;
           font-weight: 600;
           height: fit-content;
           padding: 1rem;
           border-radius: 20px;
-          grid-column: 3/4;
-          background: var(--main-green);
+          grid-column: 2/3;
+          grid-row: 2;
         }
         @media all and (max-width: 768px) and (orientation: portrait) {
           .items-list {

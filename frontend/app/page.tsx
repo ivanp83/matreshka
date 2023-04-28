@@ -1,6 +1,12 @@
 import { Category, ProductItem } from "@/types";
 import Index from "./components/home";
 import { Envs } from "@/utils/config";
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Матрёшка | Цветочный бутик",
+  description: "Букеты премиального качества с доставкой по России",
+};
+
 async function getCategories() {
   const res = await fetch(`${Envs.BACKEND_BASE_URL}/categories`, {
     next: { revalidate: 60 },

@@ -6,6 +6,8 @@ import StyledJsxRegistry from "./registry";
 import { AppProvider } from "./context/app.context";
 import MobileAsideNav from "./components/aside/mobileAside";
 import Footer from "./components/footer";
+import { useEffect } from "react";
+import { Router } from "next/router";
 
 const inter = Roboto_Flex({
   weight: ["400", "500", "600", "700"],
@@ -17,6 +19,16 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
+  useEffect(() => {
+    Router.events.on("routeChangeComplete", () => {
+      console.log("ch");
+      window.scroll({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+      });
+    });
+  }, []);
   return (
     <html lang="ru">
       <meta

@@ -116,6 +116,16 @@ function SubNav({
             grid-column: 2/4;
           }
         }
+        @media all and (max-width: 1022px) and (orientation: landscape) {
+          .sub-nav {
+            grid-gap: 1rem;
+          }
+          .list-item button {
+            border: none;
+            font-size: 14px;
+            padding: 0;
+          }
+        }
       `}</style>
       <nav aria-label="Дополнительная навигация по товарам" className="nav">
         <ul>
@@ -199,21 +209,14 @@ function SubNav({
             className="select"
             onChange={(e) => handleProducts(Number(e.target.value))}
           >
-            <option value={0} selected={activeCategory == 0}>
+            <option value={0} defaultValue={Number(activeCategory == 0 && 0)}>
               Все категории
             </option>
             {categories?.map((cat) => (
               <option
                 value={cat.id}
                 key={cat.id}
-                selected={Boolean(
-                  categories?.find((cat) => {
-                    console.log(cat.id, activeCategory);
-                    if (cat.id == activeCategory) {
-                      return cat.name;
-                    }
-                  })
-                )}
+                defaultValue={Number(activeCategory == cat.id && cat.id)}
               >
                 {cat.name}
               </option>

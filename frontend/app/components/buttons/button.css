@@ -8,18 +8,21 @@
   cursor: pointer;
   color: var(--main-light);
   border-radius: 50px;
+  transition: all 0.5s;
 }
 
 .button.shop {
   padding: 10px 45px;
   width: 100%;
-  background-color: var(--main-dark);
+  background-color: var(--main-red);
 }
 
-.button.finish {
+.button.proceed {
   padding: 10px 45px;
   width: 100%;
-  background-color: var(--main-green);
+  border: 1px solid;
+  color: var(--main-dark);
+  background: transparent;
 }
 .button.add {
   width: 80px;
@@ -68,8 +71,9 @@
   .button.shop:hover {
     background-color: var(--dark-green);
   }
-  .button.finish:hover {
-    background-color: var(--dark-green);
+  .button.proceed:hover {
+    color: var(--main-light);
+    background-color: var(--main-gray);
   }
   .button.add:hover {
     background-color: var(--dark-green);

@@ -32,8 +32,8 @@ export default function Slider({ products }: Props) {
           height: 100%;
         }
         .image {
-          width: calc(100vw / 5 - 20px);
-          height: calc(((100vw / 5) - 20px) * 4 / 3);
+          width: calc(100vw / 5 - 30px);
+          height: calc(((100vw / 5) - 30px) * 4 / 3);
           position: relative;
           border-radius: 10px;
           overflow: hidden;
@@ -75,24 +75,34 @@ export default function Slider({ products }: Props) {
             font-size: 16px;
           }
         }
+        @media all and (max-width: 290px) {
+          .image {
+            width: calc(100vw - 37px);
+            height: calc((100vw - 37px) * 4 / 3);
+          }
+        }
+        @media all and (max-width: 1024px) and (orientation: landscape) {
+        }
       `}</style>
 
       <div className="btn-link">
         <LinkTo href="categories" text="Смотреть все" />
       </div>
       <Swiper
-        spaceBetween={10}
+        spaceBetween={20}
         slidesPerView={5}
         style={{ width: "100%", gridColumn: "1/4" }}
         breakpoints={{
-          // when window width is >= 640px
+          250: {
+            slidesPerView: 1,
+          },
           320: {
             slidesPerView: 2,
           },
-          // when window width is >= 768px
-          768: {
+          560: {
             slidesPerView: 4,
           },
+          // when window width is >= 768px
 
           1200: {
             slidesPerView: 5,

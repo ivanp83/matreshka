@@ -29,6 +29,7 @@ export default function Events({}: Props) {
         }
         .text-bold {
           grid-column: 2/3;
+          max-width: 12rem;
         }
         .par {
           grid-column: 3/4;
@@ -57,6 +58,7 @@ export default function Events({}: Props) {
           }
           .text-bold {
             grid-column: 1/4;
+            max-width: 100%;
           }
           .par {
             grid-column: 1/4;

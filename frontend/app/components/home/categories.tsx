@@ -33,7 +33,7 @@ export default function Categories({ categories }: Props) {
         .text {
           line-height: 1;
           font-weight: 500;
-          font-size: 2.5rem;
+          font-size: 3.1rem;
           text-transform: uppercase;
         }
         .num {
@@ -79,6 +79,14 @@ export default function Categories({ categories }: Props) {
         @media all and (max-width: 600px) and (orientation: portrait) {
           .text {
             font-size: 6vw;
+          }
+        }
+        @media all and (max-width: 1024px) and (orientation: landscape) {
+          .text {
+            line-height: 1;
+            font-weight: 500;
+            font-size: 4vw;
+            text-transform: uppercase;
           }
         }
       `}</style>

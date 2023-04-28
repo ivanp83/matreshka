@@ -14,7 +14,7 @@ export default function Products({ products, categories }: Props) {
           display: grid;
           grid-gap: var(--space-small);
           padding: var(--space-small) 1rem var(--space-med);
-          background: var(--main-green);
+          background: var(--main-light);
           position: relative;
         }
 
@@ -22,7 +22,7 @@ export default function Products({ products, categories }: Props) {
           position: absolute;
           top: -30px;
           left: 0;
-          background: var(--main-green);
+          background: var(--main-light);
           border-radius: 26px 26px 0 0;
           padding: 10px 1rem;
         }
@@ -35,7 +35,7 @@ export default function Products({ products, categories }: Props) {
           }
         }
       `}</style>
-      <h2>Роскошные букеты </h2>
+      <h2>Букеты </h2>
       <h3>Работаем только с качественными цветами</h3>
       <Slider {...{ products }} />
       <Categories {...{ categories }} />

@@ -15,7 +15,7 @@ export default function LinkTo({ href, text }: Props) {
             display: grid;
             display: inline-block;
             width: fit-content;
-            border: 2px solid var(--main-dark);
+            border: 1px solid var(--main-dark);
             border-radius: 50px;
             padding: 0.6rem 2rem;
             transition: all 0.3s linear 0s;
@@ -24,7 +24,7 @@ export default function LinkTo({ href, text }: Props) {
             .link:hover {
               color: var(--main-light);
               text-decoration: none;
-              background: var(--main-red);
+              background: var(--dark-green);
             }
           }
         `}</style>

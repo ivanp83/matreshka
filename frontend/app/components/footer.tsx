@@ -1,7 +1,7 @@
 import React from "react";
 import { AiOutlineInstagram } from "react-icons/ai";
 import { FaTelegramPlane } from "react-icons/fa";
-import Matrehska from "./shared/matrehska";
+import Matrehska from "./shared/matryohska";
 
 export default function Footer() {
   return (
@@ -68,6 +68,11 @@ export default function Footer() {
             grid-gap: 1rem;
             grid-row: 3;
             grid-template-columns: 1fr;
+          }
+        }
+        @media all and (max-width: 1024px) and (orientation: landscape) {
+          .footer {
+            font-size: 16px;
           }
         }
       `}</style>

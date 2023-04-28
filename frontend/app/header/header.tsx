@@ -16,7 +16,7 @@ export default function Header() {
     <header>
       <style jsx>{`
         header {
-          padding: 20px;
+          padding: 10px 20px;
           display: grid;
           position: fixed;
           z-index: 100;

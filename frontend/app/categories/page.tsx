@@ -1,8 +1,10 @@
-import Gallery from "@/app/components/categories/gallery";
-import SubNav from "@/app/components/subNav";
-import { Category, ProductItem } from "@/types";
+import { Category } from "@/types";
 import Index from "../components/categories";
-
+import { Metadata } from "next";
+export const metadata: Metadata = {
+  title: "Матрёшка | Букеты на продажу>",
+  description: "Самые качественные и свежие цветы в наших неповторимых букетах",
+};
 async function getCategories() {
   const res = await fetch(`${process.env.BACKEND_BASE_URL}/categories`, {
     next: { revalidate: 60 },

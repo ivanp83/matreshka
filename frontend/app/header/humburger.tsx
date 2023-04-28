@@ -1,7 +1,4 @@
-import React, { useEffect, useRef } from "react";
 import { useAppContext } from "../context/app.context";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
-import { GrClose } from "react-icons/gr";
 
 export default function Humburger() {
   const { menuIsOpen, setMenuIsOpen } = useAppContext();
@@ -36,7 +33,7 @@ export default function Humburger() {
         >
           <path
             d="M1920 1468.412v112.94H0v-112.94h1920Zm0-564.706v112.941H0V903.706h1920ZM1920 339v112.941H0V339h1920Z"
-            fill-rule="evenodd"
+            fillRule="evenodd"
           />
         </svg>
       ) : (

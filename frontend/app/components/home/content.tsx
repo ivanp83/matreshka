@@ -26,7 +26,7 @@ export default function Сontent() {
         .image {
           position: relative;
           grid-column: 2/4;
-          height: calc((100vw * 0.3) * 4 / 3);
+          height: calc((100vw * 0.4) * 4 / 3);
           border-radius: 30px;
           overflow: hidden;
         }
@@ -49,12 +49,9 @@ export default function Сontent() {
           }
         }
       `}</style>
-      <h2>Мир цветов</h2>
+      <h2>История</h2>
       <blockquote>
-        <Text
-          text="Ведь всё начинается с любви к себе, дому и цветам"
-          noindent
-        />
+        <Text text="Всё началось с любви к себе, дому и цветам" noindent />
       </blockquote>
 
       <div className="image">
@@ -62,7 +59,7 @@ export default function Сontent() {
           quality={100}
           fill
           style={{ objectFit: "cover", objectPosition: "top" }}
-          src="/images/5.jpg"
+          src="/images/8.jpg"
           alt="Девушка с цветами"
           sizes="(max-width: 768px) 100vw,
 (max-width: 1200px) 50vw"

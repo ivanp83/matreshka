@@ -120,7 +120,7 @@ export default function Index({ data: product, faturedData }: Props) {
           />
           {cartItems.length ? (
             <Button
-              actionType="finish"
+              actionType="proceed"
               title="Завершить"
               onClick={() => router.push("/shipping")}
             />

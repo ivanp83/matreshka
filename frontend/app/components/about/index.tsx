@@ -1,5 +1,4 @@
 "use client";
-import Logo from "@/app/header/logo";
 import Image from "next/image";
 
 export default function Index() {
@@ -18,13 +17,9 @@ export default function Index() {
           grid-row: 1;
           z-index: 1;
           font-size: var(--heading-fs);
-
           display: flex;
           line-height: 1;
           align-items: center;
-        }
-        .logo {
-          grid-column: 3/4;
         }
 
         .image {
@@ -34,10 +29,15 @@ export default function Index() {
         }
 
         .text {
-          grid-column: 1/2;
+          grid-column: 2/3;
           grid-row: 2;
           display: grid;
           grid-gap: var(--space-small);
+        }
+        @media all and (max-width: 1024px) {
+          .text {
+            grid-column: 2/4;
+          }
         }
         @media all and (max-width: 760px) and (orientation: portrait) {
           .title {
@@ -51,6 +51,13 @@ export default function Index() {
             grid-column: 1/4;
           }
         }
+        @media all and (max-width: 1024px) and (orientation: landscape) {
+          .image {
+            position: relative;
+            width: 11vw;
+            height: 11vw;
+          }
+        }
       `}</style>
       <div className="title">
         <span>A</span>
@@ -62,15 +69,14 @@ export default function Index() {
             alt="Юлиана Легкодумова"
             fill
             style={{ objectFit: "cover", objectPosition: "top" }}
+            sizes="300px"
           />
         </div>
         <span>u</span>
         <span>t</span>
       </div>
       {/* Почему бы и да!!! - <span className="red">Why&Yes</span> */}
-      <div className="logo">
-        <Logo />
-      </div>
+
       {/* <div className="image">
         <Image
           src="/images/1.png"

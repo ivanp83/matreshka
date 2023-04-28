@@ -27,7 +27,7 @@ export default function Gallery({ data }: Props) {
           border-radius: 10px;
           overflow: hidden;
           width: 100%;
-          height: calc((100vw * 0.6 / 3) * 4 / 3);
+          height: calc((100vw * 0.63 / 3) * 4 / 3);
         }
         .inner {
           width: 100%;

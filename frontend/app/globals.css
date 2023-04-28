@@ -1,6 +1,6 @@
 :root {
-  --main-fs: 26px;
-  --big-fs: 3.8rem;
+  --main-fs: 22px;
+  --big-fs: 4.8rem;
   --heading-fs: 10rem;
   --space-small: 2rem;
   --space-med: 5rem;
@@ -13,10 +13,13 @@
   --light-pink: #ffeff2;
   --main-red: rgb(214, 3, 3);
   --dark-red: rgb(162, 5, 5);
-  --main-dark: rgb(19, 17, 17);
+  --main-dark: rgb(51, 42, 42);
   --main-light: rgb(255, 255, 255);
 }
-
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
 html,
 body {
   background-color: var(--main-light);
@@ -95,5 +98,11 @@ h5 {
   }
   .price {
     font-size: 16px;
+  }
+}
+@media all and (max-width: 1024px) and (orientation: landscape) {
+  :root {
+    --heading-fs: 14vw;
+    --main-fs: 16px;
   }
 }

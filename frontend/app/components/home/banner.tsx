@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Logo from "../shared/matrehska";
+import Logo from "../shared/matryohska";
 
 export default function Banner() {
   const [state, setState] = useState(true);

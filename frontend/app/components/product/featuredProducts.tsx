@@ -71,6 +71,16 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
             width: calc(100vw / 2 - 30px);
             height: calc(((100vw / 2) - 30px) * 4 / 3);
           }
+          .details span,
+          h4 {
+            font-size: 16px;
+          }
+        }
+        @media all and (max-width: 290px) {
+          .image {
+            width: calc(100vw - 37px);
+            height: calc((100vw - 37px) * 4 / 3);
+          }
         }
       `}</style>
       <h2> Другие букеты</h2>
@@ -80,11 +90,13 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
         slidesPerView={5}
         style={{ width: "100%" }}
         breakpoints={{
-          // when window width is >= 640px
+          250: {
+            slidesPerView: 1,
+          },
           320: {
             slidesPerView: 2,
           },
-          // when window width is >= 768px
+
           768: {
             slidesPerView: 4,
           },
