@@ -95,9 +95,8 @@ bot.on('successful_payment', async (ctx) => {
       order: ctx.update.message.successful_payment.order_info,
     };
     console.log({ orderData, admin: process.env.ADMIN_ID });
-    const sql = `INSERT INTO orders ("data")
-      VALUES('{ "order": ${JSON.stringify(orderData, null, 2)}
-    }')`;
+    const sql = `INSERT INTO orders ("shipping_address")
+      VALUES(${JSON.stringify(orderData.order.shipping_address, null, 2)})`;
 
     await pool.query(sql);
 

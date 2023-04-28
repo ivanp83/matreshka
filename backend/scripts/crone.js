@@ -44,22 +44,15 @@ const getStatusPaymentProvider = async (id) => {
         order.yookassa_id,
       );
 
-      // await orders.update(order.id, {
-      //   order_status: orderPaymentDetails.status,
-      // });
-
       if (orderPaymentDetails.status === 'succeeded') {
-        // console.log(orderPaymentDetails.status);
-
         const order = await orders.queryRows(
           `SELECT * FROM orders WHERE orders.yookassa_id = $1`,
           [orderPaymentDetails.id],
         );
 
-        const customer = await customers.queryRows(
-          `SELECT * FROM customers WHERE id = $1`,
-          [order[0].customer_id],
-        );
+        await customers.queryRows(`SELECT * FROM customers WHERE id = $1`, [
+          order[0].customer_id,
+        ]);
         const getorderItems = (items) =>
           items.map((item) => ({
             product: item.name,
