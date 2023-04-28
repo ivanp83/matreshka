@@ -76,7 +76,7 @@ module.exports = {
         orderProducts.push(productInDb.rows[0]);
       }
 
-      await bot.telegram.sendInvoice(userId, getInvoice(userId, products));
+      await bot.telegram.sendInvoice(userId, getInvoice(userId, productsReq));
       await products.query(
         `UPDATE carts SET cart_items='${JSON.stringify(
           [],
