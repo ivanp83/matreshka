@@ -19,7 +19,6 @@ export default function Index() {
           font-size: var(--heading-fs);
           grid-column: 1/4;
           line-height: 1;
-          text-transform: uppercase;
         }
 
         .heading {

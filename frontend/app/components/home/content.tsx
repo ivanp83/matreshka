@@ -26,11 +26,11 @@ export default function Сontent() {
         .image {
           position: relative;
           grid-column: 2/4;
-          height: calc((100vw * 0.7) * 4 / 3);
+          height: calc((100vw * 0.3) * 4 / 3);
           border-radius: 30px;
           overflow: hidden;
         }
-        h3 {
+        blockquote {
           grid-column: 2/4;
         }
         @media all and (orientation: portrait) {
@@ -39,30 +39,36 @@ export default function Сontent() {
           }
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
-          h3,
+          blockquote,
           .image {
             position: relative;
             grid-column: 1/4;
           }
+          .image {
+            height: calc((100vw) * 4 / 3);
+          }
         }
       `}</style>
       <h2>Мир цветов</h2>
+      <blockquote>
+        <Text
+          text="Ведь всё начинается с любви к себе, дому и цветам"
+          noindent
+        />
+      </blockquote>
 
-      <h3>Ведь всё начинается с любви к себе, дому и цветам</h3>
       <div className="image">
         <Image
+          quality={100}
           fill
-          style={{ objectFit: "cover" }}
+          style={{ objectFit: "cover", objectPosition: "top" }}
           src="/images/5.jpg"
           alt="Девушка с цветами"
           sizes="(max-width: 768px) 100vw,
 (max-width: 1200px) 50vw"
         />
       </div>
-      <Text
-        text1="Мы считаем, что каждый"
-        text2=" букет должен быть уникальным и отражать индивидуальность того, кому он предназначен. Поэтому, тщательно подбираем цвета и сочетания, чтобы создать букет, который подходит именно для вашего случая."
-      />
+      <Text text="Мы считаем, что каждый букет должен быть уникальным и отражать индивидуальность того, кому он предназначен. Поэтому, тщательно подбираем цвета и сочетания, чтобы создать букет, который подходит именно для вашего случая." />
     </section>
   );
 }

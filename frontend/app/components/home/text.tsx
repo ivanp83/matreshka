@@ -1,29 +1,26 @@
 import React from "react";
 
-type Props = { text1: string; text2: string };
+type Props = { text: string; noindent?: boolean };
 
-export default function Text({ text1, text2 }: Props) {
+export default function Text({ text, noindent }: Props) {
   return (
-    <div className="text container main-text">
+    <div className="text main-text">
       <style jsx>{`
         .text {
           grid-column: 1/4;
+          text-indent: ${!noindent ? "32vw" : 0};
         }
-
-        .top-text {
-          grid-column: 2/4;
-        }
-        .bot-text {
-          grid-column: 1/4;
+        .main-text {
+          font-weight: 400;
+          font-size: var(--big-fs);
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
-          .top-text {
-            grid-column: 1/4;
+          .text {
+            text-indent: 0;
           }
         }
       `}</style>
-      <span className="top-text"> {text1}</span>
-      <span className="bot-text">{text2}</span>
+      {text}
     </div>
   );
 }

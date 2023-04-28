@@ -65,12 +65,12 @@ export default function Events({}: Props) {
       `}</style>
       <h2>Для торжества</h2>
       <Text
-        text1=" Свадьба, день рождения"
-        text2="или корпоратив. Подари букет любимому
+        text="Свадьба, день рождения или корпоратив. Подари букет любимому
         человеку в канун торжества"
       />
       <div className="image">
         <Image
+          quality={100}
           fill
           style={{ objectFit: "cover" }}
           src="/images/6.jpg"

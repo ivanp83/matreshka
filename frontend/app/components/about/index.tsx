@@ -18,7 +18,7 @@ export default function Index() {
           grid-row: 1;
           z-index: 1;
           font-size: var(--heading-fs);
-          text-transform: uppercase;
+
           display: flex;
           line-height: 1;
           align-items: center;
@@ -53,10 +53,11 @@ export default function Index() {
         }
       `}</style>
       <div className="title">
-        <span>a</span>
+        <span>A</span>
         <span>b</span>
         <div className="image">
           <Image
+            quality={100}
             src="/images/1.png"
             alt="Юлиана Легкодумова"
             fill

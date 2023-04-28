@@ -55,7 +55,6 @@ export default function Index({ data: product, faturedData }: Props) {
           grid-gap: 5px;
         }
         h1 {
-          text-transform: uppercase;
           font-size: 2rem;
           font-weight: 500;
         }

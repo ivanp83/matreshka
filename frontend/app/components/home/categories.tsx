@@ -30,13 +30,13 @@ export default function Categories({ categories }: Props) {
           padding: 1rem 0;
           position: relative;
         }
-        li .text {
+        .text {
           line-height: 1;
           font-weight: 500;
-          font-size: var(--big-fs);
+          font-size: 2.5rem;
           text-transform: uppercase;
         }
-        li .num {
+        .num {
           display: inline-flex;
           margin-right: 10px;
           line-height: 1;
@@ -45,10 +45,10 @@ export default function Categories({ categories }: Props) {
         a {
           display: contents;
         }
-        li .image {
+        .image {
           position: absolute;
-          width: 3rem;
-          height: 4rem;
+          width: 3.5rem;
+          height: 4.5rem;
           top: 0;
           right: 0;
           opacity: 0;
@@ -69,6 +69,16 @@ export default function Categories({ categories }: Props) {
           }
           ul {
             grid-column: 1/4;
+          }
+        }
+        @media all and (max-width: 1024px) and (orientation: portrait) {
+          .text {
+            font-size: 4vw;
+          }
+        }
+        @media all and (max-width: 600px) and (orientation: portrait) {
+          .text {
+            font-size: 6vw;
           }
         }
       `}</style>
