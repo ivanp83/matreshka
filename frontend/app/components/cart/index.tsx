@@ -32,7 +32,6 @@ export default function Index() {
           grid-template-columns: 1fr;
           background: var(--light-pink);
           padding: 1rem;
-          border-radius: 20px;
           grid-gap: 1rem;
         }
         .empty-text {
@@ -49,7 +48,6 @@ export default function Index() {
           font-weight: 600;
           height: fit-content;
           padding: 1rem;
-          border-radius: 20px;
           grid-column: 2/3;
           grid-row: 2;
         }

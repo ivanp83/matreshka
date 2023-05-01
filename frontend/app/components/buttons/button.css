@@ -3,11 +3,10 @@
   text-align: center;
   border: none;
   outline: none;
-  border-radius: 1rem;
   font-weight: 600;
   cursor: pointer;
   color: var(--main-light);
-  border-radius: 50px;
+  border-radius: 10px;
   transition: all 0.5s;
 }
 

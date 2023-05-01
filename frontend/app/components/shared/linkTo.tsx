@@ -15,9 +15,11 @@ export default function LinkTo({ href, text }: Props) {
             display: grid;
             display: inline-block;
             width: fit-content;
-            border-bottom: 1px solid var(--main-dark);
+
             font-weight: 600;
             transition: all 0.3s linear 0s;
+            border: 1px solid;
+            padding: 1rem 2rem;
           }
           @media (hover: hover) and (pointer: fine) {
             .link:hover {
