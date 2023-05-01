@@ -6,7 +6,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
       <style jsx>{`
         .layout {
           margin-top: var(--space-med);
-          padding: 0 1rem;
+
           margin: var(--space-med) auto 0;
         }
       `}</style>
