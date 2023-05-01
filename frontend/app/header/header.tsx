@@ -62,7 +62,6 @@ export default function Header() {
         @media all and (max-width: 700px) and (orientation: portrait) {
           header {
             align-items: center;
-            border-bottom: 1px solid;
           }
           .cart-icon {
             margin-right: 3rem;

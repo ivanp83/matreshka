@@ -21,7 +21,7 @@ export default function Banner() {
       <style jsx>{`
         .banner {
           width: 100%;
-          height: 97vh;
+          height: 100vh;
           position: fixed;
           top: 0;
           left: 50%;
@@ -60,24 +60,26 @@ export default function Banner() {
           }
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
+          .banner {
+            place-content: start;
+          }
           .image {
-            width: 80vw;
-            height: calc(80vw * 4 / 3);
+            width: calc(100vw - 40px);
+            height: calc((100vw - 40px) * 4 / 3);
             position: relative;
             right: 0;
           }
           .logo-title {
             grid-column: 1/4;
-            margin-top: 1rem;
+            margin-top: 5rem;
+            width: 93vw;
           }
           .button {
             grid-column: 1/4;
             grid-row: 3;
-            margin-top: 1rem;
             position: absolute;
-            right: 0;
+            margin: 2rem auto;
             background: var(--main-light);
-            top: -29%;
           }
         }
         @media all and (max-width: 950px) and (orientation: landscape) {

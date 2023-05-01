@@ -53,6 +53,9 @@ export default function Events({}: Props) {
             grid-column: 1/4;
             max-width: 100%;
           }
+          h2 {
+            grid-column: 1/4;
+          }
           .par {
             grid-column: 1/4;
           }

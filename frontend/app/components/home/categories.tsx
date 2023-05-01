@@ -57,6 +57,7 @@ export default function Categories({ categories }: Props) {
 
         li:last-of-type {
           border-bottom: none;
+          padding-bottom: 0;
         }
         @media (hover: hover) and (pointer: fine) {
           li:hover .image {
