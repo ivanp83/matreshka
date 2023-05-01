@@ -34,7 +34,7 @@ export default function Index() {
 
         .text {
           grid-column: 2/3;
-          grid-row: 2;
+
           display: grid;
           grid-gap: var(--space-small);
         }
@@ -56,8 +56,10 @@ export default function Index() {
             grid-column: 1/4;
           }
           .image {
-            width: 26vw;
-            height: 26vw;
+            width: 80vw;
+            height: 80vw;
+            position: relative;
+            grid-row: 2;
           }
           .text {
             grid-column: 1/4;
