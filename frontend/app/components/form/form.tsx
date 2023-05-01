@@ -132,14 +132,19 @@ const Form = () => {
     }
   }, [responseData]);
   return (
-    <section>
+    <section className="shipping container">
       {loading && <Loader />}
       <style jsx>{`
         section {
           display: grid;
           grid-gap: 1rem;
         }
+        h1 {
+          grid-column: 2/3;
+          margin-bottom: var(--space-small);
+        }
         form {
+          grid-column: 2/3;
           display: grid;
           grid-gap: 1rem;
         }
@@ -147,8 +152,14 @@ const Form = () => {
           display: grid;
           grid-gap: 10px;
         }
+        @media all and (max-width: 768px) and (orientation: portrait) {
+          h1,
+          form {
+            grid-column: 1/4;
+          }
+        }
       `}</style>
-      <h2>Данные покупателя</h2>
+      <h1>Данные покупателя</h1>
       <form onSubmit={handleSubmit}>
         <div className="wrapp">
           {inputs.map((input) => (

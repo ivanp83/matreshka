@@ -76,16 +76,15 @@ function SubNav({
         }
 
         .list-item button {
-          border: 1px solid;
-          border-radius: 30px;
-          padding: 10px 2rem;
+          border: none;
+          border-bottom: 1px solid transparent;
           outline: none;
           background: transparent;
           font-size: 16px;
           cursor: pointer;
         }
         .list-item button.active {
-          background: var(--main-green);
+          border-bottom: 1px solid;
         }
         .select {
           display: none;

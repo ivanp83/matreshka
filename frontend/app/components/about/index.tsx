@@ -10,22 +10,26 @@ export default function Index() {
           position: relative;
           height: fit-content;
           width: 100%;
+          min-height: 100vh;
+          grid-template-rows: min-content min-content;
           grid-row-gap: var(--space-small);
         }
         .title {
-          grid-column: 1/4;
+          grid-column: 2/4;
           grid-row: 1;
           z-index: 1;
-          font-size: var(--heading-fs);
+          font-size: var(--big-fs);
           display: flex;
           line-height: 1;
           align-items: center;
         }
 
         .image {
-          position: relative;
-          width: 10rem;
-          height: 10rem;
+          grid-column: 1/2;
+          position: absolute;
+          left: 0;
+          width: 20rem;
+          height: 20rem;
         }
 
         .text {
@@ -37,6 +41,14 @@ export default function Index() {
         @media all and (max-width: 1024px) {
           .text {
             grid-column: 2/4;
+          }
+        }
+        @media all and (max-width: 1024px) and (orientation: portrait) {
+          .image {
+            position: absolute;
+
+            width: 28vw;
+            height: 28vw;
           }
         }
         @media all and (max-width: 760px) and (orientation: portrait) {
@@ -59,21 +71,17 @@ export default function Index() {
           }
         }
       `}</style>
-      <div className="title">
-        <span>A</span>
-        <span>b</span>
-        <div className="image">
-          <Image
-            quality={100}
-            src="/images/1.png"
-            alt="Юлиана Легкодумова"
-            fill
-            style={{ objectFit: "cover", objectPosition: "top" }}
-            sizes="300px"
-          />
-        </div>
-        <span>u</span>
-        <span>t</span>
+
+      <h1 className="title">About</h1>
+      <div className="image">
+        <Image
+          quality={100}
+          src="/images/1.png"
+          alt="Юлиана Легкодумова"
+          fill
+          style={{ objectFit: "cover", objectPosition: "top" }}
+          sizes="300px"
+        />
       </div>
       {/* Почему бы и да!!! - <span className="red">Why&Yes</span> */}
 

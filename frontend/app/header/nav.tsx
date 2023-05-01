@@ -9,11 +9,9 @@ export default function Nav() {
     <nav>
       <style jsx>{`
         nav {
-          justify-items: center;
           grid-column: 2/3;
           grid-row: 1;
           display: grid;
-          align-self: end;
         }
 
         nav ul {
@@ -26,7 +24,6 @@ export default function Nav() {
         nav ul li {
           display: flex;
           grid-gap: 10px;
-          font-size: 20px;
         }
         nav ul li.active {
           color: var(--main-red);

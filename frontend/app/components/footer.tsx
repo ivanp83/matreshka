@@ -5,11 +5,12 @@ import Matrehska from "./shared/matryohska";
 
 export default function Footer() {
   return (
-    <footer className="footer container">
+    <footer className="footer">
       <style jsx>{`
         .footer {
-          padding: var(--space-med) 1rem var(--space-small);
-          font-size: 20px;
+          padding: var(--space-small) 0;
+          background-color: var(--light-pink);
+          margin-top: var(--space-med);
         }
         .matrehska-logo {
           grid-column: 1/2;
@@ -71,64 +72,66 @@ export default function Footer() {
           }
         }
         @media all and (max-width: 1024px) and (orientation: landscape) {
-          .footer {
-            font-size: 16px;
+          .matrehska-logo {
+            width: 12rem;
           }
         }
       `}</style>
-      <div className="matrehska-logo">
-        <Matrehska />
-      </div>
-
-      <div className="social">
-        <h4>Мы в соцсетях</h4>
-        <ul>
-          <li>
-            <span>
-              <a
-                href="http://instagram.com/_u/yulianalegkodumova/"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Instagram
-              </a>
-            </span>
-          </li>
-          <li>
-            <span>
-              <a
-                href="tg://resolve?domain=YulianaLegkodumova"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Telegram
-              </a>
-            </span>
-          </li>
-          <li>
-            <span>
-              <a
-                href="https://vk.com/matreshkaflower"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                В контакте
-              </a>
-            </span>
-          </li>
-        </ul>
-      </div>
-      <div className="creds">
-        <div className="address">
-          <h4>Адрес</h4>
-          <span>Калининград, улица Виктора Гакуна, 5Б</span>
+      <div className="wrapp container">
+        {" "}
+        <div className="matrehska-logo">
+          <Matrehska />
         </div>
-        <div className="contacts">
-          <h4>Контакты</h4>
-          <span>
-            <a href="tel:+79114939999">7 911 493-99-99</a>
-            <a href="mail:+79114939999">matreshkaflower@bk.ru</a>
-          </span>
+        <div className="social">
+          <h4>Мы в соцсетях</h4>
+          <ul>
+            <li>
+              <span>
+                <a
+                  href="http://instagram.com/_u/yulianalegkodumova/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Instagram
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a
+                  href="tg://resolve?domain=YulianaLegkodumova"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Telegram
+                </a>
+              </span>
+            </li>
+            <li>
+              <span>
+                <a
+                  href="https://vk.com/matreshkaflower"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  В контакте
+                </a>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div className="creds">
+          <div className="address">
+            <h4>Адрес</h4>
+            <span>Калининград, улица Виктора Гакуна, 5Б</span>
+          </div>
+          <div className="contacts">
+            <h4>Контакты</h4>
+            <span>
+              <a href="tel:+79114939999">7 911 493-99-99</a>
+              <a href="mail:+79114939999">matreshkaflower@bk.ru</a>
+            </span>
+          </div>
         </div>
       </div>
     </footer>

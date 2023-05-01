@@ -1,14 +1,13 @@
 import React from "react";
 
-type Props = { text: string; noindent?: boolean };
+type Props = { text: string };
 
-export default function Text({ text, noindent }: Props) {
+export default function Text({ text }: Props) {
   return (
     <div className="text main-text">
       <style jsx>{`
         .text {
-          grid-column: 1/4;
-          text-indent: ${!noindent ? "32vw" : 0};
+          grid-column: 2/4;
         }
         .main-text {
           font-weight: 400;
@@ -16,7 +15,7 @@ export default function Text({ text, noindent }: Props) {
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
           .text {
-            text-indent: 0;
+            grid-column: 1/4;
           }
         }
       `}</style>

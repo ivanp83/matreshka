@@ -11,29 +11,21 @@ type Props = { products: Array<ProductItem> };
 
 export default function Slider({ products }: Props) {
   return (
-    <div className="slider container">
+    <div className="slider">
       <style jsx>{`
         .slider {
           grid-column: 1/4;
           grid-gap: var(--space-small);
         }
 
-        .btn-link {
-          grid-column: 2/4;
-        }
-
-        h3 {
-          grid-column: 1/2;
-          margin-bottom: auto;
-        }
         .first-slide {
           display: grid;
           place-content: center;
           height: 100%;
         }
         .image {
-          width: calc(100vw / 5 - 30px);
-          height: calc(((100vw / 5) - 30px) * 4 / 3);
+          width: calc(var(--cont-w) / 5 - 20px);
+          height: calc(((var(--cont-w) / 5) - 20px) * 4 / 3);
           position: relative;
           border-radius: 10px;
           overflow: hidden;
@@ -85,9 +77,6 @@ export default function Slider({ products }: Props) {
         }
       `}</style>
 
-      <div className="btn-link">
-        <LinkTo href="categories" text="Смотреть все" />
-      </div>
       <Swiper
         spaceBetween={20}
         slidesPerView={5}

@@ -9,11 +9,11 @@ type Props = {
 
 export default function Categories({ categories }: Props) {
   return (
-    <section className="categories container">
+    <section className="categories">
       <style jsx>{`
         .categories {
           grid-column: 1/4;
-          padding: var(--space-small) 0 0;
+          padding: var(--space-small) 0 var(--space-med);
         }
         h2 {
           grid-column: 1/2;
@@ -33,7 +33,7 @@ export default function Categories({ categories }: Props) {
         .text {
           line-height: 1;
           font-weight: 500;
-          font-size: 3.1rem;
+          font-size: 2rem;
           text-transform: uppercase;
         }
         .num {
@@ -47,8 +47,8 @@ export default function Categories({ categories }: Props) {
         }
         .image {
           position: absolute;
-          width: 3.5rem;
-          height: 4.5rem;
+          width: 3rem;
+          height: 4rem;
           top: 0;
           right: 0;
           opacity: 0;
@@ -71,7 +71,7 @@ export default function Categories({ categories }: Props) {
             grid-column: 1/4;
           }
         }
-        @media all and (max-width: 1024px) and (orientation: portrait) {
+        @media all and (max-width: 1024px) {
           .text {
             font-size: 4vw;
           }
@@ -90,20 +90,22 @@ export default function Categories({ categories }: Props) {
           }
         }
       `}</style>
-      <h2>Категории</h2>
-      <ul>
-        {categories.map((cat, i) => (
-          <li key={cat.id}>
-            <Link href={`categories`}>
-              <div className="image">
-                <CustomImage src={cat.image} alt={cat.name} />
-              </div>
-              <span className="num">0{i + 1}/</span>
-              <span className="text">{cat.name}</span>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      <div className="wrapp container">
+        <h2>Категории</h2>
+        <ul>
+          {categories.map((cat, i) => (
+            <li key={cat.id}>
+              <Link href={`categories`}>
+                <div className="image">
+                  <CustomImage src={cat.image} alt={cat.name} />
+                </div>
+                <span className="num">0{i + 1}/</span>
+                <span className="text">{cat.name}</span>
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </div>
     </section>
   );
 }

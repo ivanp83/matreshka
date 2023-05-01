@@ -1,44 +1,51 @@
-import React from "react";
+import LinkTo from "../shared/linkTo";
 import Slider from "./slider";
-import Categories from "./categories";
-import { Category, ProductItem } from "@/types";
+import { ProductItem } from "@/types";
 
-type Props = { products: Array<ProductItem>; categories: Array<Category> };
+type Props = { products: Array<ProductItem> };
 
-export default function Products({ products, categories }: Props) {
+export default function Products({ products }: Props) {
   return (
-    <section className="products container">
+    <section className="products">
       <style jsx>{`
         .products {
           grid-column: 1/4;
           display: grid;
-          grid-gap: var(--space-small);
-          padding: var(--space-small) 1rem var(--space-med);
+          padding-top: var(--space-small);
+          padding-bottom: var(--space-med);
           background: var(--main-light);
           position: relative;
+          background: var(--light-pink);
         }
-
+        .wrapp {
+          grid-gap: var(--space-small);
+        }
         h2 {
-          position: absolute;
-          top: -30px;
-          left: 0;
-          background: var(--main-light);
-          border-radius: 26px 26px 0 0;
-          padding: 10px 1rem;
+          grid-column: 1/2;
         }
         h3 {
+          grid-column: 2/3;
+        }
+        .button-link {
           grid-column: 2/4;
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
           h3 {
             grid-column: 1/4;
           }
+          .button-link {
+            grid-column: 1/4;
+          }
         }
       `}</style>
-      <h2>Букеты </h2>
-      <h3>Работаем только с качественными цветами</h3>
-      <Slider {...{ products }} />
-      <Categories {...{ categories }} />
+      <div className="wrapp  container">
+        <h2>Букеты </h2>
+        <h3>Работаем только с качественными цветами</h3>{" "}
+        <div className="button-link">
+          <LinkTo href="categories" text="Смотреть все" />
+        </div>
+        <Slider {...{ products }} />
+      </div>
     </section>
   );
 }

@@ -16,8 +16,8 @@ export default function Index() {
           grid-row-gap: 3rem;
         }
         h1 {
-          font-size: var(--heading-fs);
-          grid-column: 1/4;
+          font-size: var(--big-fs);
+          grid-column: 2/3;
           line-height: 1;
         }
 
@@ -27,7 +27,7 @@ export default function Index() {
           justify-content: space-between;
         }
         .items-list {
-          grid-column: 1/2;
+          grid-column: 2/3;
           display: grid;
           grid-template-columns: 1fr;
           background: var(--light-pink);

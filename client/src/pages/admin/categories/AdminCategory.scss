@@ -4,7 +4,7 @@
   grid-gap: 0.5rem;
   .admin-cat-item {
     padding: 10px;
-    border: 1px solid var(--light-gray);
+    border: 1px solid var(--light-pink);
     border-radius: 10px;
     position: relative;
     a {
@@ -26,7 +26,7 @@
         width: 5rem;
         height: calc(5rem * 4 / 3);
         object-fit: cover;
-        background-color: var(--light-gray);
+        background-color: var(--light-pink);
         display: block;
       }
       figcaption {

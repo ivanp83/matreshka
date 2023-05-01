@@ -5,6 +5,7 @@ import { Envs } from "@/utils/config";
 type Props = {
   src: string | ArrayBuffer | null;
   alt: string;
+  direct?: boolean;
   onLoadingComplete?: () => void;
   sizes?: string;
 };
@@ -13,6 +14,7 @@ export default function CustomImage({
   alt,
   onLoadingComplete,
   sizes,
+  direct = false,
 }: Props) {
   const convertImage = (w: number, h: number) => `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -40,7 +42,7 @@ export default function CustomImage({
         sizes={sizes}
         style={{ objectFit: "cover", objectPosition: "top" }}
         onLoadingComplete={onLoadingComplete}
-        src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${src}`}
+        src={!direct ? `${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${src}` : src}
         alt={alt}
         quality={100}
         fill
