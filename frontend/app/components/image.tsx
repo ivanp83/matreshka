@@ -42,7 +42,11 @@ export default function CustomImage({
         sizes={sizes}
         style={{ objectFit: "cover", objectPosition: "top" }}
         onLoadingComplete={onLoadingComplete}
-        src={!direct ? `${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${src}` : src}
+        src={
+          !direct
+            ? `${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${src}`
+            : (src as string)
+        }
         alt={alt}
         quality={100}
         fill
