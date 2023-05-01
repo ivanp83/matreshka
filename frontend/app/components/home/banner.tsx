@@ -74,6 +74,10 @@ export default function Banner() {
             grid-column: 1/4;
             grid-row: 3;
             margin-top: 1rem;
+            position: absolute;
+            right: 0;
+            background: var(--main-light);
+            top: -29%;
           }
         }
         @media all and (max-width: 950px) and (orientation: landscape) {
