@@ -5,7 +5,6 @@ const orders = db('products');
 const products = db('products');
 const { bot } = require('../lib/bot');
 const getInvoice = (id, products) => {
-  console.log(products);
   const invoice = {
     chat_id: id,
     provider_token: process.env.PROVIDER_TOKEN,
@@ -22,7 +21,7 @@ const getInvoice = (id, products) => {
     need_name: true,
     payload: {
       unique_id: `${id}_${Number(new Date())}`,
-      products: `${products.map((prod) => prod.id)}`,
+      products: `${JSON.stringify(products)}`,
     },
   };
   return invoice;
