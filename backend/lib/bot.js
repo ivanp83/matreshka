@@ -83,6 +83,7 @@ bot.on('document', (ctx) => {
 bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
+    console.log(ctx.update.message);
   } catch (err) {
     throw new Error(err);
   }
@@ -94,7 +95,7 @@ bot.on('successful_payment', async (ctx) => {
       name: ctx.update.message.from,
       order: ctx.update.message.successful_payment.order_info,
     };
-    console.log(ctx.update.message.successful_payment.order_info);
+    // console.log(ctx.update.message.successful_payment.order_info);
     // const sql = `INSERT INTO orders ("shipping_address", "order_items")
     //   VALUES(${JSON.stringify(
     //     ctx.update.message.successful_payment.order_info.shipping_address,
