@@ -94,7 +94,7 @@ bot.on('successful_payment', async (ctx) => {
       name: ctx.update.message.from,
       order: ctx.update.message.successful_payment.order_info,
     };
-    console.log(ctx.update.message.successful_payment.order_info);
+    console.log(ctx.update.message.successful_payment);
     // const sql = `INSERT INTO orders ("shipping_address", "order_items")
     //   VALUES(${JSON.stringify(
     //     ctx.update.message.successful_payment.order_info.shipping_address,
