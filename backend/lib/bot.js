@@ -95,24 +95,22 @@ bot.on('successful_payment', async (ctx) => {
       order: ctx.update.message.successful_payment.order_info,
     };
     console.log({ orderData, admin: process.env.ADMIN_ID });
-    const sql = `INSERT INTO orders ("shipping_address")
-      VALUES(${JSON.stringify(orderData.order.shipping_address, null, 2)})`;
+    // const sql = `INSERT INTO orders ("shipping_address")
+    //   VALUES(${JSON.stringify(orderData.order.shipping_address, null, 2)})`;
 
-    await pool.query(sql);
+    // await pool.query(sql);
 
-    const message_html = `<b>Новый заказ</b>
-<pre>${orderData.name.username}</pre>
-<pre>${orderData.name.first_name}</pre>
-<pre>${orderData.name.last_name}</pre>
-<b >Адрес доставки</b>
-<pre>${orderData.order.shipping_address.state}</pre>
-<pre>${orderData.order.shipping_address.city}</pre>
-<pre>${orderData.order.shipping_address.street_line1}</pre>
-<pre>${orderData.order.shipping_address.street_line2}</pre>`;
+    //     const message_html = `<b>Новый заказ</b>
+    // <pre>${orderData.name.username}</pre>
+    // <pre>${orderData.name.first_name}</pre>
+    // <pre>${orderData.name.last_name}</pre>
+    // <b >Адрес доставки</b>
+    // <pre>${orderData.order.shipping_address.state}</pre>
+    // <pre>${orderData.order.shipping_address.city}</pre>
+    // <pre>${orderData.order.shipping_address.street_line1}</pre>
+    // <pre>${orderData.order.shipping_address.street_line2}</pre>`;
 
-    return await bot.telegram.sendMessage(process.env.ADMIN_ID, message_html, {
-      parse_mode: 'html',
-    });
+    return await bot.telegram.sendMessage(process.env.ADMIN_ID, 'message_html');
   } catch (err) {
     console.log(err);
   }
