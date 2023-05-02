@@ -28,6 +28,7 @@ const getStatusPaymentProvider = async (id) => {
     .then((response) => response.json())
     .then((result) => result);
 };
+
 (async () => {
   const ordersInPending = await orders.queryRows(
     `SELECT * FROM orders WHERE order_status ='pending';`,
