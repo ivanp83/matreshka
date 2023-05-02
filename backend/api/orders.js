@@ -8,6 +8,7 @@ const getInvoice = (id, products) => {
   const invoice = {
     chat_id: id,
     provider_token: process.env.PROVIDER_TOKEN,
+    description: products,
     start_parameter: 'get_access',
     title: 'Оплата в магазине Matrёshka flowers!',
     description: products.map((prod) => prod.name),
@@ -19,7 +20,7 @@ const getInvoice = (id, products) => {
     need_phone_number: true,
     need_name: true,
     payload: {
-      products,
+      unique_id: `${id}_${Number(new Date())}`,
     },
   };
   return invoice;
