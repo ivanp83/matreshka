@@ -37,25 +37,39 @@ const convertImage = async (base64, folder, size) =>
       });
   });
 
-const sendAlertOrderSuccess = async (orderItems) => {
-  console.log(orderItems);
+const sendAlertOrderSuccess = async (
+  yookassaId,
+  orderItems,
+  phone,
+  firstName,
+  lastName,
+  city,
+  address,
+  { bot, id, resource },
+) => {
+  const serializedItems = orderItems.map(
+    (item, i) =>
+      `${i + 1}. <pre>${item.product}</pre>, <pre>${
+        item.quantity
+      }шт.</pre>, <pre>${item.price}руб.</pre>`,
+  );
+  const messageHTML = `<b>Новый заказ #${yookassaId}</b>\n\n
+<b>Товары:</b>
+    <pre>${serializedItems}</pre>\n\n
+<b>Покупатель:</b>
+    <pre>${firstName}</pre>
+    <pre>${lastName}</pre>
+    <pre>тел. ${phone}</pre>\n\n
+<b>Адрес доставки:</b>
+    <pre>${city}</pre>
+    <pre>${address}</pre>\n\n
+<b>Площадка:</b>
+    <pre>${resource}</pre>
 
-  // const message_html = `<b>Новый заказ</b>
-  // ${orderItems.map((item) => {
-  //   item.forEach((el) => <pre>{el}</pre>);
-  // })}`;
-  // const message_html = `<b>Новый заказ</b>
-  //   <pre>${orderItems}</pre>
-  //   <pre>${phone}</pre>
-  //   <pre>${first_name}</pre>
-  //   <pre>${last_name}</pre>
-  //   <b >Адрес доставки</b>
-  //   <pre>${city}</pre>
-  //   <pre>${street_line1}</pre>
-  //   <pre>${street_line2}</pre>`;
-  // return await bot.telegram.sendMessage(id, message_html, {
-  //   parse_mode: 'html',
-  // });
+`;
+  return await bot.telegram.sendMessage(id, messageHTML, {
+    parse_mode: 'html',
+  });
 };
 
 module.exports = { convertImage, sendAlertOrderSuccess };

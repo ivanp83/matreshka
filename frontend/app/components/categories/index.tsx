@@ -2,7 +2,7 @@
 import { Category, ProductItem } from "@/types";
 import React, { useEffect, useState } from "react";
 import SubNav from "../subNav";
-
+import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { Api } from "@/api";
 import { useAppContext } from "@/app/context/app.context";
@@ -48,16 +48,22 @@ export default function Index({ categories }: Props) {
     (async () => await handleProducts(activeCategory))();
   }, []);
   return (
-    <section className="categories container">
-      {loading && <Loader />}
-      <style jsx>{`
-        .categories {
-          height: 100%;
-          align-items: start;
-        }
-      `}</style>
-      <SubNav {...{ categories, handleProducts, getAllProducts }} />
-      {stateProducts && <Gallery data={stateProducts} />}
-    </section>
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <section className="categories container">
+        {loading && <Loader />}
+        <style jsx>{`
+          .categories {
+            height: 100%;
+            align-items: start;
+          }
+        `}</style>
+        <SubNav {...{ categories, handleProducts, getAllProducts }} />
+        {stateProducts && <Gallery data={stateProducts} />}
+      </section>
+    </motion.div>
   );
 }

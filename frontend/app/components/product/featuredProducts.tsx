@@ -34,7 +34,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
         .image {
           position: relative;
           width: 100%;
-          height: calc(((100vw - 20px * 5) / 5) / 3 * 4);
+          height: calc(((var(--cont-w) - 20px * 5) / 5) / 3 * 4);
           object-position: top;
           transform-origin: bottom;
           border-radius: 10px;

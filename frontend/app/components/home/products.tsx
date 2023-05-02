@@ -40,7 +40,7 @@ export default function Products({ products }: Props) {
       `}</style>
       <div className="wrapp  container">
         <h2>Букеты </h2>
-        <h3>Работаем только с качественными цветами</h3>{" "}
+        <h3>Самые популярные</h3>
         <div className="button-link">
           <LinkTo href="categories" text="Смотреть все" />
         </div>

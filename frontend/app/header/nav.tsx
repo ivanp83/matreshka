@@ -1,10 +1,16 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { motion } from "framer-motion";
 
-import React from "react";
+const links = [
+  { href: "/", label: "Главная" },
+  { href: "/categories", label: "Букеты на продажу" },
+  { href: "/about", label: "About" },
+];
 
 export default function Nav() {
-  const pathname = usePathname();
+  const path = usePathname();
+
   return (
     <nav>
       <style jsx>{`
@@ -24,6 +30,15 @@ export default function Nav() {
         nav ul li {
           display: flex;
           grid-gap: 10px;
+          position: relative;
+          height: fit-content;
+        }
+        .line {
+          position: absolute;
+
+          height: 2px;
+          width: 100%;
+          background-color: var(--main-dark);
         }
         nav ul li.active {
           color: var(--main-red);
@@ -35,15 +50,27 @@ export default function Nav() {
         }
       `}</style>
       <ul>
-        <li className={pathname === "/" ? "active" : ""}>
-          <Link href="/">Главная</Link>
-        </li>
-        <li className={pathname === "/categories" ? "active" : ""}>
-          <Link href="/categories">Букеты</Link>
-        </li>
-        <li className={pathname === "/about" ? "active" : ""}>
-          <Link href="/about">About</Link>
-        </li>
+        {links.map((link) => (
+          <li key={link.href}>
+            <Link href={link.href}>
+              {link.href === path && (
+                <motion.span
+                  layout
+                  className="line"
+                  style={{
+                    position: "absolute",
+                    bottom: 0,
+                    left: 0,
+                    height: "1px",
+                    width: "100%",
+                    backgroundColor: "var(--main-dark)",
+                  }}
+                />
+              )}
+              {link.label}
+            </Link>
+          </li>
+        ))}
       </ul>
     </nav>
   );

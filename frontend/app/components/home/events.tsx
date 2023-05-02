@@ -22,8 +22,6 @@ export default function Events({}: Props) {
           position: relative;
           grid-column: 1/4;
           height: calc(var(--cont-w) / 4 * 3);
-          border-radius: 30px;
-          overflow: hidden;
         }
         .text-bold {
           grid-column: 2/3;

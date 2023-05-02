@@ -16,7 +16,7 @@ export default function CustomImage({
   sizes,
   direct = false,
 }: Props) {
-  const convertImage = (w: number, h: number) => `
+  const convertImage = (w: string, h: string) => `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
       <defs>
         <linearGradient id="g" x1="0" x2="0" y1="0" y2="1">
@@ -52,7 +52,7 @@ export default function CustomImage({
         fill
         placeholder="blur"
         blurDataURL={`data:image/svg+xml;base64,${toBase64(
-          convertImage(700, 700)
+          convertImage("100%", "100%")
         )}`}
       />
     </>

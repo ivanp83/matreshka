@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
-const Form = dynamic(() => import("@/app/components/form/form"), {
+const Index = dynamic(() => import("@/app/components/form"), {
   ssr: false,
 });
 export default function Page() {
-  return <Form />;
+  return <Index />;
 }

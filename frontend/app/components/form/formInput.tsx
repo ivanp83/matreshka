@@ -20,7 +20,7 @@ const FormInput = (props: IProps) => {
         .form-input {
           display: flex;
           flex-direction: column;
-
+          font-size: 18px;
           font-family: inherit;
           color: inherit;
           background-color: none;

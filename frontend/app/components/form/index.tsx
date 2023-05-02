@@ -8,7 +8,7 @@ import { Api } from "@/api";
 import { useRouter } from "next/navigation";
 import { handleErrors } from "@/utils/helpers";
 import Loader from "../loader";
-
+import { motion } from "framer-motion";
 const inputs: InputType[] = [
   {
     id: "1",
@@ -68,7 +68,7 @@ const inputs: InputType[] = [
   },
 ];
 
-const Form = () => {
+const Index = () => {
   const [responseData, setResponseData] =
     useState<OrderCreateResponeType | null>(null);
   const [shippingData, setShippingData] = useState<ShippingType>({
@@ -132,50 +132,56 @@ const Form = () => {
     }
   }, [responseData]);
   return (
-    <section className="shipping container">
-      {loading && <Loader />}
-      <style jsx>{`
-        section {
-          display: grid;
-          grid-gap: 1rem;
-        }
-        h1 {
-          grid-column: 2/3;
-          margin-bottom: var(--space-small);
-        }
-        form {
-          grid-column: 2/3;
-          display: grid;
-          grid-gap: 1rem;
-        }
-        .wrapp {
-          display: grid;
-          grid-gap: 10px;
-        }
-        @media all and (max-width: 768px) and (orientation: portrait) {
-          h1,
-          form {
-            grid-column: 1/4;
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <section className="shipping container">
+        {loading && <Loader />}
+        <style jsx>{`
+          section {
+            display: grid;
+            grid-gap: 1rem;
           }
-        }
-      `}</style>
-      <h1>Данные покупателя</h1>
-      <form onSubmit={handleSubmit}>
-        <div className="wrapp">
-          {inputs.map((input) => (
-            <FormInput
-              key={input.id}
-              {...input}
-              value={getProperty(shippingData, input.name as any) || ""}
-              onChange={onChange}
-            />
-          ))}
-        </div>
+          h1 {
+            grid-column: 2/3;
+            margin-bottom: var(--space-small);
+          }
+          form {
+            grid-column: 2/3;
+            display: grid;
+            grid-gap: 1rem;
+          }
+          .wrapp {
+            display: grid;
+            grid-gap: 10px;
+          }
+          @media all and (max-width: 768px) and (orientation: portrait) {
+            h1,
+            form {
+              grid-column: 1/4;
+            }
+          }
+        `}</style>
+        <h1>Данные покупателя</h1>
+        <form onSubmit={handleSubmit}>
+          <div className="wrapp">
+            {inputs.map((input) => (
+              <FormInput
+                key={input.id}
+                {...input}
+                value={getProperty(shippingData, input.name as any) || ""}
+                onChange={onChange}
+              />
+            ))}
+          </div>
 
-        <Button actionType="checkout" title="К оплате" type="submit" />
-      </form>
-    </section>
+          <Button actionType="checkout" title="К оплате" type="submit" />
+        </form>
+      </section>
+    </motion.div>
   );
 };
 
-export default Form;
+export default Index;
