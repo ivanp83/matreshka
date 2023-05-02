@@ -83,7 +83,7 @@ bot.on('document', (ctx) => {
 bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
-    console.log(ctx.update.pre_checkout_query.invoice_payload.products);
+    console.log(ctx.update.pre_checkout_query.invoice_payload);
   } catch (err) {
     throw new Error(err);
   }
