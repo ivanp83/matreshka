@@ -19,7 +19,7 @@ const getInvoice = (id, products) => {
     need_phone_number: true,
     need_name: true,
     payload: {
-      products: `${JSON.stringify(products)}`,
+      products,
     },
   };
   return invoice;
