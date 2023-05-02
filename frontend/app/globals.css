@@ -1,6 +1,7 @@
 :root {
   --main-fs: 18px;
   --big-fs: 2.4rem;
+  --title-fs: 2.4rem;
   --cont-w: 1400px;
   --space-small: 2rem;
   --space-med: 5rem;
@@ -42,7 +43,7 @@ ul {
   list-style: none;
 }
 h1 {
-  font-size: var(--big-fs);
+  font-size: var(--title-fs);
   font-weight: 500;
 }
 h2 {
@@ -97,7 +98,6 @@ h5 {
   :root {
     --main-fs: 18px;
     --big-fs: 6vw;
-    --space-med: 3.5rem;
   }
   .price {
     font-size: 16px;

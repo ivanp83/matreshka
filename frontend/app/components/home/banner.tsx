@@ -64,10 +64,11 @@ export default function Banner() {
             place-content: start;
           }
           .image {
-            width: calc(100vw - 40px);
-            height: calc((100vw - 40px) * 4 / 3);
+            grid-column: 1/4;
+            width: calc(80vw - 40px);
+            height: calc((80vw - 40px) * 4 / 3);
             position: relative;
-            right: 0;
+            right: -10vw;
           }
           .logo-title {
             grid-column: 1/4;
@@ -77,9 +78,7 @@ export default function Banner() {
           .button {
             grid-column: 1/4;
             grid-row: 3;
-            position: absolute;
-            margin: 2rem auto;
-            background: var(--main-light);
+            margin: 1rem auto;
           }
         }
         @media all and (max-width: 950px) and (orientation: landscape) {
@@ -93,7 +92,11 @@ export default function Banner() {
         <Logo />
       </div>
       <div className="button">
-        <LinkTo href="/categories" text="Подобрать букет" />
+        <LinkTo
+          href="/categories"
+          text="Подобрать букет"
+          style={{ background: "var(--main-light)" }}
+        />
       </div>
       <div className="image">
         <CustomImage

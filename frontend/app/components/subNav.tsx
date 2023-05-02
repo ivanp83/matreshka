@@ -94,7 +94,7 @@ function SubNav({
             grid-column: 1/4;
             background: var(--main-light);
             z-index: 10;
-            padding: 1rem 0;
+            padding: 20px 0;
             top: 3rem;
             grid-template-columns: repeat(3, 1fr);
             grid-gap: 1rem;

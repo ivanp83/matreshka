@@ -23,7 +23,7 @@ export default function Index() {
             grid-column: 2/4;
             grid-row: 1;
             z-index: 1;
-            font-size: var(--big-fs);
+            font-size: var(--title-fs);
             display: flex;
             line-height: 1;
             align-items: center;
@@ -65,6 +65,8 @@ export default function Index() {
               height: 80vw;
               position: relative;
               grid-row: 2;
+              margin: 0 auto;
+              grid-column: 1/4;
             }
             .text {
               grid-column: 1/4;

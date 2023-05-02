@@ -26,5 +26,8 @@
     "react-toastify": "^9.1.2",
     "swiper": "^9.2.0",
     "typescript": "5.0.3"
+  },
+  "devDependencies": {
+    "@types/styled-jsx": "^3.4.4"
   }
 }

@@ -20,9 +20,11 @@ export default function Index() {
           .cart-content {
             display: grid;
             grid-row-gap: 3rem;
+            min-height: calc(100vh - var(--space-med));
+            grid-template-rows: min-content min-content;
           }
           h1 {
-            font-size: var(--big-fs);
+            font-size: var(--title-fs);
             grid-column: 2/3;
             line-height: 1;
           }

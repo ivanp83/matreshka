@@ -43,6 +43,7 @@ export default function Header() {
           justify-self: end;
           display: flex;
           align-items: flex-start;
+          transform: translateY(-2px);
         }
         .num {
           position: absolute;
