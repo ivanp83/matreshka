@@ -114,7 +114,7 @@ module.exports = {
           null,
           2,
         ),
-        JSON.stringify(orderProducts, null, 2),
+        JSON.stringify(productInDb(orderProducts), null, 2),
       ],
     );
 

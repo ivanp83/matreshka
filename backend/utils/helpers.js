@@ -3,6 +3,14 @@ const path = require('path');
 const FILES_PATH = path.join(process.cwd(), 'public', 'images');
 const convert = require('heic-convert');
 
+const productsToDB = (products) =>
+  products.map((prod) => ({
+    id: prod.id,
+    name: prod.name,
+    price: prod.price,
+    quantity: prod.quantity,
+  }));
+
 async function heicToJpg(inputBuffer) {
   const outputBuffer = await convert({
     buffer: inputBuffer,
@@ -72,4 +80,4 @@ const sendAlertOrderSuccess = async (
   });
 };
 
-module.exports = { convertImage, sendAlertOrderSuccess };
+module.exports = { convertImage, sendAlertOrderSuccess, productsToDB };

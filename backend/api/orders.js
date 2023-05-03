@@ -1,5 +1,6 @@
 'use strict';
 
+const { productsToDB } = require('utils/helpers');
 const { db } = require('../db');
 const orders = db('products');
 const products = db('products');
@@ -28,13 +29,6 @@ const getInvoice = (id, products) => {
   return invoice;
 };
 
-const productsToDB = (products) =>
-  products.map((prod) => ({
-    id: prod.id,
-    name: prod.name,
-    price: prod.price,
-    quantity: prod.quantity,
-  }));
 module.exports = {
   async read(id, isAdmin, fields = ['*']) {
     const names = fields.join(', ');
@@ -89,7 +83,7 @@ module.exports = {
       try {
         const newOrder = await orders.queryRows(
           `INSERT INTO orders ("customer_id", "order_items") VALUES ($1, $2);`,
-          [customer[0].id, JSON.stringify(productsToDB(productsReq))],
+          [customer[0].id, JSON.stringify(productsToDB(productsReq), null, 2)],
         );
 
         // await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items")
