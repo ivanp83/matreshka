@@ -85,29 +85,29 @@ bot.on('document', (ctx) => {
 bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
-    const productsFromCTX = JSON.parse(
-      ctx.update.pre_checkout_query.invoice_payload,
-    );
+    // const productsFromCTX = JSON.parse(
+    //   ctx.update.pre_checkout_query.invoice_payload,
+    // );
+    console.log(ctx.update.pre_checkout_query.invoice_payload);
+    // const orderId = JSON.parse(productsFromCTX.order_id);
+    // const {
+    //   post_code: zip,
+    //   city,
+    //   street_line1,
+    //   street_line2,
+    // } = ctx.update.pre_checkout_query.order_info.shipping_address;
 
-    const orderId = JSON.parse(productsFromCTX.order_id);
-    const {
-      post_code: zip,
-      city,
-      street_line1,
-      street_line2,
-    } = ctx.update.pre_checkout_query.order_info.shipping_address;
+    // const currency = ctx.update.pre_checkout_query.currency;
+    // const amount = ctx.update.pre_checkout_query.total_amount;
+    // const { name: firstName, phone_number: phone } =
+    //   ctx.update.pre_checkout_query.order_info;
 
-    const currency = ctx.update.pre_checkout_query.currency;
-    const amount = ctx.update.pre_checkout_query.total_amount;
-    const { name: firstName, phone_number: phone } =
-      ctx.update.pre_checkout_query.order_info;
+    // const productsStoreInOrder = await pool
+    //   .query(`SELECT order_items  FROM orders WHERE id = $1;`, [orderId])
+    //   .then((res) => res.rows[0]);
+    // // const productsStoreInOrder = productsToDB();
 
-    const productsStoreInOrder = await pool
-      .query(`SELECT order_items  FROM orders WHERE id = $1;`, [orderId])
-      .then((res) => res.rows[0]);
-    // const productsStoreInOrder = productsToDB();
-
-    console.log(productsStoreInOrder);
+    // console.log(productsStoreInOrder);
   } catch (err) {
     throw new Error(err);
   }
