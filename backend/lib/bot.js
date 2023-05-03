@@ -129,17 +129,14 @@ bot.on('pre_checkout_query', async (ctx) => {
 
 bot.on('successful_payment', async (ctx) => {
   try {
-    // const orderId = getOrderIdfromCTX(ctx.update.message.invoice_payload);
-    // const orderPayload = JSON.parse(ctx.update.message.invoice_payload);
-    // return orderPayload.order_id;
+    const orderId = getOrderIdfromCTX(
+      ctx.update.message.successful_payment.invoice_payload,
+    );
 
-    console.log(ctx.update);
-    // const orderData = {
-    //   name: ctx.update.message.from,
-    //   order: ctx.update.message.successful_payment.order_info,
-    // };
-    // await pool.update(orderId, { status: 'succeeded' });
-
+    const res = await pool
+      .update(orderId, { status: 'succeeded' })
+      .then((res) => res.rows);
+    console.log(res);
     // console.log(ctx.update.message.successful_payment.order_info);
     // const sql = `INSERT INTO orders ("shipping_address", "order_items")
     //   VALUES(${JSON.stringify(
