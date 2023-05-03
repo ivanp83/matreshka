@@ -81,7 +81,7 @@ module.exports = {
       const newOrder =
         await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items","order_status")
         VALUES(${customer[0].id}, ${JSON.stringify(
-          productsReq,
+          ...productsReq,
           null,
           2,
         )}, "pending")`);
