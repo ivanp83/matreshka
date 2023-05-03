@@ -86,6 +86,7 @@ bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
     const order = ctx.update.pre_checkout_query.invoice_payload;
+    console.log(order.orderId);
     const productsStoreInOrder = await pool
       .query(`SELECT *  FROM orders WHERE id = ${order.orderId};`)
       .then((res) => res.rows[0]);
