@@ -139,7 +139,7 @@ bot.on('successful_payment', async (ctx) => {
         orderId,
       ])
       .then((res) => res.rows[0]);
-    const customer = await db.query(`SELECT * FROM customers WHERE id = $1`, [
+    const customer = await pool.query(`SELECT * FROM customers WHERE id = $1`, [
       updatedOrder[0].customer_id,
     ]);
 
