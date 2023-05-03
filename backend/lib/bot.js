@@ -83,7 +83,7 @@ bot.on('document', (ctx) => {
 });
 
 bot.on('pre_checkout_query', async (ctx) => {
-  console.log(ctx);
+  console.log(ctx.update.pre_checkout_query.invoice_payload);
   try {
     await ctx.answerPreCheckoutQuery(true);
     // const productsFromCTX = JSON.parse(
