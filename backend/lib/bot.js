@@ -101,12 +101,12 @@ bot.on('pre_checkout_query', async (ctx) => {
     // );
     // console.log(ctx.update.pre_checkout_query.invoice_payload);
     // const orderId = JSON.parse(productsFromCTX.order_id);
-    // const {
-    //   post_code: zip,
-    //   city,
-    //   street_line1,
-    //   street_line2,
-    // } = ctx.update.pre_checkout_query.order_info.shipping_address;
+    const {
+      post_code: zip,
+      city,
+      street_line1,
+      street_line2,
+    } = ctx.update.pre_checkout_query.order_info.shipping_address;
 
     // const currency = ctx.update.pre_checkout_query.currency;
     // const amount = ctx.update.pre_checkout_query.total_amount;
