@@ -92,7 +92,7 @@ bot.on('pre_checkout_query', async (ctx) => {
     const { order_items: orderItems } = await pool
       .query(`SELECT *  FROM orders WHERE id = ${orderId};`)
       .then((res) => res.rows[0]);
-
+    console.log(orderItems);
     const {
       post_code: zip,
       city,
