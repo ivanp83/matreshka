@@ -6,7 +6,7 @@ const orders = db('products');
 const products = db('products');
 const customers = db('customers');
 const { bot } = require('../lib/bot');
-const getInvoice = (id, products) => {
+const getInvoice = (id, products, oderId) => {
   const invoice = {
     chat_id: id,
     provider_token: process.env.PROVIDER_TOKEN,
@@ -23,9 +23,7 @@ const getInvoice = (id, products) => {
     need_name: true,
     payload: {
       unique_id: `${id}_${Number(new Date())}`,
-      products: JSON.stringify(
-        products.map((prod) => ({ id: prod.id, quantity: prod.quantity })),
-      ),
+      oder_id: oderId,
     },
   };
   return invoice;
@@ -82,7 +80,7 @@ module.exports = {
         [userId],
       );
 
-      await orders.queryRows(
+      const newOrder = await orders.queryRows(
         `INSERT INTO orders ("customer_id", "order_items") VALUES ($1, $2) RETURNING *;`,
         [customer[0].id, JSON.stringify(productsToDB(productsReq), null, 2)],
       );
@@ -93,7 +91,10 @@ module.exports = {
         orderProducts.push(productInDb.rows[0]);
       }
 
-      await bot.telegram.sendInvoice(userId, getInvoice(userId, productsReq));
+      await bot.telegram.sendInvoice(
+        userId,
+        getInvoice(userId, productsReq, newOrder[0].id),
+      );
       await products.query(
         `UPDATE carts SET cart_items='${JSON.stringify(
           [],

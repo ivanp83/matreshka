@@ -88,8 +88,8 @@ bot.on('pre_checkout_query', async (ctx) => {
     const productsFromCTX = JSON.parse(
       ctx.update.pre_checkout_query.invoice_payload,
     );
-    console.log(ctx.update.pre_checkout_query.invoice_payload);
-    const productsIds = JSON.parse(productsFromCTX.products);
+
+    const orderId = JSON.parse(productsFromCTX.order_id);
     const {
       post_code: zip,
       city,
@@ -103,13 +103,11 @@ bot.on('pre_checkout_query', async (ctx) => {
       ctx.update.pre_checkout_query.order_info;
 
     const productsStoreInOrder = await pool
-      .query(
-        `SELECT order_items  FROM orders WHERE id = ANY (ARRAY[${productsIds}]);`,
-      )
+      .query(`SELECT order_items  FROM orders WHERE id = $1;`, [orderId])
       .then((res) => res.rows[0]);
     // const productsStoreInOrder = productsToDB();
 
-    // console.log(productsStoreInOrder);
+    console.log(productsStoreInOrder);
   } catch (err) {
     throw new Error(err);
   }
