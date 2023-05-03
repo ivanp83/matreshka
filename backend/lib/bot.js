@@ -106,8 +106,18 @@ bot.on('pre_checkout_query', async (ctx) => {
     //   ctx.update.pre_checkout_query.order_info;
     console.log(currency, amount);
     await pool.query(
-      `UPDATE orders SET order_items=$1, currency=$2, amount=$3 WHERE id=$4 RETURNING order_items;`,
-      [JSON.stringify(orderItems), currency, Number(amount), orderId],
+      `UPDATE orders SET order_items=$1, shipping_address=$2, currency=$3, amount=$4 WHERE id=$5 RETURNING order_items;`,
+      [
+        JSON.stringify(orderItems),
+        JSON.stringify({
+          zip,
+          city,
+          address: [street_line1, street_line2].join(','),
+        }),
+        currency,
+        Number(amount),
+        orderId,
+      ],
     );
 
     // console.log(productsStoreInOrder);
