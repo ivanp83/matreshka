@@ -72,6 +72,7 @@ module.exports = {
 
   async create({ products: productsReq, userId }) {
     try {
+      console.log(userId);
       let orderProducts = [];
       for await (let product of productsReq) {
         const productInDb = await products.read(product.product_id);

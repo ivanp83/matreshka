@@ -83,10 +83,19 @@ bot.on('document', (ctx) => {
 bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
-    const arr = JSON.parse(ctx.update.pre_checkout_query.invoice_payload);
-    const productsIds = JSON.parse(arr.products);
-    const { post_code, city, street_line1, street_line2 } =
-      ctx.update.pre_checkout_query.order_info.shipping_address;
+    const products = JSON.parse(ctx.update.pre_checkout_query.invoice_payload);
+    const productsIds = JSON.parse(products.products);
+    const {
+      post_code: zip,
+      city,
+      street_line1,
+      street_line2,
+    } = ctx.update.pre_checkout_query.order_info.shipping_address;
+
+    const currency = ctx.update.pre_checkout_query.currency;
+    const amount = ctx.update.pre_checkout_query.total_amount;
+    const { name: firstName, phone_number: phone } =
+      ctx.update.pre_checkout_query.order_info;
     console.log(ctx.update);
   } catch (err) {
     throw new Error(err);
