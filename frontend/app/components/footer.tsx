@@ -9,7 +9,7 @@ export default function Footer() {
       <style jsx>{`
         .footer {
           padding: var(--space-small) 0;
-          background-color: var(--light-pink);
+          border-top: 1px solid var(--main-gray);
           margin-top: var(--space-med);
         }
         .matrehska-logo {

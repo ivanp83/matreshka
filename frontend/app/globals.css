@@ -98,6 +98,7 @@ h5 {
   :root {
     --main-fs: 18px;
     --big-fs: 6vw;
+    --space-big: 5rem;
   }
   .price {
     font-size: 16px;

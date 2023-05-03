@@ -84,7 +84,7 @@ function SubNav({
           cursor: pointer;
         }
         .list-item button.active {
-          border-bottom: 1px solid;
+          color: var(--main-gray);
         }
         .select {
           display: none;

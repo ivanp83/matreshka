@@ -56,8 +56,6 @@ export default function Gallery({ data }: Props) {
           .image {
             height: calc((100vw / 2 - 20px) * 4 / 3);
           }
-          figcaption span {
-          }
         }
         @media all and (max-width: 1024px) and (orientation: portrait) {
           ul {

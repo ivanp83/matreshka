@@ -5,7 +5,7 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <article className="layout">
       <style jsx>{`
         .layout {
-          margin: var(--space-med) auto 0;
+          margin: var(--space-big) auto 0;
         }
         @media all and (max-width: 1024px) {
           .layout {

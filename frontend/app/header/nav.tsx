@@ -6,6 +6,7 @@ const links = [
   { href: "/", label: "Главная" },
   { href: "/categories", label: "Букеты на продажу" },
   { href: "/about", label: "About" },
+  { href: "/info", label: "Информация" },
 ];
 
 export default function Nav() {
