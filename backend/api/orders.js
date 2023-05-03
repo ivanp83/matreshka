@@ -79,9 +79,13 @@ module.exports = {
       );
       const productsIds = productsReq.map((prod) => prod.id);
       try {
-        const newOrder =
-          await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items")
-        VALUES (${customer[0].id}, "${JSON.stringify(productsIds)}")`);
+        const newOrder = await orders.queryRows(
+          `INSERT INTO orders ("customer_id", "order_items") VALUES ($1, $2);`,
+          [customer[0].id, productsIds],
+        );
+
+        // await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items")
+        // VALUES (${customer[0].id}, "${JSON.stringify(productsIds)}")`);
         console.log({ newOrder });
       } catch (error) {
         console.log(error);
