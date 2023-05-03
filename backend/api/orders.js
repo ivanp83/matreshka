@@ -29,17 +29,12 @@ const getInvoice = (id, products) => {
 };
 
 const productsToDB = (products) =>
-  products.map(
-    (prod) =>
-      JSON.stringify({
-        id: prod.id,
-        name: prod.name,
-        price: prod.price,
-        quantity: prod.quantity,
-      }),
-    null,
-    2,
-  );
+  products.map((prod) => ({
+    id: prod.id,
+    name: prod.name,
+    price: prod.price,
+    quantity: prod.quantity,
+  }));
 module.exports = {
   async read(id, isAdmin, fields = ['*']) {
     const names = fields.join(', ');
@@ -94,7 +89,7 @@ module.exports = {
       try {
         const newOrder = await orders.queryRows(
           `INSERT INTO orders ("customer_id", "order_items") VALUES ($1, $2);`,
-          [customer[0].id, productsToDB(productsReq)],
+          [customer[0].id, JSON.stringify(productsToDB(productsReq))],
         );
 
         // await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items")
