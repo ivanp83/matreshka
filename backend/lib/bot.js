@@ -84,8 +84,10 @@ bot.on('document', (ctx) => {
 bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
-    const products = JSON.parse(ctx.update.pre_checkout_query.invoice_payload);
-    const productsIds = JSON.parse(products.products);
+    const productsFromCTX = JSON.parse(
+      ctx.update.pre_checkout_query.invoice_payload,
+    );
+    const productsIds = JSON.parse(productsFromCTX.products);
     const {
       post_code: zip,
       city,
