@@ -133,7 +133,7 @@ bot.on('successful_payment', async (ctx) => {
     // const orderPayload = JSON.parse(ctx.update.message.invoice_payload);
     // return orderPayload.order_id;
 
-    console.log(ctx.update.message.invoice_payload);
+    console.log(ctx.update);
     // const orderData = {
     //   name: ctx.update.message.from,
     //   order: ctx.update.message.successful_payment.order_info,
