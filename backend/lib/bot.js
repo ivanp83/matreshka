@@ -92,7 +92,7 @@ bot.on('pre_checkout_query', async (ctx) => {
     const { order_items: orderItems } = await pool
       .query(`SELECT *  FROM orders WHERE id = ${orderId};`)
       .then((res) => res.rows[0]);
-    console.log(orderItems);
+
     const {
       post_code: zip,
       city,
@@ -104,11 +104,11 @@ bot.on('pre_checkout_query', async (ctx) => {
     const amount = ctx.update.pre_checkout_query.total_amount;
     // const { name: firstName, phone_number: phone } =
     //   ctx.update.pre_checkout_query.order_info;
-
+    console.log(currency, amount);
     await pool.query(
-      `UPDATE orders SET order_items=$1 WHERE id=$1 RETURNING cart_items;`[
-        JSON.stringify(orderItems)
-      ],
+      `UPDATE orders SET order_items='${JSON.stringify(
+        orderItems,
+      )}' WHERE id=$1 RETURNING cart_items;`,
       [orderId],
     );
 
