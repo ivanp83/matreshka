@@ -81,7 +81,7 @@ module.exports = {
       try {
         const newOrder =
           await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items")
-        VALUES(${customer[0].id}, ${JSON.stringify(productsIds)})`);
+        VALUES(${customer[0].id}, "${JSON.stringify(productsIds)}")`);
         console.log({ newOrder });
       } catch (error) {
         console.log(error);
