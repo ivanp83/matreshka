@@ -15,7 +15,7 @@ export default function Events({}: Props) {
         }
         .wrapp {
           padding-top: var(--space-small);
-          border-top: 1px solid var(--light-pink);
+          border-top: 1px solid var(--main-gray);
           grid-row-gap: var(--space-small);
         }
         .image {

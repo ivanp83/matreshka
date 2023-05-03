@@ -38,7 +38,9 @@ export default function Index() {
             grid-column: 2/3;
             display: grid;
             grid-template-columns: 1fr;
-
+            background-color: var(--light-pink);
+            height: fit-content;
+            padding: 1rem;
             grid-gap: 1rem;
           }
           .empty-text {

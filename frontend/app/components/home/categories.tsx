@@ -26,7 +26,7 @@ export default function Categories({ categories }: Props) {
         }
         li {
           display: flex;
-          border-bottom: 1px solid;
+          border-bottom: 1px solid var(--main-gray);
           padding: 1rem 0;
           position: relative;
         }
@@ -41,6 +41,7 @@ export default function Categories({ categories }: Props) {
           margin-right: 10px;
           line-height: 1;
           font-size: 16px;
+          color: var(--main-gray);
         }
         a {
           display: contents;

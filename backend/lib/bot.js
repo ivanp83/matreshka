@@ -84,7 +84,8 @@ bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
     const arr = JSON.parse(ctx.update.pre_checkout_query.invoice_payload);
-    console.log(JSON.parse(arr.products));
+    const productsIds = JSON.parse(arr.products);
+    console.log(ctx.update);
   } catch (err) {
     throw new Error(err);
   }

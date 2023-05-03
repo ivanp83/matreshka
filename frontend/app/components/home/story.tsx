@@ -6,13 +6,15 @@ export default function Story() {
       <style jsx>{`
         .story {
           background-color: var(--main-light);
-          padding: var(--space-small) 0 var(--space-med);
+
           grid-row-gap: var(--space-small);
           position: relative;
           margin-top: 100vh;
-          border-top: 1px solid var(--light-pink);
         }
-
+        .wrapp {
+          padding: var(--space-small) 0 var(--space-med);
+          border-top: 1px solid var(--main-gray);
+        }
         h2 {
           grid-column: 1/2;
         }
