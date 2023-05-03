@@ -83,12 +83,13 @@ bot.on('document', (ctx) => {
 });
 
 bot.on('pre_checkout_query', async (ctx) => {
+  console.log(ctx);
   try {
     await ctx.answerPreCheckoutQuery(true);
     // const productsFromCTX = JSON.parse(
     //   ctx.update.pre_checkout_query.invoice_payload,
     // );
-    console.log(ctx.update.pre_checkout_query.invoice_payload);
+    // console.log(ctx.update.pre_checkout_query.invoice_payload);
     // const orderId = JSON.parse(productsFromCTX.order_id);
     // const {
     //   post_code: zip,
