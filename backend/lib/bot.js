@@ -5,7 +5,10 @@ const products = require('../api/products');
 const { pool } = require('../db');
 const { productsToDB } = require('../utils/helpers');
 const bot = new Telegraf(process.env.BOT_TOKEN);
-
+const getOrderIdfromCTX = (ctx) => {
+  const orderPayload = JSON.parse(ctx);
+  return orderPayload.order_id;
+};
 const isAdmin = (userId) => {
   return userId == process.env.ADMIN_ID;
 };
@@ -85,10 +88,10 @@ bot.on('document', (ctx) => {
 bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
-    const orderPayload = JSON.parse(
+
+    const orderId = getOrderIdfromCTX(
       ctx.update.pre_checkout_query.invoice_payload,
     );
-    const orderId = orderPayload.order_id;
     const { order_items: orderItems } = await pool
       .query(`SELECT *  FROM orders WHERE id = ${orderId};`)
       .then((res) => res.rows[0]);
@@ -125,11 +128,13 @@ bot.on('pre_checkout_query', async (ctx) => {
 
 bot.on('successful_payment', async (ctx) => {
   try {
+    const orderId = getOrderIdfromCTX(ctx.update.message.invoice_payload);
     const orderData = {
       name: ctx.update.message.from,
       order: ctx.update.message.successful_payment.order_info,
     };
-    console.log(ctx.update);
+    await pool.update(orderId, { status: 'succeeded' });
+
     // console.log(ctx.update.message.successful_payment.order_info);
     // const sql = `INSERT INTO orders ("shipping_address", "order_items")
     //   VALUES(${JSON.stringify(
