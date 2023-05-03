@@ -79,8 +79,8 @@ module.exports = {
       );
       const productsToDB = productsReq.map((prod) => ({
         id: prod.id,
-        price,
-        quantity,
+        price: prod.price,
+        quantity: prod.quantity,
       }));
       try {
         const newOrder = await orders.queryRows(
