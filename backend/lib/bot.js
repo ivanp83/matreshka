@@ -85,9 +85,9 @@ bot.on('pre_checkout_query', async (ctx) => {
     await ctx.answerPreCheckoutQuery(true);
     const arr = JSON.parse(ctx.update.pre_checkout_query.invoice_payload);
     const productsIds = JSON.parse(arr.products);
-    const { postal_code, city, street_line1, street_line2 } =
+    const { post_code, city, street_line1, street_line2 } =
       ctx.update.pre_checkout_query.order_info.shipping_address;
-    console.log(postal_code, city, street_line1, street_line2);
+    console.log(ctx.update);
   } catch (err) {
     throw new Error(err);
   }
