@@ -88,6 +88,7 @@ bot.on('pre_checkout_query', async (ctx) => {
     const productsFromCTX = JSON.parse(
       ctx.update.pre_checkout_query.invoice_payload,
     );
+    console.log(ctx.update.pre_checkout_query.invoice_payload);
     const productsIds = JSON.parse(productsFromCTX.products);
     const {
       post_code: zip,
@@ -108,7 +109,7 @@ bot.on('pre_checkout_query', async (ctx) => {
       .then((res) => res.rows[0]);
     // const productsStoreInOrder = productsToDB();
 
-    console.log(productsStoreInOrder);
+    // console.log(productsStoreInOrder);
   } catch (err) {
     throw new Error(err);
   }
