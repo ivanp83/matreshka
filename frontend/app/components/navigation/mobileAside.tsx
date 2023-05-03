@@ -80,7 +80,7 @@ const MobileAside: FC = () => {
           <nav className={className}>
             <ul className={className}>
               {links.map((link, i) => (
-                <li className={className}>
+                <li className={className} key={i}>
                   <motion.div
                     custom={i}
                     initial="hidden"
