@@ -129,8 +129,11 @@ bot.on('pre_checkout_query', async (ctx) => {
 
 bot.on('successful_payment', async (ctx) => {
   try {
-    const orderId = getOrderIdfromCTX(ctx.update.message.invoice_payload);
-    console.log(orderId, ctx.update.message.invoice_payload);
+    // const orderId = getOrderIdfromCTX(ctx.update.message.invoice_payload);
+    const orderPayload = JSON.parse(ctx.update.message.invoice_payload);
+    // return orderPayload.order_id;
+
+    console.log(orderPayload, ctx.update.message.invoice_payload);
     // const orderData = {
     //   name: ctx.update.message.from,
     //   order: ctx.update.message.successful_payment.order_info,
