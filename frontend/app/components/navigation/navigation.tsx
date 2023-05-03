@@ -1,13 +1,6 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
-
-const links = [
-  { href: "/", label: "Главная" },
-  { href: "/categories", label: "Букеты на продажу" },
-  { href: "/about", label: "About" },
-  { href: "/info", label: "Информация" },
-];
+import links from "./index.json";
 
 export default function Nav() {
   const path = usePathname();
@@ -34,12 +27,8 @@ export default function Nav() {
           position: relative;
           height: fit-content;
         }
-        .line {
-          position: absolute;
-
-          height: 2px;
-          width: 100%;
-          background-color: var(--main-dark);
+        .link.active {
+          color: var(--main-gray);
         }
         nav ul li.active {
           color: var(--main-red);
@@ -54,21 +43,13 @@ export default function Nav() {
         {links.map((link) => (
           <li key={link.href}>
             <Link href={link.href}>
-              {link.href === path && (
-                <motion.span
-                  layout
-                  className="line"
-                  style={{
-                    position: "absolute",
-                    bottom: 0,
-                    left: 0,
-                    height: "1px",
-                    width: "100%",
-                    backgroundColor: "var(--main-dark)",
-                  }}
-                />
-              )}
-              {link.label}
+              <span
+                className={`${
+                  link.href === path ? "active" : ""
+                } link nav-link`}
+              >
+                {link.label}
+              </span>
             </Link>
           </li>
         ))}

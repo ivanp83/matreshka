@@ -55,7 +55,6 @@ export default function Page() {
           border: none;
           outline: none;
           background: transparent;
-          font-size: inherit;
         }
         .nav-button:not([disabled]) {
           cursor: pointer;
@@ -77,7 +76,9 @@ export default function Page() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`${tab.id === activeTab ? "active" : ""} nav-button`}
+              className={`${
+                tab.id === activeTab ? "active" : ""
+              } nav-button nav-link`}
               disabled={tab.id === activeTab}
             >
               {tab.title}

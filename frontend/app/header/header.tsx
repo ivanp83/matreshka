@@ -4,7 +4,7 @@ import React from "react";
 import Logo from "./logo";
 import { useAppContext } from "../context/app.context";
 import Humburger from "./humburger";
-import Nav from "./nav";
+import Nav from "../components/navigation/navigation";
 
 export default function Header() {
   const { cartItems, setMenuIsOpen } = useAppContext();

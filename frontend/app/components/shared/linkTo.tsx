@@ -18,13 +18,11 @@ export default function LinkTo({ href, text, style }: Props) {
             width: fit-content;
             color: var(--main-dark);
             font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.7rem;
             transition: all 0.3s linear 0s;
             border: 1px solid;
-            padding: 1rem 2rem;
-          }
-          @media (hover: hover) and (pointer: fine) {
-            .link:hover {
-            }
+            padding: 0.7rem 2.4rem;
           }
         `}</style>
         {text}

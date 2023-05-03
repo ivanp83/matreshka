@@ -62,8 +62,8 @@ function SubNav({
 
         .nav ul li svg {
           display: block;
-          width: 16px;
-          height: 16px;
+          width: 13px;
+          height: 13px;
         }
         .categories-list {
           display: grid;
@@ -80,7 +80,6 @@ function SubNav({
           border-bottom: 1px solid transparent;
           outline: none;
           background: transparent;
-          font-size: 16px;
           cursor: pointer;
         }
         .list-item button.active {
@@ -106,7 +105,6 @@ function SubNav({
           .select {
             display: block;
             grid-column: 3/4;
-            font-size: 16px;
             color: var(--main-gray);
           }
         }
@@ -130,7 +128,7 @@ function SubNav({
         <ul>
           <li>
             <Link href="/">
-              <span> Главная</span>
+              <span className="sub-nav-link"> Главная</span>
               <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                 <title />
                 <g id="Complete">
@@ -153,7 +151,7 @@ function SubNav({
           {!!category && (
             <li>
               <Link href={`categories`}>
-                <span>{category.name}</span>
+                <span className="sub-nav-link">{category.name}</span>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <title />
                   <g id="Complete">
@@ -178,9 +176,11 @@ function SubNav({
       {!!handleProducts && (
         <>
           <ul className="categories-list">
-            <li className={`list-item`}>
+            <li className={`list-item `}>
               <button
-                className={`${activeCategory == 0 ? "active" : ""}`}
+                className={`${
+                  activeCategory == 0 ? "active" : ""
+                } sub-nav-link`}
                 onClick={() => {
                   setActiveCategory(0);
                   getAllProducts();
@@ -192,7 +192,9 @@ function SubNav({
             {categories?.map((cat) => (
               <li key={cat.id} className={`list-item`}>
                 <button
-                  className={`${activeCategory == cat.id ? "active" : ""}`}
+                  className={`${
+                    activeCategory == cat.id ? "active" : ""
+                  } sub-nav-link`}
                   onClick={() => {
                     handleProducts(cat.id);
                     setActiveCategory(cat.id);

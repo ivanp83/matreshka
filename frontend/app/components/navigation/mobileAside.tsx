@@ -7,7 +7,7 @@ import { AiOutlineInstagram } from "react-icons/ai";
 import { FaTelegramPlane } from "react-icons/fa";
 import { useAppContext } from "../../context/app.context";
 import Link from "next/link";
-
+import links from "./index.json";
 const { className, styles } = css.resolve`
   aside {
     position: fixed;
@@ -30,7 +30,8 @@ const { className, styles } = css.resolve`
     display: grid;
     grid-gap: 16px;
     grid-auto-flow: row;
-    font-size: 30px;
+    font-size: 1.4rem;
+    text-transform: uppercase;
     font-weight: 500;
     color: var(--main-dark);
   }
@@ -59,8 +60,8 @@ const MobileAside: FC = () => {
       opacity: 1,
       y: 0,
       transition: {
-        delay: i * 0.3,
-        duration: 0.7,
+        delay: i * 0.1,
+        duration: 0.4,
       },
     }),
     hidden: { opacity: 0, y: 100 },
@@ -78,40 +79,20 @@ const MobileAside: FC = () => {
           {styles}
           <nav className={className}>
             <ul className={className}>
-              <li className={className}>
-                <motion.div
-                  custom={1}
-                  initial="hidden"
-                  animate="visible"
-                  variants={variants}
-                  className={className}
-                  onClick={() => setMenuIsOpen(false)}
-                >
-                  <Link href="/">Главная</Link>
-                </motion.div>
-              </li>
-              <li className={className} onClick={() => setMenuIsOpen(false)}>
-                <motion.div
-                  custom={2}
-                  initial="hidden"
-                  animate="visible"
-                  variants={variants}
-                  className={className}
-                >
-                  <Link href="/categories">Букеты</Link>
-                </motion.div>
-              </li>
-              <li className={className} onClick={() => setMenuIsOpen(false)}>
-                <motion.div
-                  custom={3}
-                  initial="hidden"
-                  animate="visible"
-                  variants={variants}
-                  className={className}
-                >
-                  <Link href="/about">About</Link>
-                </motion.div>
-              </li>
+              {links.map((link, i) => (
+                <li className={className}>
+                  <motion.div
+                    custom={i}
+                    initial="hidden"
+                    animate="visible"
+                    variants={variants}
+                    className={className}
+                    onClick={() => setMenuIsOpen(false)}
+                  >
+                    <Link href={link.href}>{link.label}</Link>
+                  </motion.div>
+                </li>
+              ))}
             </ul>
           </nav>
           <ul className={`social ${className}`}>

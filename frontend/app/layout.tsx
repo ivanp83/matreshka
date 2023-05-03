@@ -4,7 +4,7 @@ import { Inter, Noto_Sans, Noto_Sans_JP, Roboto_Flex } from "next/font/google";
 import Header from "./header/header";
 import StyledJsxRegistry from "./registry";
 import { AppProvider } from "./context/app.context";
-import MobileAsideNav from "./components/aside/mobileAside";
+import MobileNav from "./components/navigation/mobileAside";
 import Footer from "./components/footer";
 import { useEffect } from "react";
 import { Router } from "next/router";
@@ -41,7 +41,7 @@ export default function RootLayout({
           <body className={inter.className}>
             <div id="root-loader" />
             <Header />
-            <MobileAsideNav />
+            <MobileNav />
             <main>{children}</main>
             <Footer />
           </body>
