@@ -74,7 +74,7 @@ module.exports = {
   async create({ products: productsReq, userId }) {
     try {
       const customer = await customers.queryRows(
-        `SELECT * FROM customers where customers.id=$1;`,
+        `SELECT * FROM customers where telegram_id=$1;`,
         [userId],
       );
       console.log(customer);
