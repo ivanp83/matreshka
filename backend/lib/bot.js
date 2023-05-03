@@ -1,7 +1,6 @@
 const { Telegraf } = require('telegraf');
 const path = require('node:path');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
-const products = require('../api/products');
 const { pool } = require('../db');
 const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
 const bot = new Telegraf(process.env.BOT_TOKEN);
@@ -154,11 +153,6 @@ bot.on('successful_payment', async (ctx) => {
       updatedOrder.shipping_address.city,
       updatedOrder.shipping_address.address,
       { bot, id: process.env.ADMIN_ID, resource: 'Телеграм Бот' },
-    );
-
-    return await bot.telegram.sendMessage(
-      process.env.ADMIN_ID,
-      JSON.stringify(updatedOrder, null, 2),
     );
   } catch (err) {
     console.log(err);

@@ -24,7 +24,7 @@ export default function Products({ products }: Props) {
           grid-column: 1/2;
         }
         h3 {
-          grid-column: 2/3;
+          grid-column: 2/4;
         }
         .button-link {
           grid-column: 2/4;
@@ -40,7 +40,10 @@ export default function Products({ products }: Props) {
       `}</style>
       <div className="wrapp  container">
         <h2>Букеты </h2>
-        <h3>Самые популярные</h3>
+        <h3>
+          Самые популярные букеты для настоящих ценителей! Закажите прямо сейчас
+          и наслаждайтесь красотой наших шикарных букетов!
+        </h3>
         <div className="button-link">
           <LinkTo href="categories" text="Смотреть все" />
         </div>

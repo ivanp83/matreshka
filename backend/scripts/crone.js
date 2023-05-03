@@ -46,14 +46,14 @@ const getStatusPaymentProvider = async (id) => {
       );
 
       if (orderPaymentDetails.status === 'succeeded') {
-        const order = await orders.queryRows(
-          `SELECT * FROM orders WHERE orders.yookassa_id = $1`,
-          [orderPaymentDetails.id],
-        );
         // const order = await orders.queryRows(
-        //   `UPDATE orders SET order_status='${orderPaymentDetails.status}' WHERE orders.yookassa_id= $1 RETURNING  *;`,
+        //   `SELECT * FROM orders WHERE orders.yookassa_id = $1`,
         //   [orderPaymentDetails.id],
         // );
+        const order = await orders.queryRows(
+          `UPDATE orders SET order_status='${orderPaymentDetails.status}' WHERE orders.yookassa_id= $1 RETURNING  *;`,
+          [orderPaymentDetails.id],
+        );
 
         const customer = await customers.queryRows(
           `SELECT * FROM customers WHERE id = $1`,
@@ -62,14 +62,14 @@ const getStatusPaymentProvider = async (id) => {
 
         try {
           await sendAlertOrderSuccess(
-            order[0].yookassa_id,
+            order[0].id,
             getorderItems(order[0].order_items),
             customer[0].phone,
             customer[0].first_name,
             customer[0].last_name,
             order[0].shipping_address.city,
             order[0].shipping_address.address,
-            { bot, id: 1294200727, resource: 'Сайт' },
+            { bot, id: process.env.ADMIN_ID, resource: 'Сайт' },
           );
         } catch (error) {
           console.log(error);

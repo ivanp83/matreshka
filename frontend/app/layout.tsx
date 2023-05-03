@@ -35,7 +35,7 @@ export default function RootLayout({
         name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
       />
-
+      <meta name="yandex-verification" content="6ff734a1b919092d" />
       <StyledJsxRegistry>
         <AppProvider>
           <body className={inter.className}>
