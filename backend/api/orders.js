@@ -73,14 +73,14 @@ module.exports = {
 
   async create({ products: productsReq, userId }) {
     try {
-      const user = await customers.queryRows(
+      const customer = await customers.queryRows(
         `SELECT * FROM customers where id=$1;`,
         [userId],
       );
 
       const newOrder =
         await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items","order_status")
-        VALUES(${user[0].id}, ${JSON.stringify(
+        VALUES(${customer.id}, ${JSON.stringify(
           productsReq,
           null,
           2,
