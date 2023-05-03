@@ -102,7 +102,9 @@ bot.on('pre_checkout_query', async (ctx) => {
       ctx.update.pre_checkout_query.order_info;
 
     const productsStoreInOrder = await pool
-      .query(`SELECT *  FROM products WHERE id = ANY (ARRAY[${productsIds}]);`)
+      .query(
+        `SELECT order_items  FROM orders WHERE id = ANY (ARRAY[${productsIds}]);`,
+      )
       .then((res) => res.rows[0]);
     // const productsStoreInOrder = productsToDB();
 

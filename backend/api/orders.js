@@ -23,7 +23,9 @@ const getInvoice = (id, products) => {
     need_name: true,
     payload: {
       unique_id: `${id}_${Number(new Date())}`,
-      products: JSON.stringify(products.map((prod) => prod.id)),
+      products: JSON.stringify(
+        products.map((prod) => ({ id: prod.id, quantity: prod.quantity })),
+      ),
     },
   };
   return invoice;
