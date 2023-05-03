@@ -3,6 +3,7 @@
 const { db } = require('../db');
 const orders = db('products');
 const products = db('products');
+const users = db('users');
 const { bot } = require('../lib/bot');
 const getInvoice = (id, products) => {
   const invoice = {
@@ -72,7 +73,18 @@ module.exports = {
 
   async create({ products: productsReq, userId }) {
     try {
-      console.log(userId);
+      const user = await users.queryRows(`SELECT * FROM users where id=$1;`, [
+        userId,
+      ]);
+
+      const newOrder =
+        await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items","order_status")
+        VALUES(${user[0].id}, ${JSON.stringify(
+          productsReq,
+          null,
+          2,
+        )}, "pending")`);
+      console.log({ newOrder });
       let orderProducts = [];
       for await (let product of productsReq) {
         const productInDb = await products.read(product.product_id);
