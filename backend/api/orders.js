@@ -6,7 +6,7 @@ const orders = db('products');
 const products = db('products');
 const customers = db('customers');
 const { bot } = require('../lib/bot');
-const getInvoice = (id, products, oderId) => {
+const getInvoice = (id, products, orderId) => {
   const invoice = {
     chat_id: id,
     provider_token: process.env.PROVIDER_TOKEN,
@@ -23,7 +23,7 @@ const getInvoice = (id, products, oderId) => {
     need_name: true,
     payload: {
       unique_id: `${id}_${Number(new Date())}`,
-      oder_id: oderId,
+      order_id: orderId,
     },
   };
   return invoice;
