@@ -132,7 +132,7 @@ bot.on('successful_payment', async (ctx) => {
     const orderId = getOrderIdfromCTX(
       ctx.update.message.successful_payment.invoice_payload,
     );
-
+    console.log(orderId);
     const res = await pool
       .update(orderId, { status: 'succeeded' })
       .then((res) => res.rows);
