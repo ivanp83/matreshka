@@ -132,11 +132,16 @@ bot.on('successful_payment', async (ctx) => {
     const orderId = getOrderIdfromCTX(
       ctx.update.message.successful_payment.invoice_payload,
     );
-    console.log(orderId);
-    const res = await pool
-      .update(orderId, { order_status: 'succeeded' })
-      .then((res) => res.rows);
-    console.log(res);
+
+    const updatedOrder = await pool.query(
+      `UPDATE orders SET order_status=$1 WHERE id=$2 RETURNING *;`,
+      ['succeeded', orderId],
+    );
+    console.log(updatedOrder);
+    // const res = await pool
+    //   .update(orderId, { order_status: 'succeeded' })
+    //   .then((res) => res.rows);
+    // console.log(res);
     // console.log(ctx.update.message.successful_payment.order_info);
     // const sql = `INSERT INTO orders ("shipping_address", "order_items")
     //   VALUES(${JSON.stringify(
