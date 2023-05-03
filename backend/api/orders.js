@@ -77,11 +77,11 @@ module.exports = {
         `SELECT * FROM customers where id=$1;`,
         [userId],
       );
-
-      const newOrder =
-        await orders.queryRows(`INSERT INTO orders ("customer_id","order_status")
-        VALUES(${customer.id}, "pending")`);
-      console.log({ newOrder });
+      console.log(customer);
+      // const newOrder =
+      //   await orders.queryRows(`INSERT INTO orders ("customer_id","order_status")
+      //   VALUES(${customer.id}, "pending")`);
+      // console.log({ newOrder });
       let orderProducts = [];
       for await (let product of productsReq) {
         const productInDb = await products.read(product.product_id);
