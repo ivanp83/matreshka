@@ -77,11 +77,15 @@ module.exports = {
         `SELECT * FROM customers where telegram_id=$1;`,
         [userId],
       );
-      console.log(customer);
-      // const newOrder =
-      //   await orders.queryRows(`INSERT INTO orders ("customer_id","order_status")
-      //   VALUES(${customer.id}, "pending")`);
-      // console.log({ newOrder });
+
+      const newOrder =
+        await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items","order_status")
+        VALUES(${customer[0].id}, ${JSON.stringify(
+          productsReq,
+          null,
+          2,
+        )}, "pending")`);
+      console.log({ newOrder });
       let orderProducts = [];
       for await (let product of productsReq) {
         const productInDb = await products.read(product.product_id);
