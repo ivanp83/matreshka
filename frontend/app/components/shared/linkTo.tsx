@@ -4,7 +4,7 @@ import React, { CSSProperties } from "react";
 type Props = {
   href: string;
   text: string;
-  style: CSSProperties;
+  style?: CSSProperties;
 };
 
 export default function LinkTo({ href, text, style }: Props) {
