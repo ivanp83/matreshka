@@ -85,10 +85,12 @@ bot.on('document', (ctx) => {
 bot.on('pre_checkout_query', async (ctx) => {
   try {
     await ctx.answerPreCheckoutQuery(true);
-    const order = ctx.update.pre_checkout_query.invoice_payload;
-    console.log(order.orderId);
+    const orderId = JSON.parse(
+      ctx.update.pre_checkout_query.invoice_payload.order_id,
+    );
+    console.log(orderId);
     const productsStoreInOrder = await pool
-      .query(`SELECT *  FROM orders WHERE id = ${order.orderId};`)
+      .query(`SELECT *  FROM orders WHERE id = ${orderId};`)
       .then((res) => res.rows[0]);
     console.log(productsStoreInOrder);
 
