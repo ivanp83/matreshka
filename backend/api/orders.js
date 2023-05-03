@@ -82,13 +82,13 @@ module.exports = {
 
       try {
         const newOrder = await orders.queryRows(
-          `INSERT INTO orders ("customer_id", "order_items") VALUES ($1, $2);`,
+          `INSERT INTO orders ("customer_id", "order_items") VALUES ($1, $2) RETURNING *;`,
           [customer[0].id, JSON.stringify(productsToDB(productsReq), null, 2)],
         );
 
         // await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items")
         // VALUES (${customer[0].id}, "${JSON.stringify(productsIds)}")`);
-        console.log({ newOrder });
+        console.log(newOrder);
       } catch (error) {
         console.log(error);
       }
