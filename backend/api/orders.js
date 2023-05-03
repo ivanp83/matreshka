@@ -80,7 +80,7 @@ module.exports = {
 
       const newOrder =
         await orders.queryRows(`INSERT INTO orders ("customer_id", "order_status")
-        VALUES(${customer[0].id}, "pending")`);
+        VALUES(${customer[0].id}, "pending");`);
       console.log({ newOrder });
       let orderProducts = [];
       for await (let product of productsReq) {
