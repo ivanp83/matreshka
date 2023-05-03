@@ -78,7 +78,7 @@ export default function Page() {
               onClick={() => setActiveTab(tab.id)}
               className={`${
                 tab.id === activeTab ? "active" : ""
-              } nav-button nav-link`}
+              } nav-button sub-nav-link`}
               disabled={tab.id === activeTab}
             >
               {tab.title}

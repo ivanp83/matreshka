@@ -13,13 +13,13 @@
 }
 
 .button.shop {
-  padding: 10px 45px;
+  padding: 0.8rem 3rem;
   width: 100%;
   background-color: var(--main-pink);
 }
 
 .button.proceed {
-  padding: 10px 45px;
+  padding: 0.8rem 3rem;
   width: 100%;
   border: 1px solid;
   color: var(--main-dark);
@@ -46,7 +46,7 @@
 
 .button.checkout {
   width: 100%;
-  padding: 10px 45px;
+  padding: 0.8rem 3rem;
   background: var(--main-dark);
   color: var(--main-light);
   outline: none;
