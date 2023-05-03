@@ -1,6 +1,6 @@
 'use strict';
 
-const { sendAlertOrderSuccess } = require('../utils/helpers');
+const { sendAlertOrderSuccess, getorderItems } = require('../utils/helpers');
 const { db } = require('../db');
 const orders = db('orders');
 const customers = db('customers');
@@ -59,12 +59,7 @@ const getStatusPaymentProvider = async (id) => {
           `SELECT * FROM customers WHERE id = $1`,
           [order[0].customer_id],
         );
-        const getorderItems = (items) =>
-          items.map((item) => ({
-            product: item.name,
-            quantity: item.quantity,
-            price: item.price,
-          }));
+
         try {
           await sendAlertOrderSuccess(
             order[0].yookassa_id,
@@ -79,14 +74,6 @@ const getStatusPaymentProvider = async (id) => {
         } catch (error) {
           console.log(error);
         }
-
-        // console.log(
-        //   'process.env.ADMIN_ID',
-        //   'bot',
-        //   customer[0],
-        //   order[0].shipping_address,
-        //   order[0].order_items,
-        // );
       }
     }
   }

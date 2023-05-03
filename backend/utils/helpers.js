@@ -10,7 +10,12 @@ const productsToDB = (products) =>
     price: prod.price,
     quantity: prod.quantity,
   }));
-
+const getorderItems = (items) =>
+  items.map((item) => ({
+    product: item.name,
+    quantity: item.quantity,
+    price: item.price,
+  }));
 async function heicToJpg(inputBuffer) {
   const outputBuffer = await convert({
     buffer: inputBuffer,
@@ -80,4 +85,9 @@ const sendAlertOrderSuccess = async (
   });
 };
 
-module.exports = { convertImage, sendAlertOrderSuccess, productsToDB };
+module.exports = {
+  convertImage,
+  sendAlertOrderSuccess,
+  productsToDB,
+  getorderItems,
+};

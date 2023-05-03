@@ -3,7 +3,7 @@ const path = require('node:path');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const products = require('../api/products');
 const { pool } = require('../db');
-const { productsToDB } = require('../utils/helpers');
+const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 const getOrderIdfromCTX = (ctx) => {
   const orderPayload = JSON.parse(ctx);
@@ -139,7 +139,20 @@ bot.on('successful_payment', async (ctx) => {
         orderId,
       ])
       .then((res) => res.rows[0]);
-    console.log(updatedOrder);
+    const customer = await db.query(`SELECT * FROM customers WHERE id = $1`, [
+      updatedOrder[0].customer_id,
+    ]);
+
+    await sendAlertOrderSuccess(
+      orderId,
+      getorderItems(updatedOrder[0].order_items),
+      customer[0].phone,
+      customer[0].first_name,
+      customer[0].last_name,
+      updatedOrder[0].shipping_address.city,
+      updatedOrder[0].shipping_address.address,
+      { bot, id: process.env.ADMIN_ID, resource: 'Телеграм Бот' },
+    );
 
     return await bot.telegram.sendMessage(
       process.env.ADMIN_ID,
