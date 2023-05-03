@@ -134,7 +134,7 @@ bot.on('successful_payment', async (ctx) => {
     );
     console.log(orderId);
     const res = await pool
-      .update(orderId, { status: 'succeeded' })
+      .update(orderId, { order_status: 'succeeded' })
       .then((res) => res.rows);
     console.log(res);
     // console.log(ctx.update.message.successful_payment.order_info);
