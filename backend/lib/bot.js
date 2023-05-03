@@ -1,7 +1,7 @@
 const { Telegraf } = require('telegraf');
 const path = require('node:path');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
-const { pool } = require('../db');
+const db = require('../db');
 const { productsToDB } = require('../utils/helpers');
 const bot = new Telegraf(process.env.BOT_TOKEN);
 
@@ -98,7 +98,7 @@ bot.on('pre_checkout_query', async (ctx) => {
     const { name: firstName, phone_number: phone } =
       ctx.update.pre_checkout_query.order_info;
     const sql = `SELECT * FROM productsWHERE id = ANY (ARRAY[${productsIds}]);`;
-    const productsStoreInOrder = await pool.queryRows(sql);
+    const productsStoreInOrder = await db.queryRows(sql);
 
     // const productsStoreInOrder = productsToDB();
 
