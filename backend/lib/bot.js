@@ -108,7 +108,7 @@ bot.on('pre_checkout_query', async (ctx) => {
     await pool.query(
       `UPDATE orders SET order_items='${JSON.stringify(
         orderItems,
-      )}' SET currency=${currency} WHERE id=$1 RETURNING order_items;`,
+      )}', currency=${currency}, amount=${amount} WHERE id=$1 RETURNING order_items;`,
       [orderId],
     );
 
