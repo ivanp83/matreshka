@@ -77,10 +77,10 @@ module.exports = {
         `SELECT * FROM customers where telegram_id=$1;`,
         [userId],
       );
-
+      const productsIds = productsReq.map((prod) => prod.id);
       const newOrder =
         await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items")
-        VALUES(${customer[0].id}, ${JSON.stringify(products)})`);
+        VALUES(${customer[0].id}, ${JSON.stringify(productsIds)})`);
       console.log({ newOrder });
       let orderProducts = [];
       for await (let product of productsReq) {
