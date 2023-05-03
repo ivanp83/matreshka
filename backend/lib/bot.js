@@ -103,7 +103,6 @@ bot.on('pre_checkout_query', async (ctx) => {
     const currency = ctx.update.pre_checkout_query.currency;
     const amount = ctx.update.pre_checkout_query.total_amount;
 
-    console.log(currency, amount);
     await pool.query(
       `UPDATE orders SET order_items=$1, shipping_address=$2, currency=$3, amount=$4, order_status=$5 WHERE id=$6 RETURNING order_items;`,
       [
@@ -119,8 +118,6 @@ bot.on('pre_checkout_query', async (ctx) => {
         orderId,
       ],
     );
-
-    // console.log(productsStoreInOrder);
   } catch (err) {
     throw new Error(err);
   }
@@ -132,6 +129,7 @@ bot.on('successful_payment', async (ctx) => {
       name: ctx.update.message.from,
       order: ctx.update.message.successful_payment.order_info,
     };
+    console.log(ctx.update.message.successful_payment.order_info);
     // console.log(ctx.update.message.successful_payment.order_info);
     // const sql = `INSERT INTO orders ("shipping_address", "order_items")
     //   VALUES(${JSON.stringify(
