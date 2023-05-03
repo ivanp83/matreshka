@@ -1,5 +1,6 @@
 'use strict';
 
+const { productsToDB } = require('../utils/helpers');
 const { db } = require('../db');
 const orders = db('orders');
 const products = db('products');
@@ -114,7 +115,7 @@ module.exports = {
           null,
           2,
         ),
-        JSON.stringify(productInDb(orderProducts), null, 2),
+        JSON.stringify(productsToDB(orderProducts, null, 2)),
       ],
     );
 

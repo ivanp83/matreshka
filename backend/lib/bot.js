@@ -96,7 +96,8 @@ bot.on('pre_checkout_query', async (ctx) => {
     const amount = ctx.update.pre_checkout_query.total_amount;
     const { name: firstName, phone_number: phone } =
       ctx.update.pre_checkout_query.order_info;
-    console.log(ctx.update);
+    // console.log(ctx.update);
+    console.log(productsIds);
   } catch (err) {
     throw new Error(err);
   }
