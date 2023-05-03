@@ -139,16 +139,18 @@ bot.on('successful_payment', async (ctx) => {
         orderId,
       ])
       .then((res) => res.rows[0]);
-    const customer = await pool.query(`SELECT * FROM customers WHERE id = $1`, [
-      updatedOrder.customer_id,
-    ]);
+    const customer = await pool
+      .query(`SELECT * FROM customers WHERE id = $1`, [
+        updatedOrder.customer_id,
+      ])
+      .then((res) => res.rows[0]);
 
     await sendAlertOrderSuccess(
       orderId,
       getorderItems(updatedOrder.order_items),
-      customer[0].phone,
-      customer[0].first_name,
-      customer[0].last_name,
+      customer.phone,
+      customer.first_name,
+      customer.last_name,
       updatedOrder.shipping_address.city,
       updatedOrder.shipping_address.address,
       { bot, id: process.env.ADMIN_ID, resource: 'Телеграм Бот' },
