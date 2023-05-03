@@ -3,7 +3,7 @@
 const { db } = require('../db');
 const orders = db('products');
 const products = db('products');
-const users = db('users');
+const customers = db('customers');
 const { bot } = require('../lib/bot');
 const getInvoice = (id, products) => {
   const invoice = {
@@ -73,9 +73,10 @@ module.exports = {
 
   async create({ products: productsReq, userId }) {
     try {
-      const user = await users.queryRows(`SELECT * FROM users where id=$1;`, [
-        userId,
-      ]);
+      const user = await customers.queryRows(
+        `SELECT * FROM customers where id=$1;`,
+        [userId],
+      );
 
       const newOrder =
         await orders.queryRows(`INSERT INTO orders ("customer_id", "order_items","order_status")
