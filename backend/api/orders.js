@@ -1,6 +1,6 @@
 'use strict';
 
-const { productsToDB } = require('utils/helpers');
+const { productsToDB } = require('../utils/helpers');
 const { db } = require('../db');
 const orders = db('products');
 const products = db('products');
