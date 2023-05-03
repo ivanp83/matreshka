@@ -102,20 +102,20 @@ bot.on('pre_checkout_query', async (ctx) => {
 
     const currency = ctx.update.pre_checkout_query.currency;
     const amount = ctx.update.pre_checkout_query.total_amount;
-    // const { name: firstName, phone_number: phone } =
-    //   ctx.update.pre_checkout_query.order_info;
+
     console.log(currency, amount);
     await pool.query(
-      `UPDATE orders SET order_items=$1, shipping_address=$2, currency=$3, amount=$4 WHERE id=$5 RETURNING order_items;`,
+      `UPDATE orders SET order_items=$1, shipping_address=$2, currency=$3, amount=$4, order_status=$5 WHERE id=$6 RETURNING order_items;`,
       [
         JSON.stringify(orderItems),
         JSON.stringify({
           zip,
           city,
-          address: [street_line1, street_line2].join(','),
+          address: [street_line1, street_line2].join(' '),
         }),
         currency,
         Number(amount),
+        'pending',
         orderId,
       ],
     );
