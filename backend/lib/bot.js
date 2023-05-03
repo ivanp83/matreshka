@@ -99,8 +99,10 @@ bot.on('pre_checkout_query', async (ctx) => {
     const amount = ctx.update.pre_checkout_query.total_amount;
     const { name: firstName, phone_number: phone } =
       ctx.update.pre_checkout_query.order_info;
-    const sql = `SELECT * FROM productsWHERE id = ANY (ARRAY[${productsIds}]);`;
-    const productsStoreInOrder = await products.queryRows(sql);
+
+    const productsStoreInOrder = await products.queryRows(
+      `SELECT *  FROM products WHERE id = ANY (ARRAY[${productsIds}])`,
+    );
 
     // const productsStoreInOrder = productsToDB();
 
