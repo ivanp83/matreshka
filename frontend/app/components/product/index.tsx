@@ -61,6 +61,7 @@ export default function Index({ data: product, faturedData }: Props) {
             display: grid;
             height: fit-content;
             grid-gap: var(--space-small);
+            padding: 2rem;
           }
           .top {
             width: 100%;
@@ -92,6 +93,18 @@ export default function Index({ data: product, faturedData }: Props) {
             }
             .details {
               grid-column: 1/4;
+            }
+          }
+          @media all and (max-width: 1024px) and (orientation: portrait) {
+            .content {
+              width: 100%;
+              grid-template-columns: 1fr;
+            }
+            h1 {
+              font-size: 22px;
+            }
+            .details {
+              padding: 0;
             }
           }
           @media all and (max-width: 768px) and (orientation: portrait) {
