@@ -16,6 +16,7 @@ module.exports = {
   },
 
   async create(data, isAdmin) {
+    console.log(isAdmin);
     try {
       if (!isAdmin) return 'Forbidden!';
       const folder = new Date().getTime().toString();
