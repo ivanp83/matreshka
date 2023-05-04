@@ -1,16 +1,33 @@
 "use client";
 import Link from "next/link";
-import React from "react";
+import React, { RefObject, useEffect, useRef } from "react";
 import Logo from "./logo";
 import { useAppContext } from "../context/app.context";
 import Humburger from "./humburger";
 import Nav from "../components/navigation/navigation";
 
 export default function Header() {
+  const cartIconRef = useRef<HTMLDivElement>(null);
   const { cartItems, setMenuIsOpen } = useAppContext();
   const sum = () =>
     cartItems.reduce((partialSum, a) => partialSum + a.quantity, 0);
+  const { setCartPosition } = useAppContext();
 
+  const calcPosition = () => {
+    if (cartIconRef.current) {
+      const posEl = cartIconRef.current.getBoundingClientRect();
+
+      setCartPosition({
+        x: posEl.left - posEl.width,
+        y: posEl.top - posEl.height / 2,
+      });
+    }
+  };
+  useEffect(() => {
+    calcPosition();
+    window.addEventListener("resize", calcPosition);
+    return () => window.removeEventListener("resize", calcPosition);
+  }, []);
   return (
     <header className="header">
       <style jsx>{`
@@ -74,7 +91,7 @@ export default function Header() {
         </div>
         <Nav />
         <Humburger />
-        <div className="cart-icon">
+        <div className="cart-icon" ref={cartIconRef}>
           <Link href="/cart">
             <svg
               fill="var(--main-dark)"

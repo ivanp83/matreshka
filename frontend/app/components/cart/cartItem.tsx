@@ -38,9 +38,7 @@ export default function CartItem({ item }: Props) {
           height: fit-content;
           grid-gap: var(--space-small);
         }
-        .price {
-          font-size: 20px;
-        }
+
         .count {
           position: absolute;
           top: 5px;

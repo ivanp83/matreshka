@@ -100,6 +100,7 @@ export default function RootLayout({
         <AppProvider>
           <body className={inter.className}>
             <div id="root-loader" />
+            <div id="portal" />
             <Header />
             <MobileNav />
             <main>{children}</main>

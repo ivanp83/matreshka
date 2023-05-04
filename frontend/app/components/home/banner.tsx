@@ -105,6 +105,8 @@ export default function Banner() {
           src="/images/8.jpg"
           direct={true}
           alt="Баннер девушка с букетом цветов"
+          sizes="(max-width: 768px) 80vw,
+          (max-width: 1200px) 500px"
         />
       </div>
     </section>

@@ -9,9 +9,16 @@ import {
   useContext,
 } from "react";
 
+type CartPositionType = {
+  x: number;
+  y: number;
+};
+
 interface AppContext {
   loading: boolean;
   menuIsOpen: boolean;
+  cartPosition: CartPositionType;
+  setCartPosition: Dispatch<SetStateAction<CartPositionType>>;
   setLoading: Dispatch<SetStateAction<boolean>>;
   setMenuIsOpen: Dispatch<SetStateAction<boolean>>;
   cartItems: CartItemType[];
@@ -31,6 +38,8 @@ interface AppProps {
 const defaultStatePage: AppContext = {
   loading: false,
   menuIsOpen: false,
+  cartPosition: { x: 0, y: 0 },
+  setCartPosition: () => {},
   setMenuIsOpen: () => {},
   setLoading: () => {},
   cartItems: [],
@@ -49,6 +58,7 @@ export const AppProvider = ({ children }: AppProps) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [menuIsOpen, setMenuIsOpen] = useState<boolean>(false);
   const [cartItems, setCartItems] = useState<CartItemType[]>([]);
+  const [cartPosition, setCartPosition] = useState({ x: 0, y: 0 });
   const [activeCategory, setActiveCategory] = useState<number>(0);
   const onUpdate = async (product: ProductItem) => {
     try {
@@ -136,6 +146,8 @@ export const AppProvider = ({ children }: AppProps) => {
     loading,
     setLoading,
     cartItems,
+    cartPosition,
+    setCartPosition,
     setCartItems,
     onUpdate,
     onIncrement,

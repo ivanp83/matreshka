@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";
-
+import { useState } from "react";
+import { motion } from "framer-motion";
 const tabs = [
   {
     id: 0,
@@ -17,7 +17,7 @@ const tabs = [
     id: 1,
     title: "Условия доставки ",
     content: [
-      "Перед доставкой мы отправляем фото готового заказа, если вдруг есть уточнение или пожелания их можно сразу исправить. Стоимость доставки по городу Калининграду от 250 руб. (точная стоимость доставки расчитывается в зависимости от адреса получателя) ",
+      "Перед доставкой мы отправляем фото готового заказа, если вдруг есть уточнение или пожелания их можно сразу исправить. Стоимость доставки по городу Калининграду от 250 руб. (точная стоимость доставки расчитывается отдельно, в зависимости от адреса получателя) ",
       "Стоимость доставки по области расчитывается индивидуально в зависимости от удалённости.",
     ],
   },
@@ -27,8 +27,13 @@ export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
 
   return (
-    <section className="info">
-      <style jsx>{`
+    <motion.div
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+    >
+      <section className="info">
+        <style jsx>{`
         .info {
           min-height: calc(100vh - var(--space-big) * 2);
           grid-column: 1/4;
@@ -75,36 +80,37 @@ export default function Page() {
           
         }
       `}</style>
-      <div className="wrapp container">
-        <nav aria-label="Навигация по клиентской информации">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`${
-                tab.id === activeTab ? "active" : ""
-              } nav-button sub-nav-link`}
-              disabled={tab.id === activeTab}
-            >
-              {tab.title}
-            </button>
-          ))}
-        </nav>
-        <div className="content">
-          {tabs.map((tab) => (
-            <div
-              key={tab.id}
-              style={{ display: tab.id === activeTab ? "block" : "none" }}
-            >
-              <div className="par">
-                {tab.content.map((p) => (
-                  <span key={p}>{p}</span>
-                ))}
+        <div className="wrapp container">
+          <nav aria-label="Навигация по клиентской информации">
+            {tabs.map((tab) => (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id)}
+                className={`${
+                  tab.id === activeTab ? "active" : ""
+                } nav-button sub-nav-link`}
+                disabled={tab.id === activeTab}
+              >
+                {tab.title}
+              </button>
+            ))}
+          </nav>
+          <div className="content">
+            {tabs.map((tab) => (
+              <div
+                key={tab.id}
+                style={{ display: tab.id === activeTab ? "block" : "none" }}
+              >
+                <div className="par">
+                  {tab.content.map((p) => (
+                    <span key={p}>{p}</span>
+                  ))}
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </motion.div>
   );
 }

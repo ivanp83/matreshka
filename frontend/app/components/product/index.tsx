@@ -1,6 +1,6 @@
 "use client";
 import { ProductItem } from "@/types";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import CustomImage from "../image";
 import { currencyFormat } from "@/utils/helpers";
 import Button from "../buttons/button";
@@ -8,7 +8,8 @@ import { useAppContext } from "@/app/context/app.context";
 import dynamic from "next/dynamic";
 import { useRouter } from "next/navigation";
 import SubNav from "../subNav";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
+import Portal from "../hoc/withPortal";
 const Loader = dynamic(() => import("../loader"), { ssr: false });
 const FeaturedProducts = dynamic(() => import("./featuredProducts"), {
   ssr: false,
@@ -20,14 +21,21 @@ type Props = {
 };
 
 export default function Index({ data: product, faturedData }: Props) {
-  const { onUpdate, cartItems, setActiveCategory } = useAppContext();
+  const [avatarIsVisible, setstAvatarIsVisible] = useState(false);
+  const { onUpdate, cartItems, setActiveCategory, cartPosition } =
+    useAppContext();
   const addToCart = (product: ProductItem) => {
     onUpdate(product);
+    setstAvatarIsVisible(true);
+    setTimeout(() => {
+      setstAvatarIsVisible(false);
+    }, 1500);
   };
   const router = useRouter();
   useEffect(() => {
     setActiveCategory(product.category_id);
   }, [product]);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -101,6 +109,42 @@ export default function Index({ data: product, faturedData }: Props) {
             }
           }
         `}</style>
+        <Portal>
+          <AnimatePresence>
+            {avatarIsVisible && (
+              <motion.div
+                initial={{ y: 50, opacity: 0, scale: 1.8 }}
+                animate={{
+                  y: 0,
+                  opacity: 1,
+                  scale: 1,
+                  transition: { duration: 0.6, ease: "easeInOut" },
+                }}
+                exit={{
+                  y: -50,
+                  opacity: 0,
+                  scale: 0.5,
+                  transition: { duration: 0.4, ease: "easeInOut" },
+                }}
+                style={{
+                  width: "4rem",
+                  height: "5rem",
+                  position: "fixed",
+                  zIndex: 101,
+                  left: `${cartPosition.x}px`,
+                  top: `${cartPosition.y}px`,
+                }}
+              >
+                <CustomImage
+                  src={product.big}
+                  alt={product.name}
+                  sizes="60px"
+                />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </Portal>
+
         <SubNav categoryId={product.category_id} />
 
         <div className="image">
@@ -127,7 +171,7 @@ export default function Index({ data: product, faturedData }: Props) {
               <Button
                 actionType="proceed"
                 title="Завершить"
-                onClick={() => router.push("/shipping")}
+                onClick={() => router.push("/cart")}
               />
             ) : (
               ""

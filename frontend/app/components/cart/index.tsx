@@ -5,10 +5,16 @@ import Button from "../buttons/button";
 import CartItem from "./cartItem";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
+import { useState } from "react";
+
 export default function Index() {
+  const [withShipping, setWithShipping] = useState<boolean>(false);
   const { cartItems } = useAppContext();
   const totalPrice = cartItems.reduce((a, c) => a + c.price * c.quantity, 0);
   const router = useRouter();
+
+  const handleChange = () => setWithShipping(!withShipping);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -19,21 +25,16 @@ export default function Index() {
         <style jsx>{`
           .cart-content {
             display: grid;
-            grid-row-gap: 3rem;
+            grid-row-gap: var(--space-small);
             min-height: calc(100vh - var(--space-med));
             grid-template-rows: min-content min-content;
           }
           h1 {
             font-size: var(--title-fs);
-            grid-column: 2/3;
+            grid-column: 2/4;
             line-height: 1;
           }
 
-          .heading {
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-          }
           .items-list {
             grid-column: 2/3;
             display: grid;
@@ -48,24 +49,56 @@ export default function Index() {
             min-height: calc(100vh - var(--space-med) * 2);
             grid-column: 1/4;
           }
-          .total {
+          .checkout {
+            grid-column: 2/3;
             display: grid;
             grid-auto-flow: row;
             grid-gap: var(--space-small);
             border: 1px dashed;
-            padding: var(--space-small) 0;
+
             font-weight: 600;
             height: fit-content;
-            padding: 1rem;
-            grid-column: 2/3;
+            padding: 1rem 1rem var(--space-small);
+
             grid-row: 2;
+          }
+          .shipping-info {
+            font-weight: 400;
+            color: var(--main-gray);
+          }
+          .price-block {
+            display: grid;
+            grid-gap: 10px;
+          }
+          .cost {
+            width: 100%;
+            display: flex;
+          }
+          .total span {
+            font-weight: 700;
+          }
+          .goods,
+          .shipping {
+            font-weight: 400;
+          }
+          @media all and (max-width: 1024px) and (orientation: portrait) {
+            h1 {
+              grid-column: 1/4;
+            }
           }
           @media all and (max-width: 768px) and (orientation: portrait) {
             .items-list {
               grid-template-columns: 1fr;
               grid-column: 1/4;
             }
-            .total {
+            .checkout {
+              grid-column: 1/4;
+            }
+          }
+          @media all and (max-width: 800px) and (orientation: landscape) {
+            h1,
+            .items-list,
+            .checkout {
               grid-column: 1/4;
             }
           }
@@ -78,10 +111,41 @@ export default function Index() {
                 <CartItem item={item} key={item.id} />
               ))}
             </ul>
-            <div className="total">
-              <div className="heading">
-                <span>Итого: </span>
-                <span>{currencyFormat(totalPrice)}</span>
+            <div className="checkout">
+              <span className="shipping-info">
+                Перед доставкой мы отправляем фото готового заказа, если вдруг
+                есть уточнение или пожелания их можно сразу исправить. Стоимость
+                доставки по городу Калининграду от 250 руб. (точная стоимость
+                доставки расчитывается отдельно, в зависимости от адреса
+                получателя). Стоимость доставки по области расчитывается
+                индивидуально в зависимости от удалённости.
+              </span>
+              {/* <div>
+                <Checkbox
+                  {...{ withShipping, handleChange }}
+                  title="Доставка по городу"
+                />
+              </div> */}
+              <div className="price-block">
+                <div className="cost goods">
+                  <span>Цена:&nbsp;</span>
+                  <span>{currencyFormat(totalPrice)}</span>
+                </div>
+                {withShipping && (
+                  <div className="cost shipping">
+                    <span>Доставка:&nbsp;</span>
+                    <span>
+                      {currencyFormat(
+                        Number(process.env.NEXT_PUBLIC_SHIPPING_PRICE)
+                      )}
+                    </span>
+                  </div>
+                )}
+
+                <div className="cost total">
+                  <span>Итог:&nbsp;</span>
+                  <span>{currencyFormat(totalPrice)}</span>
+                </div>
               </div>
               <Button
                 actionType="checkout"
@@ -93,7 +157,7 @@ export default function Index() {
           </>
         ) : (
           <span className="empty-text">
-            Пока еще не добавлено ни одного букета{" "}
+            Пока еще не добавлено ни одного букета
           </span>
         )}
       </div>

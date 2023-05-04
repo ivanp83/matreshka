@@ -99,7 +99,12 @@ export default function Categories({ categories }: Props) {
             <li key={cat.id}>
               <Link href={`categories`}>
                 <div className="image">
-                  <CustomImage src={cat.image} alt={cat.name} />
+                  <CustomImage
+                    src={cat.image}
+                    alt={cat.name}
+                    sizes="(max-width: 768px) 300px,
+(max-width: 1200px) 600px"
+                  />
                 </div>
                 <span className="num">0{i + 1}/</span>
                 <span className="text">{cat.name}</span>

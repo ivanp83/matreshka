@@ -36,7 +36,9 @@ export default function Index() {
             width: 20rem;
             height: 20rem;
           }
-
+          b {
+            font-weight: 600;
+          }
           .text {
             grid-column: 2/3;
 
@@ -74,9 +76,9 @@ export default function Index() {
           }
           @media all and (max-width: 1024px) and (orientation: landscape) {
             .image {
-              position: relative;
-              width: 11vw;
-              height: 11vw;
+              position: absolute;
+              width: 30vw;
+              height: 30vw;
             }
           }
         `}</style>
@@ -84,12 +86,14 @@ export default function Index() {
         <h1 className="title">About</h1>
         <div className="image">
           <Image
+            property="priority"
             quality={100}
             src="/images/1.png"
             alt="Юлиана Легкодумова"
             fill
             style={{ objectFit: "cover", objectPosition: "top" }}
-            sizes="300px"
+            sizes="(max-width: 768px) 100vw,
+            (max-width: 1200px) 500px"
           />
         </div>
         {/* Почему бы и да!!! - <span className="red">Why&Yes</span> */}
@@ -113,10 +117,12 @@ export default function Index() {
         </div>
       </div> */}
         <div className="text">
-          <span>
+          <b>
             Здравствуйте, дорогие мои! Меня зовут Юлиана, и я влюбленна в свою
             работу и цветы. Я готова поделиться с вами своей страстью к
             прекрасному и замечательным букетам, которые я создаю своими руками.
+          </b>
+          <span>
             Мне 35, у меня 4-ро детей и все мои драконы мальчики, самому
             младшему исполнилось 2 месяца. Я люблю цветы, уют и красоту вокруг.
             Я с детства собирала цветы в поле, по дороге куда-либо, на даче и

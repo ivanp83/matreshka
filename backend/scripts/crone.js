@@ -44,7 +44,7 @@ const getStatusPaymentProvider = async (id) => {
       const orderPaymentDetails = await getStatusPaymentProvider(
         order.yookassa_id,
       );
-
+      console.log(orderPaymentDetails);
       if (orderPaymentDetails.status === 'succeeded') {
         // const order = await orders.queryRows(
         //   `SELECT * FROM orders WHERE orders.yookassa_id = $1`,

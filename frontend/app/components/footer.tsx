@@ -9,8 +9,9 @@ export default function Footer() {
       <style jsx>{`
         .footer {
           padding: var(--space-small) 0;
-          border-top: 1px solid var(--main-gray);
           margin-top: var(--space-med);
+          background: var(--main-dark);
+          color: var(--main-light);
         }
         .matrehska-logo {
           grid-column: 1/2;
@@ -78,9 +79,8 @@ export default function Footer() {
         }
       `}</style>
       <div className="wrapp container">
-        {" "}
         <div className="matrehska-logo">
-          <Matrehska />
+          <Matrehska style={{ fill: "var(--main-light)" }} />
         </div>
         <div className="social">
           <h4>Мы в соцсетях</h4>
