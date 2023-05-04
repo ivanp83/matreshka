@@ -39,7 +39,7 @@ export default function Products({ products }: Props) {
         }
       `}</style>
       <div className="wrapp  container">
-        <h2>Букеты </h2>
+        <h2>Популярные </h2>
         <h3>
           Самые популярные букеты для настоящих ценителей! Закажите прямо сейчас
           и наслаждайтесь красотой наших шикарных букетов!

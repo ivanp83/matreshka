@@ -69,8 +69,8 @@ export default function Events({}: Props) {
           <Image
             quality={100}
             fill
-            style={{ objectFit: "cover" }}
-            src="/images/6.jpg"
+            style={{ objectFit: "cover", objectPosition: "top" }}
+            src="/images/9.jpg"
             alt="Девушка с цветами"
             sizes="(max-width: 768px) 100vw,
 (max-width: 1200px) 50vw"

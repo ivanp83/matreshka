@@ -35,6 +35,8 @@ export default function Banner() {
         }
         .button {
           grid-column: 2/3;
+          display: grid;
+          justify-content: start;
         }
 
         .image {

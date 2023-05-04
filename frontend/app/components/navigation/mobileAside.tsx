@@ -30,7 +30,7 @@ const { className, styles } = css.resolve`
     display: grid;
     grid-gap: 16px;
     grid-auto-flow: row;
-    font-size: 1.4rem;
+    font-size: 1.2rem;
     text-transform: uppercase;
     font-weight: 500;
     color: var(--main-dark);
