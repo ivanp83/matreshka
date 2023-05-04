@@ -5,7 +5,6 @@ const categories = db('category-with-products');
 
 module.exports = {
   async read(id, isAdmin, fields = ['*']) {
-    console.log('entity');
     const names = fields.join(', ');
     const sql = `SELECT ${names} FROM categories`;
     if (!id) return await categories.queryRows(sql);

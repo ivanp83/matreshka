@@ -19,7 +19,7 @@ export default function LinkTo({ href, text, style }: Props) {
             color: var(--main-dark);
             font-weight: 600;
             text-transform: uppercase;
-            font-size: 0.7rem;
+            font-size: 14px;
             transition: all 0.3s linear 0s;
             border: 1px solid;
             padding: 0.7rem 2.4rem;

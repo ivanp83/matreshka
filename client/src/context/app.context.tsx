@@ -66,7 +66,7 @@ export const AppProvider = ({ children }: AppProps) => {
           username: user.username,
           init_data,
         });
-        console.log("data");
+
         localStorage.setItem("user_token", data[0].token);
         setUserData(data[0]);
         setCartItems(data[0].cart_items);

@@ -23,7 +23,6 @@ export default function RootLayout({
 }) {
   useEffect(() => {
     Router.events.on("routeChangeComplete", () => {
-      console.log("ch");
       window.scroll({
         top: 0,
         left: 0,

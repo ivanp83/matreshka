@@ -15,7 +15,7 @@ module.exports = {
   },
 
   async create({ image, category, name, price, description }, isAdmin) {
-    // if (!isAdmin) return 'Forbidden';
+    if (!isAdmin) return 'Forbidden';
     try {
       const folder = new Date().getTime().toString();
       const p1 = await convertImage(image, folder, 600);

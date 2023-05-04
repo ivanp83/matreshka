@@ -143,7 +143,7 @@ export default function Index() {
                 )}
 
                 <div className="cost total">
-                  <span>Итог:&nbsp;</span>
+                  <span>Итого:&nbsp;</span>
                   <span>{currencyFormat(totalPrice)}</span>
                 </div>
               </div>
