@@ -78,8 +78,10 @@ export default function RootLayout({
             <Footer />
           </body>
         </AppProvider>
-      </StyledJsxRegistry>{" "}
-      <YMInitializer accounts={[93453434]} />
+      </StyledJsxRegistry>
+      <YMInitializer
+        accounts={[Number(process.env.NEXT_PUBLIC_YANDEX_METRICS)]}
+      />
     </html>
   );
 }

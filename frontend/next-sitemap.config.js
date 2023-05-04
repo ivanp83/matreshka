@@ -1,6 +1,6 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL,
+  siteUrl: process.env.SITE_UTL,
   changefreq: "daily",
   priority: 0.7,
   sitemapSize: 5000,
