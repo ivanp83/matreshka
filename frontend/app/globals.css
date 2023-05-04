@@ -105,12 +105,13 @@ h5 {
 
 @media all and (max-width: 600px) and (orientation: portrait) {
   :root {
-    --main-fs: 18px;
+    --main-fs: 16px;
+    --title-fs: 2rem;
     --big-fs: 6vw;
     --space-big: 5rem;
   }
   .price {
-    font-size: 16px;
+    font-size: 15px;
   }
 }
 @media all and (max-width: 1024px) and (orientation: landscape) {

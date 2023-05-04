@@ -74,8 +74,8 @@ export default function Banner() {
           }
           .logo-title {
             grid-column: 1/4;
-            margin-top: 5rem;
-            width: 93vw;
+            width: 80vw;
+            margin: 5rem auto 0;
           }
           .button {
             grid-column: 1/4;
