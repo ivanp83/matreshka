@@ -1,6 +1,6 @@
 "use client";
 import "./globals.css";
-import { Inter, Noto_Sans, Noto_Sans_JP, Roboto_Flex } from "next/font/google";
+import { Roboto_Flex } from "next/font/google";
 import Header from "./header/header";
 import StyledJsxRegistry from "./registry";
 import { AppProvider } from "./context/app.context";
@@ -32,19 +32,17 @@ export default function RootLayout({
     });
   }, []);
 
-  const router = useRouter();
-
   useEffect(() => {
-    const handleRouteChange = (url) => {
+    const handleRouteChange = (url: URL) => {
       ga.pageview(url);
     };
 
-    router.events.on("routeChangeComplete", handleRouteChange);
+    Router.events.on("routeChangeComplete", handleRouteChange);
 
     return () => {
-      router.events.off("routeChangeComplete", handleRouteChange);
+      Router.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, [router.events]);
+  }, [Router.events]);
   return (
     <html lang="ru">
       <meta
