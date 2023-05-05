@@ -47,10 +47,6 @@ const getStatusPaymentProvider = async (id) => {
       );
 
       if (orderPaymentDetails.status === 'succeeded') {
-        // const order = await orders.queryRows(
-        //   `SELECT * FROM orders WHERE orders.yookassa_id = $1`,
-        //   [orderPaymentDetails.id],
-        // );
         const order = await orders.queryRows(
           `UPDATE orders SET order_status='${orderPaymentDetails.status}' WHERE orders.yookassa_id= $1 RETURNING  *;`,
           [orderPaymentDetails.id],

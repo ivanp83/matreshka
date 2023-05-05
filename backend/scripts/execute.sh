@@ -1,2 +1,2 @@
 #!/usr/bin/env sh
-node ./crone.js >> ../log/crone.log
+node /var/www/matreshka/backend/scripts/crone.js >> /var/www/matreshka/backend/log/crone.log

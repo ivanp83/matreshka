@@ -20,7 +20,10 @@ const getInvoice = (id, products, orderId) => {
     }),
     need_shipping_address: true,
     need_phone_number: true,
+    need_email: true,
     need_name: true,
+    send_phone_number_to_provider: true,
+    send_email_to_provider: true,
     payload: {
       unique_id: `${id}_${Number(new Date())}`,
       order_id: orderId,
