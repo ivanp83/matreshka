@@ -16,13 +16,12 @@ module.exports = {
   },
 
   async create(data, isAdmin) {
-    console.log('check');
     try {
       if (!isAdmin) return 'Forbidden!';
       const folder = new Date().getTime().toString();
       const { name, description, image } = data;
-      const p1 = await convertImage(image, folder, 370);
-      const p2 = await convertImage(image, folder, 800);
+      const p1 = await convertImage(image, folder, 500);
+      const p2 = await convertImage(image, folder, 1024);
 
       return await categories.create({
         name,

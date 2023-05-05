@@ -38,6 +38,7 @@ const getStatusPaymentProvider = async (id) => {
   let maxIndex = 100;
 
   for await (const order of ordersInPending) {
+    console.log(order);
     if (maxIndex <= 0) continue;
     if (new Date(order.created_at).getTime() < Date.now()) {
       maxIndex -= 1;

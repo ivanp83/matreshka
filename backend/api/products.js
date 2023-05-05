@@ -19,7 +19,7 @@ module.exports = {
     try {
       const folder = new Date().getTime().toString();
       const p1 = await convertImage(image, folder, 600);
-      const p2 = await convertImage(image, folder, 1200);
+      const p2 = await convertImage(image, folder, 1400);
       const [small, big] = await Promise.all([p1, p2]);
       const prod = await products
         .create({ category_id: category, name, price, description })
