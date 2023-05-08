@@ -30,17 +30,21 @@ class Bot {
   }
   botOnText() {
     this.bot.on('text', (ctx) => {
-      if (
-        ctx.message.reply_to_message &&
-        ctx.message.reply_to_message.forward_from &&
-        isAdmin(ctx.message.from.id)
-      ) {
-        ctx.telegram.sendMessage(
-          ctx.message.reply_to_message.forward_from.id,
-          ctx.message.text,
-        );
-      } else {
-        forwardToAdmin(ctx);
+      try {
+        if (
+          ctx.message.reply_to_message &&
+          ctx.message.reply_to_message.forward_from &&
+          isAdmin(ctx.message.from.id)
+        ) {
+          ctx.telegram.sendMessage(
+            ctx.message.reply_to_message.forward_from.id,
+            ctx.message.text,
+          );
+        } else {
+          forwardToAdmin(ctx);
+        }
+      } catch (error) {
+        this.console.log(error);
       }
     });
   }
@@ -134,8 +138,8 @@ class Bot {
             orderId,
           ],
         );
-      } catch (err) {
-        this.console.log(err);
+      } catch (error) {
+        this.console.log(error);
       }
     });
   }
@@ -166,8 +170,8 @@ class Bot {
           updatedOrder.shipping_address.address,
           { bot, id: process.env.ADMIN_ID, resource: 'Телеграм Бот' },
         );
-      } catch (err) {
-        this.console.log(err);
+      } catch (error) {
+        this.console.log(error);
       }
     });
   }
@@ -186,104 +190,5 @@ class Bot {
     }
   }
 }
-
-// bot.on('text', (ctx) => {
-//   if (
-//     ctx.message.reply_to_message &&
-//     ctx.message.reply_to_message.forward_from &&
-//     isAdmin(ctx.message.from.id)
-//   ) {
-//     ctx.telegram.sendMessage(
-//       ctx.message.reply_to_message.forward_from.id,
-//       ctx.message.text,
-//     );
-//   } else {
-//     forwardToAdmin(ctx);
-//   }
-// });
-// bot.on('voice', (ctx) => {
-//   if (
-//     ctx.message.reply_to_message &&
-//     ctx.message.reply_to_message.forward_from &&
-//     isAdmin(ctx.message.from.id)
-//   ) {
-//     ctx.telegram.sendVoice(
-//       ctx.message.reply_to_message.forward_from.id,
-//       ctx.message.voice.file_id,
-//       {
-//         caption: ctx.message.caption,
-//       },
-//     );
-//   } else {
-//     forwardToAdmin(ctx);
-//   }
-// });
-// bot.on('audio', (ctx) => {
-//   if (
-//     ctx.message.reply_to_message &&
-//     ctx.message.reply_to_message.forward_from &&
-//     isAdmin(ctx.message.from.id)
-//   ) {
-//     ctx.telegram.sendAudio(
-//       ctx.message.reply_to_message.forward_from.id,
-//       ctx.message.audio.file_id,
-//       {
-//         caption: ctx.message.caption,
-//       },
-//     );
-//   } else {
-//     forwardToAdmin(ctx);
-//   }
-// });
-// bot.on('document', (ctx) => {
-//   if (
-//     ctx.message.reply_to_message &&
-//     ctx.message.reply_to_message.forward_from &&
-//     isAdmin(ctx.message.from.id)
-//   ) {
-//     ctx.telegram.sendDocument(
-//       ctx.message.reply_to_message.forward_from.id,
-//       ctx.message.document.file_id,
-//       {
-//         caption: ctx.message.caption,
-//       },
-//     );
-//   } else {
-//     forwardToAdmin(ctx);
-//   }
-// });
-
-// bot.on('successful_payment', async (ctx) => {
-//   try {
-//     const orderId = getOrderIdfromCTX(
-//       ctx.update.message.successful_payment.invoice_payload,
-//     );
-
-//     const updatedOrder = await pool
-//       .query(`UPDATE orders SET order_status=$1 WHERE id=$2 RETURNING *;`, [
-//         'succeeded',
-//         orderId,
-//       ])
-//       .then((res) => res.rows[0]);
-//     const customer = await pool
-//       .query(`SELECT * FROM customers WHERE id = $1`, [
-//         updatedOrder.customer_id,
-//       ])
-//       .then((res) => res.rows[0]);
-
-//     await sendAlertOrderSuccess(
-//       orderId,
-//       getorderItems(updatedOrder.order_items),
-//       customer.phone,
-//       customer.first_name,
-//       customer.last_name,
-//       updatedOrder.shipping_address.city,
-//       updatedOrder.shipping_address.address,
-//       { bot, id: process.env.ADMIN_ID, resource: 'Телеграм Бот' },
-//     );
-//   } catch (err) {
-//     console.log(err);
-//   }
-// });
 
 module.exports = { Bot };
