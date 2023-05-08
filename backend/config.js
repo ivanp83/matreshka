@@ -20,4 +20,7 @@ module.exports = {
     user: 'admin',
     password: 'postgres',
   },
+  bot: {
+    token: '5090016957:AAEUQoqz8-eFnVQEUPR55lLgpTpnLq0gsas',
+  },
 };

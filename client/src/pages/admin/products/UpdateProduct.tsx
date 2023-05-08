@@ -25,6 +25,7 @@ const UpdateProduct = () => {
     name: product.name,
     price: product.price,
     description: product.description,
+    stock: product.stock,
     category_id: currentCatеgory.id,
   });
   const [base64Data, setBase64Data] = useState<string | ArrayBuffer | null>("");
@@ -37,6 +38,7 @@ const UpdateProduct = () => {
       name: data.name,
       price: data.price,
       description: data.description,
+      stock: data.stock,
       category_id: data.category_id,
       base64Data,
     },
@@ -93,13 +95,23 @@ const UpdateProduct = () => {
                   ))}
                 </select>
               </div>
+              <div>
+                <label htmlFor="stock">Акция</label>
+                <select
+                  name="stock"
+                  onChange={handleChange}
+                  defaultValue={String(product.stock)}
+                >
+                  <option value="false">нет</option>
+                  <option value="true">да</option>
+                </select>
+              </div>
               <UploadFile
                 image={product.small}
                 name={product.name}
                 fileInput={fileInput.current}
                 handler={handleFileChange}
               />
-
               <button type="submit" disabled={loading}>
                 Ок
               </button>

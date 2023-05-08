@@ -14,7 +14,7 @@ module.exports = {
     return await products.queryRows(`${sql} WHERE products.id = $1`, [id]);
   },
 
-  async create({ image, category, name, price, description }, isAdmin) {
+  async create({ image, category, name, price, description, stock }, isAdmin) {
     if (!isAdmin) return 'Forbidden';
     try {
       const folder = new Date().getTime().toString();
@@ -22,7 +22,7 @@ module.exports = {
       const p2 = await convertImage(image, folder, 1400);
       const [small, big] = await Promise.all([p1, p2]);
       const prod = await products
-        .create({ category_id: category, name, price, description })
+        .create({ category_id: category, name, price, description, stock })
         .then((prod) => prod.rows[0])
         .catch((err) => console.log(err));
       await images.create({ product_id: prod.id, small, big });
@@ -33,7 +33,15 @@ module.exports = {
   },
 
   async update(
-    { id: product_id, name, price, description, category_id, base64Data },
+    {
+      id: product_id,
+      name,
+      price,
+      description,
+      stock,
+      category_id,
+      base64Data,
+    },
     isAdmin,
   ) {
     if (!isAdmin) return 'Forbidden';
@@ -43,6 +51,7 @@ module.exports = {
         name,
         price,
         description,
+        stock,
       });
 
       if (base64Data) {

@@ -20,6 +20,7 @@ export type CategoryItem = {
   name: string;
   description: string;
   image: string | ArrayBuffer | null;
+  stock: boolean;
 };
 export type UpdateCategoryItem = {
   id: number;
@@ -35,6 +36,7 @@ export type ProductItem = {
   small: string | ArrayBuffer | null;
   big: string | ArrayBuffer | null;
   category_id: string;
+  stock: boolean;
 };
 export type ProductItemCreate = {
   name: string;
@@ -42,6 +44,7 @@ export type ProductItemCreate = {
   description: string;
   image: string | ArrayBuffer | null;
   category: number;
+  stock: boolean;
 };
 export type UpdateProductItem = {
   id: number;
@@ -50,6 +53,7 @@ export type UpdateProductItem = {
   description: string;
   category_id: number;
   base64Data?: string | ArrayBuffer | null;
+  stock: boolean;
 };
 export type PageItem = {
   name: string;

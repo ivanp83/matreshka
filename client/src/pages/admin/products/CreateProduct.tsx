@@ -31,6 +31,7 @@ function CreateProduct() {
     name: "",
     price: "",
     description: "",
+    stock: false,
     category: categories[0].id,
     image: null,
   });
@@ -72,11 +73,21 @@ function CreateProduct() {
                   ))}
                 </select>
               </div>
+              <div>
+                <label htmlFor="stock">Акция</label>
+                <select
+                  name="stock"
+                  onChange={handleChange}
+                  defaultValue="false"
+                >
+                  <option value="false">нет</option>
+                  <option value="true">да</option>
+                </select>
+              </div>
               <UploadFile
                 fileInput={fileInput.current}
                 handler={handleFileChange}
               />
-
               <button type="submit" disabled={loading}>
                 Ок
               </button>
