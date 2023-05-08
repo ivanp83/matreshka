@@ -1,7 +1,6 @@
 import React from "react";
 import Text from "./text";
 import Image from "next/image";
-import TextBold from "./textBold";
 
 type Props = {};
 
@@ -25,7 +24,6 @@ export default function Events({}: Props) {
         }
         .text-bold {
           grid-column: 2/3;
-          max-width: 12rem;
         }
         .par {
           grid-column: 3/4;
@@ -76,9 +74,11 @@ export default function Events({}: Props) {
 (max-width: 1200px) 50vw"
           />
         </div>
-        <div className="text-bold">
-          <TextBold text="Наши букеты сделают твой праздник еще более ярким и красивым" />
-        </div>
+
+        <b className="text-bold">
+          Наши букеты сделают твой праздник еще более ярким и красивым
+        </b>
+
         <div className="par">
           <span>
             Цветы отражают любовь, нежность и красоту. Они могут украсить любое
