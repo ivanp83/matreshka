@@ -3,25 +3,15 @@ const path = require('node:path');
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const { pool } = require('../db');
 const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
-// const getOrderIdfromCTX = (ctx) => {
-//   const orderPayload = JSON.parse(ctx);
-//   return orderPayload.order_id;
-// };
-// const isAdmin = (userId) => {
-//   return userId == process.env.ADMIN_ID;
-// };
-// const forwardToAdmin = (ctx) => {
-//   if (isAdmin(ctx.message.from.id)) {
-//     ctx.reply('Для ответа пользователю используйте функцию Ответить/Reply.');
-//   } else {
-//     ctx.forwardMessage(process.env.ADMIN_ID, ctx.from.id, ctx.message.id);
-//   }
-// };
 
 class Bot {
   constructor(config, logger) {
     this.console = logger;
-    this.bot = new Telegraf(config.token);
+    this.bot = new Telegraf(
+      process.env.NODE_ENV === 'production'
+        ? config.tokenProd
+        : config.tokenDev,
+    );
     this.init();
     this.botOnText();
     this.botOnVoice();
@@ -30,9 +20,13 @@ class Bot {
     this.botOnPreCheckout();
     this.botOnSuccessPayment();
   }
-  init() {
-    this.console.log('Bot is launched');
-    this.bot.launch();
+  async init() {
+    try {
+      this.console.log('Bot is launched');
+      await this.bot.launch();
+    } catch (error) {
+      this.console.log(error);
+    }
   }
   botOnText() {
     this.bot.on('text', (ctx) => {
@@ -141,7 +135,7 @@ class Bot {
           ],
         );
       } catch (err) {
-        throw new Error(err);
+        this.console.log(err);
       }
     });
   }
@@ -173,7 +167,7 @@ class Bot {
           { bot, id: process.env.ADMIN_ID, resource: 'Телеграм Бот' },
         );
       } catch (err) {
-        console.log(err);
+        this.console.log(err);
       }
     });
   }

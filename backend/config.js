@@ -21,6 +21,7 @@ module.exports = {
     password: 'postgres',
   },
   bot: {
-    token: '5090016957:AAEUQoqz8-eFnVQEUPR55lLgpTpnLq0gsas',
+    tokenDev: '5090016957:AAEUQoqz8-eFnVQEUPR55lLgpTpnLq0gsas',
+    tokenProd: '6284425839:AAEmQ123Oyq6UBjK10jBoCFiY1SvJn6zKyY',
   },
 };
