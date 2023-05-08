@@ -12,6 +12,7 @@ export type ProductItem = {
   description: string;
   small: string | ArrayBuffer | null;
   big: string | ArrayBuffer | null;
+  stock: boolean;
   category_id: number;
 };
 

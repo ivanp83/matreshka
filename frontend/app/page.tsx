@@ -26,7 +26,7 @@ async function getProducts() {
     }
   ).then((res) => res.json());
 
-  return products;
+  return products.filter((prod) => prod.stock === true);
 }
 export default async function Home() {
   const categories: Array<Category> = await getCategories();
