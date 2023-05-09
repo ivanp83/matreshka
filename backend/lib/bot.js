@@ -168,7 +168,7 @@ class Bot {
           customer.last_name,
           updatedOrder.shipping_address.city,
           updatedOrder.shipping_address.address,
-          { bot, id: process.env.ADMIN_ID, resource: 'Телеграм Бот' },
+          { bot, id: config.adminId, resource: 'Телеграм Бот' },
         );
       } catch (error) {
         this.console.log(error);
@@ -180,14 +180,17 @@ class Bot {
     return orderPayload.order_id;
   }
   isAdmin(userId) {
-    return userId == process.env.ADMIN_ID;
+    return userId == config.adminId;
   }
   forwardToAdmin(ctx) {
     if (this.isAdmin(ctx.message.from.id)) {
       ctx.reply('Для ответа пользователю используйте функцию Ответить/Reply.');
     } else {
-      ctx.forwardMessage(process.env.ADMIN_ID, ctx.from.id, ctx.message.id);
+      ctx.forwardMessage(config.adminId, ctx.from.id, ctx.message.id);
     }
+  }
+  static stop(sig) {
+    this.bot.stop(sig);
   }
 }
 

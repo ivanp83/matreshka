@@ -26,3 +26,5 @@ const routing = {};
     console.log(error);
   }
 })();
+process.once('SIGINT', () => Bot.stop('SIGINT'));
+process.once('SIGTERM', () => Bot.stop('SIGTERM'));

@@ -22,4 +22,9 @@ declare namespace config {
     user: string;
     password: string;
   };
+  const bot: {
+    tokenDev: string;
+    tokenProd: string;
+    adminId: number;
+  };
 }

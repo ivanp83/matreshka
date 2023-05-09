@@ -23,5 +23,6 @@ module.exports = {
   bot: {
     tokenDev: '5090016957:AAEUQoqz8-eFnVQEUPR55lLgpTpnLq0gsas',
     tokenProd: '6284425839:AAEmQ123Oyq6UBjK10jBoCFiY1SvJn6zKyY',
+    adminId: 1294200727,
   },
 };
