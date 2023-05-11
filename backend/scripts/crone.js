@@ -6,6 +6,8 @@ const orders = db('orders');
 const customers = db('customers');
 const { bot } = require('../lib/bot');
 const path = require('node:path');
+const config = require('../config.js');
+
 require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const getStatusPaymentProvider = async (id) => {
   const myHeaders = new Headers();
@@ -14,7 +16,7 @@ const getStatusPaymentProvider = async (id) => {
     'Authorization',
     'Basic ' +
       Buffer.from(
-        process.env.YOOKASSA_SHOPID + ':' + process.env.YOOKASSA_TOKEN,
+        config.yookassa.shopId + ':' + config.yookassa.token,
       ).toString('base64'),
   );
 
@@ -24,7 +26,7 @@ const getStatusPaymentProvider = async (id) => {
     method: 'GET',
     headers: myHeaders,
   };
-  return await fetch(`${process.env.YOOKASSA_URI}/${id}`, requestOptions)
+  return await fetch(`${config.yookassa.uri}/${id}`, requestOptions)
     .then((response) => response.json())
     .then((result) => result);
 };

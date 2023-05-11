@@ -5,7 +5,7 @@ const { db } = require('../db');
 const orders = db('orders');
 const products = db('products');
 const customers = db('customers');
-const { bot } = require('../lib/bot');
+const config = require('../config.js');
 
 module.exports = {
   async create({ shippingAddress, orderProducts }) {
@@ -80,7 +80,7 @@ module.exports = {
       'Authorization',
       'Basic ' +
         Buffer.from(
-          process.env.YOOKASSA_SHOPID + ':' + process.env.YOOKASSA_TOKEN,
+          config.yookassa.shopId + ':' + config.yookassa.token,
         ).toString('base64'),
     );
     headers.append('Content-Type', 'application/json');
@@ -90,10 +90,7 @@ module.exports = {
       body: JSON.stringify(payload),
       redirect: 'follow',
     };
-    const yookassaResponse = await fetch(
-      process.env.YOOKASSA_URI,
-      requestOptions,
-    )
+    const yookassaResponse = await fetch(config.yookassa.uri, requestOptions)
       .then((response) => response.json())
       .then((result) => result);
 

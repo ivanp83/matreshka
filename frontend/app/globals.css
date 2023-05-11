@@ -44,11 +44,11 @@ ul {
 }
 #portal {
   position: fixed;
-  top: 0;
+  top: 60px;
   left: 0;
   width: 100vw;
   height: 4rem;
-  z-index: 500;
+  z-index: 100;
   display: flex;
   justify-content: center;
 }

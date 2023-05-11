@@ -6,6 +6,8 @@ const orders = db('products');
 const products = db('products');
 const customers = db('customers');
 const { bot } = require('../lib/bot');
+const config = require('../config.js');
+
 const getInvoice = (id, products, orderId) => {
   const invoice = {
     chat_id: id,
@@ -57,7 +59,7 @@ module.exports = {
       headers: myHeaders,
     };
     let yookassaResponse = await fetch(
-      `${process.env.YOOKASSA_URI}/${order[0].yookassa_id}`,
+      `${config.yookassa.uri}/${order[0].yookassa_id}`,
       requestOptions,
     )
       .then((response) => response.json())

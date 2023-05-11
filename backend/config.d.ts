@@ -27,4 +27,9 @@ declare namespace config {
     tokenProd: string;
     adminId: number;
   };
+  const yookassa: {
+    shopId: number;
+    token: number;
+    uri: number;
+  };
 }
