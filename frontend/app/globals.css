@@ -42,6 +42,16 @@ a {
 ul {
   list-style: none;
 }
+#portal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 4rem;
+  z-index: 500;
+  display: flex;
+  justify-content: center;
+}
 h1 {
   font-size: var(--title-fs);
   font-weight: 500;

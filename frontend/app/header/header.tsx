@@ -18,7 +18,7 @@ export default function Header() {
       const posEl = cartIconRef.current.getBoundingClientRect();
 
       setCartPosition({
-        x: posEl.left - posEl.width,
+        x: posEl.left,
         y: posEl.top - posEl.height / 2,
       });
     }
