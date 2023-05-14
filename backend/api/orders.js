@@ -11,7 +11,7 @@ const config = require('../config.js');
 const getInvoice = (id, products, orderId) => {
   const invoice = {
     chat_id: id,
-    provider_token: process.env.PROVIDER_TOKEN,
+    provider_token: config.bot.providerToken,
     description: products,
     start_parameter: 'get_access',
     title: 'Оплата в магазине Matrёshka flowers!',
