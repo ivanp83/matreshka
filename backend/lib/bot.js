@@ -41,7 +41,7 @@ class Bot {
             ctx.message.text,
           );
         } else {
-          forwardToAdmin(ctx);
+          this.forwardToAdmin(ctx);
         }
       } catch (error) {
         this.console.log(error);
@@ -63,7 +63,7 @@ class Bot {
           },
         );
       } else {
-        forwardToAdmin(ctx);
+        this.forwardToAdmin(ctx);
       }
     });
   }
@@ -101,7 +101,7 @@ class Bot {
           },
         );
       } else {
-        forwardToAdmin(ctx);
+        this.forwardToAdmin(ctx);
       }
     });
   }
