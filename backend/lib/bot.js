@@ -6,6 +6,7 @@ const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
 
 class Bot {
   constructor(config, logger) {
+    this.config = confg;
     this.console = logger;
     this.bot = new Telegraf(
       process.env.NODE_ENV === 'production'
