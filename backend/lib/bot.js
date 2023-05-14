@@ -193,7 +193,7 @@ class Bot {
     this.bot.stop(sig);
   }
   static telegram() {
-    return this.bot.telegram;
+    return this.bot;
   }
 }
 
