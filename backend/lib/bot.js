@@ -192,6 +192,9 @@ class Bot {
   static stop(sig) {
     this.bot.stop(sig);
   }
+  static telegram() {
+    return this.bot.telegram;
+  }
 }
 
 module.exports = { Bot };
