@@ -5,7 +5,7 @@ const { db } = require('../db');
 const orders = db('products');
 const products = db('products');
 const customers = db('customers');
-const { Bot } = require('../lib/bot');
+const { bot } = require('../lib/bot');
 const config = require('../config.js');
 
 const getInvoice = (id, products, orderId) => {
@@ -96,7 +96,7 @@ module.exports = {
         orderProducts.push(productInDb.rows[0]);
       }
 
-      await Bot.sendInvoice(
+      await bot.telegram.sendInvoice(
         userId,
         getInvoice(userId, productsReq, newOrder[0].id),
       );
