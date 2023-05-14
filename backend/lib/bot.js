@@ -192,8 +192,8 @@ class Bot {
   static stop(sig) {
     this.bot.stop(sig);
   }
-  static telegram() {
-    return this.bot;
+  static sendInvoice(id, cb) {
+    return this.bot.telegram.sendInvoice(id, cb);
   }
 }
 
