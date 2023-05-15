@@ -147,7 +147,7 @@ bot.on('successful_payment', async (ctx) => {
       customer.last_name,
       updatedOrder.shipping_address.city,
       updatedOrder.shipping_address.address,
-      { bot, id: 1294200727, resource: 'Телеграм Бот' },
+      { bot, id: 526244481, resource: 'Телеграм Бот' },
     );
   } catch (error) {
     console.log(error);

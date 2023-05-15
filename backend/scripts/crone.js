@@ -68,7 +68,7 @@ const getStatusPaymentProvider = async (id) => {
             customer[0].last_name,
             order[0].shipping_address.city,
             order[0].shipping_address.address,
-            { bot, id: process.env.ADMIN_ID, resource: 'Сайт' },
+            { bot, id: 526244481, resource: 'Сайт' },
           );
         } catch (error) {
           console.log(error);
