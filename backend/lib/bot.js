@@ -20,6 +20,11 @@ const forwardToAdmin = (ctx) => {
     ctx.forwardMessage(process.env.ADMIN_ID, ctx.from.id, ctx.message.id);
   }
 };
+bot.start((ctx) =>
+  ctx.reply(
+    'Этот бот является полноценным интренет-магазином. Чтобы перейти к покупкам, нажмите кнопку "Купить букет"',
+  ),
+);
 bot.on('text', (ctx) => {
   if (
     ctx.message.reply_to_message &&
