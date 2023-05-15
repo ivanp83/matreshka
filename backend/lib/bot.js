@@ -5,7 +5,7 @@ const { pool } = require('../db');
 
 const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
 const config = require('../config.js');
-const bot = new Telegraf(['5447882712:AAGjq3EdeCSI0NYvDzf1OKL_B0E2OxFWoDU']);
+const bot = new Telegraf(['6284425839:AAEmQ123Oyq6UBjK10jBoCFiY1SvJn6zKyY']);
 const getOrderIdfromCTX = (ctx) => {
   const orderPayload = JSON.parse(ctx);
   return orderPayload.order_id;
