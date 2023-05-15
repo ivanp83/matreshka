@@ -12,6 +12,8 @@ export default function Footer() {
           margin-top: var(--space-med);
           background: var(--main-dark);
           color: var(--main-light);
+          position: relative;
+          z-index: 1;
         }
         .matrehska-logo {
           grid-column: 1/2;
@@ -88,8 +90,10 @@ export default function Footer() {
             <li>
               <span>
                 <a
-                  href="http://instagram.com/_u/yulianalegkodumova/"
-                  target="_blank"
+                  href="#"
+                  onClick={() =>
+                    !window.open("http://instagram.com/_u/yulianalegkodumova/")
+                  }
                   rel="noopener noreferrer"
                 >
                   Instagram
@@ -99,9 +103,10 @@ export default function Footer() {
             <li>
               <span>
                 <a
-                  href="tg://resolve?domain=YulianaLegkodumova"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
+                  onClick={() =>
+                    !window.open("tg://resolve?domain=YulianaLegkodumova")
+                  }
                 >
                   Telegram
                 </a>
@@ -110,9 +115,8 @@ export default function Footer() {
             <li>
               <span>
                 <a
-                  href="https://vk.com/matreshkaflower"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  href="#"
+                  onClick={() => !window.open("https://vk.com/matreshkaflower")}
                 >
                   В контакте
                 </a>
