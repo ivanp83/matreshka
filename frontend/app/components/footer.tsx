@@ -1,6 +1,3 @@
-import React from "react";
-import { AiOutlineInstagram } from "react-icons/ai";
-import { FaTelegramPlane } from "react-icons/fa";
 import Matrehska from "./shared/matryohska";
 
 export default function Footer() {
