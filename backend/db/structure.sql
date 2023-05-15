@@ -18,6 +18,7 @@ CREATE TABLE categories (
 	name varchar(100) UNIQUE,
 	description text,
 	image varchar (255) NOT NULL,
+    priority_id INT;
 	created_at timestamp NOT NULL DEFAULT NOW()
 );
 CREATE TABLE products (

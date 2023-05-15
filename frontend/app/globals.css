@@ -45,8 +45,9 @@ ul {
 #portal {
   position: fixed;
   top: 60px;
-  left: 0;
-  width: 100vw;
+  left: 50%;
+  transform: translateX(-50%);
+  width: fit-content;
   height: 4rem;
   z-index: 100;
   display: flex;
