@@ -2,12 +2,17 @@ import { Category } from "@/types";
 import React from "react";
 import CustomImage from "../image";
 import Link from "next/link";
+import { useAppContext } from "@/app/context/app.context";
+import { useRouter } from "next/navigation";
 
 type Props = {
   categories: Array<Category>;
 };
 
 export default function Categories({ categories }: Props) {
+  const { activeCategory, setActiveCategory } = useAppContext();
+
+  const router = useRouter();
   return (
     <section className="categories">
       <style jsx>{`
@@ -29,6 +34,15 @@ export default function Categories({ categories }: Props) {
           border-bottom: 1px solid var(--main-gray);
           padding: 1rem 0;
           position: relative;
+        }
+        button {
+          width: 100%;
+          text-align: left;
+          display: flex;
+          border: none;
+          outline: none;
+          background: transparent;
+          cursor: pointer;
         }
         .text {
           line-height: 1;
@@ -97,7 +111,12 @@ export default function Categories({ categories }: Props) {
         <ul>
           {categories.map((cat, i) => (
             <li key={cat.id}>
-              <Link href={`categories`}>
+              <button
+                onClick={() => {
+                  router.push("categories");
+                  setActiveCategory(cat.id);
+                }}
+              >
                 <div className="image">
                   <CustomImage
                     src={cat.image}
@@ -108,7 +127,7 @@ export default function Categories({ categories }: Props) {
                 </div>
                 <span className="num">0{i + 1}/</span>
                 <span className="text">{cat.name}</span>
-              </Link>
+              </button>
             </li>
           ))}
         </ul>

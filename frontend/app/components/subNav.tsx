@@ -20,7 +20,7 @@ function SubNav({
   handleProducts,
 }: Props) {
   const { activeCategory, setActiveCategory } = useAppContext();
-
+  console.log(activeCategory);
   const [category, setCategory] = useState<Category | null>(null);
 
   useEffect(() => {
@@ -206,19 +206,14 @@ function SubNav({
             ))}
           </ul>
           <select
+            defaultValue={activeCategory}
             name="categories-list"
             className="select"
             onChange={(e) => handleProducts(Number(e.target.value))}
           >
-            <option value={0} defaultValue={Number(activeCategory == 0 && 0)}>
-              Все категории
-            </option>
+            <option value={0}>Все категории</option>
             {categories?.map((cat) => (
-              <option
-                value={cat.id}
-                key={cat.id}
-                defaultValue={Number(activeCategory == cat.id && cat.id)}
-              >
+              <option value={cat.id} key={cat.id}>
                 {cat.name}
               </option>
             ))}
