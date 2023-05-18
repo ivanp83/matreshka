@@ -9,7 +9,8 @@ const { convertImage } = require('../utils/helpers');
 module.exports = {
   async read(id, isAdmin, fields = ['*']) {
     const names = fields.join(', ');
-    const sql = `SELECT ${names} FROM products INNER JOIN images ON products.id=images.product_id`;
+    const sql = `SELECT ${names} FROM products
+     INNER JOIN images ON products.id=images.product_id`;
     if (!id) return await products.queryRows(sql);
     return await products.queryRows(`${sql} WHERE products.id = $1`, [id]);
   },
@@ -81,7 +82,8 @@ module.exports = {
         await images.update(product_id, { small, big });
       }
 
-      const sql = `SELECT * FROM products INNER JOIN images ON products.id=images.product_id`;
+      const sql = `SELECT * FROM products INNER JOIN
+       images ON products.id=images.product_id`;
       return await products.query(`${sql} WHERE products.id = $1`, [
         product_id,
       ]);
@@ -112,7 +114,8 @@ module.exports = {
       }
 
       return await products.queryRows(
-        `SELECT * FROM products INNER JOIN images ON products.id=images.product_id;`,
+        `SELECT * FROM products INNER JOIN 
+        images ON products.id=images.product_id;`,
       );
     } catch (error) {
       console.log(error);

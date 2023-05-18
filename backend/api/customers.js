@@ -7,15 +7,15 @@ const carts = db('carts');
 const { getHashToken } = require('../utils/crypto');
 
 module.exports = {
-  async create({ init_data, ...rest }) {
-    //const user_info = checkAuthorization(init_data);
-    const user_info = {
-      id: 1294200727,
-      first_name: 'Ivan',
-      last_name: '',
-      username: 'eachpw',
-      language_code: 'ru',
-    };
+  async create({ init_data }) {
+    const user_info = checkAuthorization(init_data);
+    // const user_info = {
+    //   id: 1294200727,
+    //   first_name: 'Ivan',
+    //   last_name: '',
+    //   username: 'eachpw',
+    //   language_code: 'ru',
+    // };
 
     if (!user_info) return;
     const { id, username, first_name } = user_info;
@@ -36,7 +36,8 @@ module.exports = {
         carts.query(`INSERT INTO "carts" ("customer_id", "cart_items") VALUES
           (${new_customer.telegram_id}, '[]');`);
         return customers.queryRows(
-          `SELECT * FROM customers INNER JOIN carts ON carts.customer_id=$1  WHERE telegram_id=$1`,
+          `SELECT * FROM customers INNER JOIN
+           carts ON carts.customer_id=$1  WHERE telegram_id=$1`,
           [id],
         );
       } else {
@@ -50,7 +51,8 @@ module.exports = {
         (${id}, '[]');`);
         }
         return await customers.queryRows(
-          `SELECT * FROM customers INNER JOIN carts ON carts.customer_id=$1  WHERE telegram_id=$1`,
+          `SELECT * FROM customers INNER JOIN
+           carts ON carts.customer_id=$1  WHERE telegram_id=$1`,
           [id],
         );
       }
