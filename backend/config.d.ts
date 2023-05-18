@@ -23,10 +23,10 @@ declare namespace config {
     password: string;
   };
   const bot: {
-    tokenDev: string;
-    tokenProd: string;
-    adminId: number;
+    token: string;
+    providerToken: string;
   };
+  const adminId: number;
   const yookassa: {
     shopId: number;
     token: number;

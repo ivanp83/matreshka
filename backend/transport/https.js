@@ -12,7 +12,7 @@ const receiveArgs = async (req) => {
 };
 const crud = { get: 'read', post: 'create', put: 'update', delete: 'delete' };
 
-module.exports = (routing, port, console) => {
+module.exports = (routing, port, adminId, console) => {
   const HEADERS = {
     'Access-Control-Allow-Origin': '*',
     'Access-Control-Allow-Credentials': true,
@@ -51,7 +51,7 @@ module.exports = (routing, port, console) => {
         const token = headers?.authorization?.split(' ')[1];
         let isAdmin = true;
         if (token) {
-          isAdmin = checkHashToken(token) === process.env.ADMIN_ID;
+          isAdmin = checkHashToken(token) === adminId;
         }
 
         const result = await handler(...args, isAdmin);

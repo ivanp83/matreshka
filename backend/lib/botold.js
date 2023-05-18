@@ -6,7 +6,7 @@
 
 // const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
 // const config = require('../config.js');
-// const bot = new Telegraf([config.bot.tokenProd]);
+// const bot = new Telegraf([config.bot.token]);
 // const getOrderIdfromCTX = (ctx) => {
 //   const orderPayload = JSON.parse(ctx);
 //   return orderPayload.order_id;
@@ -30,7 +30,7 @@ class Bot {
   constructor(config, logger) {
     this.config = config;
     this.console = logger;
-    this.bot = new Telegraf(config.tokenProd);
+    this.bot = new Telegraf(config.token);
     this.init();
     this.botOnText();
     this.botOnVoice();

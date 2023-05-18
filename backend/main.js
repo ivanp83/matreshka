@@ -19,7 +19,7 @@ const routing = {};
     routing[serviceName] = require(filePath);
   }
 
-  staticServer('./public', config.static.port, logger);
+  staticServer('./public', config.static.port, config.adminId, logger);
   transport(routing, config.api.port, logger);
   await bot.launch();
 })();
