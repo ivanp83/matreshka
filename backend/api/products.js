@@ -92,6 +92,7 @@ module.exports = {
     }
   },
   async delete(id, isAdmin) {
+    console.log(isAdmin);
     // if (!isAdmin) return 'Forbidden';
     try {
       const sql = `SELECT * FROM images WHERE product_id=$1;`;
