@@ -49,11 +49,11 @@ module.exports = (routing, port, adminId, console) => {
           args.push(await receiveArgs(req));
         }
         const token = headers?.authorization?.split(' ')[1];
-        let isAdmin = true;
+        let isAdmin;
         if (token) {
           isAdmin = checkHashToken(token) === adminId;
         }
-
+        console.log(isAdmin);
         const result = await handler(...args, isAdmin);
 
         if (!result) {
