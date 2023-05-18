@@ -1,5 +1,6 @@
 'use strict';
 const crypto = require('crypto');
+
 const getHash = (payload) => {
   const secret = 'abcdefg2322awd2';
   return crypto
@@ -10,6 +11,7 @@ const getHash = (payload) => {
 const getHashToken = (payload) => `${payload}:${getHash(payload)}`;
 
 const checkHashToken = (token) => {
+  console.log(token);
   const [payload, hash] = token.split(':');
   return getHash(payload) === hash ? payload : null;
 };
