@@ -127,21 +127,6 @@ export default function Index() {
                 />
               </div> */}
               <div className="price-block">
-                <div className="cost goods">
-                  <span>Цена:&nbsp;</span>
-                  <span>{currencyFormat(totalPrice)}</span>
-                </div>
-                {withShipping && (
-                  <div className="cost shipping">
-                    <span>Доставка:&nbsp;</span>
-                    <span>
-                      {currencyFormat(
-                        Number(process.env.NEXT_PUBLIC_SHIPPING_PRICE)
-                      )}
-                    </span>
-                  </div>
-                )}
-
                 <div className="cost total">
                   <span>Итого:&nbsp;</span>
                   <span>{currencyFormat(totalPrice)}</span>
