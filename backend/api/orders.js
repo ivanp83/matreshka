@@ -96,7 +96,7 @@ module.exports = {
         orderProducts.push(productInDb.rows[0]);
       }
 
-      await bot.telegram.sendInvoice(
+      await bot.sendInvoice(
         userId,
         getInvoice(userId, productsReq, newOrder[0].id),
       );

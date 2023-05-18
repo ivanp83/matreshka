@@ -361,11 +361,11 @@ class Bot {
       ctx.forwardMessage(config.adminId, ctx.from.id, ctx.message.id);
     }
   }
+  async sendInvoice(id, cb) {
+    this.bot.telegram.sendInvoice(id, cb);
+  }
   static stop(sig) {
     this.bot.stop(sig);
-  }
-  static sendInvoice(id, cb) {
-    this.bot.telegram.sendInvoice(id, cb);
   }
 }
 
