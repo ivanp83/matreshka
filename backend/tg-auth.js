@@ -1,8 +1,8 @@
 'use strict';
-
+const config = require('./config.js');
 const crypto = require('crypto');
 const WEB_APP_DATA_CONST = 'WebAppData';
-const TELEGRAM_BOT_TOKEN = process.env.BOT_TOKEN;
+const TELEGRAM_BOT_TOKEN = config.bot.token;
 
 function parseAuthString(iniData) {
   // parse string to get params
