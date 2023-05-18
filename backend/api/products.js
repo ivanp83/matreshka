@@ -16,7 +16,7 @@ module.exports = {
   },
 
   async create({ image, category, name, price, description, stock }, isAdmin) {
-    // if (!isAdmin) return 'Forbidden';
+    if (!isAdmin) return 'Forbidden';
     try {
       const folder = new Date().getTime().toString();
       const p1 = await convertImage(image, folder, 600);
@@ -93,7 +93,7 @@ module.exports = {
   },
   async delete(id, isAdmin) {
     console.log(isAdmin);
-    // if (!isAdmin) return 'Forbidden';
+    if (!isAdmin) return 'Forbidden';
     try {
       const sql = `SELECT * FROM images WHERE product_id=$1;`;
       const res = await products.queryRows(sql, [id]);

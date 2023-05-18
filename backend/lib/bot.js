@@ -10,12 +10,12 @@ const getOrderIdfromCTX = (ctx) => {
   const orderPayload = JSON.parse(ctx);
   return orderPayload.order_id;
 };
-const isAdmin = (userId) => userId === config.bot.adminId;
+const isAdmin = (userId) => userId === config.adminId;
 const forwardToAdmin = (ctx) => {
   if (isAdmin(ctx.message.from.id)) {
     ctx.reply('Для ответа пользователю используйте функцию Ответить/Reply.');
   } else {
-    ctx.forwardMessage(config.bot.adminId, ctx.from.id, ctx.message.id);
+    ctx.forwardMessage(config.adminId, ctx.from.id, ctx.message.id);
   }
 };
 bot.on('text', (ctx) => {
@@ -147,7 +147,7 @@ bot.on('successful_payment', async (ctx) => {
       customer.last_name,
       updatedOrder.shipping_address.city,
       updatedOrder.shipping_address.address,
-      { bot: bot.telegram, id: config.bot.adminId, resource: 'Телеграм Бот' },
+      { bot: bot.telegram, id: config.adminId, resource: 'Телеграм Бот' },
     );
   } catch (error) {
     console.log(error);

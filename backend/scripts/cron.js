@@ -69,7 +69,7 @@ const getStatusPaymentProvider = async (id) => {
             customer[0].last_name,
             order[0].shipping_address.city,
             order[0].shipping_address.address,
-            { bot: bot.telegram, id: config.bot.adminId, resource: 'Сайт' },
+            { bot: bot.telegram, id: config.adminId, resource: 'Сайт' },
           );
         } catch (error) {
           console.log(error);
