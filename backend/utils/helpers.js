@@ -1,3 +1,4 @@
+'use strict';
 const Jimp = require('jimp');
 const path = require('path');
 const FILES_PATH = path.join(process.cwd(), 'public', 'images');
@@ -25,7 +26,7 @@ async function heicToJpg(inputBuffer) {
   return outputBuffer;
 }
 const convertImage = async (base64, folder, size) =>
-  new Promise(async (reslove, reject) => {
+  new Promise((reslove, reject) => {
     const returnPath = path.join('images', folder, `${size}.jpg`);
     const filePath = `${FILES_PATH}/${folder}/${size}.jpg`;
     const fileFromBase64 = Buffer.from(
@@ -34,7 +35,7 @@ const convertImage = async (base64, folder, size) =>
     );
     let fileToConvert = fileFromBase64;
     if (base64.split(',')[0].includes('image/heic')) {
-      fileToConvert = await heicToJpg(fileFromBase64);
+      fileToConvert = heicToJpg(fileFromBase64);
     }
 
     Jimp.read(fileToConvert)
@@ -80,7 +81,7 @@ const sendAlertOrderSuccess = async (
     <pre>${resource}</pre>
 
 `;
-  return await bot.telegram.sendMessage(id, messageHTML, {
+  return await bot.sendMessage(id, messageHTML, {
     parse_mode: 'html',
   });
 };

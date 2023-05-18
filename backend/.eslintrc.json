@@ -22,7 +22,7 @@
       ],
       "quotes": [
         "error",
-        "single"
+        "single", { "allowTemplateLiterals": true }
       ],
       "semi": [
         "error",
@@ -36,7 +36,7 @@
         "always"
       ],
       "camelcase": [
-        "error"
+        "off"
       ],
       "eqeqeq": [
         "error",

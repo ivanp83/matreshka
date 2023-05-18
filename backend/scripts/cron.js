@@ -5,10 +5,9 @@ const { db } = require('../db');
 const orders = db('orders');
 const customers = db('customers');
 const { bot } = require('../lib/bot');
-const path = require('node:path');
+
 const config = require('../config.js');
 
-require('dotenv').config({ path: path.join(__dirname, '../.env') });
 const getStatusPaymentProvider = async (id) => {
   const myHeaders = new Headers();
   myHeaders.append('Idempotence-Key', `${new Date().getTime()}`);
@@ -36,11 +35,12 @@ const getStatusPaymentProvider = async (id) => {
     `SELECT * FROM orders WHERE order_status ='pending';`,
   );
 
-  if (!ordersInPending.length) return;
+  if (!ordersInPending.length) return console.log('No orders Found');
+
   let maxIndex = 100;
 
   for await (const order of ordersInPending) {
-    console.log(order);
+    // console.log(order);
     if (maxIndex <= 0) continue;
     if (new Date(order.created_at).getTime() < Date.now()) {
       maxIndex -= 1;
@@ -50,7 +50,8 @@ const getStatusPaymentProvider = async (id) => {
 
       if (orderPaymentDetails.status === 'succeeded') {
         const order = await orders.queryRows(
-          `UPDATE orders SET order_status='${orderPaymentDetails.status}' WHERE orders.yookassa_id= $1 RETURNING  *;`,
+          `UPDATE orders SET order_status='${orderPaymentDetails.status}'
+      WHERE orders.yookassa_id= $1 RETURNING  *;`,
           [orderPaymentDetails.id],
         );
 
@@ -60,7 +61,7 @@ const getStatusPaymentProvider = async (id) => {
         );
 
         try {
-          await sendAlertOrderSuccess(
+          return await sendAlertOrderSuccess(
             order[0].id,
             getorderItems(order[0].order_items),
             customer[0].phone,
@@ -68,11 +69,17 @@ const getStatusPaymentProvider = async (id) => {
             customer[0].last_name,
             order[0].shipping_address.city,
             order[0].shipping_address.address,
-            { bot, id: 526244481, resource: 'Сайт' },
+            { bot: bot.telegram, id: config.bot.adminId, resource: 'Сайт' },
           );
         } catch (error) {
           console.log(error);
         }
+      } else if (orderPaymentDetails.status === 'canceled') {
+        return await orders.queryRows(
+          `UPDATE orders SET order_status='${orderPaymentDetails.status}'
+        WHERE orders.yookassa_id= $1 RETURNING  *;`,
+          [orderPaymentDetails.id],
+        );
       }
     }
   }

@@ -1,3 +1,4 @@
+'use strict';
 const crypto = require('crypto');
 const getHash = (payload) => {
   const secret = 'abcdefg2322awd2';

@@ -1,3 +1,5 @@
+'use strict';
+
 const crypto = require('crypto');
 const WEB_APP_DATA_CONST = 'WebAppData';
 const TELEGRAM_BOT_TOKEN = process.env.BOT_TOKEN;
@@ -12,7 +14,7 @@ function parseAuthString(iniData) {
 
   // sort params
   const restKeys = Array.from(searchParams.entries());
-  restKeys.sort(([aKey, aValue], [bKey, bValue]) => aKey.localeCompare(bKey));
+  restKeys.sort(([aKey], [bKey]) => aKey.localeCompare(bKey));
 
   // and join it with \n
   const dataCheckString = restKeys.map(([n, v]) => `${n}=${v}`).join('\n');

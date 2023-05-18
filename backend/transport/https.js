@@ -21,7 +21,7 @@ module.exports = (routing, port, console) => {
   };
   http
     .createServer(async (req, res) => {
-      const { method, url, headers, socket } = req;
+      const { method, url, headers } = req;
       if (req.method === 'OPTIONS') {
         res.writeHead(204, HEADERS);
         res.end();

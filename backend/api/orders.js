@@ -5,27 +5,25 @@ const { db } = require('../db');
 const orders = db('products');
 const products = db('products');
 const customers = db('customers');
-const { Bot } = require('../lib/bot');
+const { bot } = require('../lib/bot');
 const config = require('../config.js');
-const bot = Bot.getInstance();
+// const bot = Bot.getInstance();
 const getInvoice = (id, products, orderId) => {
   const invoice = {
     chat_id: id,
     provider_token: config.bot.providerToken,
-    description: products,
     start_parameter: 'get_access',
     title: 'Оплата в магазине Matrёshka flowers!',
     description: products.map((prod) => prod.name),
     currency: 'RUB',
-    prices: products.map((prod) => {
-      return { label: prod.name, amount: prod.price * prod.quantity * 100 };
-    }),
+    prices: products.map((prod) => ({
+      label: prod.name,
+      amount: prod.price * prod.quantity * 100,
+    })),
     need_shipping_address: true,
     need_phone_number: true,
     need_email: true,
     need_name: true,
-    // send_phone_number_to_provider: true,
-    // send_email_to_provider: true,
     payload: {
       unique_id: `${id}_${Number(new Date())}`,
       order_id: orderId,
@@ -58,14 +56,14 @@ module.exports = {
       method: 'GET',
       headers: myHeaders,
     };
-    let yookassaResponse = await fetch(
+    const yookassaResponse = await fetch(
       `${config.yookassa.uri}/${order[0].yookassa_id}`,
       requestOptions,
     )
       .then((response) => response.json())
       .then((result) => result);
 
-    if (order[0].status !== 'succeeded' || 'canceled') {
+    if (!['succeeded', 'canceled'].includes(order[0].status)) {
       order[0].status = yookassaResponse.status;
       await orders.queryRows(
         `UPDATE orders
@@ -79,37 +77,34 @@ module.exports = {
   },
 
   async create({ products: productsReq, userId }) {
-    try {
-      const customer = await customers.queryRows(
-        `SELECT * FROM customers where telegram_id=$1;`,
-        [userId],
-      );
+    const customer = await customers.queryRows(
+      'SELECT * FROM customers where telegram_id=$1;',
+      [userId],
+    );
 
-      const newOrder = await orders.queryRows(
-        `INSERT INTO orders ("customer_id", "order_items") VALUES ($1, $2) RETURNING *;`,
-        [customer[0].id, JSON.stringify(productsToDB(productsReq), null, 2)],
-      );
+    const newOrder = await orders.queryRows(
+      `INSERT INTO orders ("customer_id", "order_items") 
+        VALUES ($1, $2) RETURNING *;`,
+      [customer[0].id, JSON.stringify(productsToDB(productsReq), null, 2)],
+    );
 
-      let orderProducts = [];
-      for await (let product of productsReq) {
-        const productInDb = await products.read(product.product_id);
-        orderProducts.push(productInDb.rows[0]);
-      }
-
-      await bot.sendInvoice(
-        userId,
-        getInvoice(userId, productsReq, newOrder[0].id),
-      );
-      await products.query(
-        `UPDATE carts SET cart_items='${JSON.stringify(
-          [],
-        )}' WHERE customer_id=$1;`,
-        [userId],
-      );
-      return orderProducts;
-    } catch (error) {
-      console.log(error);
+    const orderProducts = [];
+    for await (const product of productsReq) {
+      const productInDb = await products.read(product.product_id);
+      orderProducts.push(productInDb.rows[0]);
     }
+
+    await bot.telegram.sendInvoice(
+      userId,
+      getInvoice(userId, productsReq, newOrder[0].id),
+    );
+    await products.query(
+      `UPDATE carts SET cart_items='${JSON.stringify(
+        [],
+      )}' WHERE customer_id=$1;`,
+      [userId],
+    );
+    return orderProducts;
   },
 
   delete(id, isAdmin) {
