@@ -11,7 +11,7 @@ module.exports = {
     const names = fields.join(', ');
     const sql = `SELECT ${names} FROM categories`;
     if (!id) return await categories.queryRows(sql);
-
+    console.log('asddas');
     return await categories.queryRows(`${sql}  WHERE categories.id = $1`, [id]);
   },
 

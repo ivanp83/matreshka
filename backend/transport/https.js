@@ -48,12 +48,13 @@ module.exports = (routing, port, adminId, console) => {
         if (signature.includes('{') || signature.includes('data')) {
           args.push(await receiveArgs(req));
         }
+
         const token = headers?.authorization?.split(' ')[1];
-        let isAdmin;
+        let isAdmin = false;
         if (token) {
           isAdmin = checkHashToken(token) == adminId;
         }
-        console.log(checkHashToken(token), adminId);
+
         const result = await handler(...args, isAdmin);
 
         if (!result) {

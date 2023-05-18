@@ -19,7 +19,7 @@ export const Api = (): ApiReturnType => {
 
     headers: {
       "Content-Type": "application/json",
-      // Authorization: "Bearer localClient",
+      // Authorization: "Bearer localClient:sdfd",
     },
   });
 

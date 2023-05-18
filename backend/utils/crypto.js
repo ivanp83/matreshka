@@ -11,7 +11,7 @@ const getHash = (payload) => {
 const getHashToken = (payload) => `${payload}:${getHash(payload)}`;
 
 const checkHashToken = (token) => {
-  console.log(token);
+  if (!token) return;
   const [payload, hash] = token.split(':');
   return getHash(payload) === hash ? payload : null;
 };
