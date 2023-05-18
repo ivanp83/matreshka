@@ -61,12 +61,12 @@ module.exports = {
         const sql = `SELECT * FROM images WHERE images.product_id=$1;`;
         const res = await images.queryRows(sql, [product_id]);
 
-        const folder_to_remove = res[0].small.split('/');
+        const folderToRemove = res[0].small.split('/');
         const folderPath = path.join(
           process.cwd(),
           'public',
-          folder_to_remove[0],
-          folder_to_remove[1],
+          folderToRemove[0],
+          folderToRemove[1],
         );
 
         if (fs.existsSync(folderPath)) {
@@ -97,14 +97,14 @@ module.exports = {
       const sql = `SELECT * FROM images WHERE product_id=$1;`;
       const res = await products.queryRows(sql, [id]);
 
-      const folder_to_remove = res[0].small.split('/');
+      const folderToRemove = res[0].small.split('/');
       const folderPath = path.join(
         process.cwd(),
         'public',
-        folder_to_remove[0],
-        folder_to_remove[1],
+        folderToRemove[0],
+        folderToRemove[1],
       );
-
+      console.log(folderToRemove);
       if (fs.existsSync(folderPath)) {
         products.delete(id);
         fs.rmSync(folderPath, {
