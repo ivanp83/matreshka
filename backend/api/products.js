@@ -92,7 +92,6 @@ module.exports = {
     }
   },
   async delete(id, isAdmin) {
-    console.log(isAdmin);
     if (!isAdmin) return 'Forbidden';
     try {
       const sql = `SELECT * FROM images WHERE product_id=$1;`;
@@ -105,7 +104,7 @@ module.exports = {
         folderToRemove[0],
         folderToRemove[1],
       );
-      console.log(folderToRemove);
+
       if (fs.existsSync(folderPath)) {
         products.delete(id);
         fs.rmSync(folderPath, {
