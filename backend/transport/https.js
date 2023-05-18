@@ -51,7 +51,7 @@ module.exports = (routing, port, adminId, console) => {
         const token = headers?.authorization?.split(' ')[1];
         let isAdmin;
         if (token) {
-          isAdmin = checkHashToken(token) === adminId;
+          isAdmin = checkHashToken(token) == adminId;
         }
         console.log(adminId, checkHashToken(token));
         const result = await handler(...args, isAdmin);
