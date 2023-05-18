@@ -53,7 +53,7 @@ module.exports = (routing, port, console) => {
         if (token) {
           isAdmin = checkHashToken(token) === process.env.ADMIN_ID;
         }
-        console.log({ token, isAdmin });
+
         const result = await handler(...args, isAdmin);
 
         if (!result) {
