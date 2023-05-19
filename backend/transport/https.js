@@ -55,7 +55,7 @@ module.exports = (routing, port, adminId, console) => {
         }
 
         const result = await handler(...args, isAdmin);
-        bot(routing, config.bot, adminId, console);
+
         if (!result) {
           httpError(res, 500, 'Server error');
           return;
