@@ -1,5 +1,5 @@
 import { Suspense, useEffect, useState } from "react";
-import { Await, Link } from "react-router-dom";
+import { Await } from "react-router-dom";
 import { Api } from "../../../api";
 
 import Container from "../../../components/container/Container";

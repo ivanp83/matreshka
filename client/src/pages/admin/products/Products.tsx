@@ -5,39 +5,31 @@ import Container from "../../../components/container/Container";
 import Loader from "../../../components/loader/Loader";
 import ItemsList from "./ItemsList";
 import { ProductItem } from "../../../types/types";
-import { useAppContext } from "../../../context/app.context";
 
 function Products() {
-  const { loading, setLoading } = useAppContext();
   const [availableProducts, setAvailableProducts] = useState<
     ProductItem[] | []
   >([]);
 
   const fetchData = async () => {
     try {
-      setLoading(true);
       const products = await Api().product.getAll();
       setAvailableProducts(products);
     } catch (error: any) {
       alert(error.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-  const onDelete = async (id: number) => {
-    if (window.confirm("Точно хочешь удалить?")) {
-      try {
-        setLoading(true);
-        const res = await Api().product.delete(id);
-        setAvailableProducts(res);
-      } catch (error) {
-        alert("Ошибка на сервере");
-      } finally {
-        setLoading(false);
-      }
     }
   };
 
+  const onDelete = async (id: number) => {
+    try {
+      if (window.confirm("Точно хочешь удалить?")) {
+        const res = await Api().product.delete(id);
+        setAvailableProducts(res);
+      }
+    } catch (error: any) {
+      alert(error.message);
+    }
+  };
   useEffect(() => {
     fetchData();
   }, [setAvailableProducts]);
