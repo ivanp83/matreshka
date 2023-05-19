@@ -3,16 +3,16 @@ const { Telegraf } = require('telegraf');
 const { pool } = require('../db');
 const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
 
-const EventEmitter = require('node:events');
+// const EventEmitter = require('node:events');
 
-class MyEmitter extends EventEmitter {}
+// class MyEmitter extends EventEmitter {}
 
-const myEmitter = new MyEmitter();
-
-module.exports = (routing, config, adminId, console) => {
+// const myEmitter = new MyEmitter();
+let bot;
+module.exports = (config, adminId, console) => {
   try {
-    // console.log(routing);
-    const bot = new Telegraf(config.token);
+    if (bot) return bot;
+    bot = new Telegraf(config.token);
     const getOrderIdfromCTX = (ctx) => {
       const orderPayload = JSON.parse(ctx);
       return orderPayload.order_id;
@@ -27,9 +27,6 @@ module.exports = (routing, config, adminId, console) => {
         ctx.forwardMessage(adminId, ctx.from.id, ctx.message.id);
       }
     };
-    myEmitter.on('event', () => {
-      console.log('произошло событие!');
-    });
 
     bot.on('text', (ctx) => {
       if (

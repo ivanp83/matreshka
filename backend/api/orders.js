@@ -5,14 +5,8 @@ const { db } = require('../db');
 const orders = db('products');
 const products = db('products');
 const customers = db('customers');
-// const { bot } = require('../lib/bot');
+const getBot = require('../lib/bot');
 const config = require('../config.js');
-
-const EventEmitter = require('node:events');
-
-class MyEmitter extends EventEmitter {}
-
-const myEmitter = new MyEmitter();
 
 const getInvoice = (id, products, orderId) => {
   const invoice = {
@@ -99,11 +93,11 @@ module.exports = {
       const productInDb = await products.read(product.product_id);
       orderProducts.push(productInDb.rows[0]);
     }
-    myEmitter.emit('event');
-    // await bot.telegram.sendInvoice(
-    //   userId,
-    //   getInvoice(userId, productsReq, newOrder[0].id),
-    // );
+    const bot = getBot();
+    await bot.telegram.sendInvoice(
+      userId,
+      getInvoice(userId, productsReq, newOrder[0].id),
+    );
     await products.query(
       `UPDATE carts SET cart_items='${JSON.stringify(
         [],

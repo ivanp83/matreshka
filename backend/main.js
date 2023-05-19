@@ -4,7 +4,7 @@ const path = require('node:path');
 const staticServer = require('./lib/static');
 const logger = require('./lib/logger.js');
 const config = require('./config.js');
-const bot = require('./lib/bot.js');
+const getBot = require('./lib/bot.js');
 const transport = require(`./transport/${config.api.transport}.js`);
 const apiPath = path.join(process.cwd(), './api');
 const root = path.join(process.cwd(), 'public', 'images');
@@ -23,10 +23,10 @@ const routing = {};
 
     staticServer(root, config.static.port, logger);
     transport(routing, config.api.port, config.adminId, logger);
-    bot(routing, config.bot, config.adminId, logger);
+    getBot(config.bot, config.adminId, logger);
   } catch (error) {
     console.log(error);
   }
 })();
-process.once('SIGINT', () => bot.stop('SIGINT'));
-process.once('SIGTERM', () => bot.stop('SIGTERM'));
+// process.once('SIGINT', () => bot.stop('SIGINT'));
+// process.once('SIGTERM', () => bot.stop('SIGTERM'));
