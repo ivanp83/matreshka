@@ -152,6 +152,7 @@ module.exports = (routing, config, adminId, console) => {
     });
     console.log('Bot is running');
     bot.launch();
+    return bot;
   } catch (error) {
     console.log(error);
   }
