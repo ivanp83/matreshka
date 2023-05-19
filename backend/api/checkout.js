@@ -28,6 +28,7 @@ module.exports = {
         (acc, val) => acc + val.quantity * val.price,
         0,
       );
+      console.log(orderTotal);
       let customer;
       customer = await customers.queryRows(
         `SELECT * FROM customers WHERE customers.phone =$1`,
