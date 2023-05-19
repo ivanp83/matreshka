@@ -80,6 +80,7 @@ module.exports = {
             config.yookassa.shopId + ':' + config.yookassa.token,
           ).toString('base64'),
       );
+      console.log(config.yookassa.shopId, config.yookassa.token);
       headers.append('Content-Type', 'application/json');
       const requestOptions = {
         method: 'POST',
