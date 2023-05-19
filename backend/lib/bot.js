@@ -1,13 +1,17 @@
 'use strict';
 const { Telegraf } = require('telegraf');
-
 const { pool } = require('../db');
-
 const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
+
+const EventEmitter = require('node:events');
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
 
 module.exports = (routing, config, adminId, console) => {
   try {
-    console.log(routing);
+    // console.log(routing);
     const bot = new Telegraf(config.token);
     const getOrderIdfromCTX = (ctx) => {
       const orderPayload = JSON.parse(ctx);
@@ -23,6 +27,10 @@ module.exports = (routing, config, adminId, console) => {
         ctx.forwardMessage(adminId, ctx.from.id, ctx.message.id);
       }
     };
+    myEmitter.on('event', () => {
+      console.log('произошло событие!');
+    });
+
     bot.on('text', (ctx) => {
       if (
         ctx.message.reply_to_message &&
@@ -152,7 +160,6 @@ module.exports = (routing, config, adminId, console) => {
     });
     console.log('Bot is running');
     bot.launch();
-    return bot;
   } catch (error) {
     console.log(error);
   }

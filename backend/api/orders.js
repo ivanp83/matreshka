@@ -8,7 +8,14 @@ const customers = db('customers');
 const { bot } = require('../lib/bot');
 const config = require('../config.js');
 
+const EventEmitter = require('node:events');
+
+class MyEmitter extends EventEmitter {}
+
+const myEmitter = new MyEmitter();
+
 const getInvoice = (id, products, orderId) => {
+  myEmitter.emit('event');
   const invoice = {
     chat_id: id,
     provider_token: config.bot.providerToken,
