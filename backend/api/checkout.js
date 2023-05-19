@@ -90,7 +90,7 @@ module.exports = {
       const yookassaResponse = await fetch(config.yookassa.uri, requestOptions)
         .then((response) => response.json())
         .then((result) => result);
-
+      console.log(yookassaResponse);
       await orders.queryRows(
         `UPDATE orders
    SET yookassa_id = $2, amount = $3, currency=$4, order_status=$5, 
