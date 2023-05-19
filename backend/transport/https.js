@@ -11,14 +11,13 @@ const receiveArgs = async (req) => {
   return JSON.parse(data);
 };
 const crud = { get: 'read', post: 'create', put: 'update', delete: 'delete' };
-
+const HEADERS = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Credentials': true,
+  'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization',
+  'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+};
 module.exports = (routing, port, adminId, console) => {
-  const HEADERS = {
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Credentials': true,
-    'Access-Control-Allow-Headers': 'Content-Type, Accept, Authorization',
-    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-  };
   http
     .createServer(async (req, res) => {
       const { method, url, headers } = req;
