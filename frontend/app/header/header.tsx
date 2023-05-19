@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { RefObject, useEffect, useRef } from "react";
+import React, { useEffect, useRef } from "react";
 import Logo from "./logo";
 import { useAppContext } from "../context/app.context";
 import Humburger from "./humburger";

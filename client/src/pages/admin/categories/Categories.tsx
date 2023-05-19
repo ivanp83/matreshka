@@ -7,14 +7,22 @@ import Loader from "../../../components/loader/Loader";
 
 import ItemsList from "./ItemsList";
 import { CategoryItem } from "../../../types/types";
+import { useAppContext } from "../../../context/app.context";
 
 function AdminCategories() {
-  const [loading, setLoading] = useState<boolean>(false);
+  const { loading, setLoading } = useAppContext();
   const [availableCat, setAvailableCat] = useState<CategoryItem[] | []>([]);
   const onDelete = async (id: number) => {
     if (window.confirm("Точно хочешь удалить?")) {
-      await Api().category.delete(id);
-      await fetchData();
+      try {
+        setLoading(true);
+        await Api().category.delete(id);
+        await fetchData();
+      } catch (error) {
+        alert("Ошибка на сервере");
+      } finally {
+        setLoading(false);
+      }
     }
   };
 
