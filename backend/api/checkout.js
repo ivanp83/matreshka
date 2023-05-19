@@ -18,7 +18,7 @@ module.exports = {
 
     const map = new Map();
 
-    for (let prod of productInDb) {
+    for (const prod of productInDb) {
       const { quantity } = orderProducts.find((p) => {
         if (p.id == prod.id) return p.quantity;
       });
@@ -36,12 +36,10 @@ module.exports = {
 
     if (!customer.length) {
       customer = await customers.queryRows(
-        `INSERT INTO customers ("first_name", "last_name", "phone", "token") VALUES ('${
-          shippingAddress.first_name
-        }','${shippingAddress.last_name}','${shippingAddress.phone.replace(
-          /[^0-9]/g,
-          '',
-        )}', '${shippingAddress.first_name}');`,
+        `INSERT INTO customers ("first_name", "last_name", "phone", "token") 
+        VALUES ('${shippingAddress.first_name}','${shippingAddress.last_name}',
+        '${shippingAddress.phone.replace(/[^0-9]/g, '')}', 
+        '${shippingAddress.first_name}');`,
       );
     }
 
@@ -86,7 +84,7 @@ module.exports = {
     headers.append('Content-Type', 'application/json');
     const requestOptions = {
       method: 'POST',
-      headers: headers,
+      headers,
       body: JSON.stringify(payload),
       redirect: 'follow',
     };
@@ -96,7 +94,8 @@ module.exports = {
 
     await orders.queryRows(
       `UPDATE orders
- SET yookassa_id = $2, amount = $3, currency=$4, order_status=$5, shipping_address=$6, order_items=$7  WHERE orders.id= $1;`,
+ SET yookassa_id = $2, amount = $3, currency=$4, order_status=$5, 
+ shipping_address=$6, order_items=$7  WHERE orders.id= $1;`,
       [
         newOrder[0].id,
         yookassaResponse.id,

@@ -63,7 +63,7 @@ export default function Header() {
         }
         .num {
           position: absolute;
-          top: 17px;
+          top: 18px;
           left: 50%;
           transform: translate(-50%, -50%);
           display: flex;
@@ -71,7 +71,7 @@ export default function Header() {
           justify-content: center;
         }
         .num span {
-          font-size: 16px;
+          font-size: 14px;
         }
         a {
           display: contents;

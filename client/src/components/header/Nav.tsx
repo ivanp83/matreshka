@@ -26,13 +26,7 @@ const Nav: FC<NavProps> = ({ id }) => {
           </NavLink>
         </li>
 
-        <li>
-          <NavLink className={setActive} to={`admin`}>
-            Admin
-          </NavLink>
-        </li>
-
-        {id == 1294200727 && (
+        {id == import.meta.env.CLIENT_ADMIN_ID && (
           <li>
             <NavLink className={setActive} to={`admin`}>
               Admin

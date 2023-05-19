@@ -5,7 +5,7 @@ const { db } = require('../db');
 const orders = db('products');
 const products = db('products');
 const customers = db('customers');
-const getBot = require('../lib/bot');
+const { bot } = require('../lib/bot');
 const config = require('../config.js');
 
 const getInvoice = (id, products, orderId) => {
@@ -46,7 +46,7 @@ module.exports = {
       'Authorization',
       'Basic ' +
         Buffer.from(
-          process.env.YOOKASSA_SHOPID + ':' + process.env.YOOKASSA_TOKEN,
+          config.yookassa.shopId + ':' + config.yookassa.token,
         ).toString('base64'),
     );
 
@@ -93,7 +93,7 @@ module.exports = {
       const productInDb = await products.read(product.product_id);
       orderProducts.push(productInDb.rows[0]);
     }
-    const bot = getBot();
+
     await bot.telegram.sendInvoice(
       userId,
       getInvoice(userId, productsReq, newOrder[0].id),

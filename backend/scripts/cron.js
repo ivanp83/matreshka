@@ -5,8 +5,7 @@ const { db } = require('../db');
 const config = require('../config.js');
 const orders = db('orders');
 const customers = db('customers');
-const getBot = require('../lib/bot');
-const bot = getBot(config.bot, config.adminId);
+const { bot } = require('../lib/bot');
 
 const getStatusPaymentProvider = async (id) => {
   const myHeaders = new Headers();
