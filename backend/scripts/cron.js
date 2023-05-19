@@ -2,11 +2,11 @@
 
 const { sendAlertOrderSuccess, getorderItems } = require('../utils/helpers');
 const { db } = require('../db');
+const config = require('../config.js');
 const orders = db('orders');
 const customers = db('customers');
-const { bot } = require('../lib/bot');
-
-const config = require('../config.js');
+const getBot = require('../lib/bot');
+const bot = getBot(config.bot, config.adminId);
 
 const getStatusPaymentProvider = async (id) => {
   const myHeaders = new Headers();

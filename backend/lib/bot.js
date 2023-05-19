@@ -3,13 +3,8 @@ const { Telegraf } = require('telegraf');
 const { pool } = require('../db');
 const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
 
-// const EventEmitter = require('node:events');
-
-// class MyEmitter extends EventEmitter {}
-
-// const myEmitter = new MyEmitter();
 let bot;
-module.exports = (config, adminId, console) => {
+module.exports = (config, adminId) => {
   try {
     if (bot) return bot;
     bot = new Telegraf(config.token);
