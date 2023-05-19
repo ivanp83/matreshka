@@ -7,6 +7,7 @@ const config = require('./config.js');
 const bot = require('./lib/bot.js');
 const transport = require(`./transport/${config.api.transport}.js`);
 const apiPath = path.join(process.cwd(), './api');
+const root = path.join(process.cwd(), 'public', 'images');
 const routing = {};
 
 (async () => {
@@ -20,7 +21,7 @@ const routing = {};
       routing[serviceName] = require(filePath);
     }
 
-    staticServer('./public', config.static.port, logger);
+    staticServer(root, config.static.port, logger);
     transport(routing, config.api.port, config.adminId, logger);
     bot(routing, config.bot, config.adminId, logger);
   } catch (error) {

@@ -7,7 +7,7 @@ const products = db('products');
 const customers = db('customers');
 const { bot } = require('../lib/bot');
 const config = require('../config.js');
-// const bot = Bot.getInstance();
+
 const getInvoice = (id, products, orderId) => {
   const invoice = {
     chat_id: id,
