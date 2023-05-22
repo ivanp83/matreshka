@@ -1,5 +1,5 @@
 import { Category } from "@/types";
-import React from "react";
+import { forwardRef } from "react";
 import CustomImage from "../image";
 import Link from "next/link";
 import { useAppContext } from "@/app/context/app.context";
@@ -61,6 +61,7 @@ export default function Categories({ categories }: Props) {
           display: contents;
         }
         .image {
+          display: block;
           position: absolute;
           width: 3rem;
           height: 4rem;
@@ -117,14 +118,14 @@ export default function Categories({ categories }: Props) {
                   setActiveCategory(cat.id);
                 }}
               >
-                <div className="image">
+                <span className="image">
                   <CustomImage
                     src={cat.image}
                     alt={cat.name}
                     sizes="(max-width: 768px) 300px,
 (max-width: 1200px) 600px"
                   />
-                </div>
+                </span>
                 <span className="num">0{i + 1}/</span>
                 <span className="text">{cat.name}</span>
               </button>
