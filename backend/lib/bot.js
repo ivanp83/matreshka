@@ -43,13 +43,12 @@ module.exports = (config, adminId, console) => {
     }
   };
   appEmitter.on('newOrderEvent', (data) => {
-    // bot.telegram.sendMessage(adminId, `${data}`);
-    const parsedDate = JSON.parse(data);
-    console.log(parsedDate);
-    // bot.telegram.sendInvoice(
-    //   userId,
-    //   getInvoice(userId, productsReq, newOrder[0].id, config.providerToken),
-    // );
+    const { userId, productsReq, orderId } = JSON.parse(data);
+
+    bot.telegram.sendInvoice(
+      userId,
+      getInvoice(userId, productsReq, orderId, config.providerToken),
+    );
   });
 
   bot.on('text', (ctx) => {
