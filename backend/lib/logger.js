@@ -53,7 +53,6 @@ class Logger {
   }
 
   error(...args) {
-    console.log(args);
     const msg = util.format(...args).replace(/[\n\r]{2,}/g, '\n');
     this.write('error', msg.replace(this.regexp, ''));
   }

@@ -17,7 +17,6 @@ export default function Index({ categories }: Props) {
   const { loading, setLoading, activeCategory } = useAppContext();
   const [stateProducts, setStateProducts] = useState<Array<ProductItem>>();
   const handleProducts = async (id: number) => {
-    console.log(id);
     try {
       let res;
       setLoading(true);

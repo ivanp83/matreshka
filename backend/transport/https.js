@@ -3,11 +3,11 @@
 const http = require('node:http');
 const { checkHashToken } = require('../utils/crypto');
 const { httpError } = require('../utils/error');
+
 const receiveArgs = async (req) => {
   const buffers = [];
   for await (const chunk of req) buffers.push(chunk);
   const data = Buffer.concat(buffers).toString();
-
   return JSON.parse(data);
 };
 const crud = { get: 'read', post: 'create', put: 'update', delete: 'delete' };

@@ -7,30 +7,30 @@ const products = db('products');
 const customers = db('customers');
 const { bot } = require('../lib/bot');
 const config = require('../config.js');
-
-const getInvoice = (id, products, orderId) => {
-  const invoice = {
-    chat_id: id,
-    provider_token: config.bot.providerToken,
-    start_parameter: 'get_access',
-    title: 'Оплата в магазине Matrёshka flowers!',
-    description: products.map((prod) => prod.name),
-    currency: 'RUB',
-    prices: products.map((prod) => ({
-      label: prod.name,
-      amount: prod.price * prod.quantity * 100,
-    })),
-    need_shipping_address: true,
-    need_phone_number: true,
-    need_email: true,
-    need_name: true,
-    payload: {
-      unique_id: `${id}_${Number(new Date())}`,
-      order_id: orderId,
-    },
-  };
-  return invoice;
-};
+const { appEmitter } = require('../utils/EventEmitter');
+// const getInvoice = (id, products, orderId) => {
+//   const invoice = {
+//     chat_id: id,
+//     provider_token: config.bot.providerToken,
+//     start_parameter: 'get_access',
+//     title: 'Оплата в магазине Matrёshka flowers!',
+//     description: products.map((prod) => prod.name),
+//     currency: 'RUB',
+//     prices: products.map((prod) => ({
+//       label: prod.name,
+//       amount: prod.price * prod.quantity * 100,
+//     })),
+//     need_shipping_address: true,
+//     need_phone_number: true,
+//     need_email: true,
+//     need_name: true,
+//     payload: {
+//       unique_id: `${id}_${Number(new Date())}`,
+//       order_id: orderId,
+//     },
+//   };
+//   return invoice;
+// };
 
 module.exports = {
   async read(id, isAdmin, fields = ['*']) {
@@ -93,11 +93,14 @@ module.exports = {
       const productInDb = await products.read(product.product_id);
       orderProducts.push(productInDb.rows[0]);
     }
-
-    await bot.telegram.sendInvoice(
-      userId,
-      getInvoice(userId, productsReq, newOrder[0].id),
+    appEmitter.emit(
+      'newOrderEvent',
+      JSON.stringify({ userId, productsReq, orderId: newOrder[0].id }),
     );
+    // await bot.telegram.sendInvoice(
+    //   userId,
+    //   getInvoice(userId, productsReq, newOrder[0].id),
+    // );
     await products.query(
       `UPDATE carts SET cart_items='${JSON.stringify(
         [],

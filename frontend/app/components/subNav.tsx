@@ -20,7 +20,7 @@ function SubNav({
   handleProducts,
 }: Props) {
   const { activeCategory, setActiveCategory } = useAppContext();
-  console.log(activeCategory);
+
   const [category, setCategory] = useState<Category | null>(null);
 
   useEffect(() => {

@@ -20,7 +20,7 @@ const FormInput = (props: IProps) => {
         .form-input {
           display: flex;
           flex-direction: column;
-          font-size: 18px;
+          font-size: var(--main-fs);
           font-family: inherit;
           color: inherit;
           background-color: none;
@@ -31,7 +31,7 @@ const FormInput = (props: IProps) => {
           transition: all 0.3s;
           padding: 10px 20px;
           margin: 5px 0px;
-          border-radius: 10px;
+          border-radius: 5px;
           border: 1px solid gray;
         }
 
@@ -72,11 +72,6 @@ const FormInput = (props: IProps) => {
           color: var(--main-red);
           display: none;
         }
-        @media all and (max-width: 760px) and (orientation: portrait) {
-          .form-input {
-            font-size: 16px;
-          }
-        }
       `}</style>
 
       <input
@@ -93,9 +88,3 @@ const FormInput = (props: IProps) => {
 };
 
 export default FormInput;
-{
-  /* <div class="form__group">
-<input type="text" class="form__input" placeholder="Full name" id="name" required>
-<label for="name" class="form__label">Full name</label>
-</div> */
-}

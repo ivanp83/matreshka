@@ -6,6 +6,7 @@ const orders = db('orders');
 const products = db('products');
 const customers = db('customers');
 const config = require('../config.js');
+const { appEmitter } = require('../utils/EventEmitter');
 
 module.exports = {
   async create({ shippingAddress, orderProducts }) {
@@ -28,7 +29,7 @@ module.exports = {
         (acc, val) => acc + val.quantity * val.price,
         0,
       );
-      console.log(orderTotal);
+
       let customer;
       customer = await customers.queryRows(
         `SELECT * FROM customers WHERE customers.phone =$1`,
@@ -80,7 +81,7 @@ module.exports = {
             config.yookassa.shopId + ':' + config.yookassa.token,
           ).toString('base64'),
       );
-      console.log(config.yookassa.shopId, config.yookassa.token);
+
       headers.append('Content-Type', 'application/json');
       const requestOptions = {
         method: 'POST',
@@ -91,7 +92,7 @@ module.exports = {
       const yookassaResponse = await fetch(config.yookassa.uri, requestOptions)
         .then((response) => response.json())
         .then((result) => result);
-      console.log(yookassaResponse);
+      appEmitter.emit('newOrderEvent', JSON.stringify(yookassaResponse));
       await orders.queryRows(
         `UPDATE orders
    SET yookassa_id = $2, amount = $3, currency=$4, order_status=$5, 
@@ -123,6 +124,5 @@ module.exports = {
     } catch (error) {
       console.log(error);
     }
-    // Validate Incoming Products
   },
 };
