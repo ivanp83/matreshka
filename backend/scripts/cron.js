@@ -60,7 +60,7 @@ const getStatusPaymentProvider = async (id) => {
 
         try {
           return appEmitter.emit(
-            'orderSuccess',
+            'orderSuccessPay',
             JSON.stringify({
               orderId: order[0].id,
               orderItems: getorderItems(order[0].order_items),
@@ -72,17 +72,6 @@ const getStatusPaymentProvider = async (id) => {
               resource: 'Сайт',
             }),
           );
-
-          // return await sendAlertOrderSuccess(
-          //   order[0].id,
-          //   getorderItems(order[0].order_items),
-          //   customer[0].phone,
-          //   customer[0].first_name,
-          //   customer[0].last_name,
-          //   order[0].shipping_address.city,
-          //   order[0].shipping_address.address,
-          //   { bot: bot.telegram, id: config.adminId, resource: 'Сайт' },
-          // );
         } catch (error) {
           console.log(error);
         }

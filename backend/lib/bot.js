@@ -85,7 +85,7 @@ module.exports = (config, adminId, console) => {
       console.log(error);
     }
   });
-  appEmitter.on('orderSuccess', async (data) => {
+  appEmitter.on('orderSuccessPay', async (data) => {
     const {
       orderId,
       orderItems,
