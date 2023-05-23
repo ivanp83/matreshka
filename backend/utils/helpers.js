@@ -51,44 +51,9 @@ const convertImage = async (base64, folder, size) =>
       });
   });
 
-const sendAlertOrderSuccess = async (
-  yookassaId,
-  orderItems,
-  phone,
-  firstName,
-  lastName,
-  city,
-  address,
-  { bot, id, resource },
-) => {
-  const serializedItems = orderItems.map(
-    (item, i) =>
-      `${i + 1}. <pre>${item.product}</pre>, <pre>${
-        item.quantity
-      }шт.</pre>, <pre>${item.price}руб.</pre>`,
-  );
-  const messageHTML = `<b>Новый заказ #${yookassaId}</b>\n\n
-<b>Товары:</b>
-    <pre>${serializedItems}</pre>\n\n
-<b>Покупатель:</b>
-    <pre>${firstName}</pre>
-    <pre>${lastName}</pre>
-    <pre>тел. ${phone}</pre>\n\n
-<b>Адрес доставки:</b>
-    <pre>${city}</pre>
-    <pre>${address}</pre>\n\n
-<b>Площадка:</b>
-    <pre>${resource}</pre>
-
-`;
-  return await bot.sendMessage(id, messageHTML, {
-    parse_mode: 'html',
-  });
-};
-
 module.exports = {
   convertImage,
-  sendAlertOrderSuccess,
+
   productsToDB,
   getorderItems,
 };

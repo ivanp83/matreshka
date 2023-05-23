@@ -1,7 +1,7 @@
 'use strict';
 const { Telegraf } = require('telegraf');
 const { pool } = require('../db');
-const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
+const { getorderItems } = require('../utils/helpers');
 const { appEmitter } = require('../utils/EventEmitter');
 
 const getInvoice = (id, products, orderId, token) => {
@@ -27,7 +27,38 @@ const getInvoice = (id, products, orderId, token) => {
   };
   return invoice;
 };
+const sendAlertOrderSuccess = async (
+  yookassaId,
+  orderItems,
+  phone,
+  firstName,
+  lastName,
+  city,
+  address,
+  resource,
+) => {
+  const serializedItems = orderItems.map(
+    (item, i) =>
+      `${i + 1}. <pre>${item.product}</pre>, <pre>${
+        item.quantity
+      }шт.</pre>, <pre>${item.price}руб.</pre>`,
+  );
+  const messageHTML = `<b>Новый заказ #${yookassaId}</b>\n\n
+<b>Товары:</b>
+    <pre>${serializedItems}</pre>\n\n
+<b>Покупатель:</b>
+    <pre>${firstName}</pre>
+    <pre>${lastName}</pre>
+    <pre>тел. ${phone}</pre>\n\n
+<b>Адрес доставки:</b>
+    <pre>${city}</pre>
+    <pre>${address}</pre>\n\n
+<b>Площадка:</b>
+    <pre>${resource}</pre>
 
+`;
+  return messageHTML;
+};
 module.exports = (config, adminId, console) => {
   const bot = new Telegraf(config.token);
   const getOrderIdfromCTX = (ctx) => {
@@ -42,13 +73,47 @@ module.exports = (config, adminId, console) => {
       ctx.forwardMessage(adminId, ctx.from.id, ctx.message.id);
     }
   };
-  appEmitter.on('newOrderEvent', (data) => {
-    const { userId, productsReq, orderId } = JSON.parse(data);
+  appEmitter.on('newOrderEvent', async (data) => {
+    try {
+      const { userId, productsReq, orderId } = JSON.parse(data);
 
-    bot.telegram.sendInvoice(
-      userId,
-      getInvoice(userId, productsReq, orderId, config.providerToken),
-    );
+      await bot.telegram.sendInvoice(
+        userId,
+        getInvoice(userId, productsReq, orderId, config.providerToken),
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  appEmitter.on('orderSuccess', async (data) => {
+    const {
+      orderId,
+      orderItems,
+      phone,
+      name,
+      lastName,
+      city,
+      address,
+      resource,
+    } = JSON.parse(data);
+    try {
+      const HTML = sendAlertOrderSuccess(
+        orderId,
+        orderItems,
+        phone,
+        name,
+        lastName,
+        city,
+        address,
+        resource,
+      );
+
+      return await bot.sendMessage(adminId, HTML, {
+        parse_mode: 'html',
+      });
+    } catch (error) {
+      console.log(error);
+    }
   });
 
   bot.on('text', (ctx) => {
@@ -175,7 +240,7 @@ module.exports = (config, adminId, console) => {
       customer.last_name,
       updatedOrder.shipping_address.city,
       updatedOrder.shipping_address.address,
-      { bot: bot.telegram, id: adminId, resource: 'Телеграм Бот' },
+      'Телеграм Бот',
     );
   });
   console.log('Bot is running');
