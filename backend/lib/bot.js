@@ -45,7 +45,7 @@ module.exports = (config, adminId, console) => {
   appEmitter.on('newOrderEvent', (data) => {
     // bot.telegram.sendMessage(adminId, `${data}`);
     const parsedDate = JSON.parse(data);
-    console.label(parsedDate);
+    console.log(parsedDate);
     // bot.telegram.sendInvoice(
     //   userId,
     //   getInvoice(userId, productsReq, newOrder[0].id, config.providerToken),
