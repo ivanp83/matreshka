@@ -41,7 +41,7 @@ export default function RootLayout({
     return () => {
       Router.events.off("routeChangeComplete", handleRouteChange);
     };
-  }, [Router.events]);
+  }, []);
   return (
     <html lang="ru">
       <meta

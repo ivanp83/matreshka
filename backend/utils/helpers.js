@@ -53,7 +53,6 @@ const convertImage = async (base64, folder, size) =>
 
 module.exports = {
   convertImage,
-
   productsToDB,
   getorderItems,
 };

@@ -27,12 +27,12 @@
 }
 .button.add {
   width: 80px;
-  background-color: var(--main-green);
+  background-color: var(--dark-green);
 }
 
 .button.remove {
   width: 80px;
-  background-color: tomato;
+  background-color: var(--dark-red);
 }
 .button.back {
   display: flex;
@@ -77,12 +77,12 @@
     background-color: var(--main-gray);
   }
   .button.add:hover {
-    background-color: var(--dark-green);
+    background-color: var(--main-green);
   }
   .button.checkout:hover {
     background-color: var(--dark-green);
   }
   .button.remove:hover {
-    background-color: var(--dark-red);
+    background-color: var(--main-red);
   }
 }
