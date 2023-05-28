@@ -9,8 +9,7 @@ import Footer from "./components/footer";
 import { useEffect } from "react";
 import { Router } from "next/router";
 import Head from "next/head";
-import Analytics, * as ga from "../lib/ga";
-import Script from "next/script";
+import * as ga from "../lib/ga";
 
 const inter = Roboto_Flex({
   weight: ["400", "500", "600", "700"],
@@ -32,6 +31,17 @@ export default function RootLayout({
     });
   }, []);
 
+  useEffect(() => {
+    const handleRouteChange = (url: URL) => {
+      ga.pageview(url);
+    };
+
+    Router.events.on("routeChangeComplete", handleRouteChange);
+
+    return () => {
+      Router.events.off("routeChangeComplete", handleRouteChange);
+    };
+  }, []);
   return (
     <html lang="ru">
       <meta
@@ -40,7 +50,7 @@ export default function RootLayout({
       />
       <meta name="yandex-verification" content="6ff734a1b919092d" />
       <Head>
-        {/* <script
+        <script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
         />
@@ -55,7 +65,7 @@ export default function RootLayout({
             });
           `,
           }}
-        /> */}
+        />
         <script
           dangerouslySetInnerHTML={{
             __html: `
@@ -65,7 +75,7 @@ export default function RootLayout({
             k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
             (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
   
-            ym(93453434, "init", {
+            ym(${process.env.NEXT_PUBLIC_YANDEX_METRICS}, "init", {
               clickmap:true,
               trackLinks:true,
               accurateTrackBounce:true,
@@ -75,7 +85,6 @@ export default function RootLayout({
           `,
           }}
         />
-
         <noscript>
           <div>
             <img
@@ -94,17 +103,6 @@ export default function RootLayout({
             <Header />
             <MobileNav />
             <main>{children}</main>
-            <Analytics />
-            <Script id="onRouteChange">{`
-        (function (history) {
-          var pushState = history.pushState;
-          history.pushState = function(state){
-            var result = pushState.apply(history, arguments);
-            window.dispatchEvent(new Event("routeChange", state));
-            return result;
-          };
-        })(window.history);
-      `}</Script>
             <Footer />
           </body>
         </AppProvider>
