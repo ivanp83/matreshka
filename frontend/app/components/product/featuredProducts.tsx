@@ -45,6 +45,7 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
           width: 100%;
           height: 100%;
           object-fit: cover;
+          object-position: top;
         }
         .details {
           margin-top: 5px;

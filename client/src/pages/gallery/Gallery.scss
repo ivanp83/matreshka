@@ -19,6 +19,7 @@
         width: 100%;
         height: calc(var(--cont-width) / 2 * 4 / 3);
         object-fit: cover;
+        object-position: top;
         user-select: none;
         border-radius: 10px;
         background-color: var(--light-pink);

@@ -32,6 +32,7 @@ export default function Slider({ products }: Props) {
         }
         img {
           position: absolute;
+          object-position: top;
           top: 0;
           left: 0;
           width: 100%;
