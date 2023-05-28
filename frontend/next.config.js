@@ -18,7 +18,6 @@ const nextConfig = {
 
     NEXT_PUBLIC_GOOGLE_ANALYTICS: "G-4PF6XCTC4L",
     NEXT_PUBLIC_YANDEX_METRICS: "93453434",
-    SITE_URL: "https://matryoshkaflowers.ru",
   },
 
   generateRobotsTxt: true,
