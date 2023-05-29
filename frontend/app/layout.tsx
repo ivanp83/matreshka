@@ -8,8 +8,10 @@ import MobileNav from "./components/navigation/mobileAside";
 import Footer from "./components/footer";
 import { useEffect } from "react";
 import { Router } from "next/router";
-import { YandexMetricaProvider } from "next-yandex-metrica";
 import { GoogleAnalytics } from "nextjs-google-analytics";
+
+import { YandexMetricaProvider } from "next-yandex-metrica";
+
 const inter = Roboto_Flex({
   weight: ["400", "500", "600", "700"],
   preload: false,
@@ -39,6 +41,7 @@ export default function RootLayout({
       <meta name="yandex-verification" content="6ff734a1b919092d" />
 
       <StyledJsxRegistry>
+        <GoogleAnalytics />
         <YandexMetricaProvider
           tagID={Number(process.env.NEXT_PUBLIC_YANDEX_METRICS)}
           initParameters={{
@@ -57,7 +60,6 @@ export default function RootLayout({
               <MobileNav />
               <main>{children}</main>
               <Footer />
-              <GoogleAnalytics trackPageViews />
             </body>
           </AppProvider>
         </YandexMetricaProvider>
