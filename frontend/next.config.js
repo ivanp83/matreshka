@@ -16,7 +16,7 @@ const nextConfig = {
       ? "https://static.matryoshkaflowers.ru/api"
       : "http://localhost:8001/api",
 
-    NEXT_PUBLIC_GOOGLE_ANALYTICS: "G-4PF6XCTC4L",
+    NEXT_PUBLIC_GA_MEASUREMENT_ID: "G-4PF6XCTC4L",
     NEXT_PUBLIC_YANDEX_METRICS: "93453434",
   },
 

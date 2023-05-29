@@ -8,10 +8,8 @@ import MobileNav from "./components/navigation/mobileAside";
 import Footer from "./components/footer";
 import { useEffect } from "react";
 import { Router } from "next/router";
-import Head from "next/head";
-import * as ga from "../lib/ga";
 import { YandexMetricaProvider } from "next-yandex-metrica";
-
+import { GoogleAnalytics } from "nextjs-google-analytics";
 const inter = Roboto_Flex({
   weight: ["400", "500", "600", "700"],
   preload: false,
@@ -32,17 +30,6 @@ export default function RootLayout({
     });
   }, []);
 
-  useEffect(() => {
-    const handleRouteChange = (url: URL) => {
-      ga.pageview(url);
-    };
-
-    Router.events.on("routeChangeComplete", handleRouteChange);
-
-    return () => {
-      Router.events.off("routeChangeComplete", handleRouteChange);
-    };
-  }, []);
   return (
     <html lang="ru">
       <meta
@@ -50,24 +37,7 @@ export default function RootLayout({
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
       />
       <meta name="yandex-verification" content="6ff734a1b919092d" />
-      <Head>
-        <script
-          async
-          src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', '${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}', {
-              page_path: window.location.pathname,
-            });
-          `,
-          }}
-        />
-      </Head>
+
       <StyledJsxRegistry>
         <YandexMetricaProvider
           tagID={Number(process.env.NEXT_PUBLIC_YANDEX_METRICS)}
@@ -87,6 +57,7 @@ export default function RootLayout({
               <MobileNav />
               <main>{children}</main>
               <Footer />
+              <GoogleAnalytics trackPageViews />
             </body>
           </AppProvider>
         </YandexMetricaProvider>
