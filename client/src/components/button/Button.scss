@@ -16,13 +16,13 @@
 .button.add {
   padding: 0.5rem 0.8rem;
   width: 8rem;
-  background-color: var(--main-green);
+  // background-color: var(--main-green);
 }
 
 .button.remove {
   padding: 0.3rem 0.8rem;
-  width: 80px;
-  background-color: tomato;
+  width: 8rem;
+  // background-color: tomato;
 }
 .button.back {
   display: flex;
@@ -48,20 +48,20 @@
   transform: scale(0.98);
 }
 
-.button.add:hover {
-  background-color: #cab320;
-}
+// .button.add:hover {
+//   background-color: #cab320;
+// }
 
-.button.add:active {
-  background-color: #ad9a1c;
-}
+// .button.add:active {
+//   background-color: #ad9a1c;
+// }
 
-.button.remove:hover {
-  background-color: var(--main-red);
-}
-.button.remove:active {
-  background-color: var(--dark-red);
-}
+// .button.remove:hover {
+//   background-color: var(--main-red);
+// }
+// .button.remove:active {
+//   background-color: var(--dark-red);
+// }
 
 .button.checkout:hover {
   background-color: var(--main-green);
