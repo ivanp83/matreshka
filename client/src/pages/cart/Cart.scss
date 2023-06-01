@@ -81,8 +81,8 @@
             display: grid;
             justify-content: space-between;
             width: fit-content;
-            grid-auto-flow: row;
-            grid-gap: 5px;
+            grid-auto-flow: column;
+            grid-gap: 10px;
           }
         }
       }
