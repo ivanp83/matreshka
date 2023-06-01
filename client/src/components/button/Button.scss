@@ -14,15 +14,17 @@
   color: var(--main-light);
 }
 .button.add {
+  border-radius: 0;
   border: 1px solid var(--main-green);
-  padding: 0.3rem;
+  padding: 0.2rem;
   display: grid;
   place-content: center;
 }
 
 .button.remove {
+  border-radius: 0;
   border: 1px solid tomato;
-  padding: 0.3rem;
+  padding: 0.2rem;
   display: grid;
   place-content: center;
 }
