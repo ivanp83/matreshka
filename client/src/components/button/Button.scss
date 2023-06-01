@@ -14,17 +14,15 @@
   color: var(--main-light);
 }
 .button.add {
-  padding: 0.5rem 0.8rem;
   border: 1px solid var(--main-green);
-  padding: 0.5rem;
+  padding: 0.3rem;
   display: grid;
   place-content: center;
 }
 
 .button.remove {
-  padding: 0.3rem 0.8rem;
   border: 1px solid tomato;
-  padding: 0.5rem;
+  padding: 0.3rem;
   display: grid;
   place-content: center;
 }
@@ -51,21 +49,6 @@
 .button:active {
   transform: scale(0.98);
 }
-
-// .button.add:hover {
-//   background-color: #cab320;
-// }
-
-// .button.add:active {
-//   background-color: #ad9a1c;
-// }
-
-// .button.remove:hover {
-//   background-color: var(--main-red);
-// }
-// .button.remove:active {
-//   background-color: var(--dark-red);
-// }
 
 .button.checkout:hover {
   background-color: var(--main-green);
