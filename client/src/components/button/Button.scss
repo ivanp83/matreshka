@@ -15,20 +15,18 @@
 }
 .button.add {
   padding: 0.5rem 0.8rem;
-  border: 1px solid;
-  padding: 1rem;
+  border: 1px solid var(--main-green);
+  padding: 0.5rem;
   display: grid;
   place-content: center;
-  // background-color: var(--main-green);
 }
 
 .button.remove {
   padding: 0.3rem 0.8rem;
-  border: 1px solid;
-  padding: 1rem;
+  border: 1px solid tomato;
+  padding: 0.5rem;
   display: grid;
   place-content: center;
-  // background-color: tomato;
 }
 .button.back {
   display: flex;
