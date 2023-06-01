@@ -30,11 +30,11 @@
         grid-template-columns: var(--image-width) 1fr;
         background: #f7f7f7;
         color: var(--main-dark);
-        border-radius: 20px;
         padding: 10px;
         picture {
           position: relative;
-
+          border-radius: 20px;
+          overflow: hidden;
           img {
             width: var(--image-width);
             height: calc(var(--image-width) * (4 / 3));
