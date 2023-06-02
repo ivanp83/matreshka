@@ -35,7 +35,7 @@ export default function Index({ data: product, faturedData }: Props) {
   const router = useRouter();
   useEffect(() => {
     setActiveCategory(product.category_id);
-  }, [product]);
+  }, []);
 
   return (
     <motion.div
@@ -80,22 +80,7 @@ export default function Index({ data: product, faturedData }: Props) {
             display: grid;
             grid-gap: 1rem;
           }
-          @media all and (max-width: 1024px) and (orientation: portrait) {
-            .wrapp {
-              width: 100%;
-            }
-            .image {
-              width: 100%;
-              grid-column: 1/4;
-              height: calc((100vw - 40px) * 4 / 3);
-            }
-            .top {
-              margin-top: 1rem;
-            }
-            .details {
-              grid-column: 1/4;
-            }
-          }
+
           @media all and (max-width: 1024px) and (orientation: portrait) {
             .content {
               width: 100%;
@@ -106,6 +91,20 @@ export default function Index({ data: product, faturedData }: Props) {
             }
             .details {
               padding: 0;
+            }
+            .wrapp {
+              width: 100%;
+            }
+            .image {
+              width: 100%;
+              grid-column: 1/4;
+              height: calc((100vw) * 4 / 3);
+            }
+            .top {
+              margin-top: 1rem;
+            }
+            .details {
+              grid-column: 1/4;
             }
           }
           @media all and (max-width: 768px) and (orientation: portrait) {

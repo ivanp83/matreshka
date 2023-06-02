@@ -24,8 +24,8 @@ export default function Slider({ products }: Props) {
           height: 100%;
         }
         .image {
-          width: calc(var(--cont-w) / 5 - 20px);
-          height: calc(((var(--cont-w) / 5) - 20px) * 4 / 3);
+          width: calc(var(--cont-w) / 5 - 22px);
+          height: calc(((var(--cont-w) / 5) - 22px) * 4 / 3);
           position: relative;
           border-radius: 10px;
           overflow: hidden;
@@ -50,10 +50,16 @@ export default function Slider({ products }: Props) {
         h4 {
           grid-column: 2/4;
         }
+        @media all and (max-width: 1500px) {
+          .image {
+            width: calc(var(--cont-w) / 5 - 30px);
+            height: calc(((var(--cont-w) / 5) - 30px) * 4 / 3);
+          }
+        }
         @media all and (max-width: 1024px) {
           .image {
-            width: calc(100vw / 4 - 20px);
-            height: calc(((100vw / 4) - 20px) * 4 / 3);
+            width: calc(100vw / 4 - 30px);
+            height: calc(((100vw / 4) - 30px) * 4 / 3);
           }
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
@@ -73,8 +79,6 @@ export default function Slider({ products }: Props) {
             width: calc(100vw - 37px);
             height: calc((100vw - 37px) * 4 / 3);
           }
-        }
-        @media all and (max-width: 1024px) and (orientation: landscape) {
         }
       `}</style>
 
