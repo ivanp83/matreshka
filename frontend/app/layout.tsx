@@ -10,8 +10,6 @@ import { useEffect } from "react";
 import { Router } from "next/router";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 
-import { YandexMetricaProvider } from "next-yandex-metrica";
-
 const inter = Roboto_Flex({
   weight: ["400", "500", "600", "700"],
   preload: false,
@@ -42,27 +40,17 @@ export default function RootLayout({
 
       <StyledJsxRegistry>
         <GoogleAnalytics />
-        <YandexMetricaProvider
-          tagID={Number(process.env.NEXT_PUBLIC_YANDEX_METRICS)}
-          initParameters={{
-            clickmap: true,
-            trackLinks: true,
-            webvisor: true,
-            accurateTrackBounce: true,
-            ecommerce: "dataLayer",
-          }}
-        >
-          <AppProvider>
-            <body className={inter.className}>
-              <div id="root-loader" />
-              <div id="portal" />
-              <Header />
-              <MobileNav />
-              <main>{children}</main>
-              <Footer />
-            </body>
-          </AppProvider>
-        </YandexMetricaProvider>
+
+        <AppProvider>
+          <body className={inter.className}>
+            <div id="root-loader" />
+            <div id="portal" />
+            <Header />
+            <MobileNav />
+            <main>{children}</main>
+            <Footer />
+          </body>
+        </AppProvider>
       </StyledJsxRegistry>
     </html>
   );

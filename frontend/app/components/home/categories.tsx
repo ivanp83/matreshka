@@ -43,6 +43,7 @@ export default function Categories({ categories }: Props) {
           outline: none;
           background: transparent;
           cursor: pointer;
+          color: var(--main-dark);
         }
         .text {
           line-height: 1;

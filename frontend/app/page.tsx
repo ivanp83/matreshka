@@ -2,6 +2,7 @@ import { Category, ProductItem } from "@/types";
 import Index from "./components/home";
 import { Envs } from "@/utils/config";
 import { Metadata } from "next";
+
 export const metadata: Metadata = {
   title: "Матрёшка | Цветочный бутик",
   description: "Букеты премиального качества с доставкой по России",

@@ -94,6 +94,13 @@ h5 {
   font-weight: 500;
   text-transform: uppercase;
 }
+@media screen and (max-width: 767px) {
+  select:active,
+  input:active,
+  textarea:active {
+    font-size: var(--main-fs);
+  }
+}
 @media all and (max-width: 1500px) {
   :root {
     --main-fs: 18px;
@@ -132,6 +139,7 @@ h5 {
     padding: 0 20px;
   }
 }
+
 @media all and (max-width: 1024px) and (orientation: landscape) {
   :root {
     --big-fs: 14vw;
