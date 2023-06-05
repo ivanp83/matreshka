@@ -121,6 +121,11 @@ export default function Index({ data: product, faturedData }: Props) {
               width: 100%;
             }
           }
+          @media all and (max-width: 1000px) and (orientation: landscape) {
+            .details {
+              padding: 0;
+            }
+          }
         `}</style>
         <Portal>
           <AnimatePresence>

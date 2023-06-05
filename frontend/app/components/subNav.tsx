@@ -52,7 +52,7 @@ function SubNav({
           display: grid;
           grid-auto-flow: column;
           align-items: end;
-          font-size: 18px;
+          font-size: 16px;
           color: var(--main-gray);
           display: flex;
           align-items: flex-end;
@@ -62,8 +62,8 @@ function SubNav({
 
         .nav ul li svg {
           display: block;
-          width: 13px;
-          height: 13px;
+          width: 14px;
+          height: 14px;
         }
         .categories-list {
           display: grid;
@@ -106,8 +106,38 @@ function SubNav({
             display: block;
             grid-column: 3/4;
             color: var(--main-gray);
+            -webkit-appearance: button;
+            -moz-appearance: button;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -webkit-padding-end: 20px;
+            -moz-padding-end: 20px;
+            -webkit-padding-start: 2px;
+            -moz-padding-start: 2px;
+
+            border: 1px solid var(--main-gray);
+            border-radius: 2px;
+            box-shadow: none;
+            color: var(--main-gray);
+            font-size: 16px;
+            margin: 0;
+            overflow: hidden;
+            padding-top: 2px;
+            padding-bottom: 2px;
+            text-overflow: ellipsis;
+            white-space: nowrap;    
+            border: 1px solid var(--main-gray);
+    background: var(--main-light);
+    border-radius: 5px;
+    outline: none !important;        outline: 0px;
           }
-        }
+          select:focus {
+  
+    
+       
+          }
+
+
         @media all and (max-width: 600px) and (orientation: portrait) {
           .select {
             grid-column: 2/4;
@@ -119,7 +149,7 @@ function SubNav({
           }
           .list-item button {
             border: none;
-            font-size: 14px;
+            font-size: 16px;
             padding: 0;
           }
         }

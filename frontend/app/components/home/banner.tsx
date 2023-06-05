@@ -84,6 +84,9 @@ export default function Banner() {
           }
         }
         @media all and (max-width: 950px) and (orientation: landscape) {
+          .logo-title {
+            width: 80vw;
+          }
           .image {
             width: 30vw;
             height: 40vw;

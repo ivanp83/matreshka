@@ -1,11 +1,11 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+import { FreeMode } from "swiper";
 import { ProductItem } from "@/types";
 import Link from "next/link";
 import { Envs } from "@/utils/config";
 import { currencyFormat } from "@/utils/helpers";
-import LinkTo from "../shared/linkTo";
 
 type Props = { products: Array<ProductItem> };
 
@@ -58,8 +58,8 @@ export default function Slider({ products }: Props) {
         }
         @media all and (max-width: 1024px) {
           .image {
-            width: calc(100vw / 4 - 30px);
-            height: calc(((100vw / 4) - 30px) * 4 / 3);
+            width: calc(100vw / 4 - 20px);
+            height: calc(((100vw / 4) - 20px) * 4 / 3);
           }
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
@@ -83,8 +83,10 @@ export default function Slider({ products }: Props) {
       `}</style>
 
       <Swiper
-        spaceBetween={20}
+        spaceBetween={18}
         slidesPerView={5}
+        freeMode={true}
+        modules={[FreeMode]}
         style={{ width: "100%", gridColumn: "1/4" }}
         breakpoints={{
           250: {
@@ -96,7 +98,7 @@ export default function Slider({ products }: Props) {
           560: {
             slidesPerView: 4,
           },
-          // when window width is >= 768px
+          // when window width is >= 1200px
 
           1200: {
             slidesPerView: 5,

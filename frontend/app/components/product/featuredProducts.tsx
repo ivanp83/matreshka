@@ -6,6 +6,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Envs } from "@/utils/config";
+import { FreeMode } from "swiper";
 
 type Props = { data: ProductItem[] };
 
@@ -88,8 +89,10 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
       <h2> Другие букеты</h2>
 
       <Swiper
-        spaceBetween={20}
+        spaceBetween={18}
         slidesPerView={5}
+        freeMode={true}
+        modules={[FreeMode]}
         style={{ width: "100%" }}
         breakpoints={{
           250: {

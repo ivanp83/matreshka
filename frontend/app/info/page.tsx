@@ -57,18 +57,19 @@ export default function Page() {
           justify-self: start;
         }
         nav {
-          grid-column: 2/3;
-          display: grid;
-          grid-template-rows: min-content;
-          text-align: left;
-          grid-auto-flow: column;
-          grid-gap: 1rem;
-          width: fit-content;
+          grid-column: 1/2;
+    display: grid;
+    grid-template-rows: min-content;
+    text-align: left;
+    grid-gap: 10px;
+    width: fit-content;
+    grid-template-rows: min-content min-content min-content;
         }
         .nav-button {
           border: none;
           outline: none;
           background: transparent;
+          text-align:left;
         }
         .nav-button:not([disabled]) {
           cursor: pointer;
