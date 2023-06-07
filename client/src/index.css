@@ -36,7 +36,7 @@
     opacity: 0;
   }
   50% {
-    opacity: 0.6;
+    opacity: 0.71;
   }
   100% {
     opacity: 0;
@@ -45,6 +45,7 @@
 
 .blurred.loaded::before {
   animation: none;
+  content: none;
 }
 
 .blurred img {
