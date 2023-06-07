@@ -38,7 +38,7 @@ const Categories: FC = () => {
                 <li key={cat.id} className="category">
                   <NavLink to={`products/${cat.id}`}>
                     <figure>
-                      <div className="blurred square" ref={blurred}>
+                      <div className="blurred" ref={blurred}>
                         <img
                           src={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
                             cat.image
