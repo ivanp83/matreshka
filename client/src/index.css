@@ -17,6 +17,7 @@
   background-size: cover;
 } */
 .blurred {
+  background-image: url('"../assets/blurred.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -27,7 +28,7 @@
   inset: 0;
   opacity: 0;
   animation: pulse 2.5s infinite;
-  background-color: var(--text-color);
+  background-color: var(--light-pink);
 }
 
 @keyframes pulse {
