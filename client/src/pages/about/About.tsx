@@ -12,7 +12,7 @@ const About: FC = () => {
         <picture>
           <source media="(max-width: 799px)" srcSet={image} />
           <source media="(min-width: 800px)" srcSet={image} />
-          <img srcSet={image} alt="Юлиана Легкодумова" />
+          <img srcSet={image} alt="Юлиана Легкодумова" loading="lazy" />
         </picture>
 
         <p className="text">

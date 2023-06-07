@@ -46,27 +46,29 @@ const Product: FC = () => {
             </Button>
           </div>
           <figure>
-            <picture>
-              <source
-                media="(max-width: 600px)"
-                srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
-                  product.small
-                }`}
-              />
-              <source
-                media="(min-width: 601px)"
-                srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
-                  product.big
-                }`}
-              />
-              <img
-                srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
-                  product.big
-                }`}
-                alt={product.name}
-              />
-            </picture>
-
+            <div className="blurred">
+              <picture>
+                <source
+                  media="(max-width: 600px)"
+                  srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
+                    product.small
+                  }`}
+                />
+                <source
+                  media="(min-width: 601px)"
+                  srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
+                    product.big
+                  }`}
+                />
+                <img
+                  srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
+                    product.big
+                  }`}
+                  loading="lazy"
+                  alt={product.name}
+                />
+              </picture>
+            </div>
             <figcaption>
               <h2>{product.name}</h2>
               <span className="price">

@@ -38,6 +38,7 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
         />
         <img
           srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${product.big}`}
+          loading="lazy"
           alt="Chris standing up holding his daughter Elva"
         />
       </picture>

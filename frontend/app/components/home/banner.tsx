@@ -34,7 +34,7 @@ export default function Banner() {
           grid-column: 1/4;
         }
         .button {
-          grid-column: 2/3;
+          grid-column: 2/4;
           display: grid;
           justify-content: start;
         }

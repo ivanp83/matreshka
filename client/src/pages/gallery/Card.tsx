@@ -24,6 +24,7 @@ const Card: FC<CardProps> = ({ product }) => {
           />
           <img
             srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${big}`}
+            loading="lazy"
             alt={name}
           />
         </Link>
