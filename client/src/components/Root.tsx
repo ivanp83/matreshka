@@ -50,19 +50,7 @@ export default function Root() {
       tg.offEvent("mainButtonClicked", onSendData);
     };
   }, [onSendData]);
-  useEffect(() => {
-    const blurredImageDiv = document.querySelector(".blurred") as any;
-    const img = blurredImageDiv.querySelector("img");
-    function loaded() {
-      blurredImageDiv.classList.add("loaded");
-    }
 
-    if (img.complete) {
-      loaded();
-    } else {
-      img.addEventListener("load", loaded);
-    }
-  }, []);
   return (
     <>
       <Header />

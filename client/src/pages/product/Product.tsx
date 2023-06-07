@@ -1,4 +1,4 @@
-import { FC, Suspense, useLayoutEffect } from "react";
+import { FC, Suspense, useEffect, useLayoutEffect, useRef } from "react";
 import "./Product.scss";
 import Container from "../../components/container/Container";
 import { defer, useLoaderData, useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ import { currencyFormat } from "../../utils/helpers";
 import { ProductItem, ResolvedProductResponse } from "../../types/types";
 
 const Product: FC = () => {
+  const blurred = useRef(null);
   const { user } = useTelegram();
   const navigate = useNavigate();
   const { product } = useLoaderData() as ResolvedProductResponse;
@@ -23,7 +24,22 @@ const Product: FC = () => {
     onUpdate(user.id, product);
     navigate("/cart");
   };
+  useEffect(() => {
+    const blurredImageDiv = blurred.current as any;
+    if (blurredImageDiv) {
+      const img = blurredImageDiv.querySelector("img");
 
+      function loaded() {
+        if (!!blurredImageDiv) blurredImageDiv.classList.add("loaded");
+      }
+
+      if (img.complete) {
+        loaded();
+      } else {
+        img.addEventListener("load", loaded);
+      }
+    }
+  }, []);
   return (
     <section className={"product"}>
       <Container>
@@ -46,7 +62,7 @@ const Product: FC = () => {
             </Button>
           </div>
           <figure>
-            <div className="blurred">
+            <div className="blurred" ref={blurred}>
               <picture>
                 <source
                   media="(max-width: 600px)"
