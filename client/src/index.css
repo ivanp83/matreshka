@@ -20,6 +20,7 @@
   background-image: url('"../assets/blurred.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
+  position: relative;
 }
 
 .blurred::before {
@@ -29,6 +30,7 @@
   opacity: 0;
   animation: pulse 2.5s infinite;
   background-color: var(--light-pink);
+  border-radius: 10px;
 }
 
 @keyframes pulse {
