@@ -22,7 +22,7 @@
   background-size: cover;
 }
 
-.blurred::before {
+.blurred .inner {
   content: "";
   position: absolute;
   inset: 0;

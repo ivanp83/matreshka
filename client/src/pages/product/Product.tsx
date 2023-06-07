@@ -63,6 +63,7 @@ const Product: FC = () => {
           </div>
           <figure>
             <div className="blurred" ref={blurred}>
+              <div className="inner"></div>
               <picture>
                 <source
                   media="(max-width: 600px)"
