@@ -22,7 +22,9 @@
   background-size: cover;
   position: relative;
 }
-
+.blurred.square::before {
+  border-radius: 0;
+}
 .blurred::before {
   content: "";
   position: absolute;

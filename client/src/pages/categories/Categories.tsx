@@ -1,4 +1,4 @@
-import { FC, Suspense, useLayoutEffect } from "react";
+import { FC, Suspense, useEffect, useLayoutEffect, useRef } from "react";
 import "./Categories.scss";
 import Container from "../../components/container/Container";
 import { Api } from "../../api";
@@ -7,11 +7,27 @@ import { ResolvedCategoriesResponse } from "../../types/types";
 import { Await, NavLink, defer, useLoaderData } from "react-router-dom";
 
 const Categories: FC = () => {
+  const blurred = useRef(null);
   const { categories } = useLoaderData() as ResolvedCategoriesResponse;
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+  useEffect(() => {
+    const blurredImageDiv = blurred.current as any;
+    if (blurredImageDiv) {
+      const img = blurredImageDiv.querySelector("img");
 
+      function loaded() {
+        if (!!blurredImageDiv) blurredImageDiv.classList.add("loaded");
+      }
+
+      if (img.complete) {
+        loaded();
+      } else {
+        img.addEventListener("load", loaded);
+      }
+    }
+  }, []);
   return (
     <section className={"categories"}>
       <Container>
@@ -22,12 +38,14 @@ const Categories: FC = () => {
                 <li key={cat.id} className="category">
                   <NavLink to={`products/${cat.id}`}>
                     <figure>
-                      <img
-                        src={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
-                          cat.image
-                        }`}
-                        alt={cat.name}
-                      />
+                      <div className="blurred square" ref={blurred}>
+                        <img
+                          src={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
+                            cat.image
+                          }`}
+                          alt={cat.name}
+                        />
+                      </div>
                       <figcaption>
                         <h4>{cat.name}</h4>
                       </figcaption>
