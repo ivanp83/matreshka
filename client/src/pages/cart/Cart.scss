@@ -31,6 +31,27 @@
         background: #f7f7f7;
         color: var(--main-dark);
         padding: 10px;
+        .item-num {
+          position: absolute;
+          z-index: 10;
+          top: 23px;
+          right: 23px;
+          width: 30px;
+          height: 30px;
+          background-color: var(--main-yellow);
+          border-radius: 50%;
+          transform: translate(20px, -20px) scale(1);
+          color: var(--main-light);
+          font-weight: bold;
+          text-align: center;
+          font-size: 16px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          transition: all 0.3s ease;
+          animation: scaleanimation 1s ease infinite;
+          opacity: 0.8;
+        }
         picture {
           position: relative;
           border-radius: 10px;
@@ -39,27 +60,6 @@
             width: var(--image-width);
             height: calc(var(--image-width) * (4 / 3));
             object-fit: cover;
-          }
-          .item-num {
-            position: absolute;
-            z-index: 10;
-            top: 23px;
-            right: 23px;
-            width: 30px;
-            height: 30px;
-            background-color: var(--main-yellow);
-            border-radius: 50%;
-            transform: translate(20px, -20px) scale(1);
-            color: var(--main-light);
-            font-weight: bold;
-            text-align: center;
-            font-size: 16px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            transition: all 0.3s ease;
-            animation: scaleanimation 1s ease infinite;
-            opacity: 0.8;
           }
         }
         .info {
