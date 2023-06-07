@@ -1,20 +1,37 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import Container from "../../components/container/Container";
 import "./About.scss";
 import image from "../../assets/me.jpg";
 
 const About: FC = () => {
+  const blurred = useRef(null);
+  useEffect(() => {
+    const blurredImageDiv = blurred.current as any;
+    if (blurredImageDiv) {
+      const img = blurredImageDiv.querySelector("img");
+
+      function loaded() {
+        if (!!blurredImageDiv) blurredImageDiv.classList.add("loaded");
+      }
+
+      if (img.complete) {
+        loaded();
+      } else {
+        img.addEventListener("load", loaded);
+      }
+    }
+  }, []);
   return (
     <section className={"about"}>
       <Container>
         <h1>И так друзья!</h1>
-
-        <picture>
-          <source media="(max-width: 799px)" srcSet={image} />
-          <source media="(min-width: 800px)" srcSet={image} />
-          <img srcSet={image} alt="Юлиана Легкодумова" loading="lazy" />
-        </picture>
-
+        <div className="blurred" ref={blurred}>
+          <picture>
+            <source media="(max-width: 799px)" srcSet={image} />
+            <source media="(min-width: 800px)" srcSet={image} />
+            <img srcSet={image} alt="Юлиана Легкодумова" loading="lazy" />
+          </picture>
+        </div>
         <p className="text">
           <span>
             Меня зовут Юлиана &nbsp;

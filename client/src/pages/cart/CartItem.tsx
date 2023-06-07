@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect, useRef } from "react";
 import "./Cart.scss";
 import Button from "../../components/button/Button";
 
@@ -22,27 +22,49 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
   const handleDecrement = (product: ProductItem) => {
     onDecrement(user.id, product);
   };
+  const blurred = useRef(null);
+  useEffect(() => {
+    const blurredImageDiv = blurred.current as any;
+    if (blurredImageDiv) {
+      const img = blurredImageDiv.querySelector("img");
+
+      function loaded() {
+        if (!!blurredImageDiv) blurredImageDiv.classList.add("loaded");
+      }
+
+      if (img.complete) {
+        loaded();
+      } else {
+        img.addEventListener("load", loaded);
+      }
+    }
+  }, []);
   return (
     <li className={"item"}>
-      <picture>
-        <span className={"item-num"}>{count?.quantity}</span>
-        <source
-          media="(max-width: 799px)"
-          srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
-            product.small
-          }`}
-        />
-        <source
-          media="(min-width: 800px)"
-          srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${product.big}`}
-        />
-        <img
-          srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${product.big}`}
-          loading="lazy"
-          alt="Chris standing up holding his daughter Elva"
-        />
-      </picture>
-
+      <div className="blurred" ref={blurred}>
+        <picture>
+          <span className={"item-num"}>{count?.quantity}</span>
+          <source
+            media="(max-width: 799px)"
+            srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
+              product.small
+            }`}
+          />
+          <source
+            media="(min-width: 800px)"
+            srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
+              product.big
+            }`}
+          />
+          <img
+            srcSet={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
+              product.big
+            }`}
+            loading="lazy"
+            alt="Chris standing up holding his daughter Elva"
+          />
+        </picture>
+      </div>
       <div className="info">
         <h2>{product.name}</h2>
         <span className="price">{currencyFormat(product.price)}</span>

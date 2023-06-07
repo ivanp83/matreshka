@@ -22,7 +22,7 @@
   background-size: cover;
 }
 
-.blurred .inner {
+.blurred::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -36,7 +36,7 @@
     opacity: 0;
   }
   50% {
-    opacity: 0.1;
+    opacity: 0.6;
   }
   100% {
     opacity: 0;
@@ -45,7 +45,6 @@
 
 .blurred.loaded::before {
   animation: none;
-  content: none;
 }
 
 .blurred img {
