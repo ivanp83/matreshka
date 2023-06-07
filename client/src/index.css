@@ -32,7 +32,6 @@
   opacity: 0;
   animation: pulse 2.5s infinite;
   background-color: var(--light-pink);
-  border-radius: 10px;
 }
 
 @keyframes pulse {

@@ -26,7 +26,6 @@ export default function CartItem({ item }: Props) {
           overflow: hidden;
         }
         .image {
-          border-radius: 10px;
           overflow: hidden;
           position: relative;
           width: 8rem;
