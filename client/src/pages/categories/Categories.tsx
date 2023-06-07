@@ -12,22 +12,22 @@ const Categories: FC = () => {
   useLayoutEffect(() => {
     window.scrollTo(0, 0);
   }, []);
-  useEffect(() => {
-    const blurredImageDiv = blurred.current as any;
-    if (blurredImageDiv) {
-      const img = blurredImageDiv.querySelector("img");
+  // useEffect(() => {
+  //   const blurredImageDiv = blurred.current as any;
+  //   if (blurredImageDiv) {
+  //     const img = blurredImageDiv.querySelector("img");
 
-      function loaded() {
-        if (!!blurredImageDiv) blurredImageDiv.classList.add("loaded");
-      }
+  //     function loaded() {
+  //       if (!!blurredImageDiv) blurredImageDiv.classList.add("loaded");
+  //     }
 
-      if (img.complete) {
-        loaded();
-      } else {
-        img.addEventListener("load", loaded);
-      }
-    }
-  }, []);
+  //     if (img.complete) {
+  //       loaded();
+  //     } else {
+  //       img.addEventListener("load", loaded);
+  //     }
+  //   }
+  // }, []);
   return (
     <section className={"categories"}>
       <Container>
@@ -38,14 +38,13 @@ const Categories: FC = () => {
                 <li key={cat.id} className="category">
                   <NavLink to={`products/${cat.id}`}>
                     <figure>
-                      <div className="blurred" ref={blurred}>
-                        <img
-                          src={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
-                            cat.image
-                          }`}
-                          alt={cat.name}
-                        />
-                      </div>
+                      <img
+                        src={`${import.meta.env.CLIENT_BACKEND_STATIC_URL}${
+                          cat.image
+                        }`}
+                        alt={cat.name}
+                      />
+
                       <figcaption>
                         <h4>{cat.name}</h4>
                       </figcaption>
