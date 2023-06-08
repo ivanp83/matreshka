@@ -41,8 +41,8 @@ const CartItem: FC<CartItemProps> = ({ product }) => {
   }, []);
   return (
     <li className={"item"}>
-      <span className={"item-num"}>{count?.quantity}</span>
       <div className="blurred" ref={blurred}>
+        <span className={"item-num"}>{count?.quantity}</span>
         <picture>
           <source
             media="(max-width: 799px)"
