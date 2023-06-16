@@ -62,8 +62,8 @@ function SubNav({
 
         .nav ul li svg {
           display: block;
-          width: 14px;
-          height: 14px;
+          width: 15px;
+          height: 15px;
         }
         .categories-list {
           display: grid;
