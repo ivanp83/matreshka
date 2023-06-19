@@ -73,8 +73,8 @@ module.exports = {
         });
       }
 
-      const p1 = await convertImage(base64Data, folder, 600);
-      const p2 = await convertImage(base64Data, folder, 1200);
+      const p1 = await convertImage(base64Data, folder, 768);
+      const p2 = await convertImage(base64Data, folder, 1600);
       const [small, big] = await Promise.all([p1, p2]);
       await images.update(product_id, { small, big });
     }
