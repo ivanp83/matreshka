@@ -96,26 +96,7 @@ export default function Index() {
             (max-width: 1200px) 500px"
           />
         </div>
-        {/* Почему бы и да!!! - <span className="red">Why&Yes</span> */}
 
-        {/* <div className="image">
-        <Image
-          src="/images/1.png"
-          alt="Юлиана Легкодумова"
-          fill
-          style={{ objectFit: "cover", objectPosition: "top" }}
-        />
-      </div> */}
-        {/* <div className="left">
-        <div className="image">
-          <Image
-            src="/images/1.png"
-            alt="Юлиана Легкодумова"
-            fill
-            style={{ objectFit: "cover", objectPosition: "top" }}
-          />
-        </div>
-      </div> */}
         <div className="text">
           <b>
             Здравствуйте, дорогие мои! Меня зовут Юлиана, и я влюбленна в свою
