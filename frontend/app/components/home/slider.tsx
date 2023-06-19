@@ -27,8 +27,6 @@ export default function Slider({ products }: Props) {
           width: calc(var(--cont-w) / 5 - 22px);
           height: calc(((var(--cont-w) / 5) - 22px) * 4 / 3);
           position: relative;
-          border-radius: 10px;
-          overflow: hidden;
         }
         img {
           position: absolute;

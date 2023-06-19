@@ -38,8 +38,6 @@ const FeaturedProducts: FC<Props> = ({ data }) => {
           height: calc(((var(--cont-w) - 20px * 7) / 5) / 3 * 4);
           object-position: top;
           transform-origin: bottom;
-          border-radius: 10px;
-          overflow: hidden;
         }
         img {
           transition: 0.5s ease;

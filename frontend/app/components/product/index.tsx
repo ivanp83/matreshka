@@ -51,8 +51,6 @@ export default function Index({ data: product, faturedData }: Props) {
           }
 
           .image {
-            overflow: hidden;
-            border-radius: 10px;
             grid-column: 2/3;
             position: relative;
             width: 65vh;

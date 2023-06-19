@@ -24,7 +24,6 @@ export default function Gallery({ data }: Props) {
           overflow: hidden;
         }
         .image {
-          border-radius: 10px;
           overflow: hidden;
           width: 100%;
           height: calc((var(--cont-w) * 0.63 / 3) * 4 / 3);
