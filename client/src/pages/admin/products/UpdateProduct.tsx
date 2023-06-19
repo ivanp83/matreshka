@@ -85,7 +85,7 @@ const UpdateProduct = () => {
               <div>
                 <label htmlFor="description">Категория</label>
                 <select
-                  name="category"
+                  name="category_id"
                   onChange={handleChange}
                   defaultValue={currentCatеgory?.name}
                 >
