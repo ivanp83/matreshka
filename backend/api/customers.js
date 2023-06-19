@@ -8,14 +8,14 @@ const { getHashToken } = require('../utils/crypto');
 
 module.exports = {
   async create({ init_data }) {
-    //const user_info = checkAuthorization(init_data);
-    const user_info = {
-      id: 1294200727,
-      first_name: 'Ivan',
-      last_name: '',
-      username: 'eachpw',
-      language_code: 'ru',
-    };
+    const user_info = checkAuthorization(init_data);
+    // const user_info = {
+    //   id: 1294200727,
+    //   first_name: 'Ivan',
+    //   last_name: '',
+    //   username: 'eachpw',
+    //   language_code: 'ru',
+    // };
 
     if (!user_info) return;
     const { id, username, first_name } = user_info;
