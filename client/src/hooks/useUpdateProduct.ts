@@ -1,10 +1,4 @@
-import {
-  ChangeEvent,
-  Dispatch,
-  FormEvent,
-  RefObject,
-  SetStateAction,
-} from "react";
+import { ChangeEvent, Dispatch, FormEvent, SetStateAction } from "react";
 import { Api } from "../api";
 import { UpdateProductItem } from "../types/types";
 

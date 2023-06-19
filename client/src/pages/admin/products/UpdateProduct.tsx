@@ -28,6 +28,7 @@ const UpdateProduct = () => {
     stock: product.stock,
     category_id: currentCatеgory.id,
   });
+  console.log(data);
   const [base64Data, setBase64Data] = useState<string | ArrayBuffer | null>("");
   const navigate = useNavigate();
   const { onClick, handleFileChange, handleChange } = useUpdateProduct(
