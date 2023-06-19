@@ -32,7 +32,7 @@ export default function Index() {
           .image {
             grid-column: 1/2;
             position: absolute;
-            right: 0;
+            left: 0;
             width: 20rem;
             height: 20rem;
           }
