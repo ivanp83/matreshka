@@ -87,7 +87,7 @@ const UpdateProduct = () => {
                 <select
                   name="category_id"
                   onChange={handleChange}
-                  defaultValue={currentCatеgory?.name}
+                  defaultValue={currentCatеgory.id}
                 >
                   {categories.map((cat) => (
                     <option value={cat.id} key={cat.id}>
