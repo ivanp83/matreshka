@@ -1,10 +1,10 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
-import { FreeMode } from "swiper";
 import Link from "next/link";
 import { Envs } from "@/utils/config";
 import { currencyFormat } from "@/utils/helpers";
+import CustomImage from "../image";
 
 export default function Slider({ products }) {
   return (
@@ -80,8 +80,6 @@ export default function Slider({ products }) {
       <Swiper
         spaceBetween={18}
         slidesPerView={5}
-        freeMode={true}
-        modules={[FreeMode]}
         style={{ width: "100%", gridColumn: "1/4" }}
         breakpoints={{
           250: {
@@ -105,7 +103,9 @@ export default function Slider({ products }) {
             <div className="card-wrapp">
               <Link href={`product/${prod.id}`}>
                 <div className="image">
-                  <img
+                  <CustomImage
+                    direct
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"
                     src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}
                     alt={prod.name}
                   />

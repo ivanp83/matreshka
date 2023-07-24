@@ -6,7 +6,7 @@ import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Envs } from "@/utils/config";
-import { FreeMode } from "swiper";
+import CustomImage from "../image";
 
 const FeaturedProducts = ({ data }) => {
   return (
@@ -87,8 +87,6 @@ const FeaturedProducts = ({ data }) => {
       <Swiper
         spaceBetween={18}
         slidesPerView={5}
-        freeMode={true}
-        modules={[FreeMode]}
         style={{ width: "100%" }}
         breakpoints={{
           250: {
@@ -110,9 +108,11 @@ const FeaturedProducts = ({ data }) => {
         {data.map((prod) => (
           <SwiperSlide key={prod.id}>
             <div className="card-wrapp">
-              <Link href={`product/${prod.id}`}>
+              <Link href={`./${prod.id}`}>
                 <div className="image">
-                  <img
+                  <CustomImage
+                    direct
+                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"
                     src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}
                     alt={prod.name}
                   />

@@ -94,15 +94,6 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
             display: block;
             grid-column: 3/4;
             color: var(--main-gray);
-            -webkit-appearance: button;
-            -moz-appearance: button;
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            -webkit-padding-end: 20px;
-            -moz-padding-end: 20px;
-            -webkit-padding-start: 2px;
-            -moz-padding-start: 2px;
-
             border: 1px solid var(--main-gray);
             border-radius: 2px;
             box-shadow: none;
@@ -113,18 +104,14 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
             padding-top: 2px;
             padding-bottom: 2px;
             text-overflow: ellipsis;
-            white-space: nowrap;    
+            white-space: nowrap;
             border: 1px solid var(--main-gray);
-    background: var(--main-light);
-    border-radius: 5px;
-    outline: none !important;        outline: 0px;
+            background: var(--main-light);
+            border-radius: 5px;
+            outline: none !important;
+            outline: 0px;
           }
-          select:focus {
-  
-    
-       
-          }
-
+        }
 
         @media all and (max-width: 600px) and (orientation: portrait) {
           .select {
@@ -168,7 +155,7 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
 
           {!!category && (
             <li>
-              <Link href={`categories`}>
+              <Link href={`/categories`}>
                 <span className="sub-nav-link">{category.name}</span>
                 <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                   <title />

@@ -13,7 +13,6 @@ import Portal from "../hoc/withPortal";
 import Link from "next/link";
 const Loader = dynamic(() => import("../loader"), { ssr: false });
 const FeaturedProducts = dynamic(() => import("./featuredProducts"), {
-  ssr: false,
   loading: () => <Loader />,
 });
 
@@ -179,8 +178,7 @@ export default function Index({ data: product, faturedData }) {
           <CustomImage
             src={product.big}
             alt={product.name}
-            sizes="(max-width: 768px) 100vw,
-(max-width: 1200px) 50vw"
+            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"
           />
         </div>
         <div className="details">
