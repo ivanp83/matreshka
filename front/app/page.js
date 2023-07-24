@@ -2,8 +2,9 @@ import Index from "./components/home";
 import { Envs } from "@/utils/config";
 
 export const metadata = {
-  title: "Матрёшка | Цветочный бутик",
-  description: "Букеты премиального качества с доставкой по России",
+  title: "Продажа цветочных букетов онлайн | Цветочный бутик Матрёшка",
+  description:
+    "Мы используем только цветы премиального качества. Доставка по Калининграду за 30 минут. Низкие цены и гарантия свежести!",
 };
 
 async function getCategories() {

@@ -31,6 +31,11 @@ const tabs = [
     ],
   },
 ];
+export const metadata = {
+  title: "Клиентская информация | Цветочный бутик Матрёшка",
+  description:
+    "На всё есть гарантия и наши букеты не исключение. Полная информация для покупателя тут.",
+};
 
 export default function Page() {
   const [activeTab, setActiveTab] = useState(0);
