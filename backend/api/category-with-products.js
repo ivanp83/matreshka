@@ -8,7 +8,9 @@ module.exports = {
     try {
       const names = fields.join(', ');
       const sql = `SELECT ${names} FROM categories`;
-      if (!id) return await categories.queryRows(sql);
+      if (id === 0) {
+        return await categories.queryRows(sql);
+      }
 
       const cat = await categories.queryRows(
         `${sql} INNER JOIN products ON products.category_id=categories.id
