@@ -19,6 +19,9 @@ export default function Footer() {
         .address {
           margin-bottom: 1rem;
         }
+        h4 {
+          color: var(--main-light);
+        }
         address {
           font-style: normal;
           color: var(--main-gray);
@@ -134,14 +137,34 @@ export default function Footer() {
           </ul>
         </div>
         <div className="creds">
-          <div className="address">
+          <address className="address">
             <h4>Адрес</h4>
-            <address>Калининград, улица Виктора Гакуна, 5Б</address>
+            <span>Калининград, улица Виктора Гакуна, 5Б</span>
+          </address>
+          <div
+            itemScope
+            itemType="http://schema.org/Organization"
+            style={{ visibility: "hidden", position: "absolute" }}
+          >
+            <a itemProp="url" href="https://matryoshkaflowers.ru/">
+              <img itemProp="logo" src="/images/logo.png" />
+            </a>
+            <meta itemProp="name" content="Матрёшка Фловерс" />
+            <div
+              itemScope
+              itemProp="address"
+              itemType="http://schema.org/PostalAddress"
+            >
+              <meta itemProp="postalCode" content="23600" />
+              <meta itemProp="addressLocality" content="Калининград" />
+              <meta itemProp="streetAddress" content="Виктора Гакуна, 5" />
+            </div>
+            <meta itemProp="telephone" content="+7 911 493-99-99" />
           </div>
           <div className="contacts">
             <h4>Контакты</h4>
             <span>
-              <a href="tel:+79114939999">7 911 493-99-99</a>
+              <a href="tel:+79114939999">+7 911 493-99-99</a>
               <a href="mail:+79114939999">matreshkaflower@bk.ru</a>
             </span>
           </div>

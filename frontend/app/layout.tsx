@@ -37,7 +37,6 @@ export default function RootLayout({
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
       />
       <meta name="yandex-verification" content="6ff734a1b919092d" />
-
       <link
         rel="apple-touch-icon"
         sizes="180x180"
@@ -62,9 +61,30 @@ export default function RootLayout({
       <meta name="theme-color" content="#ffffff" />
       <meta
         name="keywords"
-        content="купить цветы онлайн в Калининграде, купить букет в Калининграде, цветы онлайн, красивые букеты онлайн, заказать букет"
+        content="купить цветы,  красивые букеты онлайн, заказать букет цветов в Калининграде"
       />
+
+      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
+      <link rel="canonical" href="https://matryoshkaflowers.ru/" />
       <meta name="author" content="https://039.studio" />
+      <meta property="og:url" content="https://matryoshkaflowers.ru/" />
+      <meta property="og:type" content="website" />
+      <meta property="og:title" content="Матрёшка Фловерс" />
+      <meta
+        property="og:description"
+        content="Интернет-магазин цветов в Калининграде"
+      />
+      <meta property="og:locale" content="ru_RU" />
+      <meta
+        property="og:image"
+        content="https://matryoshkaflowers.ru/images/regular_banner.jpg"
+      />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta
+        property="vk:image"
+        content="https://matryoshkaflowers.ru/images/vk_banner.jpg"
+      />
+
       <StyledJsxRegistry>
         <GoogleAnalytics />
 
