@@ -44,7 +44,11 @@ export default function Index({ data: product, faturedData }: Props) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <section className="wrapp container">
+      <section
+        className="wrapp container"
+        itemScope
+        itemType="http://schema.org/Product"
+      >
         <style jsx>{`
           .wrapp {
             grid-column: 2/4;
@@ -175,7 +179,7 @@ export default function Index({ data: product, faturedData }: Props) {
 
         <SubNav categoryId={product.category_id} />
 
-        <div className="image">
+        <div className="image" itemProp="image">
           <CustomImage
             src={product.big}
             alt={product.name}
@@ -185,10 +189,17 @@ export default function Index({ data: product, faturedData }: Props) {
         </div>
         <div className="details">
           <div className="top">
-            <h1>{product.name}</h1>
-            <span>{currencyFormat(product.price)}</span>
+            <h1 itemProp="name">{product.name}</h1>
+            <div itemProp="offers" itemScope itemType="http://schema.org/Offer">
+              <span>{currencyFormat(product.price)}</span>
+              <meta itemProp="price" content={String(product.price)} />
+              {product.price}
+              <meta itemProp="priceCurrency" content="RUB" />
+            </div>
           </div>
-          <span className="descr">{product.description}</span>
+          <span className="descr" itemProp="description">
+            {product.description}
+          </span>
           <div className="btns">
             <Button
               actionType="shop"

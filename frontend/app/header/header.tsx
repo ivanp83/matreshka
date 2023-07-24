@@ -29,7 +29,7 @@ export default function Header() {
     return () => window.removeEventListener("resize", calcPosition);
   }, []);
   return (
-    <header className="header">
+    <header className="header" itemScope itemType="http://schema.org/WPHeader">
       <style jsx>{`
         .header {
           display: grid;

@@ -2,7 +2,7 @@ import Matrehska from "./shared/matryohska";
 
 export default function Footer() {
   return (
-    <footer className="footer">
+    <footer className="footer" itemScope itemType="http://schema.org/WPFooter">
       <style jsx>{`
         .footer {
           padding: var(--space-small) 0;
@@ -153,7 +153,7 @@ export default function Footer() {
             }}
           >
             <a itemProp="url" href="https://matryoshkaflowers.ru/">
-              <img itemProp="logo" src="/images/logo.png" />
+              <img itemProp="logo" src="/images/logo.png" alt="Логотип" />
             </a>
             <meta itemProp="name" content="Матрёшка Фловерс" />
             <div
@@ -175,7 +175,7 @@ export default function Footer() {
             </span>
           </div>
         </div>
-        <address className="author">
+        <address className="author" itemProp="creator">
           <a rel="author" href="https://039.studio" target="_blank">
             <svg
               width="120px"
