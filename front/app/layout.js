@@ -118,7 +118,7 @@ export default function RootLayout({ children }) {
       <meta name="theme-color" content="#ffffff" />
       <meta
         name="keywords"
-        content="купить цветы,  красивые букеты онлайн, заказать букет цветов в Калининграде"
+        content="в Калининграде , гарантия, купить цветы, бесплатно, розы, пионы, красивые букеты онлайн,  заказать букет цветов, "
       />
 
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
