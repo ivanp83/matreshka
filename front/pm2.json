@@ -1,7 +1,7 @@
 {
   "apps": [
     {
-      "name": "frontend",
+      "name": "front",
       "script": " npm run start",
       "env": {
         "NODE_ENV": "production",
