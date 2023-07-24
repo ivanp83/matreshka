@@ -45,6 +45,9 @@ export default function Footer() {
         span {
           color: var(--main-gray);
         }
+        .y-rating {
+          grid-row: 2;
+        }
         @media all and (max-width: 1024px) {
           .social,
           .creds,
@@ -73,8 +76,11 @@ export default function Footer() {
           }
           .author {
             grid-column: 1/4;
-            grid-row: 6;
+            grid-row: 7;
             margin-top: 1rem;
+          }
+          .y-rating {
+            grid-row: 6;
           }
 
           .address {
@@ -363,6 +369,13 @@ export default function Footer() {
             </svg>
           </a>
         </address>
+        <iframe
+          className="y-rating"
+          src="https://yandex.ru/sprav/widget/rating-badge/194072879661?type=rating"
+          width="150"
+          height="50"
+          frameborder="0"
+        ></iframe>
       </div>
     </footer>
   );
