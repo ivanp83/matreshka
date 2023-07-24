@@ -22,17 +22,17 @@ const About: FC = () => {
     }
   }, []);
   return (
-    <section className={"about"}>
+    <section className={"about"} itemScope itemType="http://schema.org/Blog">
       <Container>
-        <h1>И так друзья!</h1>
+        <h1 itemProp="headline">И так друзья!</h1>
         <div className="blurred" ref={blurred}>
-          <picture>
+          <picture itemProp="url contentUrl">
             <source media="(max-width: 799px)" srcSet={image} />
             <source media="(min-width: 800px)" srcSet={image} />
             <img srcSet={image} alt="Юлиана Легкодумова" loading="lazy" />
           </picture>
         </div>
-        <p className="text">
+        <p className="text" itemProp="articleBody">
           <span>
             Меня зовут Юлиана &nbsp;
             <a href="http://instagram.com/_u/yulianalegkodumova/">
@@ -66,20 +66,34 @@ const About: FC = () => {
           </span>
         </p>
       </Container>
+      <meta itemProp="datePublished" content="2023-07-24" />
+      <meta itemProp="dateModified" content="2023-07-24" />
+      {/* <p
+        style={{
+          visibility: "hidden",
+          userSelect: "none",
+          position: "absolute",
+          width: "0",
+          height: "0",
+        }}
+      >
+        Запись была обновлена: <span itemProp="dateModified">2021/02/13</span>
+      </p>
+      <time
+        itemProp="datePublished"
+        dateTime="2023-07-24"
+        style={{
+          visibility: "hidden",
+          userSelect: "none",
+          position: "absolute",
+          width: "0",
+          height: "0",
+        }}
+      >
+        2023-07-24
+      </time> */}
     </section>
   );
 };
-
-// async function getAbout() {
-//   const data = await Api().page.getOne("about");
-
-//   return data;
-// }
-
-// const aboutLoader = async () => {
-//   return defer({
-//     product: await getAbout(),
-//   });
-// };
 
 export { About };

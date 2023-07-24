@@ -144,7 +144,13 @@ export default function Footer() {
           <div
             itemScope
             itemType="http://schema.org/Organization"
-            style={{ visibility: "hidden", position: "absolute" }}
+            style={{
+              visibility: "hidden",
+              userSelect: "none",
+              position: "absolute",
+              width: "0",
+              height: "0",
+            }}
           >
             <a itemProp="url" href="https://matryoshkaflowers.ru/">
               <img itemProp="logo" src="/images/logo.png" />

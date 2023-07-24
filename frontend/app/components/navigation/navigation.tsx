@@ -39,10 +39,10 @@ export default function Nav() {
           }
         }
       `}</style>
-      <ul>
+      <ul itemScope itemType="http://www.schema.org/SiteNavigationElement">
         {links.map((link) => (
-          <li key={link.href}>
-            <Link href={link.href}>
+          <li key={link.href} itemProp="name">
+            <Link href={link.href} itemProp="url">
               <span
                 className={`${
                   link.href === path ? "active" : ""
