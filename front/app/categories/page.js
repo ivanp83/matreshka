@@ -18,6 +18,6 @@ async function getCategories() {
 
 export default async function Categories() {
   const categories = await getCategories();
-  console.log("hello");
+
   return <Index {...{ categories }} />;
 }

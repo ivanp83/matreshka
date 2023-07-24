@@ -1,6 +1,5 @@
 import Index from "@/app/components/product";
 import React from "react";
-
 async function getData(id) {
   const productsRes = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`,
@@ -14,17 +13,26 @@ async function getData(id) {
 
   return { product, products };
 }
-
+export async function generateStaticParams() {
+  const products = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`
+  ).then((res) => res.json());
+  return products.map((p) => ({ id: String(p.id) }));
+}
 export async function generateMetadata({ params: { id } }) {
-  const { product } = await getData(id);
+  const products = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`
+  ).then((res) => res.json());
+  const product = products.find((p) => p.id == id && p);
+
   return {
-    title: `${product.name}`,
-    description: `${product.description}`,
+    title: product.name,
+    description: `${product.name} - ${product.description}`,
   };
 }
 
-export default async function Page({ params }) {
-  const { product, products } = await getData(params.id);
+export default async function Page({ params: { id } }) {
+  const { product, products } = await getData(id);
 
   return <Index data={product} faturedData={products} />;
 }
