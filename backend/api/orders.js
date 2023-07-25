@@ -53,6 +53,7 @@ module.exports = {
   },
 
   async create({ products: productsReq, userId }) {
+    console.log('order here');
     const customer = await customers.queryRows(
       'SELECT * FROM customers where telegram_id=$1;',
       [userId],
