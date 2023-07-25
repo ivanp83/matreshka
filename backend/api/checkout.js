@@ -70,7 +70,11 @@ module.exports = {
         },
 
         capture: true,
-        description: `Заказ ${JSON.stringify(orderProducts, null, 2)}`,
+        description: `Заказ ${JSON.stringify(
+          orderProducts.map((p) => p.name),
+          null,
+          2,
+        )}`,
       };
 
       const headers = new Headers();
