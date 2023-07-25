@@ -76,7 +76,7 @@ module.exports = (config, adminId, console) => {
     }
   };
   appEmitter.on('newOrderEvent', async (data) => {
-    console.log(JSON.stringify(data, null, 2));
+    console.log(JSON.parse(data));
     try {
       const { userId, productsReq, orderId } = JSON.parse(data);
 
