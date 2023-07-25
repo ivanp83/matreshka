@@ -90,7 +90,7 @@ module.exports = (config, adminId, console) => {
     console.log(JSON.parse(data));
     try {
       const { id, description, status } = JSON.parse(data);
-      return await bot.sendMessage(
+      return await bot.telegram.sendMessage(
         adminId,
         `Новый заказ номер заказа-${id}, ${description}, статус-${status}`,
       );
