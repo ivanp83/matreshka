@@ -5,7 +5,6 @@ const { getorderItems } = require('../utils/helpers');
 const { appEmitter } = require('../utils/EventEmitter');
 
 const getInvoice = (id, products, orderId, token) => {
-  console.log(products);
   const invoice = {
     chat_id: id,
     provider_token: token,
@@ -76,7 +75,6 @@ module.exports = (config, adminId, console) => {
     }
   };
   appEmitter.on('newOrderEvent', async (data) => {
-    console.log(JSON.parse(data));
     try {
       const { userId, productsReq, orderId } = JSON.parse(data);
 
