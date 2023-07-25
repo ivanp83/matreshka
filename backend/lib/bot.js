@@ -78,7 +78,7 @@ module.exports = (config, adminId, console) => {
   appEmitter.on('newOrderEvent', async (data) => {
     try {
       const { userId, productsReq, orderId } = JSON.parse(data);
-      console.log(userId, productsReq, orderId);
+
       await bot.telegram.sendInvoice(
         userId,
         getInvoice(userId, productsReq, orderId, config.providerToken),
