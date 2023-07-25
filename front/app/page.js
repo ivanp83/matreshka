@@ -1,15 +1,10 @@
 import Index from "./components/home";
 import { Envs } from "@/utils/config";
 
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "WPHeader",
-  keywords:
-    "в Калининграде , гарантия, купить цветы, бесплатно, розы, пионы, красивые букеты онлайн,  заказать букет цветов",
-  title:
-    "Продажа букетов и цветов в Калининграде и области | Цветочный бутик Матрёшка",
+export const metadata = {
+  title: "Премиальные букеты  | Цветочный бутик Матрёшка",
   description:
-    "Мы делаем букеты из цветов премиального качества для любого случая. Доставляем по Калининграду за 1 час. Предоставляем гарантию и возврат, у нас доступные цены!",
+    "Продажа букетов из цветов премиального качества для любого случая. Доставка по Калининграду за 1 час. Гарантия возврата, доступные цены!",
 };
 
 async function getCategories() {
@@ -37,13 +32,5 @@ export default async function Home() {
   const categories = await getCategories();
   const products = await getProducts();
 
-  return (
-    <>
-      <Index {...{ products, categories }} />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
-    </>
-  );
+  return <Index {...{ products, categories }} />;
 }

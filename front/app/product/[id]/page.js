@@ -34,5 +34,33 @@ export async function generateMetadata({ params: { id } }) {
 export default async function Page({ params: { id } }) {
   const { product, products } = await getData(id);
 
-  return <Index data={product} faturedData={products} />;
+  const json = {
+    "@context": "https://schema.org/",
+    "@type": "Product",
+    name: product.name,
+    image: [`${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`],
+    description: product.name,
+    brand: {
+      "@type": "Brand",
+      name: "Матрёшка Фловерс",
+    },
+    offers: {
+      "@type": "Offer",
+      price: product.price,
+      priceCurrency: "USD",
+      availability: "https://schema.org/InStock",
+    },
+
+    url: process.env.NEXT_PUBLIC_DOMAIN,
+  };
+
+  return (
+    <>
+      <Index data={product} faturedData={products} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+      />
+    </>
+  );
 }

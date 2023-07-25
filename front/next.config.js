@@ -6,6 +6,7 @@ const nextConfig = {
     appDir: true,
   },
   env: {
+    NEXT_PUBLIC_DOMAIN: "https://api.matryoshkaflowers.ru",
     NEXT_PUBLIC_BACKEND_BASE_URL: isProd
       ? "https://api.matryoshkaflowers.ru/api"
       : "http://localhost:8000/api",
