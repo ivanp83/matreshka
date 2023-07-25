@@ -45,7 +45,7 @@ const getStatusPaymentProvider = async (id) => {
       const orderPaymentDetails = await getStatusPaymentProvider(
         order.yookassa_id,
       );
-      console.log(orderPaymentDetails);
+      // console.log(orderPaymentDetails);
       if (orderPaymentDetails.status === 'succeeded') {
         const order = await orders.queryRows(
           `UPDATE orders SET order_status='${orderPaymentDetails.status}'
