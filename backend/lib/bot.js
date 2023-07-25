@@ -74,18 +74,18 @@ module.exports = (config, adminId, console) => {
       ctx.forwardMessage(adminId, ctx.from.id, ctx.message.id);
     }
   };
-  appEmitter.on('newOrderEvent', async (data) => {
-    try {
-      const { userId, productsReq, orderId } = JSON.parse(data);
+  // appEmitter.on('newOrderEvent', async (data) => {
+  //   try {
+  //     const { userId, productsReq, orderId } = JSON.parse(data);
 
-      await bot.telegram.sendInvoice(
-        userId,
-        getInvoice(userId, productsReq, orderId, config.providerToken),
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  });
+  //     await bot.telegram.sendInvoice(
+  //       userId,
+  //       getInvoice(userId, productsReq, orderId, config.providerToken),
+  //     );
+  //   } catch (error) {
+  //     console.log(error);
+  //   }
+  // });
   appEmitter.on('siteNewOrderEvent', async (data) => {
     console.log(JSON.parse(data));
     try {
