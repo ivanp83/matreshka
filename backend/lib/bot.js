@@ -4,29 +4,29 @@ const { pool } = require('../db');
 const { getorderItems } = require('../utils/helpers');
 const { appEmitter } = require('../utils/EventEmitter');
 
-const getInvoice = (id, products, orderId, token) => {
-  const invoice = {
-    chat_id: id,
-    provider_token: token,
-    start_parameter: 'get_access',
-    title: 'Оплата в магазине Matrёshka flowers!',
-    description: products.map((prod) => prod.name),
-    currency: 'RUB',
-    prices: products.map((prod) => ({
-      label: prod.name,
-      amount: prod.price * prod.quantity * 100,
-    })),
-    need_shipping_address: true,
-    need_phone_number: true,
-    need_email: true,
-    need_name: true,
-    payload: {
-      unique_id: `${id}_${Number(new Date())}`,
-      order_id: orderId,
-    },
-  };
-  return invoice;
-};
+// const getInvoice = (id, products, orderId, token) => {
+//   const invoice = {
+//     chat_id: id,
+//     provider_token: token,
+//     start_parameter: 'get_access',
+//     title: 'Оплата в магазине Matrёshka flowers!',
+//     description: products.map((prod) => prod.name),
+//     currency: 'RUB',
+//     prices: products.map((prod) => ({
+//       label: prod.name,
+//       amount: prod.price * prod.quantity * 100,
+//     })),
+//     need_shipping_address: true,
+//     need_phone_number: true,
+//     need_email: true,
+//     need_name: true,
+//     payload: {
+//       unique_id: `${id}_${Number(new Date())}`,
+//       order_id: orderId,
+//     },
+//   };
+//   return invoice;
+// };
 const sendAlertOrderSuccess = async (
   yookassaId,
   orderItems,
