@@ -9,7 +9,64 @@ import { useRouter } from "next/navigation";
 import { handleErrors } from "@/utils/helpers";
 import Loader from "../loader";
 import { motion } from "framer-motion";
-
+const inputs = [
+  {
+    id: "1",
+    name: "first_name",
+    type: "text",
+    placeholder: "Имя",
+    errorMessage: "Допустима только кирилица",
+    label: "Имя",
+    pattern: "^[\u0400-\u04ff]+$",
+    required: true,
+  },
+  {
+    id: "2",
+    name: "last_name",
+    type: "text",
+    placeholder: "Фамилия",
+    errorMessage: "Допустима только кирилица",
+    label: "Фамилия",
+    pattern: "^[\u0400-\u04ff]+$",
+    required: true,
+  },
+  {
+    id: "3",
+    name: "zip",
+    type: "number",
+    placeholder: "Индекс",
+    errorMessage: "Необходимое поле",
+    label: "Индекс",
+    pattern: "[0-9]",
+    required: true,
+  },
+  {
+    id: "4",
+    name: "city",
+    type: "text",
+    placeholder: "Город",
+    errorMessage: "Допустима только кирилица",
+    label: "Город",
+    pattern: "^[\u0400-\u04ff]+$",
+    required: true,
+  },
+  {
+    id: "5",
+    name: "address",
+    type: "text",
+    placeholder: "Адрес",
+    label: "Адрес",
+    required: true,
+  },
+  {
+    id: "6",
+    name: "phone",
+    type: "tel",
+    placeholder: "Телефон",
+    label: "Телефон",
+    required: true,
+  },
+];
 const Index = () => {
   const [responseData, setResponseData] = useState(null);
   const [shippingData, setShippingData] = useState({
@@ -59,7 +116,7 @@ const Index = () => {
       });
     setShippingData({ ...shippingData, [e.target.name]: e.target.value });
   };
-  function getProperty(ob, key) {
+  function getProperty(obj, key) {
     return obj[key];
   }
 
