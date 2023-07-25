@@ -39,11 +39,7 @@ export default function Index({ data: product, faturedData }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <section
-        className="wrapp container"
-        itemScope
-        itemType="http://schema.org/Product"
-      >
+      <section className="wrapp container">
         <style jsx>{`
           .wrapp {
             grid-column: 2/4;
@@ -174,7 +170,7 @@ export default function Index({ data: product, faturedData }) {
 
         <SubNav categoryId={product.category_id} />
 
-        <div className="image" itemProp="image">
+        <div className="image">
           <CustomImage
             src={product.big}
             alt={product.name}
@@ -186,23 +182,9 @@ export default function Index({ data: product, faturedData }) {
             <h1>{product.name}</h1>
             <div>
               <span>{currencyFormat(product.price)}</span>
-              <span
-                itemProp="seller"
-                style={{
-                  position: "absolute",
-                  visibility: "hidden",
-                  userSelect: "none",
-                  width: "0",
-                  height: "0",
-                }}
-              >
-                Матрёшка Фловерс
-              </span>
             </div>
           </div>
-          <span className="descr" itemProp="description">
-            {product.description}
-          </span>
+          <span className="descr">{product.description}</span>
           <div className="btns">
             <Button
               actionType="shop"
