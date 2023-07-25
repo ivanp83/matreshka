@@ -10,6 +10,7 @@ const { appEmitter } = require('../utils/EventEmitter');
 
 module.exports = {
   async create({ shippingAddress, orderProducts }) {
+    console.log('order here');
     try {
       const ids = [...orderProducts.map((p) => p.id)];
 
