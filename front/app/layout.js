@@ -116,10 +116,6 @@ export default function RootLayout({ children }) {
       <meta name="msapplication-TileColor" content="#da532c" />
       <meta name="theme-color" content="#ffffff" />
       <meta name="theme-color" content="#ffffff" />
-      <meta
-        name="keywords"
-        content="в Калининграде , гарантия, купить цветы, бесплатно, розы, пионы, красивые букеты онлайн,  заказать букет цветов, "
-      />
 
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
       <link rel="canonical" href="https://matryoshkaflowers.ru/" />

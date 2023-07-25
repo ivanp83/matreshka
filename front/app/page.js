@@ -1,7 +1,11 @@
 import Index from "./components/home";
 import { Envs } from "@/utils/config";
 
-export const metadata = {
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WPHeader",
+  keywords:
+    "в Калининграде , гарантия, купить цветы, бесплатно, розы, пионы, красивые букеты онлайн,  заказать букет цветов",
   title:
     "Продажа букетов и цветов в Калининграде и области | Цветочный бутик Матрёшка",
   description:
@@ -33,5 +37,13 @@ export default async function Home() {
   const categories = await getCategories();
   const products = await getProducts();
 
-  return <Index {...{ products, categories }} />;
+  return (
+    <>
+      <Index {...{ products, categories }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+    </>
+  );
 }

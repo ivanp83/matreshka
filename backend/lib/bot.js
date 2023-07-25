@@ -5,6 +5,7 @@ const { getorderItems } = require('../utils/helpers');
 const { appEmitter } = require('../utils/EventEmitter');
 
 const getInvoice = (id, products, orderId, token) => {
+  console.log(products);
   const invoice = {
     chat_id: id,
     provider_token: token,
@@ -59,6 +60,7 @@ const sendAlertOrderSuccess = async (
 `;
   return messageHTML;
 };
+
 module.exports = (config, adminId, console) => {
   const bot = new Telegraf(config.token);
   const getOrderIdfromCTX = (ctx) => {
@@ -244,6 +246,6 @@ module.exports = (config, adminId, console) => {
     );
   });
   console.log('Bot is running');
-  process.once('SIGINT', () => bot.stop('SIGINT'));
-  process.once('SIGTERM', () => bot.stop('SIGTERM'));
+  // process.once('SIGINT', () => bot.stop('SIGINT'));
+  // process.once('SIGTERM', () => bot.stop('SIGTERM'));
 };

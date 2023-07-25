@@ -185,7 +185,7 @@ export default function Index({ data: product, faturedData }) {
           <div className="top">
             <h1 itemProp="name">{product.name}</h1>
             <div itemProp="offers" itemScope itemType="http://schema.org/Offer">
-              <span>{currencyFormat(product.price)}</span>
+              <span itemProp="price">{currencyFormat(product.price)}</span>
               <span
                 itemProp="seller"
                 style={{
@@ -198,9 +198,7 @@ export default function Index({ data: product, faturedData }) {
               >
                 Матрёшка Фловерс
               </span>
-
-              <meta itemProp="price" content={String(product.price)} />
-              {product.price}
+              <link itemprop="availability" href="https://schema.org/InStock" />
               <meta itemProp="priceCurrency" content="RUB" />
             </div>
           </div>

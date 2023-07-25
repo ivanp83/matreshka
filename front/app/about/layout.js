@@ -1,5 +1,4 @@
 "use client";
-
 export default function Layout({ children }) {
   return (
     <article className="layout">
