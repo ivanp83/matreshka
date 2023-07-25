@@ -69,6 +69,7 @@ module.exports = {
       const productInDb = await products.read(product.product_id);
       orderProducts.push(productInDb.rows[0]);
     }
+    console.log({ userId, productsReq, orderId: newOrder[0].id });
     appEmitter.emit(
       'newOrderEvent',
       JSON.stringify({ userId, productsReq, orderId: newOrder[0].id }),

@@ -5,7 +5,7 @@ const { db } = require('../db');
 const config = require('../config.js');
 const orders = db('orders');
 const customers = db('customers');
-
+console.log('cron is working');
 const { appEmitter } = require('../utils/EventEmitter');
 const getStatusPaymentProvider = async (id) => {
   const myHeaders = new Headers();
