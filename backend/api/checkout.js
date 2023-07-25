@@ -19,7 +19,7 @@ module.exports = {
       );
 
       const map = new Map();
-      console.log({ map });
+
       for (const prod of productInDb) {
         const { quantity } = orderProducts.find((p) => {
           if (p.id == prod.id) return p.quantity;
@@ -70,7 +70,7 @@ module.exports = {
         },
 
         capture: true,
-        description: `Заказ ${JSON.stringify(map.values(), null, 2)}`,
+        description: `Заказ ${JSON.stringify(orderProducts, null, 2)}`,
       };
 
       const headers = new Headers();
