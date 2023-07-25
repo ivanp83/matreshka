@@ -88,6 +88,18 @@ module.exports = (config, adminId, console) => {
       console.log(error);
     }
   });
+  appEmitter.on('siteNewOrderEvent', async (data) => {
+    console.log(JSON.parse(data));
+    try {
+      const { id, description, status } = JSON.parse(data);
+      return await bot.sendMessage(
+        adminId,
+        `Новый заказ номер заказа-${id}, ${description}, статус-${status}`,
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  });
   appEmitter.on('orderSuccessPay', async (data) => {
     const {
       orderId,
