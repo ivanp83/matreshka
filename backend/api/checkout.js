@@ -93,7 +93,7 @@ module.exports = {
       const yookassaResponse = await fetch(config.yookassa.uri, requestOptions)
         .then((response) => response.json())
         .then((result) => result);
-      appEmitter.emit('newOrderEvent', JSON.stringify(yookassaResponse));
+      appEmitter.emit('siteNewOrderEvent', JSON.stringify(yookassaResponse));
       await orders.queryRows(
         `UPDATE orders
    SET yookassa_id = $2, amount = $3, currency=$4, order_status=$5, 
