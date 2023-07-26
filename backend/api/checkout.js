@@ -46,7 +46,7 @@ module.exports = {
           '${shippingAddress.first_name}');`,
         );
       }
-
+      console.log(customer);
       const newOrder = await orders.queryRows(
         `INSERT INTO orders ("customer_id") VALUES($1) RETURNING id;`,
         [customer[0].id],
