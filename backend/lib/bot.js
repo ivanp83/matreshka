@@ -73,7 +73,7 @@ module.exports = (config, adminId, console) => {
       const { yookassaResponse, customer } = JSON.parse(data);
 
       const { id, description, status } = yookassaResponse;
-      const { first_name, last_name, phone } = customer;
+      const { first_name, last_name, phone } = customer[0];
       console.log(first_name, last_name, phone);
       const HTML = `
 <b>Новый заказ # </b>
