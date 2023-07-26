@@ -48,11 +48,6 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           width: max-content;
         }
 
-        .nav ul li svg {
-          display: block;
-          width: 14px;
-          height: 14px;
-        }
         .categories-list {
           display: grid;
           grid-gap: 10px;
@@ -98,7 +93,7 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
             border-radius: 2px;
             box-shadow: none;
             color: var(--main-gray);
-            font-size: 16px;
+            font-size: 14px;
             margin: 0;
             overflow: hidden;
             padding-top: 2px;
@@ -157,22 +152,6 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
             <li>
               <Link href={`/categories`}>
                 <span className="sub-nav-link">{category.name}</span>
-                <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                  <title />
-                  <g id="Complete">
-                    <g id="F-Chevron">
-                      <polyline
-                        fill="none"
-                        id="Right"
-                        points="8.5 5 15.5 12 8.5 19"
-                        stroke="var(--main-gray)"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2"
-                      />
-                    </g>
-                  </g>
-                </svg>
               </Link>
             </li>
           )}
