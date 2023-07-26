@@ -14,11 +14,6 @@ const json = {
   telephone: "+7 911 493-99-99",
   image: "/images/logo.png",
   url: "https://matryoshkaflowers.ru/",
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: "54.748333",
-    longitude: "20.529118",
-  },
 };
 
 export default function Footer() {
