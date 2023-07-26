@@ -29,6 +29,13 @@ export default function Story() {
             grid-row-gap: 1rem;
           }
         }
+        @media all and (max-width: 819px) and (orientation: portrait) {
+          .text {
+            margin-top: 0;
+            grid-column: 2/4;
+            column-count: 1;
+          }
+        }
         @media all and (max-width: 600px) and (orientation: portrait) {
           h2 {
             grid-column: 1/4;

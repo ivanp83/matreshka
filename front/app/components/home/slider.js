@@ -22,18 +22,10 @@ export default function Slider({ products }) {
         }
         .image {
           width: calc(var(--cont-w) / 5 - 22px);
-          height: calc(((var(--cont-w) / 5) - 22px) * 4 / 3);
+          height: calc(((var(--cont-w) / 5) - 20px) * 4 / 3);
           position: relative;
         }
-        img {
-          position: absolute;
-          object-position: top;
-          top: 0;
-          left: 0;
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-        }
+
         .details {
           margin-top: 10px;
           text-align: center;
@@ -51,49 +43,54 @@ export default function Slider({ products }) {
             height: calc(((var(--cont-w) / 5) - 30px) * 4 / 3);
           }
         }
-        @media all and (max-width: 1024px) {
+        @media all and (max-width: 1400px) {
           .image {
-            width: calc(100vw / 4 - 20px);
-            height: calc(((100vw / 4) - 20px) * 4 / 3);
+            width: calc(var(--cont-w) / 4 - 30px);
+            height: calc(((var(--cont-w) / 4) - 8px) * 4 / 3);
           }
         }
-        @media all and (max-width: 600px) and (orientation: portrait) {
-          .btn-link {
-            grid-column: 1/4;
-          }
+        @media all and (max-width: 1000px) {
           .image {
-            width: calc(100vw / 2 - 30px);
-            height: calc(((100vw / 2) - 30px) * 4 / 3);
-          }
-          .details {
-            font-size: 16px;
+            width: calc(var(--cont-w) / 3 - 30px);
+            height: calc(((var(--cont-w) / 3) - 30px) * 4 / 3);
           }
         }
-        @media all and (max-width: 290px) {
+        @media all and (max-width: 699px) {
+          .image {
+            width: calc(var(--cont-w) / 2 - 30px);
+            height: calc(((var(--cont-w) / 2) - 30px) * 4 / 3);
+          }
+        }
+
+        @media all and (max-width: 380px) {
           .image {
             width: calc(100vw - 37px);
-            height: calc((100vw - 37px) * 4 / 3);
+            height: calc((100vw - 8px) * 4 / 3);
           }
         }
       `}</style>
 
       <Swiper
-        spaceBetween={18}
+        spaceBetween={10}
         slidesPerView={5}
         style={{ width: "100%", gridColumn: "1/4" }}
         breakpoints={{
-          250: {
+          10: {
             slidesPerView: 1,
           },
-          320: {
+
+          381: {
             slidesPerView: 2,
-          },
-          560: {
-            slidesPerView: 4,
           },
           // when window width is >= 1200px
 
-          1200: {
+          700: {
+            slidesPerView: 3,
+          },
+          1000: {
+            slidesPerView: 4,
+          },
+          1400: {
             slidesPerView: 5,
           },
         }}

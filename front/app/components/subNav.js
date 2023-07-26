@@ -40,18 +40,18 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           display: grid;
           grid-auto-flow: column;
           align-items: end;
-          font-size: 16px;
+          font-size: 14px;
           color: var(--main-gray);
           display: flex;
-          align-items: flex-end;
+          align-items: center;
           line-height: 1;
           width: max-content;
         }
 
         .nav ul li svg {
           display: block;
-          width: 15px;
-          height: 15px;
+          width: 14px;
+          height: 14px;
         }
         .categories-list {
           display: grid;

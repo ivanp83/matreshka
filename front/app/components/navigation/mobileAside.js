@@ -27,9 +27,9 @@ const { className, styles } = css.resolve`
 
   nav ul {
     display: grid;
-    grid-gap: 16px;
+    grid-gap: 8px;
     grid-auto-flow: row;
-    font-size: var(--title-fs);
+    font-size: 1.6rem;
 
     font-weight: 500;
     color: var(--main-dark);

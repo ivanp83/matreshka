@@ -31,11 +31,9 @@ const FeaturedProducts = ({ data }) => {
           overflow: hidden;
         }
         .image {
+          width: calc(var(--cont-w) / 5 - 22px);
+          height: calc(((var(--cont-w) / 5) - 20px) * 4 / 3);
           position: relative;
-          width: 100%;
-          height: calc(((var(--cont-w) - 20px * 7) / 5) / 3 * 4);
-          object-position: top;
-          transform-origin: bottom;
         }
         img {
           transition: 0.5s ease;
@@ -58,28 +56,33 @@ const FeaturedProducts = ({ data }) => {
           }
         }
 
-        @media screen and (max-width: 1024px) {
+        @media all and (max-width: 1500px) {
           .image {
-            position: relative;
-            width: 100%;
-            height: calc(((100vw - 20px * 3) / 4) / 3 * 4);
+            width: calc(var(--cont-w) / 5 - 30px);
+            height: calc(((var(--cont-w) / 5) - 30px) * 4 / 3);
           }
         }
-        @media all and (max-width: 600px) and (orientation: portrait) {
+        @media all and (max-width: 1400px) {
           .image {
-            width: calc(100vw / 2 - 30px);
-            height: calc(((100vw / 2) - 30px) * 4 / 3);
-          }
-          .details span,
-          h4 {
-            font-size: 16px;
+            width: calc(var(--cont-w) / 4 - 30px);
+            height: calc(((var(--cont-w) / 4) - 8px) * 4 / 3);
           }
         }
-        @media all and (max-width: 290px) {
+        @media all and (max-width: 1000px) {
           .image {
-            width: calc(100vw - 37px);
-            height: calc((100vw - 37px) * 4 / 3);
+            width: calc(var(--cont-w) / 3 - 30px);
+            height: calc(((var(--cont-w) / 3) - 30px) * 4 / 3);
           }
+        }
+        @media all and (max-width: 699px) {
+          .image {
+            width: calc(var(--cont-w) / 2 - 30px);
+            height: calc(((var(--cont-w) / 2) - 30px) * 4 / 3);
+          }
+        }
+        .details span,
+        h4 {
+          font-size: 16px;
         }
       `}</style>
       <h2> Другие букеты</h2>
@@ -89,18 +92,22 @@ const FeaturedProducts = ({ data }) => {
         slidesPerView={5}
         style={{ width: "100%" }}
         breakpoints={{
-          250: {
+          10: {
             slidesPerView: 1,
           },
-          320: {
+
+          381: {
             slidesPerView: 2,
           },
+          // when window width is >= 1200px
 
-          768: {
+          700: {
+            slidesPerView: 3,
+          },
+          1000: {
             slidesPerView: 4,
           },
-
-          1200: {
+          1400: {
             slidesPerView: 5,
           },
         }}

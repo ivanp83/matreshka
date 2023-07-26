@@ -1,3 +1,4 @@
+import { useEffect, useState } from "react";
 import Matrehska from "./shared/matryohska";
 const json = {
   "@context": "https://schema.org",
@@ -17,6 +18,10 @@ const json = {
 };
 
 export default function Footer() {
+  const [state, setState] = useState(false);
+  useEffect(() => {
+    typeof window !== undefined && setState(true);
+  }, []);
   return (
     <>
       <footer
@@ -98,7 +103,7 @@ export default function Footer() {
             .author {
               grid-column: 1/4;
               grid-row: 7;
-              margin-top: 1rem;
+              margin-top: var(--space-small);
             }
             .y-rating {
               grid-row: 6;
@@ -369,13 +374,15 @@ export default function Footer() {
               </svg>
             </a>
           </address>
-          <iframe
-            className="y-rating"
-            src="https://yandex.ru/sprav/widget/rating-badge/194072879661?type=rating"
-            width="150"
-            height="50"
-            frameborder="0"
-          ></iframe>
+          {state && (
+            <iframe
+              className="y-rating"
+              src="https://yandex.ru/sprav/widget/rating-badge/194072879661?type=rating"
+              width="150"
+              height="50"
+              frameBorder="0"
+            ></iframe>
+          )}
         </div>
       </footer>
       <script
