@@ -1,64 +1,12 @@
 'use strict';
 const { Telegraf } = require('telegraf');
 const { pool } = require('../db');
-const { getorderItems } = require('../utils/helpers');
+const {
+  getorderItems,
+  getInvoice,
+  sendAlertOrderSuccess,
+} = require('../utils/helpers');
 const { appEmitter } = require('../utils/EventEmitter');
-
-// const getInvoice = (id, products, orderId, token) => {
-//   const invoice = {
-//     chat_id: id,
-//     provider_token: token,
-//     start_parameter: 'get_access',
-//     title: 'Оплата в магазине Matrёshka flowers!',
-//     description: products.map((prod) => prod.name),
-//     currency: 'RUB',
-//     prices: products.map((prod) => ({
-//       label: prod.name,
-//       amount: prod.price * prod.quantity * 100,
-//     })),
-//     need_shipping_address: true,
-//     need_phone_number: true,
-//     need_email: true,
-//     need_name: true,
-//     payload: {
-//       unique_id: `${id}_${Number(new Date())}`,
-//       order_id: orderId,
-//     },
-//   };
-//   return invoice;
-// };
-const sendAlertOrderSuccess = async (
-  yookassaId,
-  orderItems,
-  phone,
-  firstName,
-  lastName,
-  city,
-  address,
-  resource,
-) => {
-  const serializedItems = orderItems.map(
-    (item, i) =>
-      `${i + 1}. <pre>${item.product}</pre>, <pre>${
-        item.quantity
-      }шт.</pre>, <pre>${item.price}руб.</pre>`,
-  );
-  const messageHTML = `<b>Новый заказ #${yookassaId}</b>\n\n
-<b>Товары:</b>
-    <pre>${serializedItems}</pre>\n\n
-<b>Покупатель:</b>
-    <pre>${firstName}</pre>
-    <pre>${lastName}</pre>
-    <pre>тел. ${phone}</pre>\n\n
-<b>Адрес доставки:</b>
-    <pre>${city}</pre>
-    <pre>${address}</pre>\n\n
-<b>Площадка:</b>
-    <pre>${resource}</pre>
-
-`;
-  return messageHTML;
-};
 
 module.exports = (config, adminId, console) => {
   const bot = new Telegraf(config.token);
@@ -66,6 +14,7 @@ module.exports = (config, adminId, console) => {
     const orderPayload = JSON.parse(ctx);
     return orderPayload.order_id;
   };
+
   const isAdmin = (userId) => userId === adminId;
   const forwardToAdmin = (ctx) => {
     if (isAdmin(ctx.message.from.id)) {
@@ -74,42 +23,33 @@ module.exports = (config, adminId, console) => {
       ctx.forwardMessage(adminId, ctx.from.id, ctx.message.id);
     }
   };
-  // appEmitter.on('newOrderEvent', async (data) => {
-  //   try {
-  //     const { userId, productsReq, orderId } = JSON.parse(data);
-
-  //     await bot.telegram.sendInvoice(
-  //       userId,
-  //       getInvoice(userId, productsReq, orderId, config.providerToken),
-  //     );
-  //   } catch (error) {
-  //     console.log(error);
-  //   }
-  // });
-  appEmitter.on('siteNewOrderEvent', async (data) => {
-    console.log(JSON.parse(data));
+  appEmitter.on('newOrderEvent', async (data) => {
     try {
-      const { id, description, status } = JSON.parse(data);
-      return await bot.telegram.sendMessage(
-        adminId,
-        `Новый заказ#${id}, Позиции-${description}, статус-${status}`,
+      const { userId, productsReq, orderId } = JSON.parse(data);
+
+      await bot.telegram.sendInvoice(
+        userId,
+        getInvoice(userId, productsReq, orderId, config.providerToken),
       );
     } catch (error) {
       console.log(error);
     }
   });
   appEmitter.on('orderSuccessPay', async (data) => {
-    const {
-      orderId,
-      orderItems,
-      phone,
-      name,
-      lastName,
-      city,
-      address,
-      resource,
-    } = JSON.parse(data);
+    console.log(data);
+
     try {
+      const {
+        orderId,
+        orderItems,
+        phone,
+        name,
+        lastName,
+        city,
+        address,
+        resource,
+      } = JSON.parse(data);
+
       const HTML = sendAlertOrderSuccess(
         orderId,
         orderItems,
@@ -122,6 +62,33 @@ module.exports = (config, adminId, console) => {
       );
 
       return await bot.sendMessage(adminId, HTML, {
+        parse_mode: 'html',
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  });
+  appEmitter.on('siteNewOrderEvent', async (data) => {
+    try {
+      const { yookassaResponse, customer } = JSON.parse(data);
+      console.log(yookassaResponse, customer);
+      const { id, description, status } = yookassaResponse;
+      const { first_name, last_name, phone } = customer;
+
+      const HTML = `
+<b>Новый заказ # </b>
+<pre>${id}</pre>\n
+<b>Статус:</b>
+<pre>${status}</pre>\n
+<b>Товары:</b>
+<pre>${description}</pre>\n
+<b>Покупатель:</b>
+<pre>${first_name}</pre>
+<pre>${last_name}</pre>
+<pre>тел. ${phone}</pre>\n
+      `;
+
+      return await bot.telegram.sendMessage(adminId, HTML, {
         parse_mode: 'html',
       });
     } catch (error) {
@@ -245,7 +212,7 @@ module.exports = (config, adminId, console) => {
         updatedOrder.customer_id,
       ])
       .then((res) => res.rows[0]);
-    await sendAlertOrderSuccess(
+    const HTML = sendAlertOrderSuccess(
       orderId,
       getorderItems(updatedOrder.order_items),
       customer.phone,
@@ -255,6 +222,9 @@ module.exports = (config, adminId, console) => {
       updatedOrder.shipping_address.address,
       'Телеграм Бот',
     );
+    return await bot.sendMessage(adminId, HTML, {
+      parse_mode: 'html',
+    });
   });
   console.log('Bot is running');
   // process.once('SIGINT', () => bot.stop('SIGINT'));

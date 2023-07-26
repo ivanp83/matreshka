@@ -1,12 +1,12 @@
 'use strict';
 
-const { getorderItems } = require('../utils/helpers');
+const { getorderItems, sendAlertOrderSuccess } = require('../utils/helpers');
 const { db } = require('../db');
 const config = require('../config.js');
 const orders = db('orders');
 const customers = db('customers');
-console.log('cron is working');
-const { appEmitter } = require('../utils/EventEmitter');
+
+const { Telegraf } = require('telegraf');
 const getStatusPaymentProvider = async (id) => {
   const myHeaders = new Headers();
   myHeaders.append('Idempotence-Key', `${new Date().getTime()}`);
@@ -24,11 +24,16 @@ const getStatusPaymentProvider = async (id) => {
     method: 'GET',
     headers: myHeaders,
   };
-  return await fetch(`${config.yookassa.uri}/${id}`, requestOptions)
+  const yookassaRequest = await fetch(
+    `${config.yookassa.uri}/${id}`,
+    requestOptions,
+  )
     .then((response) => response.json())
     .then((result) => result);
-};
 
+  return yookassaRequest;
+};
+const bot = new Telegraf(config.bot.token);
 (async () => {
   const ordersInPending = await orders.queryRows(
     `SELECT * FROM orders WHERE order_status ='pending';`,
@@ -45,11 +50,11 @@ const getStatusPaymentProvider = async (id) => {
       const orderPaymentDetails = await getStatusPaymentProvider(
         order.yookassa_id,
       );
-      // console.log(orderPaymentDetails);
+
       if (orderPaymentDetails.status === 'succeeded') {
         const order = await orders.queryRows(
           `UPDATE orders SET order_status='${orderPaymentDetails.status}'
-      WHERE orders.yookassa_id= $1 RETURNING  *;`,
+        WHERE orders.yookassa_id= $1 RETURNING  *;`,
           [orderPaymentDetails.id],
         );
 
@@ -59,22 +64,25 @@ const getStatusPaymentProvider = async (id) => {
         );
 
         try {
-          return appEmitter.emit(
-            'orderSuccessPay',
-            JSON.stringify({
-              orderId: order[0].id,
-              orderItems: getorderItems(order[0].order_items),
-              phone: customer[0].phone,
-              name: customer[0].first_name,
-              lastName: customer[0].last_name,
-              city: order[0].shipping_address.city,
-              address: order[0].shipping_address.address,
-              resource: 'Сайт',
-            }),
+          const HTML = sendAlertOrderSuccess(
+            order[0].id,
+            getorderItems(order[0].order_items),
+            customer[0].phone,
+            customer[0].first_name,
+            customer[0].last_name,
+            order[0].shipping_address.city,
+            order[0].shipping_address.address,
+            'Сайт',
           );
+          console.log(HTML);
+          return await bot.telegram.sendMessage(config.adminId, HTML, {
+            parse_mode: 'html',
+          });
         } catch (error) {
           console.log(error);
         }
+
+        return;
       } else if (orderPaymentDetails.status === 'canceled') {
         return await orders.queryRows(
           `UPDATE orders SET order_status='${orderPaymentDetails.status}'

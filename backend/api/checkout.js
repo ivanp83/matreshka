@@ -10,7 +10,6 @@ const { appEmitter } = require('../utils/EventEmitter');
 
 module.exports = {
   async create({ shippingAddress, orderProducts }) {
-    console.log('order here');
     try {
       const ids = [...orderProducts.map((p) => p.id)];
 
@@ -70,8 +69,8 @@ module.exports = {
         },
 
         capture: true,
-        description: `Заказ ${JSON.stringify(
-          orderProducts.map((p) => p.name),
+        description: `${JSON.stringify(
+          ...orderProducts.map((p) => p.name),
           null,
           2,
         )}`,
@@ -97,7 +96,10 @@ module.exports = {
       const yookassaResponse = await fetch(config.yookassa.uri, requestOptions)
         .then((response) => response.json())
         .then((result) => result);
-      appEmitter.emit('siteNewOrderEvent', JSON.stringify(yookassaResponse));
+      appEmitter.emit(
+        'siteNewOrderEvent',
+        JSON.stringify({ yookassaResponse, customer: customer[0] }),
+      );
       await orders.queryRows(
         `UPDATE orders
    SET yookassa_id = $2, amount = $3, currency=$4, order_status=$5, 

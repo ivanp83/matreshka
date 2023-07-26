@@ -50,9 +50,67 @@ const convertImage = async (base64, folder, size) =>
         reject(err);
       });
   });
-
+const getInvoice = (id, products, orderId, token) => {
+  const invoice = {
+    chat_id: id,
+    provider_token: token,
+    start_parameter: 'get_access',
+    title: 'Оплата в магазине Matrёshka flowers!',
+    description: products.map((prod) => prod.name),
+    currency: 'RUB',
+    prices: products.map((prod) => ({
+      label: prod.name,
+      amount: prod.price * prod.quantity * 100,
+    })),
+    need_shipping_address: true,
+    need_phone_number: true,
+    need_email: true,
+    need_name: true,
+    payload: {
+      unique_id: `${id}_${Number(new Date())}`,
+      order_id: orderId,
+    },
+  };
+  return invoice;
+};
+const sendAlertOrderSuccess = (
+  yookassaId,
+  orderItems,
+  phone,
+  firstName,
+  lastName,
+  city,
+  address,
+  resource,
+) => {
+  const serializedItems = orderItems.map(
+    (item, i) =>
+      `${i + 1}. <pre>${item.product}</pre>, <pre>${
+        item.quantity
+      }шт.</pre>, <pre>${item.price}руб.</pre>`,
+  );
+  const messageHTML = `
+ <b>Новый заказ #</b>
+<pre>${yookassaId}</pre>\n
+<b>Товары:</b>
+<pre>${serializedItems}</pre>\n
+<b>Покупатель:</b>
+<pre>${firstName}</pre>
+<pre>${lastName}</pre>
+<pre>тел. ${phone}</pre>\n
+<b>Адрес доставки:</b>
+<pre>${city}</pre>
+<pre>${address}</pre>\n
+<b>Площадка:</b>
+<pre>${resource}</pre>
+  
+  `;
+  return messageHTML;
+};
 module.exports = {
   convertImage,
   productsToDB,
   getorderItems,
+  sendAlertOrderSuccess,
+  getInvoice,
 };
