@@ -71,10 +71,10 @@ module.exports = (config, adminId, console) => {
   appEmitter.on('siteNewOrderEvent', async (data) => {
     try {
       const { yookassaResponse, customer } = JSON.parse(data);
-      console.log(yookassaResponse, customer);
+
       const { id, description, status } = yookassaResponse;
       const { first_name, last_name, phone } = customer;
-
+      console.log(first_name, last_name, phone);
       const HTML = `
 <b>Новый заказ # </b>
 <pre>${id}</pre>\n
