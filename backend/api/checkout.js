@@ -49,7 +49,7 @@ module.exports = {
       console.log(customer);
       const newOrder = await orders.queryRows(
         `INSERT INTO orders ("customer_id") VALUES($1) RETURNING id;`,
-        [customer[0].id],
+        [customer.id],
       );
 
       // Yookassa Request
@@ -98,7 +98,7 @@ module.exports = {
         .then((result) => result);
       appEmitter.emit(
         'siteNewOrderEvent',
-        JSON.stringify({ yookassaResponse, customer: customer[0] }),
+        JSON.stringify({ yookassaResponse, customer }),
       );
       await orders.queryRows(
         `UPDATE orders
