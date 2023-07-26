@@ -46,7 +46,7 @@ export default function Slider({ products }) {
         @media all and (max-width: 1400px) {
           .image {
             width: calc(var(--cont-w) / 4 - 30px);
-            height: calc(((var(--cont-w) / 4) - 8px) * 4 / 3);
+            height: calc(((var(--cont-w) / 4) - 30px) * 4 / 3);
           }
         }
         @media all and (max-width: 1000px) {
@@ -64,8 +64,8 @@ export default function Slider({ products }) {
 
         @media all and (max-width: 380px) {
           .image {
-            width: calc(100vw - 37px);
-            height: calc((100vw - 8px) * 4 / 3);
+            width: calc(100vw - 30px);
+            height: calc((100vw - 30px) * 4 / 3);
           }
         }
       `}</style>

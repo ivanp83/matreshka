@@ -92,7 +92,7 @@ export default function Index({ data: product, faturedData }) {
             .image {
               width: 100%;
               grid-column: 1/4;
-              height: calc((100vw) * 4 / 3);
+              height: calc((100vw - 40px) * 4 / 3);
             }
             .top {
               margin-top: 1rem;
