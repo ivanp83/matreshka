@@ -91,7 +91,7 @@ h5 {
 }
 .sub-nav-link {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
 }
 @media screen and (max-width: 767px) {
   select:active {
