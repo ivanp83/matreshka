@@ -74,7 +74,7 @@ const bot = new Telegraf(config.bot.token);
             order[0].shipping_address.address,
             'Сайт',
           );
-          console.log(HTML);
+
           return await bot.telegram.sendMessage(config.adminId, HTML, {
             parse_mode: 'html',
           });
