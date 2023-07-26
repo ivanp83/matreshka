@@ -22,12 +22,10 @@ export default function Page() {
     "@type": "Article",
     headline: data.title,
     image: data.mainBanner,
-    description:
-      "Лисицы — весьма распространенные рыбы в морской аквариумистике. Принадлежат к одноимённому семейству Рыбы-лисицы. Встречаются в водах Индо-Пацифики и Средиземноморья.",
+    description: "История создания цветочного бутика «Матрёшка»",
     author: "Юлиана Легкодумова",
-
-    datepublished: "2023-06-21",
-    datemodified: "2023-07-26",
+    datePublished: "2023-06-21",
+    dateModified: "2023-07-26",
     mainEntityOfPage: {
       "@type": "WebPage",
       "@id": "https://matryoshkaflowers.ru/",
