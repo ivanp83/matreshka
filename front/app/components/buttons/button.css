@@ -28,13 +28,11 @@
   background: transparent;
 }
 .button.add {
-  width: 80px;
-  background-color: var(--dark-green);
+  width: 24px;
 }
 
 .button.remove {
-  width: 80px;
-  background-color: var(--dark-red);
+  width: 24px;
 }
 .button.back {
   display: flex;
@@ -59,14 +57,6 @@
   transform: scale(0.98);
 }
 
-.button.add:active {
-  background-color: var(--main-green);
-}
-
-.button.remove:active {
-  background-color: var(--main-red);
-}
-
 .button.checkout:active {
   background-color: var(--main-green);
 }
@@ -78,14 +68,9 @@
     color: var(--main-light);
     background-color: var(--main-gray);
   }
-  .button.add:hover {
-    background-color: var(--main-green);
-  }
+
   .button.checkout:hover {
     background-color: var(--dark-green);
-  }
-  .button.remove:hover {
-    background-color: var(--main-red);
   }
 }
 @media all and (max-width: 320px) and (orientation: portrait) {

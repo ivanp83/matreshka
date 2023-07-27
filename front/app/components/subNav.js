@@ -32,9 +32,8 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           grid-gap: var(--space-small);
         }
         .nav ul {
-          display: grid;
-          grid-auto-flow: column;
-          grid-gap: 10px;
+          display: flex;
+
           width: fit-content;
           align-items: baseline;
         }
@@ -48,6 +47,7 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           align-items: center;
           line-height: 1;
           width: max-content;
+          margin-right: 10px;
         }
 
         .categories-list {

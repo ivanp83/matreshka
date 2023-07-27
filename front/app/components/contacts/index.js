@@ -30,6 +30,7 @@ export default function Index(props) {
           .address {
             font-style: normal;
             display: grid;
+            grid-row-gap: 1rem;
           }
           a {
             display: block;
@@ -42,57 +43,61 @@ export default function Index(props) {
         `}</style>
         <div className="wrapp">
           <h1>Контакты</h1>
-          <div className="creds">
-            <address className="address">
+          <address className="address">
+            <div className="block">
+              <h4>Адрес</h4>
               <span>Калининград, улица Виктора Гакуна, 5Б</span>
+            </div>
+            <div className="block">
+              <h4>Связаться с нами</h4>
               <a href="tel:+79114939999">+7 911 493-99-99</a>
               <a href="mail:matreshkaflower@bk.ru">matreshkaflower@bk.ru</a>
-            </address>
-          </div>
-          <div className="social">
-            <h4>Мы в соцсетях</h4>
-            <ul>
-              <li>
-                <span>
-                  <a
-                    href="#"
-                    onClick={() =>
-                      !window.open(
-                        "http://instagram.com/_u/yulianalegkodumova/"
-                      )
-                    }
-                    rel="noopener noreferrer"
-                  >
-                    Instagram
-                  </a>
-                </span>
-              </li>
-              <li>
-                <span>
-                  <a
-                    href="#"
-                    onClick={() =>
-                      !window.open("tg://resolve?domain=YulianaLegkodumova")
-                    }
-                  >
-                    Telegram
-                  </a>
-                </span>
-              </li>
-              <li>
-                <span>
-                  <a
-                    href="#"
-                    onClick={() =>
-                      !window.open("https://vk.com/matreshkaflower")
-                    }
-                  >
-                    В контакте
-                  </a>
-                </span>
-              </li>
-            </ul>
-          </div>
+            </div>
+            <div className="block">
+              <h4>Мы в соцсетях</h4>
+              <ul>
+                <li>
+                  <span>
+                    <a
+                      href="#"
+                      onClick={() =>
+                        !window.open(
+                          "http://instagram.com/_u/yulianalegkodumova/"
+                        )
+                      }
+                      rel="noopener noreferrer"
+                    >
+                      Instagram
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="#"
+                      onClick={() =>
+                        !window.open("tg://resolve?domain=YulianaLegkodumova")
+                      }
+                    >
+                      Telegram
+                    </a>
+                  </span>
+                </li>
+                <li>
+                  <span>
+                    <a
+                      href="#"
+                      onClick={() =>
+                        !window.open("https://vk.com/matreshkaflower")
+                      }
+                    >
+                      В контакте
+                    </a>
+                  </span>
+                </li>
+              </ul>
+            </div>
+          </address>
         </div>
       </section>
     </motion.div>

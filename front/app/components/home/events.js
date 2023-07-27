@@ -1,6 +1,6 @@
 import React from "react";
 import Text from "./text";
-import Image from "next/image";
+import CustomImage from "../image";
 
 export default function Events({}) {
   return (
@@ -59,9 +59,8 @@ export default function Events({}) {
         <h2>Events</h2>
         <Text text=" Авторская флористика и композиции для оформления крупных и камерных событий" />
         <div className="image">
-          <Image
-            quality={100}
-            fill
+          <CustomImage
+            direct
             style={{ objectFit: "cover", objectPosition: "top" }}
             src="/images/9.jpg"
             alt="Девушка с цветами"

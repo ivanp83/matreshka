@@ -56,6 +56,9 @@ export default function Index() {
             place-content: center;
             grid-gap: 1rem;
           }
+          .empty-cart-cont .link {
+            margin: 0 auto;
+          }
           .checkout {
             grid-column: 2/3;
             display: grid;
@@ -145,12 +148,14 @@ export default function Index() {
         ) : (
           <div className="empty-cart">
             <div className="empty-cart-cont">
-              <h4>Пока ещё не добавлено ни одного букета</h4>
-              <LinkTo
-                href="/categories"
-                text="Выбрать букет"
-                style={{ background: "var(--main-light)" }}
-              />
+              <h4>Корзина пуста</h4>
+              <span className="link">
+                <LinkTo
+                  href="/categories"
+                  text="Выбрать букет"
+                  style={{ background: "var(--main-light)" }}
+                />
+              </span>
             </div>
           </div>
         )}
