@@ -48,13 +48,13 @@ export default function Index() {
           }
           .empty-cart {
             text-align: center;
-            min-height: calc(100vh - var(--space-med) * 2);
             grid-column: 1/4;
             display: grid;
-            grid-auto-flow: row;
+          }
+          .empty-cart-cont {
+            display: grid;
+            place-content: center;
             grid-gap: 1rem;
-            height: fit-content;
-            align-items: center;
           }
           .checkout {
             grid-column: 2/3;
@@ -127,12 +127,7 @@ export default function Index() {
                 получателя). Стоимость доставки по области расчитывается
                 индивидуально в зависимости от удалённости.
               </span>
-              {/* <div>
-                <Checkbox
-                  {...{ withShipping, handleChange }}
-                  title="Доставка по городу"
-                />
-              </div> */}
+
               <div className="price-block">
                 <div className="cost total">
                   <span>Итого:&nbsp;</span>
@@ -149,13 +144,14 @@ export default function Index() {
           </>
         ) : (
           <div className="empty-cart">
-            <span>Пока ещё не добавлено ни одного букета</span>
-
-            <LinkTo
-              href="/categories"
-              text="Подобрать букет"
-              style={{ background: "var(--main-light)" }}
-            />
+            <div className="empty-cart-cont">
+              <h4>Пока ещё не добавлено ни одного букета</h4>
+              <LinkTo
+                href="/categories"
+                text="Выбрать букет"
+                style={{ background: "var(--main-light)" }}
+              />
+            </div>
           </div>
         )}
       </div>

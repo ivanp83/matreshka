@@ -99,7 +99,7 @@ export default function Banner() {
       <div className="button">
         <LinkTo
           href="/categories"
-          text="Подобрать букет"
+          text="Выбрать букет"
           style={{ background: "var(--main-light)" }}
         />
       </div>
