@@ -5,10 +5,11 @@ import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import { Api } from "@/api";
 import { useAppContext } from "../context/app.context";
+import { useRouter } from "next/navigation";
 
 function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
   const { activeCategory, setActiveCategory } = useAppContext();
-
+  const router = useRouter();
   const [category, setCategory] = useState(null);
 
   useEffect(() => {
@@ -35,6 +36,7 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           grid-auto-flow: column;
           grid-gap: 10px;
           width: fit-content;
+          align-items: baseline;
         }
         .nav ul li {
           display: grid;
@@ -64,6 +66,8 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           outline: none;
           background: transparent;
           cursor: pointer;
+          font-weight: 600;
+          color: inherit;
         }
         .list-item button.active {
           color: var(--main-gray);
@@ -129,31 +133,30 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           <li>
             <Link href="/">
               <span className="sub-nav-link"> Главная</span>
-              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <title />
-                <g id="Complete">
-                  <g id="F-Chevron">
-                    <polyline
-                      fill="none"
-                      id="Right"
-                      points="8.5 5 15.5 12 8.5 19"
-                      stroke="var(--main-gray)"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                    />
-                  </g>
-                </g>
-              </svg>
             </Link>
           </li>
 
           {!!category && (
-            <li>
-              <Link href={`/categories`}>
-                <span className="sub-nav-link">{category.name}</span>
-              </Link>
-            </li>
+            <>
+              <li className={`list-item `}>
+                <button
+                  className={`${
+                    activeCategory == 0 ? "active" : ""
+                  } sub-nav-link`}
+                  onClick={() => {
+                    setActiveCategory(0);
+                    router.push("/categories");
+                  }}
+                >
+                  Все категории
+                </button>
+              </li>
+              <li>
+                <Link href={`/categories`}>
+                  <span className="sub-nav-link">{category.name}</span>
+                </Link>
+              </li>
+            </>
           )}
         </ul>
       </nav>

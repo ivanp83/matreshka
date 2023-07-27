@@ -14,7 +14,7 @@ const Button = ({ actionType, title, disable, onClick, children }) => {
       disabled={disable}
       onClick={onClick}
     >
-      {title}
+      <span className="btn-text">{title}</span>
       {children}
     </button>
   );

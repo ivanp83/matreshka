@@ -1,6 +1,6 @@
 [
-  { "href": "/", "label": "Главная" },
   { "href": "/categories", "label": "Букеты" },
   { "href": "/about", "label": "About" },
-  { "href": "/info", "label": "Информация" }
+  { "href": "/info", "label": "Информация" },
+  { "href": "/contacts", "label": "Контакты" }
 ]

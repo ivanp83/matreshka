@@ -1,5 +1,4 @@
 .button {
-  font-size: 1rem;
   text-align: center;
   border: none;
   outline: none;
@@ -9,10 +8,12 @@
   font-family: inherit;
   font-size: 14px;
   color: var(--main-light);
-  border-radius: 10px;
+
   transition: all 0.5s;
 }
-
+.btn-text {
+  letter-spacing: 1px;
+}
 .button.shop {
   padding: 0.8rem 3rem;
   width: 100%;
@@ -85,5 +86,10 @@
   }
   .button.remove:hover {
     background-color: var(--main-red);
+  }
+}
+@media all and (max-width: 320px) and (orientation: portrait) {
+  .button {
+    font-size: 12px;
   }
 }

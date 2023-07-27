@@ -6,6 +6,8 @@ import CartItem from "./cartItem";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Link from "next/link";
+import LinkTo from "../shared/linkTo";
 
 export default function Index() {
   const [withShipping, setWithShipping] = useState(false);
@@ -44,10 +46,15 @@ export default function Index() {
             padding: 1rem;
             grid-gap: 1rem;
           }
-          .empty-text {
+          .empty-cart {
             text-align: center;
             min-height: calc(100vh - var(--space-med) * 2);
             grid-column: 1/4;
+            display: grid;
+            grid-auto-flow: row;
+            grid-gap: 1rem;
+            height: fit-content;
+            align-items: center;
           }
           .checkout {
             grid-column: 2/3;
@@ -141,9 +148,15 @@ export default function Index() {
             </div>
           </>
         ) : (
-          <span className="empty-text">
-            Пока еще не добавлено ни одного букета
-          </span>
+          <div className="empty-cart">
+            <span>Пока ещё не добавлено ни одного букета</span>
+
+            <LinkTo
+              href="/categories"
+              text="Подобрать букет"
+              style={{ background: "var(--main-light)" }}
+            />
+          </div>
         )}
       </div>
     </motion.div>

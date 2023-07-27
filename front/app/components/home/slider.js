@@ -21,8 +21,8 @@ export default function Slider({ products }) {
           height: 100%;
         }
         .image {
-          width: calc(var(--cont-w) / 5 - 22px);
-          height: calc(((var(--cont-w) / 5) - 20px) * 4 / 3);
+          width: calc(var(--cont-w) / 4 - 22px);
+          height: calc(((var(--cont-w) / 4) - 20px) * 4 / 3);
           position: relative;
         }
 
@@ -91,7 +91,7 @@ export default function Slider({ products }) {
             slidesPerView: 4,
           },
           1400: {
-            slidesPerView: 5,
+            slidesPerView: 4,
           },
         }}
       >

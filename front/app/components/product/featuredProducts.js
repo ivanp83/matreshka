@@ -80,6 +80,12 @@ const FeaturedProducts = ({ data }) => {
             height: calc(((var(--cont-w) / 2) - 30px) * 4 / 3);
           }
         }
+        @media all and (max-width: 380px) {
+          .image {
+            width: calc(var(--cont-w)- 40px);
+            height: calc((var(--cont-w) - 40px) * 4 / 3);
+          }
+        }
         .details span,
         h4 {
           font-size: 16px;
