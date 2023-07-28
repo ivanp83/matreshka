@@ -71,7 +71,7 @@ export default function Header() {
           justify-content: center;
         }
         .num span {
-          font-size: 15px;
+          font-size: 12px;
         }
         a {
           display: contents;

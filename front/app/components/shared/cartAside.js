@@ -27,8 +27,7 @@ export default function CartAside({}) {
         style={{
           padding: "20px",
           width: "fit-content",
-          backgroundColor: "var(--main-light)",
-          borderLeft: "1px solid var(--main-gray)",
+          backgroundColor: "var(--light-pink)",
         }}
       >
         <div className="aside-container">
@@ -76,6 +75,10 @@ export default function CartAside({}) {
               font-size: 14px;
               margin-bottom: 1rem;
             }
+            .item-total{  
+              font-size: 14px;
+              font-weight:500;
+            }
             .checkout {
               padding: 20px 0;
               grid-row: 2/3;
@@ -107,9 +110,9 @@ export default function CartAside({}) {
                       {currencyFormat(prod.price)}
                     </span>
 
-                    <b className="item-total">
+                    <span className="item-total">
                       Всего:&nbsp;{currencyFormat(prod.quantity * prod.price)}
-                    </b>
+                    </span>
                   </div>
                 </li>
               ))}
