@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 import Button from "../buttons/button";
 import { useRouter } from "next/navigation";
 
-export default function CartAside({}) {
+export default function CartAside({ avatarIsVisible }) {
   const [cartProducts, setCartProducts] = useState(null);
   useEffect(() => {
     setCartProducts(JSON.parse(localStorage.getItem("cartItems")));
@@ -17,12 +17,8 @@ export default function CartAside({}) {
       <motion.aside
         initial={{ x: "100%" }}
         animate={{
-          x: 0,
+          x: !!avatarIsVisible ? 0 : "100%",
           transition: { duration: 0.6, ease: "easeInOut" },
-        }}
-        exit={{
-          x: "100%",
-          transition: { duration: 0.4, ease: "easeInOut" },
         }}
         style={{
           padding: "20px",
