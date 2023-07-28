@@ -1,12 +1,12 @@
 import { Envs } from "@/utils/config";
 import { currencyFormat } from "@/utils/helpers";
 import { motion } from "framer-motion";
-import Image from "next/image";
 import { useEffect, useState } from "react";
 import Button from "../buttons/button";
 import { useRouter } from "next/navigation";
+import CustomImage from "../image";
 
-export default function CartAside({ avatarIsVisible }) {
+export default function CartAside({}) {
   const [cartProducts, setCartProducts] = useState(null);
   useEffect(() => {
     setCartProducts(JSON.parse(localStorage.getItem("cartItems")));
@@ -17,8 +17,12 @@ export default function CartAside({ avatarIsVisible }) {
       <motion.aside
         initial={{ x: "100%" }}
         animate={{
-          x: !!avatarIsVisible ? 0 : "100%",
+          x: 0,
           transition: { duration: 0.6, ease: "easeInOut" },
+        }}
+        exit={{
+          x: "100%",
+          transition: { duration: 0.4, ease: "easeInOut" },
         }}
         style={{
           padding: "20px",
@@ -54,6 +58,11 @@ export default function CartAside({ avatarIsVisible }) {
               padding: 1rem 0;
               border-bottom: 1px solid var(--main-gray);
             }
+            .image{
+              position:relative;
+              width:100px;
+              height:calc((100px * 4) / 3);
+            }
             .info {
               grid-column: 2/3;
               display: flex;
@@ -85,11 +94,9 @@ export default function CartAside({ avatarIsVisible }) {
               cartProducts.map((prod, i) => (
                 <li key={i}>
                   <div className="image">
-                    <Image
+                    <CustomImage
                       priority={true}
-                      width={100}
-                      height={(100 * 4) / 3}
-                      src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}
+                      src={prod.small}
                       alt={prod.name}
                     />
                   </div>

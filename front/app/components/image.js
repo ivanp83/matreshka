@@ -1,6 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Envs } from "@/utils/config";
+import { priority } from "@/next-sitemap.config";
 
 export default function CustomImage({
   src,
@@ -8,6 +9,7 @@ export default function CustomImage({
   onLoadingComplete,
   sizes,
   direct = false,
+  priority,
 }) {
   const convertImage = (w, h) => `
     <svg width="${w}" height="${h}" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -32,6 +34,7 @@ export default function CustomImage({
   return (
     <>
       <Image
+        priority={priority ?? "false"}
         sizes={sizes}
         style={{ objectFit: "cover", objectPosition: "top" }}
         onLoadingComplete={onLoadingComplete}

@@ -125,7 +125,9 @@ export default function Index({ data: product, faturedData }) {
           }
         `}</style>
         <Portal>
-          <CartAside {...{ avatarIsVisible }} />
+          <AnimatePresence>
+            {!!avatarIsVisible && <CartAside />}
+          </AnimatePresence>
         </Portal>
 
         <SubNav categoryId={product.category_id} />
