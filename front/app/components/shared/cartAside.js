@@ -28,6 +28,7 @@ export default function CartAside({}) {
           padding: "20px",
           width: "fit-content",
           backgroundColor: "var(--main-light)",
+          borderLeft: "1px solid var(--main-gray)",
         }}
       >
         <div className="aside-container">
@@ -75,7 +76,7 @@ export default function CartAside({}) {
               grid-row: 2/3;
               display: grid;
               grid-gap: 1rem;
-              border-top: 2px solid;
+       
               height
             }
             .btn {
@@ -89,6 +90,7 @@ export default function CartAside({}) {
                 <li key={i}>
                   <div className="image">
                     <Image
+                      priority={true}
                       width={100}
                       height={(100 * 4) / 3}
                       src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}

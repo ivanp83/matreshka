@@ -180,10 +180,10 @@ export default function Footer() {
 
             <div className="contacts">
               <h4>Контакты</h4>
-              <span>
+              <div>
                 <a href="tel:+79114939999">+7 911 493-99-99</a>
-                <a href="mail:matreshkaflower@bk.ru">matreshkaflower@bk.ru</a>
-              </span>
+                <a href="mailto:matreshkaflower@bk.ru">matreshkaflower@bk.ru</a>
+              </div>
             </div>
           </div>
           <address className="author" itemProp="creator">
