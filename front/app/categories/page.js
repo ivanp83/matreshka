@@ -1,9 +1,9 @@
 import Index from "../components/categories";
 
 export const metadata = {
-  title: "Букеты для тебя | Цветочный бутик Матрёшка",
+  title: "Категории букетов| Цветочный бутик Матрёшка",
   description:
-    "Заходи и посмотри какие замечательные букеты мы приготовили. У нас самые качественные и свежие цветы за доступную цену!",
+    "Самые популярные цветы собранные в замечательные композиции от наших флористов. 100% качество цветов за доступную цену!",
 };
 async function getCategories() {
   const res = await fetch(`${process.env.BACKEND_BASE_URL}/categories`, {

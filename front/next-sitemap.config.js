@@ -63,15 +63,15 @@ module.exports = {
     policies: [
       {
         userAgent: "*",
-        allow: "/",
+        allow: ["/", "/categories", "/info", "/about", "/product", "/contacts"],
       },
       {
         userAgent: "test-bot",
-        allow: ["/"],
+        allow: ["/", "/categories", "/info", "/about", "/product", "/contacts"],
       },
       {
         userAgent: "black-listed-bot",
-        disallow: ["/cart/", "/order/", "/shipping/"],
+        disallow: ["/cart", "/order", "/shipping"],
       },
     ],
   },

@@ -9,7 +9,7 @@ import Footer from "./components/footer";
 import { useEffect } from "react";
 import { Router } from "next/router";
 
-const inter = Roboto_Flex({
+const roboto = Roboto_Flex({
   weight: ["400", "500", "600", "700"],
   preload: false,
 });
@@ -140,7 +140,7 @@ export default function RootLayout({ children }) {
 
       <StyledJsxRegistry>
         <AppProvider>
-          <body className={inter.className}>
+          <body className={roboto.className}>
             <div id="root-loader" />
             <div id="portal" />
             <Header />

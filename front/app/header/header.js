@@ -63,6 +63,7 @@ export default function Header() {
         }
         .num {
           position: absolute;
+          background: var(--main-light);
           top: 18px;
           left: 50%;
           transform: translate(-50%, -50%);
