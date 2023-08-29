@@ -1,5 +1,9 @@
 import Index from "@/app/components/contacts/";
-
+export const metadata = {
+  title: "Контакты | Цветочный бутик Матрёшка",
+  description:
+    "Мы готовы доставить букет по Калининграду и области в течении часа",
+};
 export default function Page(props) {
   const data = {
     title: "Контакты | Цветочный бутик Матрёшка ",
