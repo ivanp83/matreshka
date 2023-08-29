@@ -20,8 +20,9 @@ export default function Index({ data }) {
             min-height: calc(100vh - var(--space-big));
             image-rendering: var(--space-med);
           }
-          h2 {
+          .headline {
             font-size: 1rem;
+            font-weight: 600;
           }
           .wrapp {
             grid-column: 2/4;
@@ -47,16 +48,16 @@ export default function Index({ data }) {
           <h1>{data.heaadline}</h1>
           <address className="address">
             <div className="block">
-              <h2>Адрес</h2>
+              <span className="headline">Адрес</span>
               <span>{data.address}</span>
             </div>
             <div className="block">
-              <h2>Связаться с нами</h2>
+              <span className="headline">Связаться с нами</span>
               <a href={`tel:${data.phone}`}>{data.phone}</a>
               <a href={`mail:${data.email}`}>{data.email}</a>
             </div>
             <div className="block">
-              <h2>Мы в соцсетях</h2>
+              <span className="headline">Мы в соцсетях</span>
               <ul>
                 <li>
                   <span>
