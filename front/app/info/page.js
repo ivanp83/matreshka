@@ -3,8 +3,8 @@ import Index from "../components/info";
 const data = {
   title: "О нас | Цветочный бутик Матрёшка",
   description:
-  "Как маленькое хобби превратилось бизнес. Юлиана Легкодумова - основатель цветочного бутика 'Матрёшка'",
-  tabs :[
+    "Как маленькое хобби превратилось бизнес. Юлиана Легкодумова - основатель цветочного бутика 'Матрёшка'",
+  tabs: [
     {
       id: 0,
       title: "Гарантия",
@@ -32,48 +32,39 @@ const data = {
         "Если вам привезли некачественные цветы (например курьер переморозил их при транспортировке) вам следует обратиться в этот же день в нашу компанию. Обращаем ваше внимание, что претензии относительно качества цветов рассматриваются при наличии фотографии букета в течение дня, в который был доставлен букет.",
       ],
     },
-  ]
+  ],
 };
 export const metadata = {
   title: data.title,
-  keywords:"Заказ букетов, онлайн, Калининград, доставка ",
-  description:
- data.description
+  keywords: "Заказ букетов, онлайн, Калининград, доставка ",
+  description: data.description,
 };
-export default function Page() {
 
+const json = {
+  "@context": "http://schema.org/",
+  "@type": "Article",
+  headline: data.title,
 
-  const json = {
-    "@context": "http://schema.org/",
-    "@type": "Article",
-    headline: data.title,
-   
-    description: data.description,
-    author: "Юлиана Легкодумова",
-    datePublished: "2023-06-21",
-    dateModified: "2023-07-26",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": "https://matryoshkaflowers.ru/",
-    },
-    articleBody: String(data.tabs),
-  };
-
- 
-
+  description: data.description,
+  author: "Юлиана Легкодумова",
+  datePublished: "2023-06-21",
+  dateModified: "2023-07-26",
+  mainEntityOfPage: {
+    "@type": "WebPage",
+    "@id": "https://matryoshkaflowers.ru/",
+  },
+  articleBody: String(data.tabs),
+};
 
 export default function Page() {
   return (
     <>
-
-
       <Index tabs={data.tabs} />
 
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
       />
-
     </>
   );
 }
