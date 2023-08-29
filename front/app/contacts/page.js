@@ -28,12 +28,16 @@ export default function Page(props) {
       "@type": "WebPage",
       "@id": "https://matryoshkaflowers.ru/",
     },
-    articleBody: String(data.text),
+    articleBody: String(data.content),
   };
 
   return (
     <>
-      <Index data={data.content} />
+      <Index data={data.content} />{" "}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+      />
     </>
   );
 }
