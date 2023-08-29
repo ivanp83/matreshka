@@ -2,7 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-export default function Index(props) {
+export default function Index({ data }) {
   const [state, setState] = useState(false);
   useEffect(() => {
     typeof window !== undefined && setState(true);
@@ -42,16 +42,16 @@ export default function Index(props) {
           }
         `}</style>
         <div className="wrapp">
-          <h1>Контакты</h1>
+          <h1>{data.heaadline}</h1>
           <address className="address">
             <div className="block">
               <h4>Адрес</h4>
-              <span>Калининград, улица Виктора Гакуна, 5Б</span>
+              <span>{data.address}</span>
             </div>
             <div className="block">
               <h4>Связаться с нами</h4>
-              <a href="tel:+79114939999">+7 911 493-99-99</a>
-              <a href="mail:matreshkaflower@bk.ru">matreshkaflower@bk.ru</a>
+              <a href={`tel:${data.phone}`}>{data.phone}</a>
+              <a href={`mail:${data.email}`}>{data.email}</a>
             </div>
             <div className="block">
               <h4>Мы в соцсетях</h4>
