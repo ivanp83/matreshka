@@ -37,6 +37,7 @@ export default function Page(props) {
 
   return (
     <>
+      <meta name="robots" content="all" />
       <Index data={data.content} />{" "}
       <script
         type="application/ld+json"

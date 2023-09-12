@@ -35,6 +35,7 @@ export default function Page() {
 
   return (
     <>
+      <meta name="robots" content="all" />
       <Index {...{ data }} />
 
       <script

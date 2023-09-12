@@ -20,5 +20,10 @@ async function getCategories() {
 export default async function Categories() {
   const categories = await getCategories();
 
-  return <Index {...{ categories }} />;
+  return (
+    <>
+      <meta name="robots" content="all" />
+      <Index {...{ categories }} />
+    </>
+  );
 }

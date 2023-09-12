@@ -32,5 +32,10 @@ export default async function Home() {
   const categories = await getCategories();
   const products = await getProducts();
 
-  return <Index {...{ products, categories }} />;
+  return (
+    <>
+      <meta name="robots" content="all" />
+      <Index {...{ products, categories }} />
+    </>
+  );
 }

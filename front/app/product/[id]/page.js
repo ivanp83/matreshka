@@ -56,6 +56,7 @@ export default async function Page({ params: { id } }) {
 
   return (
     <>
+      <meta name="robots" content="all" />
       <Index data={product} faturedData={products} />
       <script
         type="application/ld+json"

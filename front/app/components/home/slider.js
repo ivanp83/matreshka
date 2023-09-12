@@ -39,8 +39,8 @@ export default function Slider({ products }) {
         }
         @media all and (max-width: 1500px) {
           .image {
-            width: calc(var(--cont-w) / 5 - 30px);
-            height: calc(((var(--cont-w) / 5) - 30px) * 4 / 3);
+            width: calc(var(--cont-w) / 4 - 30px);
+            height: calc(((var(--cont-w) / 4) - 30px) * 4 / 3);
           }
         }
         @media all and (max-width: 1400px) {
@@ -88,9 +88,6 @@ export default function Slider({ products }) {
             slidesPerView: 3,
           },
           1000: {
-            slidesPerView: 4,
-          },
-          1400: {
             slidesPerView: 4,
           },
         }}

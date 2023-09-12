@@ -1,4 +1,3 @@
-import Head from "next/head";
 import Index from "../components/info";
 
 export const metadata = {
@@ -60,6 +59,7 @@ export default function Page() {
   };
   return (
     <>
+      <meta name="robots" content="all" />
       <Index tabs={data.tabs} />
 
       <script

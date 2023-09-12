@@ -21,36 +21,40 @@ export default function Page({ params }) {
   }, []);
 
   return (
-    <section className="order container">
-      <style jsx>{`
-        .order {
-          min-height: 95vh;
-          grid-column: 1/4;
-        }
-        .wrap {
-          text-align: center;
-          grid-column: 2/3;
-          display: grid;
-          height: fit-content;
-        }
-      `}</style>
-      <div className="wrap">
-        {responseData && (
-          <>
-            <h1>Заказ № {responseData?.id}</h1>
-            <span>
-              Статус: &nbsp;
-              {responseData?.order_status === "succeeded"
-                ? "оплачен"
-                : responseData?.order_status === "pending"
-                ? "в обработке"
-                : responseData?.order_status === "error"
-                ? "в обработке"
-                : "Произошла ошибка. Обратитесь в нашу поддержку."}
-            </span>
-          </>
-        )}
-      </div>
-    </section>
+    <>
+      <meta name="robots" content="noindex, nofollow" />
+
+      <section className="order container">
+        <style jsx>{`
+          .order {
+            min-height: 95vh;
+            grid-column: 1/4;
+          }
+          .wrap {
+            text-align: center;
+            grid-column: 2/3;
+            display: grid;
+            height: fit-content;
+          }
+        `}</style>
+        <div className="wrap">
+          {responseData && (
+            <>
+              <h1>Заказ № {responseData?.id}</h1>
+              <span>
+                Статус: &nbsp;
+                {responseData?.order_status === "succeeded"
+                  ? "оплачен"
+                  : responseData?.order_status === "pending"
+                  ? "в обработке"
+                  : responseData?.order_status === "error"
+                  ? "в обработке"
+                  : "Произошла ошибка. Обратитесь в нашу поддержку."}
+              </span>
+            </>
+          )}
+        </div>
+      </section>
+    </>
   );
 }

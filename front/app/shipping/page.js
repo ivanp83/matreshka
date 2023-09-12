@@ -3,5 +3,10 @@ const Index = dynamic(() => import("@/app/components/form"), {
   ssr: false,
 });
 export default function Page() {
-  return <Index />;
+  return (
+    <>
+      <meta name="robots" content="noindex, nofollow" />
+      <Index />
+    </>
+  );
 }
