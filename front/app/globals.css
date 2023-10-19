@@ -24,7 +24,9 @@ html {
 html,
 body {
   background-color: var(--main-light);
+  font-family: "Normalidad Regular Var";
   color: var(--main-dark);
+  font-weight: 400;
   font-size: var(--main-fs);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

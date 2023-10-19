@@ -82,6 +82,7 @@ const Index = () => {
   const { cartItems, onCartClear } = useAppContext();
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     setLoading(true);
     try {
       if (!cartItems.length) {
@@ -89,6 +90,7 @@ const Index = () => {
           router.push("/");
         }
       }
+      ym(process.env.NEXT_PUBLIC_YANDEX_METRICS, "reachGoal", "makeOrder");
       const { data } = await Api().checkout.create({
         shippingAddress: {
           ...shippingData,
