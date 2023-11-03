@@ -1,6 +1,5 @@
 "use client";
 import "./globals.css";
-import { Roboto_Flex } from "next/font/google";
 import Header from "./header/header";
 import StyledJsxRegistry from "./registry";
 import { AppProvider } from "./context/app.context";
@@ -8,11 +7,6 @@ import MobileNav from "./components/navigation/mobileAside";
 import Footer from "./components/footer";
 import { useEffect } from "react";
 import { Router } from "next/router";
-
-// const roboto = Roboto_Flex({
-//   weight: ["400", "500", "600", "700"],
-//   preload: false,
-// });
 
 export default function RootLayout({ children }) {
   useEffect(() => {
