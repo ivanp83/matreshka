@@ -16,6 +16,7 @@ export type UserType = {
   cart_items: CartItemType[];
 };
 export type CategoryItem = {
+  [x: string]: any;
   id: number;
   name: string;
   description: string;
@@ -37,6 +38,7 @@ export type ProductItem = {
   big: string | ArrayBuffer | null;
   category_id: string;
   stock: boolean;
+  available: boolean;
 };
 export type ProductItemCreate = {
   name: string;
@@ -45,6 +47,7 @@ export type ProductItemCreate = {
   image: string | ArrayBuffer | null;
   category: number;
   stock: boolean;
+  available: boolean;
 };
 export type UpdateProductItem = {
   id: number;
@@ -54,6 +57,7 @@ export type UpdateProductItem = {
   category_id: number;
   base64Data?: string | ArrayBuffer | null;
   stock: boolean;
+  available: boolean;
 };
 export type PageItem = {
   name: string;

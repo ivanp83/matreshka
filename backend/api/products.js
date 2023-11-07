@@ -23,7 +23,14 @@ module.exports = {
     const p2 = await convertImage(image, folder, 1400);
     const [small, big] = await Promise.all([p1, p2]);
     const prod = await products
-      .create({ category_id: category, name, price, description, stock })
+      .create({
+        category_id: category,
+        name,
+        price,
+        description,
+        stock,
+        available: true,
+      })
       .then((prod) => prod.rows[0]);
 
     await images.create({ product_id: prod.id, small, big });
@@ -39,6 +46,7 @@ module.exports = {
       stock,
       category_id,
       base64Data,
+      available,
     },
     isAdmin,
   ) {
@@ -50,6 +58,7 @@ module.exports = {
       price,
       description,
       stock,
+      available,
     });
 
     if (base64Data) {

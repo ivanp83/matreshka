@@ -3,13 +3,7 @@ import Card from "./Card";
 import "./Gallery.scss";
 
 import Container from "../../components/container/Container";
-import {
-  Await,
-  Navigate,
-  defer,
-  useLoaderData,
-  useNavigate,
-} from "react-router-dom";
+import { Await, defer, useLoaderData } from "react-router-dom";
 
 import { Api } from "../../api";
 import Loader from "../../components/loader/Loader";
@@ -38,8 +32,9 @@ const Gallery: FC = () => {
   );
 };
 async function getProductsByCategory(id: number) {
-  const data = await Api().category.getOneWithProducts(id);
+  const res = await Api().category.getOneWithProducts(id);
 
+  const data = res.filter((p: any) => p.available);
   return data;
 }
 

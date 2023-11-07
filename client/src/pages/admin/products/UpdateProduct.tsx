@@ -26,6 +26,7 @@ const UpdateProduct = () => {
     price: product.price,
     description: product.description,
     stock: product.stock,
+    available: product.available,
     category_id: currentCatеgory.id,
   });
 
@@ -42,6 +43,7 @@ const UpdateProduct = () => {
       stock: data.stock,
       category_id: data.category_id,
       base64Data,
+      available: true,
     },
     setData,
     setBase64Data
@@ -94,6 +96,17 @@ const UpdateProduct = () => {
                       {cat.name}
                     </option>
                   ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="stock">Доступен</label>
+                <select
+                  name="available"
+                  onChange={handleChange}
+                  defaultValue={String(product.available)}
+                >
+                  <option value="true">да</option>
+                  <option value="false">нет</option>
                 </select>
               </div>
               <div>

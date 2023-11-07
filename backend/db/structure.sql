@@ -27,6 +27,8 @@ CREATE TABLE products (
 	description text NOT NULL,
     price INT NOT NULL,
 	category_id INT NOT NULL,
+	stock BOOLEAN NOT NULL DEFAULT FALSE
+	available BOOLEAN NOT NULL DEFAULT TRUE
 	FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE
 );
 CREATE TABLE images (
