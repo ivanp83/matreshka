@@ -26,6 +26,7 @@ export const ProductApi = (instance: AxiosInstance) => ({
   },
   async update(payload: UpdateProductItem) {
     const { data } = await instance.put<ProductItem>(`/products`, payload);
+
     return data;
   },
   async delete(id: number) {

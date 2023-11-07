@@ -20,7 +20,8 @@ export default function Index({ categories }) {
       let res;
       setLoading(true);
       if (id == 0) {
-        res = await Api().product.findAll();
+        const allProducts = await Api().product.findAll();
+        res = allProducts.filter((p) => p.available);
       } else {
         res = await Api().category.findByIdWithProducts(id);
       }
@@ -35,6 +36,7 @@ export default function Index({ categories }) {
     try {
       setLoading(true);
       const res = await Api().product.findAll();
+
       setStateProducts(res);
     } catch (error) {
       alert("Ошибка на сервере");
@@ -45,6 +47,7 @@ export default function Index({ categories }) {
   useEffect(() => {
     (async () => await handleProducts(activeCategory))();
   }, []);
+
   return (
     <motion.div
       initial={{ opacity: 0 }}

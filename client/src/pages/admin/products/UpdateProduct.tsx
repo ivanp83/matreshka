@@ -43,7 +43,7 @@ const UpdateProduct = () => {
       stock: data.stock,
       category_id: data.category_id,
       base64Data,
-      available: true,
+      available: data.available,
     },
     setData,
     setBase64Data
