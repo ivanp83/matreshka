@@ -47,7 +47,6 @@ export type ProductItemCreate = {
   image: string | ArrayBuffer | null;
   category: number;
   stock: boolean;
-  available: boolean;
 };
 export type UpdateProductItem = {
   id: number;
