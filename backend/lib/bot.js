@@ -70,6 +70,7 @@ module.exports = (config, adminId, console) => {
   });
   appEmitter.on('siteNewOrderEvent', async (data) => {
     try {
+      console.log({ data });
       const { yookassaResponse, customer } = JSON.parse(data);
 
       const { id, description, status } = yookassaResponse;
