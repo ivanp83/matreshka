@@ -77,7 +77,7 @@ module.exports = (config, adminId, console) => {
         .then((res) => res.rows[0]);
       // const { description, status } = yookassaResponse;
       // const { first_name, last_name, phone } = customer;
-
+      console.log({ userData });
       const HTML = `
 <b>Новый заказ # </b>
 <pre>${orderId}</pre>\n
