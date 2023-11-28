@@ -86,9 +86,7 @@ module.exports = (config, adminId, console) => {
 <b>Товары:</b>
 <pre>${JSON.stringify(orderProducts, null, 2)}</pre>\n
 <b>Покупатель:</b>
-<pre>${userData.first_name}</pre>
-<pre>${userData.last_name}</pre>
-<pre>тел. ${userData.phone}</pre>\n
+
       `;
 
       return await bot.telegram.sendMessage(adminId, HTML, {
