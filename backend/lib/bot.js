@@ -73,7 +73,7 @@ module.exports = (config, adminId, console) => {
       console.log({ data });
       const { orderId, userId, orderProducts } = JSON.parse(data);
       const userData = await pool
-        .query(`SELECT *  FROM users WHERE id = ${userId};`)
+        .query(`SELECT *  FROM customers WHERE id = ${userId};`)
         .then((res) => res.rows[0]);
       // const { description, status } = yookassaResponse;
       // const { first_name, last_name, phone } = customer;
