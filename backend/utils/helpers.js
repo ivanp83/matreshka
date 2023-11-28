@@ -61,7 +61,7 @@ const getInvoice = (id, products, orderId, token) => {
     currency: 'RUB',
     prices: products.map((prod) => ({
       label: prod.name,
-      amount: prod.price * prod.quantity * 100,
+      amount: Number(prod.price) * Number(prod.quantity) * 100,
     })),
     need_shipping_address: true,
     need_phone_number: true,
