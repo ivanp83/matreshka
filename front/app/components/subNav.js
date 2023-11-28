@@ -192,10 +192,18 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
               </li>
             ))}
           </ol>
+          <label
+            htmlFor="category-select"
+            style={{ visibility: "hidden", position: "absolute" }}
+          >
+            Выбрать категорию
+          </label>
+
           <select
             defaultValue={activeCategory}
             name="categories-list"
             className="select"
+            id="category-select"
             onChange={(e) => handleProducts(Number(e.target.value))}
           >
             <option value={0}>Все категории</option>

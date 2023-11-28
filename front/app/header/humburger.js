@@ -4,7 +4,11 @@ export default function Humburger() {
   const { menuIsOpen, setMenuIsOpen } = useAppContext();
 
   return (
-    <button className="humburger" onClick={() => setMenuIsOpen(!menuIsOpen)}>
+    <button
+      className="humburger"
+      onClick={() => setMenuIsOpen(!menuIsOpen)}
+      aria-label="Открыть меню сайта"
+    >
       <style jsx>{`
         .humburger {
           border: none;
