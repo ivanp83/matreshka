@@ -51,6 +51,7 @@ const convertImage = async (base64, folder, size) =>
       });
   });
 const getInvoice = (id, products, orderId, token) => {
+  console.log({ products });
   const invoice = {
     chat_id: id,
     provider_token: token,
