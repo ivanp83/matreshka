@@ -10,6 +10,7 @@ const { appEmitter } = require('../utils/EventEmitter');
 
 module.exports = {
   async read(id, isAdmin, fields = ['*']) {
+    console.log('check');
     try {
       const names = fields.join(', ');
       const sql = `SELECT ${names} FROM orders`;
@@ -40,7 +41,7 @@ module.exports = {
       )
         .then((response) => response.json())
         .then((result) => result);
-      console.log({ yookassaResponse });
+
       if (!['succeeded', 'canceled'].includes(order[0].status)) {
         order[0].status = yookassaResponse.status;
         await orders.queryRows(
@@ -60,35 +61,39 @@ module.exports = {
   },
 
   async create({ products: productsReq, userId }) {
-    const customer = await customers.queryRows(
-      'SELECT * FROM customers where telegram_id=$1;',
-      [userId],
-    );
+    try {
+      const customer = await customers.queryRows(
+        'SELECT * FROM customers where telegram_id=$1;',
+        [userId],
+      );
 
-    const newOrder = await orders.queryRows(
-      `INSERT INTO orders ("customer_id", "order_items") 
+      const newOrder = await orders.queryRows(
+        `INSERT INTO orders ("customer_id", "order_items") 
         VALUES ($1, $2) RETURNING *;`,
-      [customer[0].id, JSON.stringify(productsToDB(productsReq), null, 2)],
-    );
+        [customer[0].id, JSON.stringify(productsToDB(productsReq), null, 2)],
+      );
 
-    const orderProducts = [];
-    for await (const product of productsReq) {
-      const productInDb = await products.read(product.product_id);
-      orderProducts.push(productInDb.rows[0]);
+      const orderProducts = [];
+      for await (const product of productsReq) {
+        const productInDb = await products.read(product.product_id);
+        orderProducts.push(productInDb.rows[0]);
+      }
+
+      appEmitter.emit(
+        'siteNewOrderEvent',
+        JSON.stringify({ userId, orderProducts, orderId: newOrder[0].id }),
+      );
+
+      await products.query(
+        `UPDATE carts SET cart_items='${JSON.stringify(
+          [],
+        )}' WHERE customer_id=$1;`,
+        [userId],
+      );
+      return orderProducts;
+    } catch (error) {
+      console.error(error);
     }
-
-    appEmitter.emit(
-      'siteNewOrderEvent',
-      JSON.stringify({ userId, orderProducts, orderId: newOrder[0].id }),
-    );
-
-    await products.query(
-      `UPDATE carts SET cart_items='${JSON.stringify(
-        [],
-      )}' WHERE customer_id=$1;`,
-      [userId],
-    );
-    return orderProducts;
   },
 
   delete(id, isAdmin) {
