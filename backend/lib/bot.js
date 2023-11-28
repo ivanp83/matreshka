@@ -25,11 +25,11 @@ module.exports = (config, adminId, console) => {
   };
   appEmitter.on('newBotOrderEvent', async (data) => {
     try {
-      const { userId, productsReq, orderId } = JSON.parse(data);
+      const { userId, orderProducts, orderId } = JSON.parse(data);
 
       await bot.telegram.sendInvoice(
         userId,
-        getInvoice(userId, productsReq, orderId, config.providerToken),
+        getInvoice(userId, orderProducts, orderId, config.providerToken),
       );
     } catch (error) {
       console.log(error);
