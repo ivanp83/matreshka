@@ -6,7 +6,7 @@ export default function Index({ tabs }) {
   const [activeTab, setActiveTab] = useState(0);
   return (
     <>
-      <motion.article
+      <motion.section
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -23,8 +23,13 @@ export default function Index({ tabs }) {
               height: fit-content;
             }
             h1 {
+              width: 1px;
+              height: 1px;
+              position: absolute;
               grid-column: 1/4;
               justify-self: start;
+              font-size: 0px;
+              user-select: none;
             }
             nav {
               grid-column: 1/2;
@@ -64,20 +69,26 @@ export default function Index({ tabs }) {
               }
             }
           `}</style>
+          <h1>
+            <b>Информация для клиента</b>
+          </h1>
           <div className="wrapp container">
             <nav aria-label="Навигация по клиентской информации">
-              {tabs.map((tab) => (
-                <button
-                  key={tab.id}
-                  onClick={() => setActiveTab(tab.id)}
-                  className={`${
-                    tab.id === activeTab ? "active" : ""
-                  } nav-button sub-nav-link`}
-                  disabled={tab.id === activeTab}
-                >
-                  {tab.title}
-                </button>
-              ))}
+              <ul style={{ display: "contents" }}>
+                {tabs.map((tab) => (
+                  <li key={tab.id} style={{ display: "contents" }}>
+                    <button
+                      onClick={() => setActiveTab(tab.id)}
+                      className={`${
+                        tab.id === activeTab ? "active" : ""
+                      } nav-button sub-nav-link`}
+                      disabled={tab.id === activeTab}
+                    >
+                      {tab.title}
+                    </button>
+                  </li>
+                ))}
+              </ul>
             </nav>
             <div className="content">
               {tabs.map((tab) => (
@@ -95,7 +106,7 @@ export default function Index({ tabs }) {
             </div>
           </div>
         </section>
-      </motion.article>
+      </motion.section>
     </>
   );
 }

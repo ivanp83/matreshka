@@ -65,7 +65,12 @@ export default function Gallery({ data }) {
       `}</style>
       {data.map((prod) => (
         <li key={prod.id}>
-          <Link href={String(`product/${prod.id}`)}>
+          <Link
+            href={{
+              pathname: String(`product/${prod.id}`),
+              query: { search: "normal" },
+            }}
+          >
             <figure>
               <div className="image">
                 <div className="inner">

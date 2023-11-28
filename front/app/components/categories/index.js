@@ -8,7 +8,6 @@ import { Api } from "@/api";
 import { useAppContext } from "@/app/context/app.context";
 const Loader = dynamic(() => import("../loader"), { ssr: false });
 const Gallery = dynamic(() => import("./gallery"), {
-  ssr: false,
   loading: () => <Loader />,
 });
 

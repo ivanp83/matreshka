@@ -31,13 +31,13 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           display: grid;
           grid-gap: var(--space-small);
         }
-        .nav ul {
+        .nav ol {
           display: flex;
 
           width: fit-content;
           align-items: baseline;
         }
-        .nav ul li {
+        .nav ol li {
           display: grid;
           grid-auto-flow: column;
           align-items: end;
@@ -129,7 +129,7 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
         }
       `}</style>
       <nav aria-label="Дополнительная навигация по товарам" className="nav">
-        <ul>
+        <ol>
           <li>
             <Link href="/">
               <span className="sub-nav-link"> Главная</span>
@@ -158,11 +158,11 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
               </li>
             </>
           )}
-        </ul>
+        </ol>
       </nav>
       {!!handleProducts && (
         <>
-          <ul className="categories-list">
+          <ol className="categories-list">
             <li className={`list-item `}>
               <button
                 className={`${
@@ -191,7 +191,7 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
                 </button>
               </li>
             ))}
-          </ul>
+          </ol>
           <select
             defaultValue={activeCategory}
             name="categories-list"

@@ -1,11 +1,12 @@
 export default function Text({ text }) {
   return (
-    <div className="text main-text">
+    <p className="text h3 main-text">
       <style jsx>{`
         .text {
           grid-column: 2/4;
         }
-        .main-text {
+        .main-text,
+        strong {
           font-weight: 400;
           font-size: var(--big-fs);
         }
@@ -15,7 +16,7 @@ export default function Text({ text }) {
           }
         }
       `}</style>
-      {text}
-    </div>
+      <strong>{text}</strong>
+    </p>
   );
 }

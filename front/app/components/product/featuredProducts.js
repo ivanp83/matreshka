@@ -91,7 +91,7 @@ const FeaturedProducts = ({ data }) => {
           font-size: 16px;
         }
       `}</style>
-      <h2> Другие букеты</h2>
+      <h2 className="h2"> Другие букеты</h2>
 
       <Swiper
         spaceBetween={18}

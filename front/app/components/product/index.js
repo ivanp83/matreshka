@@ -6,7 +6,7 @@ import { currencyFormat } from "@/utils/helpers";
 import Button from "../buttons/button";
 import { useAppContext } from "@/app/context/app.context";
 import dynamic from "next/dynamic";
-import { useRouter } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import SubNav from "../subNav";
 import { AnimatePresence, motion } from "framer-motion";
 import Portal from "../hoc/withPortal";
@@ -20,6 +20,10 @@ const CartAside = dynamic(() => import("../shared/cartAside"), {
 });
 
 export default function Index({ data: product, faturedData }) {
+  const searchParams = useSearchParams();
+
+  const search = searchParams.get("search");
+  console.log(search);
   const [avatarIsVisible, setstAvatarIsVisible] = useState(false);
   const { onUpdate, cartItems, setActiveCategory, cartPosition } =
     useAppContext();

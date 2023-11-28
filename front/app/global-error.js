@@ -15,7 +15,7 @@ export default function GlobalError({ error, reset }) {
               "-apple-system, BlinkMacSystemFont, Helvetica Neue, Inter, Roboto, Arial, Ubuntu, sans-serif",
           }}
         >
-          <h2>Что-то пошло не так!</h2>
+          <h2 className="h2">Что-то пошло не так!</h2>
           <button
             title="Попробуй снова"
             onClick={() => reset()}

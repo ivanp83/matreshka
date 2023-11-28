@@ -20,14 +20,14 @@ export default function Products({ products }) {
         h2 {
           grid-column: 1/2;
         }
-        h3 {
+        .h3 {
           grid-column: 2/4;
         }
         .button-link {
           grid-column: 2/4;
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
-          h3 {
+          .h3 {
             grid-column: 1/4;
           }
           .button-link {
@@ -36,10 +36,10 @@ export default function Products({ products }) {
         }
       `}</style>
       <div className="wrapp  container">
-        <h2>Популярные </h2>
-        <h3>
+        <h2 className="h2">Популярные </h2>
+        <p className="h3">
           Выбор наших клиентов: подборка самых популярных и роскошных букетов
-        </h3>
+        </p>
         <div className="button-link">
           <LinkTo href="categories" text="Смотреть все" />
         </div>

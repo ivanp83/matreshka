@@ -39,7 +39,7 @@ export default async function Page({ params: { id } }) {
     "@type": "Product",
     name: product.name,
     image: [`${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`],
-    description: product.name,
+    description: product.description,
     brand: {
       "@type": "Brand",
       name: "Матрёшка Фловерс",

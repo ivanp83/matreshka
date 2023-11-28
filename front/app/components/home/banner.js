@@ -33,7 +33,7 @@ export default function Banner() {
         .logo-title {
           grid-column: 1/4;
         }
-        .button {
+        hgroup {
           grid-column: 2/4;
           display: grid;
           justify-content: start;
@@ -77,7 +77,7 @@ export default function Banner() {
             width: 80vw;
             margin: 5rem auto 0;
           }
-          .button {
+          hgroup {
             grid-column: 1/4;
             grid-row: 3;
             margin: 1rem auto;
@@ -93,16 +93,27 @@ export default function Banner() {
           }
         }
       `}</style>
+
       <div className="logo-title">
         <Logo />
       </div>
-      <div className="button">
+      <hgroup>
+        <h1
+          style={{
+            width: "1px",
+            height: "1px",
+            position: "absolute",
+            fontSize: "0px",
+          }}
+        >
+          <b>Продажа цветочных букетов</b> в Калининграде с доставкой
+        </h1>
         <LinkTo
           href="/categories"
           text="Выбрать букет"
           style={{ background: "var(--main-light)" }}
         />
-      </div>
+      </hgroup>
       <div className="image">
         <CustomImage
           src="/images/8.jpg"

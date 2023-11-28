@@ -7,7 +7,7 @@ export const metadata = {
 export default function Page(props) {
   const data = {
     title: "Контакты | Цветочный бутик Матрёшка ",
-    keywords: "Заказ букетов, онлайн, Калининград, доставка",
+
     description:
       "Мы  готовы доставить букет по Калининграду и области в течении часа",
 

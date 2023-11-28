@@ -36,7 +36,7 @@ export default function Index({ data }) {
             width: 20rem;
             height: 20rem;
           }
-          b {
+          strong {
             font-weight: 600;
           }
           .text {
@@ -83,7 +83,9 @@ export default function Index({ data }) {
           }
         `}</style>
 
-        <h1 className="title">{data.title}</h1>
+        <h1 className="title">
+          <b style={{ inset: 0 }}>{data.title}</b>
+        </h1>
         <div className="image">
           <Image
             property="priority"
@@ -97,13 +99,11 @@ export default function Index({ data }) {
           />
         </div>
 
-        <div className="text">
-          <b>{data.text[0]}</b>
-          {data.text.splice(1, data.text.length).map((t, i) => (
+        <p className="text">
+          {data.text.map((t) => (
             <span key={t}>{t}</span>
           ))}
-          <span></span>
-        </div>
+        </p>
       </section>
     </motion.div>
   );
