@@ -52,6 +52,10 @@ const convertImage = async (base64, folder, size) =>
   });
 const getInvoice = (id, products, orderId, token) => {
   console.log({ products });
+  const price = products.map((prod) => ({
+    label: prod.name,
+    amount: Number(prod.price) * Number(prod.quantity) * 100,
+  }));
   const invoice = {
     chat_id: id,
     provider_token: token,
@@ -59,10 +63,7 @@ const getInvoice = (id, products, orderId, token) => {
     title: 'Оплата в магазине Matrёshka flowers!',
     description: products.map((prod) => prod.name),
     currency: 'RUB',
-    prices: products.map((prod) => ({
-      label: prod.name,
-      amount: () => Number(prod.price) * Number(prod.quantity) * 100,
-    })),
+    prices: price,
     need_shipping_address: true,
     need_phone_number: true,
     need_email: true,
