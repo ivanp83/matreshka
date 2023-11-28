@@ -38,7 +38,7 @@ module.exports = {
     )
       .then((response) => response.json())
       .then((result) => result);
-
+    console.log({ yookassaResponse });
     if (!['succeeded', 'canceled'].includes(order[0].status)) {
       order[0].status = yookassaResponse.status;
       await orders.queryRows(
@@ -69,7 +69,7 @@ module.exports = {
       const productInDb = await products.read(product.product_id);
       orderProducts.push(productInDb.rows[0]);
     }
-    console.log({ userId, orderProducts, orderId: newOrder[0].id });
+
     appEmitter.emit(
       'siteNewOrderEvent',
       JSON.stringify({ userId, orderProducts, orderId: newOrder[0].id }),
