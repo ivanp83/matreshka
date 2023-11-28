@@ -45,12 +45,15 @@ export default function Footer() {
           .address {
             margin-bottom: 1rem;
           }
-          h4 {
-            color: var(--main-light);
+          .h4 {
+            color: var(--main-gray);
           }
           address {
             font-style: normal;
-            color: var(--main-gray);
+            color: var(--main-light);
+          }
+          a {
+            display: block;
           }
           .social,
           .creds,
@@ -68,9 +71,7 @@ export default function Footer() {
           .contacts a {
             display: block;
           }
-          span {
-            color: var(--main-gray);
-          }
+
           .y-rating {
             grid-row: 2;
           }
@@ -129,57 +130,42 @@ export default function Footer() {
             <Matrehska style={{ fill: "var(--main-light)" }} />
           </div>
           <div className="social">
-            <h4>Мы в соцсетях</h4>
-            <ul>
-              <li>
-                <span>
-                  <a
-                    href="#"
-                    onClick={() =>
-                      !window.open(
-                        "http://instagram.com/_u/yulianalegkodumova/"
-                      )
-                    }
-                    rel="noopener noreferrer"
-                  >
-                    Instagram
-                  </a>
-                </span>
-              </li>
-              <li>
-                <span>
-                  <a
-                    href="#"
-                    onClick={() =>
-                      !window.open("tg://resolve?domain=YulianaLegkodumova")
-                    }
-                  >
-                    Telegram
-                  </a>
-                </span>
-              </li>
-              <li>
-                <span>
-                  <a
-                    href="#"
-                    onClick={() =>
-                      !window.open("https://vk.com/matreshkaflower")
-                    }
-                  >
-                    В контакте
-                  </a>
-                </span>
-              </li>
-            </ul>
+            <p className="h4">Мы в соцсетях</p>
+
+            <a
+              href="#"
+              onClick={() =>
+                !window.open("http://instagram.com/_u/yulianalegkodumova/")
+              }
+              rel="noopener noreferrer"
+            >
+              Instagram
+            </a>
+
+            <a
+              href="#"
+              onClick={() =>
+                !window.open("tg://resolve?domain=YulianaLegkodumova")
+              }
+            >
+              Telegram
+            </a>
+
+            <a
+              href="#"
+              onClick={() => !window.open("https://vk.com/matreshkaflower")}
+            >
+              В контакте
+            </a>
           </div>
           <div className="creds">
             <address className="address">
-              <h4>Адрес</h4>
+              <p className="h4">Адрес</p>
               <span>Калининград, улица Виктора Гакуна, 5Б</span>
             </address>
 
             <div className="contacts">
-              <h4>Контакты</h4>
+              <p className="h4">Контакты</p>
               <div>
                 <a href="tel:+79114939999">+7 911 493-99-99</a>
                 <a href="mailto:matreshkaflower@bk.ru">matreshkaflower@bk.ru</a>
@@ -187,7 +173,12 @@ export default function Footer() {
             </div>
           </div>
           <address className="author" itemProp="creator">
-            <a rel="author" href="https://039.studio" target="_blank">
+            <a
+              rel="author"
+              href="https://039.studio"
+              target="_blank"
+              aria-label="Перейти на сайт разработчика"
+            >
               <svg
                 width="120px"
                 viewBox="0 0 675 156"
@@ -376,6 +367,7 @@ export default function Footer() {
           </address>
           {state && (
             <iframe
+              title="Рейтинг Яндекс"
               className="y-rating"
               src="https://yandex.ru/sprav/widget/rating-badge/194072879661?type=rating"
               width="150"

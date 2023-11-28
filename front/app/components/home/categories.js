@@ -50,7 +50,7 @@ export default function Categories({ categories }) {
           margin-right: 10px;
           line-height: 1;
           font-size: 16px;
-          color: var(--main-gray);
+          color: var(--main-dark);
         }
         a {
           display: contents;
