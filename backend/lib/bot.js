@@ -71,22 +71,24 @@ module.exports = (config, adminId, console) => {
   appEmitter.on('siteNewOrderEvent', async (data) => {
     try {
       console.log({ data });
-      const { yookassaResponse, customer } = JSON.parse(data);
-
-      const { id, description, status } = yookassaResponse;
-      const { first_name, last_name, phone } = customer;
+      const { orderId, userId, orderProducts } = JSON.parse(data);
+      const userData = await pool
+        .query(`SELECT *  FROM users WHERE id = ${userId};`)
+        .then((res) => res.rows[0]);
+      // const { description, status } = yookassaResponse;
+      // const { first_name, last_name, phone } = customer;
 
       const HTML = `
 <b>Новый заказ # </b>
-<pre>${id}</pre>\n
+<pre>${orderId}</pre>\n
 <b>Статус:</b>
-<pre>${status}</pre>\n
+
 <b>Товары:</b>
-<pre>${description}</pre>\n
+<pre>${JSON.stringify(orderProducts, null, 2)}</pre>\n
 <b>Покупатель:</b>
-<pre>${first_name}</pre>
-<pre>${last_name}</pre>
-<pre>тел. ${phone}</pre>\n
+<pre>${userData.first_name}</pre>
+<pre>${userData.last_name}</pre>
+<pre>тел. ${userData.phone}</pre>\n
       `;
 
       return await bot.telegram.sendMessage(adminId, HTML, {
