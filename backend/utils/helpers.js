@@ -53,7 +53,7 @@ const convertImage = async (base64, folder, size) =>
 const getInvoice = (id, products, orderId, token) => {
   const price = products.map((prod) => ({
     label: prod.name,
-    amount: Number(prod.price) * Number((prod.quantity = 1)) * 100,
+    amount: Number(prod.price) * Number(prod.quantity) * 100,
   }));
   const invoice = {
     chat_id: id,
