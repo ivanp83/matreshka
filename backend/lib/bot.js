@@ -23,7 +23,7 @@ module.exports = (config, adminId, console) => {
       ctx.forwardMessage(adminId, ctx.from.id, ctx.message.id);
     }
   };
-  appEmitter.on('newOrderEvent', async (data) => {
+  appEmitter.on('newBotOrderEvent', async (data) => {
     try {
       const { userId, productsReq, orderId } = JSON.parse(data);
 

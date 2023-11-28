@@ -80,7 +80,7 @@ module.exports = {
       }
 
       appEmitter.emit(
-        'siteNewOrderEvent',
+        'newBotOrderEvent',
         JSON.stringify({ userId, orderProducts, orderId: newOrder[0].id }),
       );
 
