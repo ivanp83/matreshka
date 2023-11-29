@@ -10,6 +10,6 @@ export default function Layout({ children }) {
       `}</style>
 
       {children}
-    </article>
+    </div>
   );
 }
