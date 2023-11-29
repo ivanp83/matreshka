@@ -131,7 +131,6 @@ export default function Footer() {
           </div>
           <div className="social">
             <p className="h4">Мы в соцсетях</p>
-
             <a
               href="#"
               onClick={() =>

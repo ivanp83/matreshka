@@ -56,7 +56,7 @@ export default function Index({ data }) {
             </span>
             <span className="block">
               <span className="headline">Связаться с нами</span>
-              <a href={`tel:${data.phone}`}>{data.phone}</a>
+              <a href={`tel:${data.phone.split(" ").join("")}`}>{data.phone}</a>
               <a href={`mail:${data.email}`}>{data.email}</a>
             </span>
             <span className="block">
