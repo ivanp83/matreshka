@@ -56,7 +56,7 @@ export default async function Page({ params: { id } }) {
 
   return (
     <>
-      <meta name="robots" content="all" />{" "}
+      <meta name="robots" content="all" />
       <link
         rel="canonical"
         href={`https://matryoshkaflowers.ru/product/${product.id}?search=normal`}

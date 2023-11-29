@@ -2,7 +2,7 @@
 
 export default function Layout({ children }) {
   return (
-    <article className="layout">
+    <div className="layout">
       <style jsx>{`
         .layout {
           margin-top: var(--space-med);
