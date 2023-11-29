@@ -46,7 +46,58 @@ export default function Index({ categories }) {
   useEffect(() => {
     (async () => await handleProducts(activeCategory))();
   }, []);
+  const json = [
+    {
+      "@context": "http://schema.org/",
+      "@type": "Article",
+      headline: data.title,
 
+      description: data.description,
+      author: "Юлиана Легкодумова",
+      datePublished: "2023-06-21",
+      dateModified: "2023-07-26",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://matryoshkaflowers.ru/",
+      },
+      articleBody: String(data.content),
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Главная",
+          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Проекты",
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "About",
+          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Информация",
+          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
+          name: "Контакты",
+          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
+        },
+      ],
+    },
+  ];
   return (
     <motion.div
       initial={{ opacity: 0 }}
@@ -63,7 +114,11 @@ export default function Index({ categories }) {
         `}</style>
         <SubNav {...{ categories, handleProducts, getAllProducts }} />
         {stateProducts && <Gallery data={stateProducts} />}
-      </section>
+      </section>{" "}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
+      />
     </motion.div>
   );
 }

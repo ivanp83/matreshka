@@ -19,21 +19,58 @@ export default function Page(props) {
     },
   };
 
-  const json = {
-    "@context": "http://schema.org/",
-    "@type": "Article",
-    headline: data.title,
+  const json = [
+    {
+      "@context": "http://schema.org/",
+      "@type": "Article",
+      headline: data.title,
 
-    description: data.description,
-    author: "Юлиана Легкодумова",
-    datePublished: "2023-06-21",
-    dateModified: "2023-07-26",
-    mainEntityOfPage: {
-      "@type": "WebPage",
-      "@id": "https://matryoshkaflowers.ru/",
+      description: data.description,
+      author: "Юлиана Легкодумова",
+      datePublished: "2023-06-21",
+      dateModified: "2023-07-26",
+      mainEntityOfPage: {
+        "@type": "WebPage",
+        "@id": "https://matryoshkaflowers.ru/",
+      },
+      articleBody: String(data.content),
     },
-    articleBody: String(data.content),
-  };
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          name: "Главная",
+          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          name: "Проекты",
+          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          name: "About",
+          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          name: "Информация",
+          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
+          name: "Контакты",
+        },
+      ],
+    },
+  ];
 
   return (
     <>
