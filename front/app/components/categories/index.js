@@ -90,6 +90,17 @@ export default function Index({ categories }) {
       exit={{ opacity: 0 }}
     >
       <section className="categories container">
+        <h1
+          style={{
+            width: "1px",
+            height: "1px",
+            position: "absolute",
+            fontSize: "0px",
+            visibility: "hidden",
+          }}
+        >
+          Доступные на продажу букеты
+        </h1>
         {loading && <Loader />}
         <style jsx>{`
           .categories {

@@ -161,7 +161,10 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
         </ol>
       </nav>
       {!!handleProducts && (
-        <>
+        <nav
+          style={{ display: "contents" }}
+          aria-label="Основная навигация по категориям букетов"
+        >
           <ol className="categories-list">
             <li className={`list-item `}>
               <button
@@ -213,7 +216,7 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
               </option>
             ))}
           </select>
-        </>
+        </nav>
       )}
     </div>
   );

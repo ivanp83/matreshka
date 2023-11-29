@@ -49,10 +49,13 @@ const FeaturedProducts = ({ data }) => {
           width: 100%;
           text-align: center;
         }
-        .details span {
+        .details p {
           font-size: 18px;
         }
-
+        cite {
+          font-style: normal;
+          font-weight: 600;
+        }
         @media (hover: hover) and (pointer: fine) {
           .card-wrapp:hover .image img {
             transform: scale(1.02);
@@ -89,8 +92,7 @@ const FeaturedProducts = ({ data }) => {
             height: calc((var(--cont-w) - 40px) * 4 / 3);
           }
         }
-        .details span,
-        h4 {
+        .details p {
           font-size: 16px;
         }
       `}</style>
@@ -133,7 +135,7 @@ const FeaturedProducts = ({ data }) => {
       >
         {data.map((prod) => (
           <SwiperSlide key={prod.id}>
-            <div className="card-wrapp">
+            <figure className="card-wrapp">
               <Link href={`./${prod.id}`}>
                 <div className="image">
                   <CustomImage
@@ -144,11 +146,11 @@ const FeaturedProducts = ({ data }) => {
                   />
                 </div>
               </Link>
-              <div className="details">
-                <h4>{prod.name}</h4>
-                <span>{currencyFormat(prod.price)}</span>
-              </div>
-            </div>
+              <figcaption className="details">
+                <cite>{prod.name}</cite>
+                <p>{currencyFormat(prod.price)}</p>
+              </figcaption>
+            </figure>
           </SwiperSlide>
         ))}
       </Swiper>

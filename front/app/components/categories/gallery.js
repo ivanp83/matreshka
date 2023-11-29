@@ -35,7 +35,9 @@ export default function Gallery({ data }) {
           text-align: center;
           margin-top: 5px;
         }
-
+        b {
+          font-weight: 600;
+        }
         @media (hover: hover) and (pointer: fine) {
           li:hover .inner {
             transform: scale(1.02);
@@ -84,8 +86,8 @@ export default function Gallery({ data }) {
                 </div>
               </div>
               <figcaption>
-                <h4>{prod.name}</h4>
-                <span className="price">{currencyFormat(prod.price)}</span>
+                <b>{prod.name}</b>
+                <p className="price">{currencyFormat(prod.price)}</p>
               </figcaption>
             </figure>
           </Link>
