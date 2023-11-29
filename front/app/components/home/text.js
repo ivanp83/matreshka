@@ -1,14 +1,15 @@
 export default function Text({ text }) {
   return (
-    <p className="text h3 main-text">
+    <span className="text h3 main-text">
       <style jsx>{`
         .text {
           grid-column: 2/4;
         }
         .main-text,
-        strong {
+        cite {
           font-weight: 400;
           font-size: var(--big-fs);
+          font-style: normal;
         }
         @media all and (max-width: 600px) and (orientation: portrait) {
           .text {
@@ -16,7 +17,7 @@ export default function Text({ text }) {
           }
         }
       `}</style>
-      <strong>{text}</strong>
-    </p>
+      <cite>{text}</cite>
+    </span>
   );
 }

@@ -5,8 +5,10 @@ import { currencyFormat } from "@/utils/helpers";
 import Link from "next/link";
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
+
 import { Envs } from "@/utils/config";
 import CustomImage from "../image";
+import { Autoplay } from "swiper";
 
 const FeaturedProducts = ({ data }) => {
   return (
@@ -50,6 +52,7 @@ const FeaturedProducts = ({ data }) => {
         .details span {
           font-size: 18px;
         }
+
         @media (hover: hover) and (pointer: fine) {
           .card-wrapp:hover .image img {
             transform: scale(1.02);
@@ -97,6 +100,16 @@ const FeaturedProducts = ({ data }) => {
         spaceBetween={18}
         slidesPerView={5}
         style={{ width: "100%" }}
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay]}
         breakpoints={{
           10: {
             slidesPerView: 1,

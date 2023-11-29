@@ -23,6 +23,9 @@ export default function Products({ products }) {
         .h3 {
           grid-column: 2/4;
         }
+        cite {
+          font-style: normal;
+        }
         .button-link {
           grid-column: 2/4;
         }
@@ -37,9 +40,9 @@ export default function Products({ products }) {
       `}</style>
       <div className="wrapp  container">
         <h2 className="h2">Популярные </h2>
-        <p className="h3">
+        <cite className="h3">
           Выбор наших клиентов: подборка самых популярных и роскошных букетов
-        </p>
+        </cite>
         <div className="button-link">
           <LinkTo href="categories" text="Смотреть все" />
         </div>

@@ -103,7 +103,7 @@ export default function Categories({ categories }) {
         }
       `}</style>
       <div className="wrapp container">
-        <h2>Категории</h2>
+        <h2 className="h2">Категории</h2>
         <ul>
           {categories.map((cat, i) => (
             <li key={cat.id}>

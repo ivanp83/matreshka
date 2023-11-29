@@ -1,10 +1,12 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/css";
 import Link from "next/link";
 import { Envs } from "@/utils/config";
 import { currencyFormat } from "@/utils/helpers";
 import CustomImage from "../image";
+import { Autoplay } from "swiper";
 
 export default function Slider({ products }) {
   return (
@@ -33,6 +35,9 @@ export default function Slider({ products }) {
 
         h3 {
           grid-column: 1/2;
+        }
+        b {
+          font-weight: 600;
         }
         h4 {
           grid-column: 2/4;
@@ -74,6 +79,15 @@ export default function Slider({ products }) {
         spaceBetween={10}
         slidesPerView={5}
         style={{ width: "100%", gridColumn: "1/4" }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        pagination={{
+          clickable: true,
+        }}
+        navigation={true}
+        modules={[Autoplay]}
         breakpoints={{
           10: {
             slidesPerView: 1,
@@ -94,7 +108,7 @@ export default function Slider({ products }) {
       >
         {products.map((prod) => (
           <SwiperSlide key={prod.id}>
-            <div className="card-wrapp">
+            <figure className="card-wrapp">
               <Link href={`product/${prod.id}`}>
                 <div className="image">
                   <CustomImage
@@ -105,11 +119,13 @@ export default function Slider({ products }) {
                   />
                 </div>
               </Link>
-              <div className="details">
-                <h4>{prod.name}</h4>
-                <span className="price">{currencyFormat(prod.price)}</span>
-              </div>
-            </div>
+              <figcaption className="details">
+                <h3>
+                  <b>{prod.name}</b>
+                </h3>
+                <p className="price">{currencyFormat(prod.price)}</p>
+              </figcaption>
+            </figure>
           </SwiperSlide>
         ))}
       </Swiper>

@@ -73,10 +73,10 @@ export default function Events({}) {
           />
         </div>
 
-        <p className="text-bold">
+        <strong className="text-bold">
           Наши букеты сделают твой праздник
           <br /> еще более ярким и красивым
-        </p>
+        </strong>
 
         <div className="par">
           <p>
