@@ -112,7 +112,6 @@ export default function RootLayout({ children }) {
       <meta name="theme-color" content="#ffffff" />
 
       <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <link rel="canonical" href="https://matryoshkaflowers.ru/" />
       <meta name="author" content="https://039.studio" />
       <meta property="og:url" content="https://matryoshkaflowers.ru/" />
       <meta property="og:type" content="website" />

@@ -22,7 +22,8 @@ export default async function Categories() {
 
   return (
     <>
-      <meta name="robots" content="all" />
+      <meta name="robots" content="all" />{" "}
+      <link rel="canonical" href="https://matryoshkaflowers.ru/categories" />
       <Index {...{ categories }} />
     </>
   );

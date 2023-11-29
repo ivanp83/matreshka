@@ -74,7 +74,8 @@ export default function Page(props) {
 
   return (
     <>
-      <meta name="robots" content="all" />
+      <meta name="robots" content="all" />{" "}
+      <link rel="canonical" href="https://matryoshkaflowers.ru/contacts" />
       <Index data={data.content} />{" "}
       <script
         type="application/ld+json"

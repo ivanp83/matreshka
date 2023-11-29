@@ -34,7 +34,8 @@ export default async function Home() {
 
   return (
     <>
-      <meta name="robots" content="all" />
+      <meta name="robots" content="all" />{" "}
+      <link rel="canonical" href="https://matryoshkaflowers.ru/" />
       <Index {...{ products, categories }} />
     </>
   );

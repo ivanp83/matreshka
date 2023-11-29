@@ -95,9 +95,9 @@ export default function Page() {
   ];
   return (
     <>
+      <link rel="canonical" href="https://matryoshkaflowers.ru/info" />
       <meta name="robots" content="all" />
       <Index tabs={data.tabs} />
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}

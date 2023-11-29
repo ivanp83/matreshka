@@ -72,9 +72,9 @@ export default function Page() {
 
   return (
     <>
-      <meta name="robots" content="all" />
+      <meta name="robots" content="all" />{" "}
+      <link rel="canonical" href="https://matryoshkaflowers.ru/about" />
       <Index {...{ data }} />
-
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
