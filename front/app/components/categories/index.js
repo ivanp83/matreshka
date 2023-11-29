@@ -48,21 +48,6 @@ export default function Index({ categories }) {
   }, []);
   const json = [
     {
-      "@context": "http://schema.org/",
-      "@type": "Article",
-      headline: data.title,
-
-      description: data.description,
-      author: "Юлиана Легкодумова",
-      datePublished: "2023-06-21",
-      dateModified: "2023-07-26",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": "https://matryoshkaflowers.ru/",
-      },
-      articleBody: String(data.content),
-    },
-    {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
