@@ -45,7 +45,10 @@ export default async function Categories({ searchParams }) {
   return (
     <>
       <meta name="robots" content="all" />
-      <link rel="canonical" href="https://matryoshkaflowers.ru/categories" />
+      <link
+        rel="canonical"
+        href="https://matryoshkaflowers.ru/categories?id=0"
+      />
       <Index {...{ categories, products }} />
     </>
   );
