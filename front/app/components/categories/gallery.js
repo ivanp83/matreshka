@@ -72,7 +72,6 @@ export default function Gallery({ data }) {
       {data.map((prod) => (
         <Fragment key={prod.id}>
           <article>
-            {" "}
             <Link href={String(`product/${prod.id}`)}>
               <div className="wrapper">
                 <div className="image">
@@ -80,9 +79,7 @@ export default function Gallery({ data }) {
                     <CustomImage
                       src={prod.big}
                       alt={`Заказать ${prod.name}`}
-                      sizes="(max-width: 768px) 100vw,
-(max-width: 1200px) 50vw,
-20vw"
+                      sizes="(max-width: 768px) 100vw, 25vw"
                     />
                   </div>
                 </div>

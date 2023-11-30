@@ -113,7 +113,7 @@ export default function Slider({ products }) {
                 <div className="image">
                   <CustomImage
                     direct
-                    sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 20vw"
                     src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}
                     alt={prod.name}
                   />
