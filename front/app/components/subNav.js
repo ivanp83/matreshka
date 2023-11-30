@@ -27,6 +27,7 @@ function SubNav({ categories, product }) {
         .sub-nav {
           grid-column: 1/2;
           display: flex;
+          flex-direction: column;
           width: 100%;
           justify-content: space-between;
           grid-gap: var(--space-small);
@@ -84,7 +85,7 @@ function SubNav({ categories, product }) {
             grid-column: 1/4;
             background: var(--main-light);
             z-index: 10;
-
+            flex-direction: row;
             align-items: center;
           }
           .categories-list {
