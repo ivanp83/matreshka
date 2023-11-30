@@ -57,31 +57,17 @@ module.exports = {
     };
   },
   additionalPaths: async (config) => [
-    await config.transform(config, "/categories?id=0"),
+    await config.transform(config, "/categories"),
   ],
   robotsTxtOptions: {
     policies: [
       {
         userAgent: "*",
-        allow: [
-          "/",
-          "/categories?id=0",
-          "/info",
-          "/about",
-          "/product",
-          "/contacts",
-        ],
+        allow: ["/", "/categories", "/info", "/about", "/product", "/contacts"],
       },
       {
         userAgent: "test-bot",
-        allow: [
-          "/",
-          "/categories?id=0",
-          "/info",
-          "/about",
-          "/product",
-          "/contacts",
-        ],
+        allow: ["/", "/categories", "/info", "/about", "/product", "/contacts"],
       },
       {
         userAgent: "black-listed-bot",

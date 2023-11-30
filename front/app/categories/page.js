@@ -5,7 +5,7 @@ import Index from "../components/categories";
 export const metadata = {
   title: "Категории букетов| Цветочный бутик Матрёшка",
   description:
-    "Самые популярные цветы собранные в замечательные композиции от наших флористов. 100% качество цветов за доступную цену!",
+    "Самые популярные цветы собранные в замечательные композиции от наших флористов.",
 };
 async function getCategories() {
   const res = await fetch(`${process.env.BACKEND_BASE_URL}/categories`, {
@@ -19,7 +19,7 @@ async function getCategories() {
   return res.json();
 }
 
-async function getProductsByCategory(id) {
+async function getProductsByCategory(id = 0) {
   const res = await fetch(
     `${process.env.BACKEND_BASE_URL}/category-with-products/${id}`,
     {

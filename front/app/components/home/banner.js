@@ -122,10 +122,7 @@ export default function Banner() {
         />
       </div>
       <div className="hlink">
-        <Link
-          href="/categories?id=0"
-          style={{ background: "var(--main-light)" }}
-        >
+        <Link href="/categories" style={{ background: "var(--main-light)" }}>
           <h1>Выбрать свой букет</h1>
         </Link>
       </div>

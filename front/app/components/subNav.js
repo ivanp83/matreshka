@@ -1,14 +1,14 @@
 "use client";
 
 import Link from "next/link";
-import { useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams } from "next/navigation";
 import React, { useCallback } from "react";
 
 import { usePathname } from "next/navigation";
 
 function SubNav({ categories, product }) {
   const searchParams = useSearchParams();
-
+  const router = useRouter();
   const id = searchParams.get("id");
   const route = usePathname();
 
@@ -25,11 +25,12 @@ function SubNav({ categories, product }) {
     <header className="sub-nav">
       <style jsx>{`
         .sub-nav {
-          position: sticky;
-          top: var(--space-med);
           grid-column: 1/2;
-          display: grid;
+          display: flex;
+          width: 100%;
+          justify-content: space-between;
           grid-gap: var(--space-small);
+          margin-bottom: 1rem;
         }
         .cat-nav {
           display: ${route.includes("product") ? "none" : "block"};
@@ -44,7 +45,7 @@ function SubNav({ categories, product }) {
           display: grid;
           grid-auto-flow: column;
           align-items: end;
-          font-size: 14px;
+          font-size: 13px;
           color: var(--main-gray);
           display: flex;
           align-items: center;
@@ -83,10 +84,7 @@ function SubNav({ categories, product }) {
             grid-column: 1/4;
             background: var(--main-light);
             z-index: 10;
-            padding: 20px 0;
-            top: 3rem;
-            grid-template-columns: repeat(3, 1fr);
-            grid-gap: 1rem;
+
             align-items: center;
           }
           .categories-list {
@@ -100,7 +98,7 @@ function SubNav({ categories, product }) {
             border-radius: 2px;
             box-shadow: none;
             color: var(--main-gray);
-            font-size: 14px;
+            font-size: 13px;
             margin: 0;
             overflow: hidden;
             padding-top: 2px;
