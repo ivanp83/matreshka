@@ -118,7 +118,7 @@ export default function RootLayout({ children }) {
       <meta property="og:title" content="Матрёшка Фловерс" />
       <meta
         property="og:description"
-        content="Интернет-магазин цветов в Калининграде"
+        content="Интернет-магазин премиальных букетов в Калининграде"
       />
       <meta property="og:locale" content="ru_RU" />
       <meta
