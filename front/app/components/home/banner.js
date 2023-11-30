@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Logo from "../shared/matryohska";
 import CustomImage from "../image";
 import LinkTo from "../shared/linkTo";
+import Link from "next/link";
 
 export default function Banner() {
   const [state, setState] = useState(true);
@@ -17,7 +18,7 @@ export default function Banner() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
   return (
-    <section className="banner container">
+    <div className="banner container">
       <style jsx>{`
         .banner {
           width: 100%;
@@ -30,13 +31,26 @@ export default function Banner() {
           opacity: ${state ? 1 : 0};
           grid-template-rows: min-content min-content;
         }
-        .logo-title {
-          grid-column: 1/4;
-        }
-        hgroup {
+        .hlink {
+          display: grid;
+          display: inline-block;
+          width: fit-content;
+          color: var(--main-dark);
+          font-weight: 600;
+          text-transform: uppercase;
+
+          transition: all 0.3s linear 0s;
+          border: 1px solid;
+          padding: 0.7rem 2.4rem;
           grid-column: 2/4;
           display: grid;
           justify-content: start;
+        }
+        h1 {
+          font-size: 14px;
+        }
+        .logo-title {
+          grid-column: 1/4;
         }
 
         .image {
@@ -77,7 +91,7 @@ export default function Banner() {
             width: 80vw;
             margin: 5rem auto 0;
           }
-          hgroup {
+          .hlink {
             grid-column: 1/4;
             grid-row: 3;
             margin: 1rem auto;
@@ -97,23 +111,7 @@ export default function Banner() {
       <div className="logo-title">
         <Logo />
       </div>
-      <hgroup>
-        <h1
-          style={{
-            width: "1px",
-            height: "1px",
-            position: "absolute",
-            fontSize: "0px",
-          }}
-        >
-          <b>Продажа цветочных букетов</b> в Калининграде с доставкой
-        </h1>
-        <LinkTo
-          href="/categories?id=0"
-          text="Выбрать букет"
-          style={{ background: "var(--main-light)" }}
-        />
-      </hgroup>
+
       <div className="image">
         <CustomImage
           src="/images/8.jpg"
@@ -123,6 +121,15 @@ export default function Banner() {
           (max-width: 1200px) 500px"
         />
       </div>
-    </section>
+      <div className="hlink">
+        <Link
+          href="/categories?id=0"
+          text=""
+          style={{ background: "var(--main-light)" }}
+        >
+          <h1>Выбрать свой букет</h1>
+        </Link>
+      </div>
+    </div>
   );
 }
