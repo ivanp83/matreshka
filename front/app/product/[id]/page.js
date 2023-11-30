@@ -1,5 +1,6 @@
 import Index from "@/app/components/product";
 import React from "react";
+
 async function getData(id) {
   const productsRes = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`,
@@ -27,7 +28,7 @@ export async function generateMetadata({ params: { id } }) {
 
   return {
     title: product.name,
-    description: `${product.name} - ${product.description}`,
+    description: `${product.name} - закажи онлайн с доставкой по городу.`,
   };
 }
 
@@ -59,7 +60,7 @@ export default async function Page({ params: { id } }) {
       <meta name="robots" content="all" />
       <link
         rel="canonical"
-        href={`https://matryoshkaflowers.ru/product/${product.id}?search=normal`}
+        href={`https://matryoshkaflowers.ru/product/${product.id}`}
       />
       <Index data={product} faturedData={products} />
       <script

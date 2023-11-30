@@ -1,11 +1,9 @@
 import CustomImage from "../image";
 
-import { useAppContext } from "@/app/context/app.context";
+import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function Categories({ categories }) {
-  const { setActiveCategory } = useAppContext();
-
   const router = useRouter();
   return (
     <section className="categories">
@@ -18,12 +16,12 @@ export default function Categories({ categories }) {
           grid-column: 1/2;
         }
 
-        ul {
+        .list {
           grid-column: 2/4;
           display: grid;
           grid-template-columns: 1fr;
         }
-        li {
+        article {
           display: flex;
           border-bottom: 1px solid var(--main-gray);
           padding: 1rem 0;
@@ -79,7 +77,7 @@ export default function Categories({ categories }) {
           h2 {
             margin-bottom: var(--space-small);
           }
-          ul {
+          .list {
             grid-column: 1/4;
           }
         }
@@ -104,13 +102,13 @@ export default function Categories({ categories }) {
       `}</style>
       <div className="wrapp container">
         <h2 className="h2">Категории</h2>
-        <ul>
+        <div className="list">
           {categories.map((cat, i) => (
-            <li key={cat.id}>
-              <button
-                onClick={() => {
-                  router.push("categories");
-                  setActiveCategory(cat.id);
+            <article key={cat.id}>
+              <Link
+                href={{
+                  pathname: "/categories",
+                  query: { id: cat.id },
                 }}
               >
                 <span className="image">
@@ -123,10 +121,10 @@ export default function Categories({ categories }) {
                 </span>
                 <span className="num">0{i + 1}/</span>
                 <span className="text">{cat.name}</span>
-              </button>
-            </li>
+              </Link>
+            </article>
           ))}
-        </ul>
+        </div>
       </div>
     </section>
   );

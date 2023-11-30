@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import CustomImage from "../image";
 import { currencyFormat } from "@/utils/helpers";
 import Button from "../buttons/button";
@@ -10,11 +10,8 @@ import { useRouter, useSearchParams } from "next/navigation";
 import SubNav from "../subNav";
 import { AnimatePresence, motion } from "framer-motion";
 import Portal from "../hoc/withPortal";
+import Slider from "../shared/slider";
 
-const Loader = dynamic(() => import("../loader"), { ssr: false });
-const FeaturedProducts = dynamic(() => import("./featuredProducts"), {
-  loading: () => <Loader />,
-});
 const CartAside = dynamic(() => import("../shared/cartAside"), {
   ssr: false,
 });
@@ -22,11 +19,8 @@ const CartAside = dynamic(() => import("../shared/cartAside"), {
 export default function Index({ data: product, faturedData }) {
   const searchParams = useSearchParams();
 
-  const search = searchParams.get("search");
-  console.log(search);
   const [avatarIsVisible, setstAvatarIsVisible] = useState(false);
-  const { onUpdate, cartItems, setActiveCategory, cartPosition } =
-    useAppContext();
+  const { onUpdate, cartItems, cartPosition } = useAppContext();
   const addToCart = (product) => {
     onUpdate(product);
     setstAvatarIsVisible(true);
@@ -36,9 +30,6 @@ export default function Index({ data: product, faturedData }) {
   };
 
   const router = useRouter();
-  useEffect(() => {
-    setActiveCategory(product.category_id);
-  }, []);
 
   return (
     <motion.div
@@ -50,20 +41,27 @@ export default function Index({ data: product, faturedData }) {
         <style jsx>{`
           .wrapp {
             grid-column: 2/4;
+            display: grid;
+            grid-gap: var(--space-big);
           }
-
+          .sub-nav-container {
+            grid-column: 1/4;
+            position: absolute;
+          }
           .image {
-            grid-column: 2/3;
+            grid-row: 1;
+            grid-column: 2/4;
             position: relative;
             width: 65vh;
             height: calc(65vh * 4 / 3);
           }
           .details {
-            grid-column: 3/4;
+            grid-row: 1;
+            grid-column: 1/2;
             display: grid;
             height: fit-content;
             grid-gap: var(--space-small);
-            padding: 2rem;
+            margin-top: var(--space-med);
           }
           .top {
             width: 100%;
@@ -83,6 +81,9 @@ export default function Index({ data: product, faturedData }) {
           }
 
           @media all and (max-width: 1024px) and (orientation: portrait) {
+            .wrapp {
+              grid-gap: var(--space-small);
+            }
             .content {
               width: 100%;
               grid-template-columns: 1fr;
@@ -91,19 +92,20 @@ export default function Index({ data: product, faturedData }) {
               font-size: 22px;
             }
             .details {
-              padding: 0;
+              grid-row: 2;
+              margin-top: 0;
+              margin-bottom: var(--space-med);
             }
             .wrapp {
               width: 100%;
             }
             .image {
+              margin-top: var(--space-small);
               width: 100%;
               grid-column: 1/4;
               height: calc((100vw - 40px) * 4 / 3);
             }
-            .top {
-              margin-top: 1rem;
-            }
+
             .details {
               grid-column: 1/4;
             }
@@ -124,7 +126,17 @@ export default function Index({ data: product, faturedData }) {
           }
           @media all and (max-width: 1000px) and (orientation: landscape) {
             .details {
-              padding: 0;
+              margin-top: 2rem;
+            }
+            .image {
+              width: 90vh;
+              height: calc(90vh * 4 / 3);
+            }
+            .descr {
+              font-size: 13px;
+            }
+            h1 {
+              font-size: 20px;
             }
           }
         `}</style>
@@ -133,8 +145,9 @@ export default function Index({ data: product, faturedData }) {
             {!!avatarIsVisible && <CartAside />}
           </AnimatePresence>
         </Portal>
-
-        <SubNav categoryId={product.category_id} />
+        <div className="sub-nav-container">
+          <SubNav product={product.name} />
+        </div>
 
         <div className="image">
           <CustomImage
@@ -146,11 +159,10 @@ export default function Index({ data: product, faturedData }) {
         <div className="details">
           <div className="top">
             <h1>{product.name}</h1>
-            <div>
-              <span>{currencyFormat(product.price)}</span>
-            </div>
+
+            <p>{currencyFormat(product.price)}</p>
           </div>
-          <span className="descr">{product.description}</span>
+          <p className="descr">{product.description}</p>
           <div className="btns">
             <Button
               actionType="shop"
@@ -169,7 +181,7 @@ export default function Index({ data: product, faturedData }) {
           </div>
         </div>
 
-        <FeaturedProducts data={faturedData} />
+        <Slider products={faturedData} />
       </section>
     </motion.div>
   );

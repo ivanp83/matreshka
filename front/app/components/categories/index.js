@@ -1,51 +1,16 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import SubNav from "../subNav";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { Api } from "@/api";
-import { useAppContext } from "@/app/context/app.context";
+
 const Loader = dynamic(() => import("../loader"), { ssr: false });
 const Gallery = dynamic(() => import("./gallery"), {
   loading: () => <Loader />,
 });
 
-export default function Index({ categories }) {
-  const { loading, setLoading, activeCategory } = useAppContext();
-  const [stateProducts, setStateProducts] = useState();
-  const handleProducts = async (id) => {
-    try {
-      let res;
-      setLoading(true);
-      if (id == 0) {
-        const allProducts = await Api().product.findAll();
-        res = allProducts.filter((p) => p.available);
-      } else {
-        res = await Api().category.findByIdWithProducts(id);
-      }
-      setStateProducts(res);
-    } catch (error) {
-      alert("Ошибка на сервере");
-    } finally {
-      setLoading(false);
-    }
-  };
-  const getAllProducts = async () => {
-    try {
-      setLoading(true);
-      const res = await Api().product.findAll();
-
-      setStateProducts(res);
-    } catch (error) {
-      alert("Ошибка на сервере");
-    } finally {
-      setLoading(false);
-    }
-  };
-  useEffect(() => {
-    (async () => await handleProducts(activeCategory))();
-  }, []);
+export default function Index({ categories, products }) {
   const json = [
     {
       "@context": "https://schema.org",
@@ -89,28 +54,75 @@ export default function Index({ categories }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <section className="categories container">
-        <h1
-          style={{
-            width: "1px",
-            height: "1px",
-            position: "absolute",
-            fontSize: "0px",
-            visibility: "hidden",
-          }}
-        >
-          Доступные на продажу букеты
-        </h1>
-        {loading && <Loader />}
-        <style jsx>{`
-          .categories {
-            height: 100%;
-            align-items: start;
+      <style jsx>{`
+        .categories {
+          height: 100%;
+          align-items: start;
+        }
+        .heading {
+          grid-column: 1/4;
+          grid-row: 1;
+          padding: 10px;
+          margin-bottom: var(--space-small);
+          background: var(--main-pink);
+          border-radius: 40px;
+        }
+
+        .markq {
+          display: flex;
+          align-items: center;
+          height: 1rem;
+          overflow: hidden;
+        }
+
+        .scroll {
+          white-space: nowrap;
+          margin: 0 4em;
+        }
+
+        .scroll div {
+          display: flex;
+          gap: 4em;
+        }
+
+        .scroll p,
+        .scroll h1 {
+          font-size: var(--main-fs);
+          color: white;
+          font-weight: bold;
+          margin-bottom: 0;
+          line-height: 10px;
+        }
+
+        .RightToLeft {
+          animation: RightToLeft 10s infinite linear;
+        }
+
+        @keyframes RightToLeft {
+          from {
+            transform: translateX(0%);
           }
-        `}</style>
-        <SubNav {...{ categories, handleProducts, getAllProducts }} />
-        {stateProducts && <Gallery data={stateProducts} />}
-      </section>{" "}
+          to {
+            transform: translateX(-50%);
+          }
+        }
+      `}</style>
+      <section className="categories container">
+        <SubNav {...{ categories }} />
+        <div className="heading">
+          <div className="markq">
+            <div className="scroll">
+              <div className="RightToLeft">
+                <h1>Продажа букетов онлайн с доставкой по Калининграду</h1>
+                {categories.map((c) => (
+                  <p key={c.id}>{c.name}</p>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+        <Gallery data={products} />
+      </section>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}

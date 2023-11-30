@@ -1,5 +1,5 @@
 import LinkTo from "../shared/linkTo";
-import Slider from "./slider";
+import Slider from "../shared/slider";
 
 export default function Products({ products }) {
   return (

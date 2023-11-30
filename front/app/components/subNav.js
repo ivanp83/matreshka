@@ -1,28 +1,28 @@
 "use client";
 
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
+import React, { useCallback } from "react";
 
-import React, { useEffect, useState } from "react";
-import { Api } from "@/api";
-import { useAppContext } from "../context/app.context";
-import { useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 
-function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
-  const { activeCategory, setActiveCategory } = useAppContext();
-  const router = useRouter();
-  const [category, setCategory] = useState(null);
+function SubNav({ categories, product }) {
+  const searchParams = useSearchParams();
 
-  useEffect(() => {
-    (async () => {
-      if (categoryId) {
-        const data = await Api().category.find(categoryId);
-        setCategory(data[0]);
-      }
-    })();
-  }, [categoryId]);
+  const id = searchParams.get("id");
+  const route = usePathname();
 
+  const createQueryString = useCallback(
+    (name, value) => {
+      const params = new URLSearchParams(searchParams);
+      params.set(name, value);
+
+      return params.toString();
+    },
+    [searchParams]
+  );
   return (
-    <div className="sub-nav">
+    <header className="sub-nav">
       <style jsx>{`
         .sub-nav {
           position: sticky;
@@ -30,6 +30,9 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           grid-column: 1/2;
           display: grid;
           grid-gap: var(--space-small);
+        }
+        .cat-nav {
+          display: ${route.includes("product") ? "none" : "block"};
         }
         .nav ol {
           display: flex;
@@ -60,16 +63,16 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
           place-content: center;
         }
 
-        .list-item button {
+        .sub-nav-link {
           border: none;
           border-bottom: 1px solid transparent;
           outline: none;
           background: transparent;
-          cursor: pointer;
+
           font-weight: 600;
           color: inherit;
         }
-        .list-item button.active {
+        .sub-nav-link.active {
           color: var(--main-gray);
         }
         .select {
@@ -135,90 +138,85 @@ function SubNav({ categoryId, categories, getAllProducts, handleProducts }) {
               <span className="sub-nav-link"> Главная</span>
             </Link>
           </li>
-
-          {!!category && (
-            <>
-              <li className={`list-item `}>
-                <button
-                  className={`${
-                    activeCategory == 0 ? "active" : ""
-                  } sub-nav-link`}
-                  onClick={() => {
-                    setActiveCategory(0);
-                    router.push("/categories");
-                  }}
-                >
-                  Все категории
-                </button>
-              </li>
-              <li>
-                <Link href={`/categories`}>
-                  <span className="sub-nav-link">{category.name}</span>
-                </Link>
-              </li>
-            </>
-          )}
-        </ol>
-      </nav>
-      {!!handleProducts && (
-        <nav
-          style={{ display: "contents" }}
-          aria-label="Основная навигация по категориям букетов"
-        >
-          <ol className="categories-list">
-            <li className={`list-item `}>
-              <button
-                className={`${
-                  activeCategory == 0 ? "active" : ""
-                } sub-nav-link`}
-                onClick={() => {
-                  setActiveCategory(0);
-                  getAllProducts();
+          {route.includes("product") && (
+            <li className={`list-item list-item--sub`}>
+              <Link
+                href={{
+                  pathname: "/categories",
+                  query: { id: 0 },
                 }}
               >
-                Все категории
-              </button>
+                <span className={`${id == 0 ? "active" : ""} sub-nav-link`}>
+                  Все категории
+                </span>
+              </Link>
             </li>
-            {categories?.map((cat) => (
-              <li key={cat.id} className={`list-item`}>
-                <button
-                  className={`${
-                    activeCategory == cat.id ? "active" : ""
-                  } sub-nav-link`}
-                  onClick={() => {
-                    handleProducts(cat.id);
-                    setActiveCategory(cat.id);
-                  }}
+          )}
+
+          <li>
+            <span className="sub-nav-link">{product}</span>
+          </li>
+        </ol>
+      </nav>
+
+      <nav className="cat-nav" aria-label="Основная навигация по категориям">
+        <ol className="categories-list">
+          <li className={`list-item `}>
+            <Link
+              href={{
+                pathname: `categories`,
+                query: { id: 0 },
+              }}
+            >
+              <span className={`${id == 0 ? "active" : ""} sub-nav-link`}>
+                Все категории
+              </span>
+            </Link>
+          </li>
+          {categories?.map((cat) => (
+            <li key={cat.id} className={`list-item`}>
+              <Link
+                href={{
+                  pathname: `categories`,
+                  query: { id: cat.id },
+                }}
+              >
+                <span
+                  className={`${id == cat.id ? "active" : ""} sub-nav-link`}
                 >
                   {cat.name}
-                </button>
-              </li>
-            ))}
-          </ol>
-          <label
-            htmlFor="category-select"
-            style={{ visibility: "hidden", position: "absolute" }}
-          >
-            Выбрать категорию
-          </label>
+                </span>
+              </Link>
+            </li>
+          ))}
+        </ol>
+        <label
+          htmlFor="category-select"
+          style={{ opacity: 0, fontSize: "1px", position: "absolute" }}
+        >
+          Выбрать категорию
+        </label>
 
-          <select
-            defaultValue={activeCategory}
-            name="categories-list"
-            className="select"
-            id="category-select"
-            onChange={(e) => handleProducts(Number(e.target.value))}
-          >
-            <option value={0}>Все категории</option>
-            {categories?.map((cat) => (
-              <option value={cat.id} key={cat.id}>
-                {cat.name}
-              </option>
-            ))}
-          </select>
-        </nav>
-      )}
-    </div>
+        <select
+          defaultValue={id}
+          name="categories-list"
+          className="select"
+          id="category-select"
+          onChange={(e) =>
+            router.push(
+              "categories" + "?" + createQueryString("id", e.target.value)
+            )
+          }
+        >
+          <option value={0}>Все категории</option>
+          {categories?.map((cat) => (
+            <option value={cat.id} key={cat.id}>
+              {cat.name}
+            </option>
+          ))}
+        </select>
+      </nav>
+    </header>
   );
 }
 export default React.memo(SubNav);

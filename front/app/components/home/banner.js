@@ -109,7 +109,7 @@ export default function Banner() {
           <b>Продажа цветочных букетов</b> в Калининграде с доставкой
         </h1>
         <LinkTo
-          href="/categories"
+          href="/categories?id=0"
           text="Выбрать букет"
           style={{ background: "var(--main-light)" }}
         />

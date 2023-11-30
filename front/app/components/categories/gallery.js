@@ -1,22 +1,23 @@
+/* eslint-disable @next/next/no-img-element */
 "use client";
 
-import React from "react";
+import React, { Fragment } from "react";
 import CustomImage from "../image";
 import { currencyFormat } from "@/utils/helpers";
 import Link from "next/link";
 
 export default function Gallery({ data }) {
   return (
-    <ul>
+    <div className="list">
       <style jsx>{`
-        ul {
+        .list {
           grid-column: 2/4;
           display: grid;
           grid-template-columns: repeat(3, 1fr);
           grid-row-gap: var(--space-small);
           grid-column-gap: 20px;
         }
-        figure {
+        .wrapper {
           overflow: hidden;
         }
         .image {
@@ -31,9 +32,12 @@ export default function Gallery({ data }) {
           transition: 0.5s ease;
           transform-origin: bottom;
         }
-        figcaption {
+        .text {
           text-align: center;
           margin-top: 5px;
+        }
+        .text > * {
+          font-size: 16px;
         }
         b {
           font-weight: 600;
@@ -44,7 +48,7 @@ export default function Gallery({ data }) {
           }
         }
         @media all and (max-width: 1024px) {
-          ul {
+          .list {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-row-gap: 2rem;
@@ -55,7 +59,7 @@ export default function Gallery({ data }) {
           }
         }
         @media all and (max-width: 1024px) and (orientation: portrait) {
-          ul {
+          .list {
             grid-column: 1/4;
           }
         }
@@ -66,33 +70,33 @@ export default function Gallery({ data }) {
         }
       `}</style>
       {data.map((prod) => (
-        <li key={prod.id}>
-          <Link
-            href={{
-              pathname: String(`product/${prod.id}`),
-              query: { search: "normal" },
-            }}
-          >
-            <figure>
-              <div className="image">
-                <div className="inner">
-                  <CustomImage
-                    src={prod.big}
-                    alt={prod.name}
-                    sizes="(max-width: 768px) 100vw,
+        <Fragment key={prod.id}>
+          <article>
+            {" "}
+            <Link href={String(`product/${prod.id}`)}>
+              <div className="wrapper">
+                <div className="image">
+                  <div className="inner">
+                    <CustomImage
+                      src={prod.big}
+                      alt={`Заказать ${prod.name}`}
+                      sizes="(max-width: 768px) 100vw,
 (max-width: 1200px) 50vw,
 20vw"
-                  />
+                    />
+                  </div>
                 </div>
+                <span className="text">
+                  <h3>
+                    <b>{prod.name}</b>
+                  </h3>
+                  <p className="price">{currencyFormat(prod.price)}</p>
+                </span>
               </div>
-              <figcaption>
-                <b>{prod.name}</b>
-                <p className="price">{currencyFormat(prod.price)}</p>
-              </figcaption>
-            </figure>
-          </Link>
-        </li>
+            </Link>
+          </article>
+        </Fragment>
       ))}
-    </ul>
+    </div>
   );
 }

@@ -36,8 +36,6 @@ module.exports = (config, adminId, console) => {
     }
   });
   appEmitter.on('orderSuccessPay', async (data) => {
-    console.log(data);
-
     try {
       const {
         orderId,

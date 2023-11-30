@@ -9,8 +9,6 @@ const defaultStatePage = {
   setLoading: () => {},
   cartItems: [],
   setCartItems: () => {},
-  activeCategory: 0,
-  setActiveCategory: () => {},
   onUpdate: () => {},
   onIncrement: () => {},
   onDecrement: () => {},
@@ -24,7 +22,7 @@ export const AppProvider = ({ children }) => {
   const [menuIsOpen, setMenuIsOpen] = useState(false);
   const [cartItems, setCartItems] = useState([]);
   const [cartPosition, setCartPosition] = useState({ x: 0, y: 0 });
-  const [activeCategory, setActiveCategory] = useState(0);
+
   const onUpdate = async (product) => {
     try {
       setLoading(true);
@@ -120,8 +118,6 @@ export const AppProvider = ({ children }) => {
     menuIsOpen,
     setMenuIsOpen,
     onCartClear,
-    activeCategory,
-    setActiveCategory,
   };
 
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;

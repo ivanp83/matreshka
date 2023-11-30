@@ -29,19 +29,19 @@ export default function Slider({ products }) {
         }
 
         .details {
-          margin-top: 10px;
+          margin-top: 5px;
           text-align: center;
         }
-
+        .details > * {
+          font-size: 16px;
+        }
         h3 {
           grid-column: 1/2;
         }
         b {
           font-weight: 600;
         }
-        h4 {
-          grid-column: 2/4;
-        }
+
         @media all and (max-width: 1500px) {
           .image {
             width: calc(var(--cont-w) / 4 - 30px);
@@ -108,8 +108,8 @@ export default function Slider({ products }) {
       >
         {products.map((prod) => (
           <SwiperSlide key={prod.id}>
-            <figure className="card-wrapp">
-              <Link href={`product/${prod.id}`}>
+            <article className="card-wrapp">
+              <Link href={`/product/${prod.id}`}>
                 <div className="image">
                   <CustomImage
                     direct
@@ -119,13 +119,13 @@ export default function Slider({ products }) {
                   />
                 </div>
               </Link>
-              <figcaption className="details">
+              <div className="details">
                 <h3>
                   <b>{prod.name}</b>
                 </h3>
                 <p className="price">{currencyFormat(prod.price)}</p>
-              </figcaption>
-            </figure>
+              </div>
+            </article>
           </SwiperSlide>
         ))}
       </Swiper>

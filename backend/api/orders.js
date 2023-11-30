@@ -10,7 +10,6 @@ const { appEmitter } = require('../utils/EventEmitter');
 
 module.exports = {
   async read(id, isAdmin, fields = ['*']) {
-    console.log('check');
     try {
       const names = fields.join(', ');
       const sql = `SELECT ${names} FROM orders`;
