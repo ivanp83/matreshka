@@ -86,12 +86,12 @@ export default function Gallery({ data }) {
                     />
                   </div>
                 </div>
-                <span className="text">
+                <div className="text">
                   <h3>
                     <b>{prod.name}</b>
                   </h3>
                   <p className="price">{currencyFormat(prod.price)}</p>
-                </span>
+                </div>
               </div>
             </Link>
           </article>
