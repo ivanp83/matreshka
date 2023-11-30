@@ -120,7 +120,7 @@ export default function Categories({ categories }) {
                   />
                 </span>
                 <span className="num">0{i + 1}/</span>
-                <span className="text">{cat.name}</span>
+                <h3 className="text">{cat.name}</h3>
               </Link>
             </article>
           ))}
