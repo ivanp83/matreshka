@@ -22,7 +22,7 @@ import Index from "../components/categories";
 
 async function getProductsByCategory(id = 0) {
   const res = await fetch(
-    `https://api.matryoshkaflowers.ru/api/category-with-products/${id}`,
+    `${process.env.BACKEND_BASE_URL}/category-with-products/${id}`,
     {
       next: { revalidate: 60 },
     }
