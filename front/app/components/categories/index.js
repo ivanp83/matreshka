@@ -63,6 +63,7 @@ export default function Index({ categories, products }) {
           grid-column: 1/4;
           grid-row: 1;
           padding: 10px;
+          margin-top: 4rem;
           margin-bottom: var(--space-small);
           background: var(--main-pink);
           border-radius: 40px;
