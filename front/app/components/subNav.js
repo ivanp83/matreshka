@@ -174,17 +174,6 @@ function SubNav({ categories, product }) {
             </li>
           ))}
         </ol>
-        <label
-          htmlFor="category-select"
-          style={{
-            opacity: 0,
-            userSelect: "none",
-            fontSize: "1px",
-            position: "absolute",
-          }}
-        >
-          Выбрать категорию
-        </label>
 
         <select
           defaultValue={id}
