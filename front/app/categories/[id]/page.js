@@ -1,6 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
-import Index from "../components/categories";
+import { Suspense } from "react";
+import Index from "../../components/categories";
 
 export const metadata = {
   title: "Категории букетов| Цветочный бутик Матрёшка",
@@ -21,7 +22,7 @@ async function getCategories() {
 
 async function getProductsByCategory(id = 0) {
   const res = await fetch(
-    `${process.env.BACKEND_BASE_URL}/category-with-products/${id}`,
+    `https://api.matryoshkaflowers.ru/api/category-with-products/${id}`,
     {
       next: { revalidate: 60 },
     }
@@ -47,9 +48,11 @@ export default async function Categories({ searchParams }) {
       <meta name="robots" content="all" />
       <link
         rel="canonical"
-        href="https://matryoshkaflowers.ru/categories?id=0"
+        href={`${process.env.BACKEND_BASE_URL}/${searchParams.id}`}
       />
-      <Index {...{ categories, products }} />
+      <Suspense fallback={null}>
+        <Index {...{ categories, products }} />
+      </Suspense>
     </>
   );
 }
