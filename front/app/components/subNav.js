@@ -139,12 +139,7 @@ function SubNav({ categories, product }) {
           </li>
           {route.includes("product") && (
             <li className={`list-item list-item--sub`}>
-              <Link
-                href={{
-                  pathname: "/categories",
-                  query: { id: 0 },
-                }}
-              >
+              <Link href={`/categories`}>
                 <span className={`${id == 0 ? "active" : ""} sub-nav-link`}>
                   Все категории
                 </span>
@@ -161,12 +156,7 @@ function SubNav({ categories, product }) {
       <nav className="cat-nav" aria-label="Основная навигация по категориям">
         <ol className="categories-list">
           <li className={`list-item `}>
-            <Link
-              href={{
-                pathname: `categories`,
-                query: { id: 0 },
-              }}
-            >
+            <Link href={`/categories`}>
               <span className={`${id == 0 ? "active" : ""} sub-nav-link`}>
                 Все категории
               </span>
@@ -174,12 +164,7 @@ function SubNav({ categories, product }) {
           </li>
           {categories?.map((cat) => (
             <li key={cat.id} className={`list-item`}>
-              <Link
-                href={{
-                  pathname: `categories`,
-                  query: { id: cat.id },
-                }}
-              >
+              <Link href={`/categories/${cat.id}`}>
                 <span
                   className={`${id == cat.id ? "active" : ""} sub-nav-link`}
                 >
@@ -201,11 +186,7 @@ function SubNav({ categories, product }) {
           name="categories-list"
           className="select"
           id="category-select"
-          onChange={(e) =>
-            router.push(
-              "categories" + "?" + createQueryString("id", e.target.value)
-            )
-          }
+          onChange={(e) => router.push(`/categories/${e.target.value}`)}
         >
           <option value={0}>Все категории</option>
           {categories?.map((cat) => (

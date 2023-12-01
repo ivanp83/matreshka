@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
 import { Suspense } from "react";
-import Index from "../../components/categories";
+import Index from "../components/categories";
 
 // export const metadata = {
 //   title: "Категории букетов| Цветочный бутик Матрёшка",

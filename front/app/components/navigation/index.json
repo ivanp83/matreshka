@@ -1,5 +1,5 @@
 [
-  { "href": "/categories/0", "label": "Букеты" },
+  { "href": "/categories", "label": "Букеты" },
   { "href": "/about", "label": "About" },
   { "href": "/info", "label": "Информация" },
   { "href": "/contacts", "label": "Контакты" }

@@ -61,7 +61,7 @@ export default async function Page({ params: { id } }) {
       <link
         rel="canonical"
         href={`https://matryoshkaflowers.ru/product/${product.id}`}
-      />{" "}
+      />
       <Suspense fallback={null}>
         <Index data={product} faturedData={products} />
       </Suspense>
