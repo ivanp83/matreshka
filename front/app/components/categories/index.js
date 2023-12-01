@@ -25,7 +25,7 @@ export default function Index({ categories, products }) {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Проекты",
+          name: "Букеты",
         },
         {
           "@type": "ListItem",
@@ -45,6 +45,25 @@ export default function Index({ categories, products }) {
           name: "Контакты",
           item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
         },
+      ],
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "ItemList",
+      itemListElement: [
+        products.map((product) => ({
+          "@type": "Product",
+          name: product.name,
+          description: product.description,
+          image: [
+            `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
+          ],
+          offers: {
+            "@type": "Offer",
+            price: product.price,
+            priceCurrency: "RUB",
+          },
+        })),
       ],
     },
   ];

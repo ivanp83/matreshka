@@ -71,11 +71,11 @@ export default function Gallery({ data }) {
       `}</style>
       {data.map((prod) => (
         <Fragment key={prod.id}>
-          <article itemScope itemType="http://schema.org/Product">
+          <article>
             <Link href={String(`product/${prod.id}`)}>
               <div className="wrapper">
                 <div className="image">
-                  <div className="inner" itemProp="image">
+                  <div className="inner">
                     <CustomImage
                       src={prod.big}
                       alt={`Заказать ${prod.name}`}
@@ -83,19 +83,11 @@ export default function Gallery({ data }) {
                     />
                   </div>
                 </div>
-                <div
-                  className="text"
-                  itemProp="offers"
-                  itemScope
-                  itemType="http://schema.org/Offer"
-                >
-                  <h3 itemProp="name">
+                <div className="text">
+                  <h3>
                     <b>{prod.name}</b>
                   </h3>
                   <p className="price">{currencyFormat(prod.price)}</p>
-                  <meta itemprop="price" content={prod.price + ".00"} />
-
-                  <meta itemprop="priceCurrency" content="RUB" />
                 </div>
               </div>
             </Link>

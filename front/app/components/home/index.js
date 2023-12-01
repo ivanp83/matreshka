@@ -40,7 +40,7 @@ export default function Index({ products, categories }) {
         {
           "@type": "ListItem",
           position: 2,
-          name: "Проекты",
+          name: "Букеты",
           item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
         },
         {
