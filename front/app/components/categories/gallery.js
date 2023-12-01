@@ -72,7 +72,7 @@ export default function Gallery({ data }) {
       {data.map((prod) => (
         <Fragment key={prod.id}>
           <article>
-            <Link href={String(`product/${prod.id}`)}>
+            <Link href={String(`/product/${prod.id}`)}>
               <div className="wrapper">
                 <div className="image">
                   <div className="inner">
