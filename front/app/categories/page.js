@@ -3,23 +3,6 @@
 import { Suspense } from "react";
 import Index from "../components/categories";
 
-// export const metadata = {
-//   title: "Категории букетов| Цветочный бутик Матрёшка",
-//   description:
-//     "Самые популярные цветы собранные в замечательные композиции от наших флористов.",
-// };
-// async function getCategories() {
-//   const res = await fetch(`${process.env.BACKEND_BASE_URL}/categories`, {
-//     next: { revalidate: 60 },
-//   });
-
-//   if (!res.ok) {
-//     throw new Error("Ошибка на сервере");
-//   }
-
-//   return res.json();
-// }
-
 async function getProductsByCategory(id = 0) {
   const res = await fetch(
     `${process.env.BACKEND_BASE_URL}/category-with-products/${id}`,
@@ -60,7 +43,6 @@ export async function generateMetadata({ params: { id } }) {
   };
 }
 export default async function Categories({ params: { id } }) {
-  // const categories = await getCategories();
   const { products, categories } = await getProductsByCategory(id);
 
   return (

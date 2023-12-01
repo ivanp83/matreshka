@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter, useSearchParams, useParams } from "next/navigation";
 import React, { useCallback } from "react";
 
 import { usePathname } from "next/navigation";
@@ -9,9 +9,9 @@ import { usePathname } from "next/navigation";
 function SubNav({ categories, product }) {
   const searchParams = useSearchParams();
   const router = useRouter();
-  const id = searchParams.get("id");
-  const route = usePathname();
 
+  const route = usePathname();
+  const { id } = useParams();
   const createQueryString = useCallback(
     (name, value) => {
       const params = new URLSearchParams(searchParams);
@@ -176,7 +176,12 @@ function SubNav({ categories, product }) {
         </ol>
         <label
           htmlFor="category-select"
-          style={{ opacity: 0, fontSize: "1px", position: "absolute" }}
+          style={{
+            opacity: 0,
+            userSelect: "none",
+            fontSize: "1px",
+            position: "absolute",
+          }}
         >
           Выбрать категорию
         </label>

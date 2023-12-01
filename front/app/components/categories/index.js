@@ -49,7 +49,7 @@ export default function Index({ categories, products }) {
     },
   ];
   return (
-    <motion.div
+    <motion.section
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
@@ -63,7 +63,6 @@ export default function Index({ categories, products }) {
           grid-column: 1/4;
           grid-row: 1;
           padding: 10px;
-          margin-top: 4rem;
           margin-bottom: var(--space-small);
           background: var(--main-pink);
           border-radius: 40px;
@@ -108,26 +107,27 @@ export default function Index({ categories, products }) {
           }
         }
       `}</style>
-      <section className="categories container">
-        <SubNav {...{ categories }} />
-        <div className="heading">
-          <div className="markq">
-            <div className="scroll">
-              <div className="RightToLeft">
-                <h1>Продажа букетов онлайн с доставкой по Калининграду</h1>
-                {categories.map((c) => (
-                  <p key={c.id}>{c.name}</p>
-                ))}
-              </div>
+      <div className="heading">
+        <div className="markq">
+          <div className="scroll">
+            <div className="RightToLeft">
+              <h1>Продажа букетов онлайн с доставкой по Калининграду</h1>
+              {categories.map((c) => (
+                <p key={c.id}>{c.name}</p>
+              ))}
             </div>
           </div>
         </div>
+      </div>
+      <div className="categories container">
+        <SubNav {...{ categories }} />
+
         <Gallery data={products} />
-      </section>
+      </div>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
       />
-    </motion.div>
+    </motion.section>
   );
 }
