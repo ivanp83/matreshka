@@ -107,7 +107,7 @@ export default function Index({ categories, products }) {
         .scroll p,
         .scroll h1 {
           font-size: var(--main-fs);
-          color: white;
+          color: var(--main-light);
           font-weight: bold;
           margin-bottom: 0;
           line-height: 10px;
@@ -140,7 +140,6 @@ export default function Index({ categories, products }) {
       </div>
       <div className="categories container">
         <SubNav {...{ categories }} />
-
         <Gallery data={products} />
       </div>
       <script
