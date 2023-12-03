@@ -1,6 +1,5 @@
-
 import Index from "@/app/components/product";
-import React,  from "react";
+import React from "react";
 
 async function getData(id) {
   const productsRes = await fetch(
