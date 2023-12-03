@@ -49,9 +49,8 @@ export default async function Categories({ params: { id } }) {
     <>
       <meta name="robots" content="all" />
       <link rel="canonical" href={`${process.env.BACKEND_BASE_URL}/${id}`} />
-      <Suspense fallback={null}>
-        <Index {...{ categories, products }} />
-      </Suspense>
+
+      <Index {...{ categories, products }} />
     </>
   );
 }

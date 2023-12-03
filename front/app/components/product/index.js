@@ -152,7 +152,7 @@ export default function Index({ data: product, faturedData }) {
         <div className="image">
           <CustomImage
             src={product.big}
-            alt={product.name}
+            alt={`Роскрошный букет ${product.name} с доставкой по Калининграду`}
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"
           />
         </div>

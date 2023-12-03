@@ -1,16 +1,17 @@
 "use client";
+import Loader from "@/app/components/loader";
+import { Suspense } from "react";
 
 export default function Layout({ children }) {
   return (
     <div className="layout">
       <style jsx>{`
         .layout {
-          margin: var(--space-big) auto 0;
-          min-height: calc(100vh - var(--space-med) * 2);
+          margin-top: var(--space-med);
+          min-height: 100vh;
         }
       `}</style>
-
-      {children}
+      <Suspense fallback={<Loader />}>{children}</Suspense>
     </div>
   );
 }

@@ -115,7 +115,7 @@ export default function Slider({ products }) {
                     direct
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 20vw"
                     src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}
-                    alt={prod.name}
+                    alt={`Роскрошный букет ${prod.name} с доставкой по Калининграду`}
                   />
                 </div>
               </Link>

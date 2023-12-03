@@ -15,7 +15,6 @@ export default function Nav() {
         }
 
         nav ul {
-          font-size: var(--main-fs);
           display: grid;
           grid-auto-flow: column;
           grid-gap: 1rem;
@@ -26,6 +25,9 @@ export default function Nav() {
           grid-gap: 10px;
           position: relative;
           height: fit-content;
+        }
+        .link {
+          font-size: var(--main-fs);
         }
         .link.active {
           color: var(--main-gray);
@@ -43,11 +45,7 @@ export default function Nav() {
         {links.map((link) => (
           <li key={link.href} itemProp="name">
             <Link href={link.href} itemProp="url">
-              <span
-                className={`${
-                  link.href === path ? "active" : ""
-                } link nav-link`}
-              >
+              <span className={`${link.href === path ? "active" : ""} link`}>
                 {link.label}
               </span>
             </Link>

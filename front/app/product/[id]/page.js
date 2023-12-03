@@ -1,5 +1,6 @@
+
 import Index from "@/app/components/product";
-import React, { Suspense } from "react";
+import React,  from "react";
 
 async function getData(id) {
   const productsRes = await fetch(
@@ -62,9 +63,9 @@ export default async function Page({ params: { id } }) {
         rel="canonical"
         href={`https://matryoshkaflowers.ru/product/${product.id}`}
       />
-      <Suspense fallback={null}>
-        <Index data={product} faturedData={products} />
-      </Suspense>
+
+      <Index data={product} faturedData={products} />
+
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
