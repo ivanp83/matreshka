@@ -36,8 +36,8 @@ export default function Index({ products, categories }) {
 
           item: {
             "@type": "WebPage",
-            "@id": "https://matryoshkaflowers.ru/categories",
-            url: "https://matryoshkaflowers.ru/categories",
+            "@id": "",
+            url: "",
             name: "Главная",
           },
         },
