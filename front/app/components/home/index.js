@@ -40,7 +40,7 @@ export default function Index({ products, categories }) {
             "@type": "WebPage",
             "@id": "",
             url: "",
-            name: "",
+            name: "Главная",
           },
         },
         {
