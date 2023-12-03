@@ -8,7 +8,7 @@ const json = {
     "@type": "PostalAddress",
     addressLocality: "Россия, Калининград",
     postalCode: "236000",
-    streetAddress: "Виктора Гакуна, 5"
+    streetAddress: "Виктора Гакуна, 5",
     addressCountry: "RU",
     addressRegion: "Kaliningrad dist",
   },
