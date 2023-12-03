@@ -40,9 +40,9 @@ export default function Products({ products }) {
       `}</style>
       <div className="wrapp  container">
         <h2 className="h2">Популярные </h2>
-        <cite className="h3">
-          Выбор наших клиентов: подборка самых популярных и роскошных букетов
-        </cite>
+        <p className="h3">
+          Выбор клиентов: подборка самых популярных и роскошных букетов
+        </p>
         <div className="button-link">
           <LinkTo href="categories" text="Смотреть все" />
         </div>

@@ -153,7 +153,6 @@ export default function Banner() {
           text-transform: uppercase;
 
           transition: all 0.3s linear 0s;
-          border: 1px solid;
           padding: 0.7rem 2.4rem;
           grid-column: 2/4;
           display: grid;

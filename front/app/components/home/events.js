@@ -22,7 +22,7 @@ export default function Events({}) {
         }
         .text-bold {
           grid-column: 2/3;
-          font-weight: 600;
+          font-weight: 700;
         }
         .par {
           grid-column: 3/4;
@@ -73,10 +73,10 @@ export default function Events({}) {
           />
         </div>
 
-        <strong className="text-bold">
-          Наши букеты сделают твой праздник
+        <p className="text-bold">
+          <b>Букеты</b>, которые сделают твой праздник
           <br /> еще более ярким и красивым
-        </strong>
+        </p>
 
         <div className="par">
           <p>
