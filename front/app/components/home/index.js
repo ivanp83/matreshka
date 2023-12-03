@@ -6,6 +6,7 @@ import Story from "./story";
 import Events from "./events";
 import Products from "./products";
 import Categories from "./categories";
+import { getDate } from "@/utils/helpers";
 
 export default function Index({ products, categories }) {
   const json = [
@@ -24,6 +25,38 @@ export default function Index({ products, categories }) {
             priceCurrency: "RUB",
             itemCondition: "https://schema.org/NewCondition",
             availability: "https://schema.org/InStock",
+            price: product.price,
+            priceCurrency: "RUB",
+            priceValidUntil: getDate(),
+            shippingDetails: {
+              "@type": "OfferShippingDetails",
+              shippingRate: {
+                "@type": "MonetaryAmount",
+                value: 300,
+                currency: "RUB",
+              },
+              shippingDestination: {
+                "@type": "DefinedRegion",
+                addressCountry: "RU",
+              },
+              "@type": "OfferShippingDetails",
+
+              deliveryTime: {
+                "@type": "ShippingDeliveryTime",
+                handlingTime: {
+                  "@type": "QuantitativeValue",
+                  minValue: 0,
+                  maxValue: 1,
+                  unitCode: "DAY",
+                },
+                transitTime: {
+                  "@type": "QuantitativeValue",
+                  minValue: 1,
+                  maxValue: 2,
+                  unitCode: "HOUR",
+                },
+              },
+            },
             priceSpecification: {
               "@type": "PriceSpecification",
               price: product.price,
@@ -37,18 +70,6 @@ export default function Index({ products, categories }) {
               merchantReturnDays: 14,
               returnMethod: "https://schema.org/ReturnByMail",
               returnFees: "https://schema.org/FreeReturn",
-            },
-            shippingDetails: {
-              "@type": "OfferShippingDetails",
-              shippingRate: {
-                "@type": "MonetaryAmount",
-                value: product.price,
-                currency: "RUB",
-              },
-              shippingDestination: {
-                "@type": "DefinedRegion",
-                addressCountry: "RU",
-              },
             },
           },
         })),
