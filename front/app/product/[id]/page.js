@@ -1,8 +1,6 @@
 import Index from "@/app/components/product";
 import React, { Suspense } from "react";
-import dynamic from "next/dynamic";
-
-const Loader = dynamic(() => import("@/app/components/loader"), { ssr: false });
+import Loading from "../../loading";
 async function getData(id) {
   const productsRes = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`,
@@ -64,7 +62,7 @@ export default async function Page({ params: { id } }) {
         rel="canonical"
         href={`https://matryoshkaflowers.ru/product/${product.id}`}
       />
-      <Suspense fallback={<Loader />}>
+      <Suspense fallback={<Loading />}>
         <Index data={product} faturedData={products} />
       </Suspense>
       <script
