@@ -23,6 +23,23 @@ export default function Index({ products, categories }) {
             price: product.price,
             priceCurrency: "RUB",
           },
+          hasMerchantReturnPolicy: {
+            "@type": "MerchantReturnPolicy",
+            returnFees: "Оплачивает клиент",
+            returnPolicyCountry: "RU",
+          },
+          shippingDetails: {
+            "@type": "OfferShippingDetails",
+            shippingRate: {
+              "@type": "MonetaryAmount",
+              value: product.price,
+              currency: "RUB",
+            },
+            shippingDestination: {
+              "@type": "DefinedRegion",
+              addressCountry: "RU",
+            },
+          },
         })),
       ],
     },
@@ -49,7 +66,7 @@ export default function Index({ products, categories }) {
             "@type": "WebPage",
             "@id": "https://matryoshkaflowers.ru/categories",
             url: "https://matryoshkaflowers.ru/categories",
-            name: "Категории",
+            name: "Букеты",
           },
         },
         {
