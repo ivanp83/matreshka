@@ -18,7 +18,7 @@ export default function Index({ products, categories }) {
           "@type": "Product",
           name: product.name,
           description: product.description,
-          image: ["https://matryoshkaflowers.ru/${product.big}"],
+          image: [`https://matryoshkaflowers.ru/${product.big}`],
           offers: {
             "@type": "Offer",
             price: product.price,
