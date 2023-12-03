@@ -19,68 +19,56 @@ export default function Page(props) {
     },
   };
 
-  const json = [
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
+  const json = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
 
-          item: {
-            "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
-            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
-            name: `Главная`,
-          },
+        item: {
+          "@type": "WebPage",
+          "@id": "https://matryoshkaflowers.ru",
+          url: "https://matryoshkaflowers.ru",
+          name: "Главная",
         },
-        {
-          "@type": "ListItem",
-          position: 2,
-          item: {
-            "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
-            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
-            name: `Букеты`,
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
 
-          item: {
-            "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
-            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
-            name: `About`,
-          },
+        item: {
+          "@type": "WebPage",
+          "@id": "https://matryoshkaflowers.ru/categories",
+          url: "https://matryoshkaflowers.ru/categories",
+          name: "Категории",
         },
-        {
-          "@type": "ListItem",
-          position: 4,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
 
-          item: {
-            "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
-            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
-            name: `Информация`,
-          },
+        item: {
+          "@type": "WebPage",
+          "@id": "https://matryoshkaflowers.ru/about",
+          url: "https://matryoshkaflowers.ru/about",
+          name: "About",
         },
-        {
-          "@type": "ListItem",
-          position: 5,
-          item: {
-            "@type": "WebPage",
-            "@id": "",
-            url: "",
-            name: "",
-          },
-        },
-      ],
-    },
-  ];
+      },
 
+      {
+        "@type": "ListItem",
+        position: 4,
+        item: {
+          "@type": "WebPage",
+          "@id": "",
+          url: "",
+          name: "Контакты",
+        },
+      },
+    ],
+  };
   return (
     <>
       <meta name="robots" content="all" />{" "}

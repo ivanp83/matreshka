@@ -43,19 +43,20 @@ export default function Page() {
 
           item: {
             "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
-            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
+            "@id": "https://matryoshkaflowers.ru",
+            url: "https://matryoshkaflowers.ru",
             name: "Главная",
           },
         },
         {
           "@type": "ListItem",
           position: 2,
+
           item: {
             "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
-            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
-            name: `Категории`,
+            "@id": "https://matryoshkaflowers.ru/categories",
+            url: "https://matryoshkaflowers.ru/categories",
+            name: "Категории",
           },
         },
         {
@@ -66,26 +67,17 @@ export default function Page() {
             "@type": "WebPage",
             "@id": "",
             url: "",
+            name: "About",
           },
         },
+
         {
           "@type": "ListItem",
           position: 4,
-
           item: {
             "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
-            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
-            name: `Информация`,
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 5,
-          item: {
-            "@type": "WebPage",
-            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
-            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
+            "@id": "https://matryoshkaflowers.ru/contacts",
+            url: "https://matryoshkaflowers.ru/contacts",
             name: "Контакты",
           },
         },

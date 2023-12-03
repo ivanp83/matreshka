@@ -8,8 +8,8 @@
 
       "item": {
         "@type": "WebPage",
-        "@id": "",
-        "url": "",
+        "@id": "https://matryoshkaflowers.ru",
+        "url": "https://matryoshkaflowers.ru",
         "name": "Главная"
       }
     },
@@ -41,8 +41,8 @@
       "position": 4,
       "item": {
         "@type": "WebPage",
-        "@id": "https://matryoshkaflowers.ru/contacts",
-        "url": "https://matryoshkaflowers.ru/contacts",
+        "@id": "",
+        "url": "",
         "name": "Контакты"
       }
     }
