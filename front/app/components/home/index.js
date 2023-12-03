@@ -33,71 +33,49 @@ export default function Index({ products, categories }) {
         {
           "@type": "ListItem",
           position: 1,
-          name: "Books",
-          item: "https://example.com/books",
+
+          item: {
+            "@type": "WebPage",
+            "@id": "https://matryoshkaflowers.ru/categories",
+            url: "https://matryoshkaflowers.ru/categories",
+            name: "Главная",
+          },
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: "Science Fiction",
-          item: "https://example.com/books/sciencefiction",
+
+          item: {
+            "@type": "WebPage",
+            "@id": "https://matryoshkaflowers.ru/categories",
+            url: "https://matryoshkaflowers.ru/categories",
+            name: "Категории",
+          },
         },
         {
           "@type": "ListItem",
           position: 3,
-          name: "Award Winners",
+
+          item: {
+            "@type": "WebPage",
+            "@id": "https://matryoshkaflowers.ru/about",
+            url: "https://matryoshkaflowers.ru/about",
+            name: "About",
+          },
+        },
+
+        {
+          "@type": "ListItem",
+          position: 4,
+          item: {
+            "@type": "WebPage",
+            "@id": "https://matryoshkaflowers.ru/contacts",
+            url: "https://matryoshkaflowers.ru/contacts",
+            name: "Контакты",
+          },
         },
       ],
     },
-    // {
-    //   "@context": "https://schema.org",
-    //   "@type": "BreadcrumbList",
-    //   itemListElement: [
-    //     {
-    //       "@type": "ListItem",
-    //       position: 1,
-
-    //       item: {
-    //         "@type": "WebPage",
-    //         "@id": "https://matryoshkaflowers.ru/categories",
-    //         url: "https://matryoshkaflowers.ru/categories",
-    //         name: "Категории",
-    //       },
-    //     },
-    //     {
-    //       "@type": "ListItem",
-    //       position: 2,
-    //       item: {
-    //         "@type": "WebPage",
-    //         "@id": "https://matryoshkaflowers.ru/categories",
-    //         url: "https://matryoshkaflowers.ru/categories",
-    //         name: "Категории",
-    //       },
-    //     },
-    //     {
-    //       "@type": "ListItem",
-    //       position: 3,
-
-    //       item: {
-    //         "@type": "WebPage",
-    //         "@id": "https://matryoshkaflowers.ru/about",
-    //         url: "https://matryoshkaflowers.ru/about",
-    //         name: "About",
-    //       },
-    //     },
-
-    //     {
-    //       "@type": "ListItem",
-    //       position: 4,
-    //       item: {
-    //         "@type": "WebPage",
-    //         "@id": "https://matryoshkaflowers.ru/contacts",
-    //         url: "https://matryoshkaflowers.ru/contacts",
-    //         name: "Контакты",
-    //       },
-    //     },
-    //   ],
-    // },
   ];
 
   return (
