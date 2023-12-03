@@ -131,8 +131,8 @@ export default function Index({ categories, products }) {
         }
       `}</style>
       <div className="heading">
-        <CanvasBanner />
-        {/* <div className="markq">
+        {/* <CanvasBanner /> */}
+        <div className="markq">
           <div className="scroll">
             <div className="RightToLeft">
               <h1>Продажа букетов онлайн с доставкой по Калининграду</h1>
@@ -141,7 +141,7 @@ export default function Index({ categories, products }) {
               ))}
             </div>
           </div>
-        </div> */}
+        </div>
       </div>
       <div className="categories container">
         <SubNav {...{ categories }} />
