@@ -78,7 +78,7 @@ export default function Gallery({ data }) {
                   <div className="inner">
                     <CustomImage
                       src={prod.big}
-                      alt={`Роскрошный букет ${product.name} с доставкой по Калининграду`}
+                      alt={`Роскрошный букет ${prod.name} с доставкой по Калининграду`}
                       sizes="(max-width: 768px) 100vw, 25vw"
                     />
                   </div>

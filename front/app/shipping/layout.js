@@ -1,5 +1,7 @@
 "use client";
-import Loader from "@/app/components/loader";
+
+import dynamic from "next/dynamic";
+const Loader = dynamic(() => import("@/app/components/loader"), { ssr: false });
 import { Suspense } from "react";
 
 export default function Layout({ children }) {

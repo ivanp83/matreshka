@@ -1,23 +1,10 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 
+import { Suspense } from "react";
 import Index from "../../components/categories";
+import dynamic from "next/dynamic";
 
-// export const metadata = {
-//   title: "Категории букетов| Цветочный бутик Матрёшка",
-//   description:
-//     "Самые популярные цветы собранные в замечательные композиции от наших флористов.",
-// };
-// async function getCategories() {
-//   const res = await fetch(`${process.env.BACKEND_BASE_URL}/categories`, {
-//     next: { revalidate: 60 },
-//   });
-
-//   if (!res.ok) {
-//     throw new Error("Ошибка на сервере");
-//   }
-
-//   return res.json();
-// }
+const Loader = dynamic(() => import("@/app/components/loader"), { ssr: false });
 
 async function getProductsByCategory(id = 0) {
   const res = await fetch(
@@ -59,15 +46,15 @@ export async function generateMetadata({ params: { id } }) {
   };
 }
 export default async function Categories({ params: { id } }) {
-  // const categories = await getCategories();
   const { products, categories } = await getProductsByCategory(id);
 
   return (
     <>
       <meta name="robots" content="all" />
       <link rel="canonical" href={`${process.env.BACKEND_BASE_URL}/${id}`} />
-
-      <Index {...{ categories, products }} />
+      <Suspense fallback={<Loader />}>
+        <Index {...{ categories, products }} />
+      </Suspense>
     </>
   );
 }

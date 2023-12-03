@@ -1,10 +1,8 @@
 import CustomImage from "../image";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 export default function Categories({ categories }) {
-  const router = useRouter();
   return (
     <section className="categories">
       <style jsx>{`

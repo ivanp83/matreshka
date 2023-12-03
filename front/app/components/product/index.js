@@ -7,7 +7,7 @@ import Button from "../buttons/button";
 import { useAppContext } from "@/app/context/app.context";
 import dynamic from "next/dynamic";
 import { useRouter, useSearchParams } from "next/navigation";
-import SubNav from "../subNav";
+import SubNav from "../sub-nav";
 import { AnimatePresence, motion } from "framer-motion";
 import Portal from "../hoc/withPortal";
 import Slider from "../shared/slider";

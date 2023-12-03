@@ -77,7 +77,7 @@ const Content = () => {
 
   return ReactDOM.createPortal(
     content,
-    document?.getElementById("root-loader")
+    typeof window !== "undefined" && document?.getElementById("root-loader")
   );
 };
 const Loader = () => {

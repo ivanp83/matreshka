@@ -2,6 +2,9 @@
 
 import { Suspense } from "react";
 import Index from "../components/categories";
+import dynamic from "next/dynamic";
+
+const Loader = dynamic(() => import("@/app/components/loader"), { ssr: false });
 
 async function getProductsByCategory(id = 0) {
   const res = await fetch(
@@ -49,8 +52,9 @@ export default async function Categories({ params: { id } }) {
     <>
       <meta name="robots" content="all" />
       <link rel="canonical" href={`${process.env.BACKEND_BASE_URL}/${id}`} />
-
-      <Index {...{ categories, products }} />
+      <Suspense fallback={<Loader />}>
+        <Index {...{ categories, products }} />
+      </Suspense>
     </>
   );
 }

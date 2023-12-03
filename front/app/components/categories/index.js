@@ -1,14 +1,12 @@
 "use client";
 
 import React from "react";
-import SubNav from "../subNav";
+import SubNav from "../sub-nav";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
-const Loader = dynamic(() => import("../loader"), { ssr: false });
-const Gallery = dynamic(() => import("./gallery"), {
-  loading: () => <Loader />,
-});
+// const Loader = dynamic(() => import("../loader"), { ssr: false });
+const Gallery = dynamic(() => import("./gallery"), {});
 
 export default function Index({ categories, products }) {
   const json = [

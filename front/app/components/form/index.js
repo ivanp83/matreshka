@@ -6,7 +6,8 @@ import { useAppContext } from "@/app/context/app.context";
 import { Api } from "@/api";
 import { useRouter } from "next/navigation";
 import { handleErrors } from "@/utils/helpers";
-import Loader from "../loader";
+import dynamic from "next/dynamic";
+const Loader = dynamic(() => import("@/app/components/loader"), { ssr: false });
 import { motion } from "framer-motion";
 const inputs = [
   {
