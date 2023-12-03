@@ -48,21 +48,61 @@ export default function Index({ categories, products }) {
     },
     {
       "@context": "https://schema.org",
-      "@type": "ItemList",
+      "@type": "BreadcrumbList",
       itemListElement: [
-        products.map((product) => ({
-          "@type": "Product",
-          name: product.name,
-          description: product.description,
-          image: [
-            `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
-          ],
-          offers: {
-            "@type": "Offer",
-            price: product.price,
-            priceCurrency: "RUB",
+        {
+          "@type": "ListItem",
+          position: 1,
+
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
+            name: `Главная`,
           },
-        })),
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          item: {
+            "@type": "WebPage",
+            "@id": "",
+            url: "",
+            name: "",
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+            name: `About`,
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+            name: `Информация`,
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 5,
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
+            name: "Контакты",
+          },
+        },
       ],
     },
   ];

@@ -9,7 +9,7 @@ export default function Page(props) {
     title: "Контакты | Цветочный бутик Матрёшка ",
 
     description:
-      "Мы  готовы доставить букет по Калининграду и области в течении часа",
+      "Звоните нам скорее и заказывайте букет для любого случая! Мы доставим вам его по Калининграду и области в течении часа",
 
     content: {
       headline: "Контакты",
@@ -21,52 +21,61 @@ export default function Page(props) {
 
   const json = [
     {
-      "@context": "http://schema.org/",
-      "@type": "Article",
-      headline: data.title,
-
-      description: data.description,
-      author: "Юлиана Легкодумова",
-      datePublished: "2023-06-21",
-      dateModified: "2023-07-26",
-      mainEntityOfPage: {
-        "@type": "WebPage",
-        "@id": "https://matryoshkaflowers.ru/",
-      },
-      articleBody: String(data.content),
-    },
-    {
       "@context": "https://schema.org",
       "@type": "BreadcrumbList",
       itemListElement: [
         {
           "@type": "ListItem",
           position: 1,
-          name: "Главная",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
+
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
+            name: `Главная`,
+          },
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: "Букеты",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
+            name: `Букеты`,
+          },
         },
         {
           "@type": "ListItem",
           position: 3,
-          name: "About",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+            name: `About`,
+          },
         },
         {
           "@type": "ListItem",
           position: 4,
-          name: "Информация",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+            name: `Информация`,
+          },
         },
         {
           "@type": "ListItem",
           position: 5,
-          name: "Контакты",
+          item: {
+            "@type": "WebPage",
+            "@id": "",
+            url: "",
+            name: "",
+          },
         },
       ],
     },

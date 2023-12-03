@@ -35,31 +35,55 @@ export default function Index({ products, categories }) {
         {
           "@type": "ListItem",
           position: 1,
-          name: "Главная",
+
+          item: {
+            "@type": "WebPage",
+            "@id": "",
+            url: "",
+            name: "",
+          },
         },
         {
           "@type": "ListItem",
           position: 2,
-          name: "Букеты",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/categories`,
+            name: `Категории`,
+          },
         },
         {
           "@type": "ListItem",
           position: 3,
-          name: "About",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
+            name: `About`,
+          },
         },
         {
           "@type": "ListItem",
           position: 4,
-          name: "Информация",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
+            name: `Информация`,
+          },
         },
         {
           "@type": "ListItem",
           position: 5,
-          name: "Контакты",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
+          item: {
+            "@type": "WebPage",
+            "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
+            url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
+            name: "Контакты",
+          },
         },
       ],
     },
