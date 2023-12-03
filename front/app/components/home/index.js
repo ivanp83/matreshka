@@ -22,22 +22,33 @@ export default function Index({ products, categories }) {
             "@type": "Offer",
             price: product.price,
             priceCurrency: "RUB",
-          },
-          hasMerchantReturnPolicy: {
-            "@type": "MerchantReturnPolicy",
-            returnFees: "Оплачивает клиент",
-            returnPolicyCountry: "RU",
-          },
-          shippingDetails: {
-            "@type": "OfferShippingDetails",
-            shippingRate: {
-              "@type": "MonetaryAmount",
-              value: product.price,
-              currency: "RUB",
+            itemCondition: "https://schema.org/NewCondition",
+            availability: "https://schema.org/InStock",
+            priceSpecification: {
+              "@type": "PriceSpecification",
+              price: product.price,
+              priceCurrency: "RUB",
             },
-            shippingDestination: {
-              "@type": "DefinedRegion",
-              addressCountry: "RU",
+            hasMerchantReturnPolicy: {
+              "@type": "MerchantReturnPolicy",
+              applicableCountry: "RU",
+              returnPolicyCategory:
+                "https://schema.org/MerchantReturnFiniteReturnWindow",
+              merchantReturnDays: 14,
+              returnMethod: "https://schema.org/ReturnByMail",
+              returnFees: "https://schema.org/FreeReturn",
+            },
+            shippingDetails: {
+              "@type": "OfferShippingDetails",
+              shippingRate: {
+                "@type": "MonetaryAmount",
+                value: product.price,
+                currency: "RUB",
+              },
+              shippingDestination: {
+                "@type": "DefinedRegion",
+                addressCountry: "RU",
+              },
             },
           },
         })),
