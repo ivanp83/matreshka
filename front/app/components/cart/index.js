@@ -50,6 +50,7 @@ export default function Index() {
             text-align: center;
             grid-column: 1/4;
             display: grid;
+            margin-top: 20vh;
           }
           .empty-cart-cont {
             display: grid;

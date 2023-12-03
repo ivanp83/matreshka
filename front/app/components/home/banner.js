@@ -108,11 +108,16 @@ export default function Banner() {
       masthead.appendChild(canvas);
     })();
     function handleMouseMove(e) {
-      if (!imageRef.current) return;
-      const x = (window.innerWidth - e.screenX) / 98;
-      const y = (window.innerHeight - e.screenY) / 98;
+      if (/Android|iPhone/i.test(navigator.userAgent)) {
+        imageRef.current.style.transform = `translate(0, -50%)`;
+        return;
+      }
+      if (imageRef.current) {
+        const x = (window.innerWidth - e.screenX) / 98;
+        const y = (window.innerHeight - e.screenY) / 98;
 
-      imageRef.current.style.transform = `translate(-${0 + x}%, -${50 + y}%)`;
+        imageRef.current.style.transform = `translate(-${0 + x}%, -${50 + y}%)`;
+      }
     }
 
     window.addEventListener("resize", handleMouseMove);
@@ -169,6 +174,7 @@ export default function Banner() {
           right: 16%;
           top: 50%;
           transform: translateY(-50%);
+          mix-blend-mode: hard-light;
         }
 
         @media all and (max-width: 1260px) {

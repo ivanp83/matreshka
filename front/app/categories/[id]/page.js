@@ -39,8 +39,8 @@ export async function generateMetadata({ params: { id } }) {
   const category = categories.find((p) => p.id == id && p);
 
   return {
-    title: `${category?.name} закажи онлайн с доставкой по городу`,
-    description: `${category?.description}. Доступная для заказа`,
+    title: `Категория - ${category?.name}`,
+    description: `${category?.description}. Доступные для заказа онлайн ${category?.name} с доставкой по городу и области.`,
   };
 }
 export default async function Categories({ params: { id } }) {

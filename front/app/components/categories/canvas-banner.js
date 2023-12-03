@@ -1,12 +1,27 @@
 import React, { useEffect, useRef } from "react";
-// import image from "@/public/images/lora.jpg";
+
 export default function CanvasBanner(props) {
   const ref = useRef(null);
   useEffect(() => {
     const canvas = ref.current;
     const contex = canvas.getContext("2d");
-    let cnsWidth = window.innerWidth;
-    let cnsHeight = window.innerHeight;
+
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerWidth;
+    let canvasWidth = window.innerWidth;
+    let canvasHeight = window.innerHeight * 0.15;
+    // const image = new Image(); // Create new image element
+    // image.src = "https://scientificrussia.ru/images/b/teb-full.jpg";
+    // image.addEventListener(
+    //   "load",
+    //   () => {
+    //     contex.drawImage(image, 0, 0, canvasWidth, canvasHeight);
+    //   },
+    //   false
+    // );
+
+    // Загружаем файл изображения
+
     let numberFlakes = 250;
     let flakes = [];
 
@@ -29,11 +44,11 @@ export default function CanvasBanner(props) {
     }
 
     function init() {
-      var i = numberFlakes;
+      let i = numberFlakes;
 
       while (i--) {
-        let x = spaceBetween(0, cnsWidth, true);
-        let y = spaceBetween(0, cnsHeight, true);
+        let x = spaceBetween(0, canvasWidth, true);
+        let y = spaceBetween(0, canvasHeight, true);
 
         let flake = new Flake(x, y);
         flakes.push(flake);
@@ -44,16 +59,16 @@ export default function CanvasBanner(props) {
     }
 
     function scaleCanvas() {
-      canvas.width = cnsWidth;
-      canvas.height = cnsHeight;
+      canvas.width = canvasWidth;
+      canvas.height = canvasHeight;
     }
 
     function loop() {
       var i = flakes.length;
-      //   contex.drawImage(image, 100, 100, cnsWidth, cnsWidth);
+
       contex.save();
       contex.setTransform(1, 0, 0, 1, 0, 0);
-      contex.clearRect(0, 0, cnsWidth, cnsWidth);
+      contex.clearRect(0, 0, canvasWidth, canvasWidth);
       contex.restore();
 
       while (i--) {
@@ -72,7 +87,7 @@ export default function CanvasBanner(props) {
         +flakeFront.scale + ")";
         contex.fill();
 
-        if (flakeFront.y >= cnsHeight) {
+        if (flakeFront.y >= canvasHeight) {
           flakeFront.y = -flakeFront.weight;
         }
       }
@@ -88,9 +103,16 @@ export default function CanvasBanner(props) {
         return number;
       }
     }
-
+    function resize() {
+      let canvasWidth = window.innerWidth;
+      let canvasHeight = window.innerHeight * 0.15;
+    }
+    window.addEventListener("resize", resize);
     init();
+    return () => {
+      window.removeEventListener("resize", resize);
+    };
   }, []);
 
-  return <canvas ref={ref}></canvas>;
+  return <canvas style={{ position: "absolute" }} ref={ref}></canvas>;
 }

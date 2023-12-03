@@ -9,9 +9,8 @@ async function getData(id) {
     }
   ).then((res) => res.json());
 
-  const products = productsRes.filter((prod) => prod.id !== id);
   const product = productsRes.find((prod) => prod.id == id);
-
+  const products = productsRes.filter((prod) => prod.id !== Number(id));
   return { product, products };
 }
 export async function generateStaticParams() {
@@ -24,11 +23,12 @@ export async function generateMetadata({ params: { id } }) {
   const products = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`
   ).then((res) => res.json());
+
   const product = products.find((p) => p.id == id && p);
 
   return {
     title: product.name,
-    description: `${product.name} - закажи онлайн с доставкой по городу.`,
+    description: `Закажи лучший роскошный ${product.name} онлайн с доставкой по городу и области.`,
   };
 }
 

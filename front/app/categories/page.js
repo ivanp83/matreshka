@@ -36,11 +36,10 @@ export async function generateMetadata({ params: { id } }) {
   const categories = await fetch(
     `${process.env.BACKEND_BASE_URL}/categories`
   ).then((res) => res.json());
-  const category = categories.find((p) => p.id == id && p);
 
   return {
-    title: `${category?.name} закажи онлайн с доставкой по городу`,
-    description: `${category?.description}. Доступная для заказа`,
+    title: `Букеты в наличии`,
+    description: `Доступные для заказа букеты с доставкой по городу и области. Авторский дизайн, самые качественные цветы, прекрасное оформление - всё это букеты от цветочной мастерской Матрёшка фловерс.`,
   };
 }
 export default async function Categories({ params: { id } }) {

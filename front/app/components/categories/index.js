@@ -143,16 +143,15 @@ export default function Index({ categories, products }) {
         .heading {
           grid-column: 1/4;
           grid-row: 1;
-          padding: 10px;
+          position: relative;
           margin-bottom: var(--space-small);
           background: var(--main-pink);
-          border-radius: 40px;
         }
 
         .markq {
           display: flex;
           align-items: center;
-          height: 1rem;
+          height: 3rem;
           overflow: hidden;
         }
 
@@ -189,7 +188,7 @@ export default function Index({ categories, products }) {
         }
       `}</style>
       <div className="heading">
-        {/* <CanvasBanner /> */}
+        <CanvasBanner />
         <div className="markq">
           <div className="scroll">
             <div className="RightToLeft">
