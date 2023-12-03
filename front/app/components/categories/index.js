@@ -1,12 +1,13 @@
 "use client";
 
-import React from "react";
+import React, { useRef } from "react";
 import SubNav from "../sub-nav";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 // const Loader = dynamic(() => import("../loader"), { ssr: false });
 const Gallery = dynamic(() => import("./gallery"), {});
+const CanvasBanner = dynamic(() => import("./canvas-banner"), { ssr: false });
 
 export default function Index({ categories, products }) {
   const json = [
@@ -125,7 +126,8 @@ export default function Index({ categories, products }) {
         }
       `}</style>
       <div className="heading">
-        <div className="markq">
+        <CanvasBanner />
+        {/* <div className="markq">
           <div className="scroll">
             <div className="RightToLeft">
               <h1>Продажа букетов онлайн с доставкой по Калининграду</h1>
@@ -134,7 +136,7 @@ export default function Index({ categories, products }) {
               ))}
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
       <div className="categories container">
         <SubNav {...{ categories }} />

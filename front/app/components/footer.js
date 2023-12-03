@@ -10,6 +10,8 @@ const json = {
     postalCode: "236000",
     streetAddress: "Виктора Гакуна, 5",
   },
+  addressCountry: "RU",
+  addressRegion: "Kaliningrad dist",
   email: "matreshkaflower@bk.ru",
   name: "Матрёшка",
   telephone: "+7 911 493-99-99",
