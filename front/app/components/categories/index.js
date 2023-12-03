@@ -18,41 +18,6 @@ export default function Index({ categories, products }) {
         {
           "@type": "ListItem",
           position: 1,
-          name: "Главная",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}`,
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-          name: "Букеты",
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-          name: "About",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/about`,
-        },
-        {
-          "@type": "ListItem",
-          position: 4,
-          name: "Информация",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/info`,
-        },
-        {
-          "@type": "ListItem",
-          position: 5,
-          name: "Контакты",
-          item: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/contacts`,
-        },
-      ],
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
 
           item: {
             "@type": "WebPage",
@@ -68,7 +33,7 @@ export default function Index({ categories, products }) {
             "@type": "WebPage",
             "@id": "",
             url: "",
-            name: "",
+            name: "Категории",
           },
         },
         {
