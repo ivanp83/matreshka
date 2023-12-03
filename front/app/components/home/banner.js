@@ -147,7 +147,8 @@ export default function Banner() {
           display: grid;
           display: inline-block;
           width: fit-content;
-          color: var(--main-dark);
+          color: var(--main-light);
+          background: var(--main-red);
           font-weight: 600;
           text-transform: uppercase;
 
@@ -235,7 +236,7 @@ export default function Banner() {
         />
       </div>
       <div className="hlink">
-        <Link href="/categories" style={{ background: "var(--main-light)" }}>
+        <Link href="/categories">
           <h1>Выбрать свой букет</h1>
         </Link>
       </div>
