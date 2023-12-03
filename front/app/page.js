@@ -1,5 +1,7 @@
 import Index from "./components/home";
 import { Envs } from "@/utils/config";
+import Loading from "./loading";
+import { Suspense } from "react";
 
 export const metadata = {
   title: "Продажа букетов из цветов в Калининграде | Цветочный бутик Матрёшка",
@@ -36,7 +38,9 @@ export default async function Home() {
     <>
       <meta name="robots" content="all" />{" "}
       <link rel="canonical" href="https://matryoshkaflowers.ru/" />
-      <Index {...{ products, categories }} />
+      <Suspense fallback={<Loading />}>
+        <Index {...{ products, categories }} />
+      </Suspense>
     </>
   );
 }

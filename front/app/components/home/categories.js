@@ -103,12 +103,7 @@ export default function Categories({ categories }) {
         <div className="list">
           {categories.map((cat, i) => (
             <article key={cat.id}>
-              <Link
-                href={{
-                  pathname: "/categories",
-                  query: { id: cat.id },
-                }}
-              >
+              <Link href={`/categories/${cat.id}`}>
                 <span className="image">
                   <CustomImage
                     src={cat.image}

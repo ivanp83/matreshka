@@ -6,7 +6,7 @@ import CartItem from "./cartItem";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";
 import { useState } from "react";
-import Link from "next/link";
+
 import LinkTo from "../shared/linkTo";
 
 export default function Index() {
@@ -117,8 +117,8 @@ export default function Index() {
           <>
             <h1>Корзина</h1>
             <ul className={`items-list`}>
-              {cartItems.map((item) => (
-                <CartItem item={item} key={item.id} />
+              {cartItems.map((item, i) => (
+                <CartItem item={item} key={i} />
               ))}
             </ul>
             <div className="checkout">

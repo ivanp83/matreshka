@@ -15,7 +15,7 @@
   --main-red: rgb(214, 3, 3);
   --dark-red: rgb(162, 5, 5);
   --main-dark: rgb(19, 16, 16);
-  --main-light: rgb(249, 249, 249);
+  --main-light: rgb(255, 255, 255);
 }
 html {
   font-size: 62.5%;

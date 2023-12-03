@@ -1,4 +1,5 @@
 "use-client";
+import Image from "next/image";
 import React from "react";
 
 export default function Loading(props) {
@@ -17,7 +18,24 @@ export default function Loading(props) {
         background: "var(--main-light)",
       }}
     >
-      <span className="lds-ellipsis">Загружаю....</span>
+      <div
+        className="circele"
+        style={{
+          width: "150px",
+          height: "150px",
+          borderRadius: "50%",
+          display: "grid",
+          placeContent: "center",
+        }}
+      >
+        <Image
+          width={80}
+          height={80}
+          alt="Анимированный цветок"
+          src="/images/plant.gif"
+        />
+        <span className="lds-ellipsis">Загружаю....</span>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import Logo from "../shared/matryohska";
 import CustomImage from "../image";
 import LinkTo from "../shared/linkTo";
@@ -6,19 +6,126 @@ import Link from "next/link";
 
 export default function Banner() {
   const [state, setState] = useState(true);
+  const masterRef = useRef(null);
+  const imageRef = useRef(null);
   const handleScroll = () => {
-    if (window.pageYOffset >= window.innerHeight) {
+    if (window.scrollY >= window.innerHeight) {
       setState(false);
     } else {
       setState(true);
     }
   };
   useEffect(() => {
+    (function () {
+      const COUNT = 300;
+      const masthead = masterRef.current;
+      const canvas = document.getElementById("canvas");
+      const ctx = canvas.getContext("2d");
+      let width = masthead.clientWidth;
+      let height = masthead.clientHeight;
+      let i = 0;
+      let active = false;
+
+      function onResize() {
+        width = masthead.clientWidth;
+        height = masthead.clientHeight;
+        canvas.width = width;
+        canvas.height = height;
+        ctx.fillStyle = "#FFF";
+
+        let wasActive = active;
+        active = width > 200;
+
+        if (!wasActive && active) requestAnimFrame(update);
+      }
+
+      const Snowflake = function () {
+        this.x = 0;
+        this.y = 0;
+        this.vy = 0;
+        this.vx = 0;
+        this.r = 0;
+
+        this.reset();
+      };
+
+      Snowflake.prototype.reset = function () {
+        this.x = Math.random() * width;
+        this.y = Math.random() * -height;
+        this.vy = 1 + Math.random() * 3;
+        this.vx = 0.5 - Math.random();
+        this.r = 1 + Math.random() * 2;
+        this.o = 0.5 + Math.random() * 0.5;
+      };
+
+      canvas.style.position = "absolute";
+      canvas.style.left = canvas.style.top = "0";
+      canvas.style.zIndex = -1;
+
+      let snowflakes = [],
+        snowflake;
+      for (i = 0; i < COUNT; i++) {
+        snowflake = new Snowflake();
+        snowflakes.push(snowflake);
+      }
+
+      function update() {
+        ctx.clearRect(0, 0, width, height);
+
+        if (!active) return;
+
+        for (i = 0; i < COUNT; i++) {
+          snowflake = snowflakes[i];
+          snowflake.y += snowflake.vy;
+          snowflake.x += snowflake.vx;
+
+          ctx.globalAlpha = snowflake.o;
+          ctx.beginPath();
+          ctx.arc(snowflake.x, snowflake.y, snowflake.r, 0, Math.PI * 2, false);
+          ctx.closePath();
+          ctx.fill();
+
+          if (snowflake.y > height) {
+            snowflake.reset();
+          }
+        }
+
+        requestAnimFrame(update);
+      }
+
+      let requestAnimFrame = (function () {
+        return (
+          requestAnimationFrame ||
+          function (callback) {
+            setTimeout(callback, 1000 / 60);
+          }
+        );
+      })();
+
+      onResize();
+      window.addEventListener("resize", onResize, false);
+
+      masthead.appendChild(canvas);
+    })();
+    function handleMouseMove(e) {
+      if (!imageRef.current) return;
+      const x = (window.innerWidth - e.screenX) / 98;
+      const y = (window.innerHeight - e.screenY) / 98;
+
+      imageRef.current.style.transform = `translate(-${0 + x}%, -${50 + y}%)`;
+    }
+
+    window.addEventListener("resize", handleMouseMove);
+    window.addEventListener("mousemove", handleMouseMove);
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("mousemove", handleMouseMove);
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleMouseMove);
+    };
   }, []);
   return (
-    <div className="banner container">
+    <div className="banner container" ref={masterRef}>
       <style jsx>{`
         .banner {
           width: 100%;
@@ -51,6 +158,7 @@ export default function Banner() {
         }
         .logo-title {
           grid-column: 1/4;
+          z-index: -2;
         }
 
         .image {
@@ -107,12 +215,12 @@ export default function Banner() {
           }
         }
       `}</style>
-
+      <canvas id="canvas" />
       <div className="logo-title">
         <Logo />
       </div>
 
-      <div className="image">
+      <div className="image" ref={imageRef}>
         <CustomImage
           src="/images/8.jpg"
           direct={true}
