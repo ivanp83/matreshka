@@ -10,17 +10,6 @@ export default function CanvasBanner(props) {
     canvas.height = window.innerWidth;
     let canvasWidth = window.innerWidth;
     let canvasHeight = window.innerHeight * 0.15;
-    // const image = new Image(); // Create new image element
-    // image.src = "https://scientificrussia.ru/images/b/teb-full.jpg";
-    // image.addEventListener(
-    //   "load",
-    //   () => {
-    //     contex.drawImage(image, 0, 0, canvasWidth, canvasHeight);
-    //   },
-    //   false
-    // );
-
-    // Загружаем файл изображения
 
     let numberFlakes = 250;
     let flakes = [];
@@ -104,8 +93,8 @@ export default function CanvasBanner(props) {
       }
     }
     function resize() {
-      let canvasWidth = window.innerWidth;
-      let canvasHeight = window.innerHeight * 0.15;
+      canvasWidth = window.innerWidth;
+      canvasHeight = window.innerHeight * 0.15;
     }
     window.addEventListener("resize", resize);
     init();

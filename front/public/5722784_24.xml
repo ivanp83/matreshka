@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+		<!--	created with www.mysitemapgenerator.com	-->
+		<!DOCTYPE yml_catalog SYSTEM "shops.dtd">
+		<yml_catalog date="2023-12-04 13:40">
+		<shop>
+			<name>Matryoshkaflowers</name>
+			<company>Matryoshkaflowers</company>
+			<url>https://matryoshkaflowers.ru/</url>
+		<currencies>
+			<currency id="RUB" rate="1" />
+		</currencies>
+		<categories>
+			<category id="2731707003">Товары в наличии</category>
+		</categories>
+		<offers>
+			<offer id="3213828125" available="true">
+			       <url>https://matryoshkaflowers.ru/product/115</url>
+			       <price>7000</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1699361610373/1400.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет «Франческа»</name>
+				<description>Пионовидная Роза 25 шт</description>
+			</offer>
+			<offer id="2329802274" available="true">
+			       <url>https://matryoshkaflowers.ru/product/64</url>
+			       <price>5350</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1687095005594/1200.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет «Анна»</name>
+				<description>Розы Кения 17 шт</description>
+			</offer>
+			<offer id="210730341" available="true">
+			       <url>https://matryoshkaflowers.ru/product/103</url>
+			       <price>2750</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1689803251720/1400.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет «Каралина»</name>
+				<description>Кустовая Роза</description>
+			</offer>
+			<offer id="3785396964" available="true">
+			       <url>https://matryoshkaflowers.ru/product/99</url>
+			       <price>13750</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1689801820492/1400.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет «Верона»</name>
+				<description>Роза одноголовая 45 шт</description>
+			</offer>
+			<offer id="1064427012" available="true">
+			       <url>https://matryoshkaflowers.ru/product/93</url>
+			       <price>5250</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1687093952133/1200.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет из розовых гортензий</name>
+				<description>Гортензии 5 шт</description>
+			</offer>
+			<offer id="2481814514" available="true">
+			       <url>https://matryoshkaflowers.ru/product/77</url>
+			       <price>7250</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1679567818220/1200.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет из белых гортензий</name>
+				<description>Гортензии 7 шт</description>
+			</offer>
+			<offer id="4076270673" available="true">
+			       <url>https://matryoshkaflowers.ru/product/59</url>
+			       <price>3000</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1678960166153/1200.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет «Оливия»</name>
+				<description>танацетум кустовая роза</description>
+			</offer>
+			<offer id="779511843" available="true">
+			       <url>https://matryoshkaflowers.ru/product/58</url>
+			       <price>3000</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1678960061476/1200.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет из альстромерии</name>
+				<description>Альстромерия</description>
+			</offer>
+			<offer id="975627534" available="true">
+			       <url>https://matryoshkaflowers.ru/product/80</url>
+			       <price>5500</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1687093854961/1200.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет из розовых пионов</name>
+				<description>Пионы 15 шт</description>
+			</offer>
+			<offer id="147761330" available="true">
+			       <url>https://matryoshkaflowers.ru/product/74</url>
+			       <price>12250</price>
+			       <currencyId>RUB</currencyId>
+			       <categoryId>2731707003</categoryId>
+				<picture>https://static.matryoshkaflowers.ru/api/images/1687093752272/1200.jpg</picture>
+				<delivery>true</delivery>
+				<vendor>Матрёшка Фловерс</vendor>
+			       <name>Букет из белых пионов</name>
+				<description>Пионы 35 шт</description>
+			</offer>
+		</offers>
+</shop>
+</yml_catalog>

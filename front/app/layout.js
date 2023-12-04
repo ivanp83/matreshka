@@ -115,10 +115,13 @@ export default function RootLayout({ children }) {
       <meta name="author" content="https://039.studio" />
       <meta property="og:url" content="https://matryoshkaflowers.ru/" />
       <meta property="og:type" content="website" />
-      <meta property="og:title" content="Матрёшка Фловерс" />
+      <meta
+        property="og:title"
+        content="Интернет-магазин премиальных букетов в Калининграде"
+      />
       <meta
         property="og:description"
-        content="Интернет-магазин премиальных букетов в Калининграде"
+        content="Наши услуги: &#9829; Букеты на заказ &#9829; Оформление свадеб и торжеств &#9829; Оформление корпоративных мероприятий &#9829;."
       />
       <meta property="og:locale" content="ru_RU" />
       <meta

@@ -21,6 +21,13 @@ async function getCategories() {
   return res.json();
 }
 async function getProducts() {
+  const yandexFeedId = await fetch(`https://api.webmaster.yandex.net/v4/user`, {
+    Authorization:
+      "Bearer y0_AgAAAABmz_OTAAruuAAAAADzyerMY2cwaEK7QvSuqPgq-IcIHzb4npk",
+  })
+    .then((res) => res.json())
+    .catch((err) => console.log(err));
+  console.log(yandexFeedId);
   const products = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`,
     {

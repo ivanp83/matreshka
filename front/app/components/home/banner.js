@@ -1,7 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import Logo from "../shared/matryohska";
 import CustomImage from "../image";
-import LinkTo from "../shared/linkTo";
 import Link from "next/link";
 
 export default function Banner() {
@@ -236,7 +235,7 @@ export default function Banner() {
       </div>
       <div className="hlink">
         <Link href="/categories">
-          <h1>Выбрать свой букет</h1>
+          <h1>Выбрать свой букет &#9829;</h1>
         </Link>
       </div>
     </div>
