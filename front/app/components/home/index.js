@@ -7,6 +7,7 @@ import Events from "./events";
 import Products from "./products";
 import Categories from "./categories";
 import { getDate } from "@/utils/helpers";
+import { Envs } from "@/utils/config";
 
 export default function Index({ products, categories }) {
   const json = [
@@ -18,7 +19,7 @@ export default function Index({ products, categories }) {
           "@type": "Product",
           name: product.name,
           description: product.description,
-          image: [`https://matryoshkaflowers.ru/${product.big}`],
+          image: [`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.small}`],
           offers: {
             "@type": "Offer",
             price: product.price,

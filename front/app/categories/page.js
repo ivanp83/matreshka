@@ -134,21 +134,6 @@ export default async function Categories({ params: { id } }) {
 
   return (
     <>
-      <meta name="robots" content="all" />
-      <meta property="og:title" content="Букеты на продажу" />
-      <meta property="og:locale" content="ru_RU" />
-      <meta
-        property="og:description"
-        content="Премиальные букеты с доставкой по Калининграду за 1 час."
-      />
-      <meta
-        property="og:image"
-        content="https://matryoshkaflowers.ru/images/regular_banner.jpg"
-      />
-      <link
-        rel="canonical"
-        href={`${process.env.BACKEND_BASE_URL}/categories`}
-      />
       <Suspense fallback={<Loading />}>
         <Index {...{ categories, products }} />
       </Suspense>

@@ -132,22 +132,6 @@ export default async function Home() {
 
   return (
     <>
-      <meta name="robots" content="all" />
-      <link rel="canonical" href="https://matryoshkaflowers.ru/" />
-      <meta
-        property="og:title"
-        content="Интернет-магазин премиальных букетов в Калининграде"
-      />
-      <meta
-        property="og:description"
-        content="Наши услуги: &#9829; Букеты на заказ &#9829; Оформление свадеб и торжеств &#9829; Оформление корпоративных мероприятий &#9829;."
-      />
-      <meta property="og:locale" content="ru_RU" />
-      <meta
-        property="og:image"
-        content="https://matryoshkaflowers.ru/images/regular_banner.jpg"
-      />
-
       <Suspense fallback={<Loading />}>
         <Index {...{ products, categories }} />
       </Suspense>

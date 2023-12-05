@@ -5,6 +5,7 @@ import SubNav from "../sub-nav";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { getDate } from "@/utils/helpers";
+import { Envs } from "@/utils/config";
 
 // const Loader = dynamic(() => import("../loader"), { ssr: false });
 const Gallery = dynamic(() => import("./gallery"), {});
@@ -70,7 +71,7 @@ export default function Index({ categories, products }) {
           "@type": "Product",
           name: product.name,
           description: product.description,
-          image: [`https://matryoshkaflowers.ru/${product.big}`],
+          image: [`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.small}`],
           offers: {
             "@type": "Offer",
             price: product.price,
