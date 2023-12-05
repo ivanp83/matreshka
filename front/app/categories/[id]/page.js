@@ -45,7 +45,7 @@ export async function generateMetadata({ params: { id } }) {
 
   const data = {
     title: `Категория - ${category?.name}`,
-    description: `${category?.description}. Доступные для заказа ${category?.name} с быстрой доставкой по Калининграду и области.`,
+    description: `${category?.description}. Доступные для заказа 💐${category?.name} с быстрой доставкой по Калининграду и области.`,
     canonical: `https://matryoshkaflowers.ru/categories/${category.id}`,
   };
 

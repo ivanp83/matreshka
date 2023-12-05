@@ -1,15 +1,14 @@
 import Index from "@/app/components/contacts/";
 const data = {
   title: "Контакты | Цветочный бутик Матрёшка ",
-
   description:
-    "Звоните нам и заказывайте роскошные букеты для любого случая! Мы доставим заказ по Калининграду и области в течении 1 часа!",
+    "📞Звоните нам и заказывайте роскошные букеты онлайн с доставкой.",
   canonical: "https://matryoshkaflowers.ru/contacts",
   content: {
     headline: "Контакты",
-    address: "Калининград, улица Виктора Гакуна, 5Б",
-    phone: "+7 911 493-99-99",
-    email: "matreshkaflower@bk.ru",
+    address: "📍Калининград, улица Виктора Гакуна, 5Б ",
+    phone: "📞+7 911 493-99-99 ",
+    email: "📬matreshkaflower@bk.ru ",
   },
 };
 export const viewport = {
@@ -22,7 +21,6 @@ export const metadata = {
   title: data.title,
   description: data.description,
   metadataBase: new URL(data.canonical),
-
   generator: "Next.js",
   applicationName: "Матрёшка Флаверс",
   referrer: "origin-when-cross-origin",
