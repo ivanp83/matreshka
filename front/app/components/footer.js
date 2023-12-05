@@ -6,7 +6,7 @@ const json = {
 
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Россия, Калининград",
+    addressLocality: "📍Россия, Калининград",
     postalCode: "236000",
     streetAddress: "Виктора Гакуна, 5",
     addressCountry: "RU",
@@ -15,7 +15,7 @@ const json = {
 
   email: "matreshkaflower@bk.ru",
   name: "Матрёшка",
-  telephone: "+7 911 493-99-99",
+  telephone: "📞+7 911 493-99-99",
   image: "/images/logo.png",
   url: "https://matryoshkaflowers.ru/",
 };
@@ -163,14 +163,16 @@ export default function Footer() {
           <div className="creds">
             <address className="address">
               <p className="h4">Адрес</p>
-              <span>Калининград, улица Виктора Гакуна, 5Б</span>
+              <span>📍Калининград, улица Виктора Гакуна, 5Б</span>
             </address>
 
             <div className="contacts">
               <p className="h4">Контакты</p>
               <div>
-                <a href="tel:+79114939999">+7 911 493-99-99</a>
-                <a href="mailto:matreshkaflower@bk.ru">matreshkaflower@bk.ru</a>
+                <a href="tel:+79114939999">📞+7 911 493-99-99</a>
+                <a href="mailto:matreshkaflower@bk.ru">
+                  📬matreshkaflower@bk.ru
+                </a>
               </div>
             </div>
           </div>
