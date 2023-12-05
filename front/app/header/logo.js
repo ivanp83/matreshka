@@ -9,7 +9,7 @@ const Logo = () => {
           object-fit: cover;
         }
       `}</style>
-      <img src="/images/logo.png" alt="Лого Матрёшка Фловерс" />
+      <img src="/images/logo.png" alt="Лого Матрёшка Флаверс" />
     </Link>
   );
 };

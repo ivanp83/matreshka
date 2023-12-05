@@ -83,57 +83,6 @@ export default function RootLayout({ children }) {
   }, []);
   return (
     <html lang="ru">
-      <meta
-        name="viewport"
-        content="width=device-width,  initial-scale=1.0, minimum-scale=1.0"
-      />
-      <meta name="yandex-verification" content="6ff734a1b919092d" />
-      <link
-        rel="apple-touch-icon"
-        sizes="180x180"
-        href="/apple-touch-icon.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="32x32"
-        href="/favicon-32x32.png"
-      />
-      <link
-        rel="icon"
-        type="image/png"
-        sizes="16x16"
-        href="/favicon-16x16.png"
-      />
-      <link rel="manifest" href="/site.webmanifest" />
-      <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5" />
-      <meta name="msapplication-TileColor" content="#da532c" />
-      <meta name="theme-color" content="#ffffff" />
-      <meta name="theme-color" content="#ffffff" />
-
-      <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-      <meta name="author" content="https://039.studio" />
-      <meta property="og:url" content="https://matryoshkaflowers.ru/" />
-      <meta property="og:type" content="website" />
-      <meta
-        property="og:title"
-        content="Интернет-магазин премиальных букетов в Калининграде"
-      />
-      <meta
-        property="og:description"
-        content="Наши услуги: &#9829; Букеты на заказ &#9829; Оформление свадеб и торжеств &#9829; Оформление корпоративных мероприятий &#9829;."
-      />
-      <meta property="og:locale" content="ru_RU" />
-      <meta
-        property="og:image"
-        content="https://matryoshkaflowers.ru/images/regular_banner.jpg"
-      />
-      <meta name="twitter:card" content="summary_large_image" />
-      <meta
-        property="vk:image"
-        content="https://matryoshkaflowers.ru/images/vk_banner.jpg"
-      />
-
       <StyledJsxRegistry>
         <AppProvider>
           <body>

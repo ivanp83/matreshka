@@ -25,10 +25,88 @@ export async function generateMetadata({ params: { id } }) {
   ).then((res) => res.json());
 
   const product = products.find((p) => p.id == id && p);
-
-  return {
+  const data = {
     title: product.name,
-    description: `Закажи лучший роскошный ${product.name} онлайн с доставкой по городу и области.`,
+    description: `${product.name} - заказать онлайн с доставкой по Калининграду и области.`,
+    canonical: `https://matryoshkaflowers.ru/product/${product.id}`,
+  };
+  return {
+    title: data.title,
+    description: data.description,
+
+    metadataBase: new URL(data.canonical),
+    generator: "Next.js",
+    applicationName: "Матрёшка Флаверс",
+    referrer: "origin-when-cross-origin",
+    authors: [{ name: "Юлиана Легкодумова" }],
+    creator: "Юлиана Легкодумова",
+    publisher: "Юлиана Легкодумова",
+
+    verification: {
+      google: "thGCiu8ZZJhbDzpkLH9Eg8KNpsrv3s_Z02ispASCl8k",
+      yandex: "6ff734a1b919092d",
+
+      other: {
+        me: [],
+      },
+    },
+    robots: {
+      index: true,
+      follow: true,
+      nocache: true,
+      googleBot: {
+        index: true,
+        follow: false,
+        noimageindex: true,
+        "max-video-preview": -1,
+        "max-image-preview": "large",
+        "max-snippet": -1,
+      },
+    },
+    openGraph: {
+      title: data.title,
+      description: data.description,
+      url: data.canonical,
+      siteName: "Матрёшка Флаверс",
+      images: [
+        {
+          url: "/images/og_banner.jpg",
+          width: 634,
+          height: 634,
+        },
+        {
+          url: "/images/vk_banner.jpg",
+          width: 1418,
+          height: 634,
+          alt: "Цветочная мастерская Матрёшка Флаверс",
+        },
+      ],
+      locale: "ru_RU",
+      type: "website",
+    },
+    icons: {
+      apple: [
+        {
+          url: "/favicon/apple-touch-icon.png",
+          sizes: "180x180",
+          type: "image/png",
+        },
+      ],
+      other: [
+        {
+          rel: "icon",
+          url: "/favicon/favicon-16x16.png",
+        },
+        {
+          rel: "icon",
+          url: "/favicon/favicon-32x32.png",
+        },
+        {
+          rel: "icon",
+          url: "/favicon/mstile-150x150.png",
+        },
+      ],
+    },
   };
 }
 
@@ -43,7 +121,7 @@ export default async function Page({ params: { id } }) {
     description: product.description,
     brand: {
       "@type": "Brand",
-      name: "Матрёшка Фловерс",
+      name: "Матрёшка Флаверс",
     },
     offers: {
       "@type": "Offer",
@@ -57,11 +135,6 @@ export default async function Page({ params: { id } }) {
 
   return (
     <>
-      <meta name="robots" content="all" />
-      <link
-        rel="canonical"
-        href={`https://matryoshkaflowers.ru/product/${product.id}`}
-      />
       <Suspense fallback={<Loading />}>
         <Index data={product} faturedData={products} />
       </Suspense>
