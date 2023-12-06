@@ -153,15 +153,6 @@ export default function Index({ products, categories, data }) {
                 price: product.price,
                 priceCurrency: "RUB",
               },
-              hasMerchantReturnPolicy: {
-                "@type": "MerchantReturnPolicy",
-                applicableCountry: "RU",
-                returnPolicyCategory:
-                  "https://schema.org/MerchantReturnFiniteReturnWindow",
-                merchantReturnDays: 14,
-                returnMethod: "https://schema.org/ReturnByMail",
-                returnFees: "https://schema.org/FreeReturn",
-              },
             },
           })),
         ],
