@@ -119,8 +119,8 @@ export default function Index({ products, categories, data }) {
               price: product.price,
               priceCurrency: "RUB",
               priceValidUntil: (() => {
-                const d = new Date();
-                return d.toISOString();
+                const myDate = new Date();
+                return myDate.setDate(myDate.getDate() + parseInt(10));
               })(),
               shippingDetails: {
                 "@type": "OfferShippingDetails",
