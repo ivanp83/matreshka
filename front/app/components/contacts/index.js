@@ -46,9 +46,7 @@ export default function Index({ data }) {
           }
         `}</style>
         <div className="wrapp">
-          <h1>
-            <b style={{ inset: 0 }}>Контакты</b>
-          </h1>
+          <h1>Контакты</h1>
           <address className="address">
             <span className="block">
               <span className="headline">Адрес</span>

@@ -6,29 +6,29 @@ export default function Index({ tabs }) {
   const [activeTab, setActiveTab] = useState(0);
   return (
     <>
-      <motion.section
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
       >
-        <section className="info">
+        <section className="info container">
           <style jsx>{`
             .info {
               min-height: calc(100vh - var(--space-big) * 2);
               grid-column: 1/4;
+              grid-row-gap: var(--space-small);
+              height: min-content;
+              grid-template-rows: min-content;
             }
             .wrapp {
-              grid-column: 2/3;
+              grid-column: 1/4;
+              padding: 0;
               grid-row-gap: var(--space-small);
               height: fit-content;
             }
             h1 {
-              width: 1px;
-              height: 1px;
-              position: absolute;
-              grid-column: 1/4;
+              grid-column: 2/4;
               justify-self: start;
-              font-size: 0px;
               user-select: none;
             }
             nav {
@@ -56,11 +56,16 @@ export default function Index({ tabs }) {
               color: var(--main-gray);
             }
             .content {
-              grid-column: 2/3;
+              grid-column: 2/4;
             }
             .par {
               display: grid;
               grid-row-gap: 1rem;
+            }
+            @media all and (orientation: portrait) {
+              h1 {
+                grid-column: 1/4;
+              }
             }
             @media all and (max-width: 1000px) {
               nav,
@@ -69,9 +74,7 @@ export default function Index({ tabs }) {
               }
             }
           `}</style>
-          <h1>
-            <b>Информация для клиента</b>
-          </h1>
+          <h1>Информация</h1>
           <div className="wrapp container">
             <nav aria-label="Навигация по клиентской информации">
               <ul style={{ display: "contents" }}>
@@ -106,7 +109,7 @@ export default function Index({ tabs }) {
             </div>
           </div>
         </section>
-      </motion.section>
+      </motion.div>
     </>
   );
 }
