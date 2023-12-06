@@ -6,7 +6,7 @@ export default function Text({ text }) {
           grid-column: 2/4;
         }
         .main-text,
-        cite {
+        strong {
           font-weight: 400;
           font-size: var(--big-fs);
           font-style: normal;
@@ -17,7 +17,7 @@ export default function Text({ text }) {
           }
         }
       `}</style>
-      <cite>{text}</cite>
+      <strong>{text}</strong>
     </span>
   );
 }

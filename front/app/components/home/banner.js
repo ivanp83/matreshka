@@ -225,17 +225,17 @@ export default function Banner() {
         <Logo />
       </div>
 
-      <div className="image" ref={imageRef}>
+      <p className="image" ref={imageRef}>
         <CustomImage
           src="/images/8.jpg"
           direct={true}
-          alt="Баннер девушка с букетом цветов"
+          alt="Девушка с букетом красивых цветов, русский национальный стиль, косынка и платье в горошек."
           sizes="(max-width: 768px) 80vw, 400px"
         />
-      </div>
+      </p>
       <div className="hlink">
         <Link href="/categories">
-          <h1>Выбрать свой букет &#9829;</h1>
+          <span>Выбери свой</span>
         </Link>
       </div>
     </div>

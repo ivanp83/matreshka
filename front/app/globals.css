@@ -67,6 +67,7 @@ h1 {
 .h2 {
   font-size: 1rem;
   font-weight: 600;
+  color: var(--main-gray);
 }
 .h3 {
   font-size: var(--big-fs);

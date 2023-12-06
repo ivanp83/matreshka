@@ -6,7 +6,7 @@ import { currencyFormat } from "@/utils/helpers";
 import Button from "../buttons/button";
 import { useAppContext } from "@/app/context/app.context";
 import dynamic from "next/dynamic";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useRouter } from "next/navigation";
 import SubNav from "../sub-nav";
 import { AnimatePresence, motion } from "framer-motion";
 import Portal from "../hoc/withPortal";
@@ -17,10 +17,8 @@ const CartAside = dynamic(() => import("../shared/cartAside"), {
 });
 
 export default function Index({ data: product, faturedData }) {
-  const searchParams = useSearchParams();
-
   const [avatarIsVisible, setstAvatarIsVisible] = useState(false);
-  const { onUpdate, cartItems, cartPosition } = useAppContext();
+  const { onUpdate, cartItems } = useAppContext();
   const addToCart = (product) => {
     onUpdate(product);
     setstAvatarIsVisible(true);
@@ -54,6 +52,7 @@ export default function Index({ data: product, faturedData }) {
             position: relative;
             width: 65vh;
             height: calc(65vh * 4 / 3);
+            display: block;
           }
           .details {
             grid-row: 1;
@@ -149,13 +148,13 @@ export default function Index({ data: product, faturedData }) {
           <SubNav product={product.name} />
         </div>
 
-        <div className="image">
+        <span className="image">
           <CustomImage
             src={product.big}
-            alt={`Роскрошный букет ${product.name} с доставкой по Калининграду`}
+            alt={`Прекрасный подарок "${product.name}" с доставкой по Калининграду.`}
             sizes="(max-width: 768px) 50vw, (max-width: 1200px) 30vw, 20vw"
           />
-        </div>
+        </span>
         <div className="details">
           <div className="top">
             <h1>{product.name}</h1>

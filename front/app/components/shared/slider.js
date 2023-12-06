@@ -26,6 +26,7 @@ export default function Slider({ products }) {
           width: calc(var(--cont-w) / 4 - 22px);
           height: calc(((var(--cont-w) / 4) - 20px) * 4 / 3);
           position: relative;
+          display: block;
         }
 
         .details {
@@ -110,14 +111,14 @@ export default function Slider({ products }) {
           <SwiperSlide key={prod.id}>
             <article className="card-wrapp">
               <Link href={`/product/${prod.id}`}>
-                <div className="image">
+                <span className="image">
                   <CustomImage
                     direct
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 20vw"
                     src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}
-                    alt={`Роскрошный букет ${prod.name} с доставкой по Калининграду`}
+                    alt={`Прекрасный букет "${prod.name}" - лучший подарок для людого случая, с доставкой по Калининграду.`}
                   />
-                </div>
+                </span>
               </Link>
               <div className="details">
                 <h3>
