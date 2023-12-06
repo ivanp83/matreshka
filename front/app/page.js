@@ -133,7 +133,7 @@ export default async function Home() {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <Index {...{ products, categories }} />
+        <Index {...{ products, categories, data }} />
       </Suspense>
     </>
   );

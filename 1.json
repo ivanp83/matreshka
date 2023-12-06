@@ -1,456 +1,137 @@
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": [
-    [
+[
+  {
+    "@context": "https://schema.org",
+    "@type": "Corporation",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.searchpilot.com",
+      "description": "SearchPilot enables rapid SEO A/B testing that delivers traceable ROI. Learn more about our platform, people, and disruptive testing approach."
+    },
+    "name": "SearchPilot",
+    "url": "https://www.searchpilot.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://7378679.fs1.hubspotusercontent-na1.net/hubfs/7378679/searchpilot-logo.png"
+    },
+    "alternateName": "SearchPilot",
+    "sameAs": [
+      "https://twitter.com/SearchPilot",
+      "https://www.linkedin.com/company/searchpilot/"
+    ],
+    "description": "Rapid SEO A/B testing that delivers attributable ROI.",
+    "contactPoint": [
       {
-        "@type": "Product",
-        "name": "нежный фиолетовый",
-        "description": "asdas",
-        "image": [
-          "http://localhost:8888/api/storage/images/62b070bdf1e2cbb498469540/1.jpg"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": 323,
-          "priceCurrency": "RUB",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "NaN,NaN,NaN",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 1000,
-              "currency": "RUB"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "RU"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 15,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 14,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": 323,
-            "priceCurrency": "RUB"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "RU",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          }
-        }
+        "@type": "ContactPoint",
+        "telephone": "+442033896339",
+        "contactType": "sales",
+        "email": "contact@searchpilot.com",
+        "areaServed": ["GB", "CA", "150"],
+        "availableLanguage": "en"
       },
       {
-        "@type": "Product",
-        "name": "нежный фиолетовый",
-        "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specime",
-        "image": [
-          "http://localhost:8888/api/storage/images/62b5947cd28f19dc86aa4f30/IMG_1184.jpg"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": 333,
-          "priceCurrency": "RUB",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "NaN,NaN,NaN",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 1000,
-              "currency": "RUB"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "RU"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 15,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 14,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": 333,
-            "priceCurrency": "RUB"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "RU",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          }
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "нежный фиолетовый",
-        "description": "Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specime",
-        "image": [
-          "http://localhost:8888/api/storage/images/62b5947cd28f19dc86aa4f30/IMG_1184.jpg"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": 6000,
-          "priceCurrency": "RUB",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "NaN,NaN,NaN",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 1000,
-              "currency": "RUB"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "RU"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 15,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 14,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": 6000,
-            "priceCurrency": "RUB"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "RU",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          }
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "asd",
-        "description": "asd",
-        "image": [
-          "http://localhost:8888/api/storage/images/63281cee748a345f6b35108f/IMG_2094.jpg"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": 32323,
-          "priceCurrency": "RUB",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "NaN,NaN,NaN",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 1000,
-              "currency": "RUB"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "RU"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 15,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 14,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": 32323,
-            "priceCurrency": "RUB"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "RU",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          }
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "asda",
-        "description": "asd",
-        "image": [
-          "http://localhost:8888/api/storage/images/63a4418aa4b20e491b20bb32/21207943-min_ccexpress.png"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": 33232,
-          "priceCurrency": "RUB",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "NaN,NaN,NaN",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 1000,
-              "currency": "RUB"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "RU"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 15,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 14,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": 33232,
-            "priceCurrency": "RUB"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "RU",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          }
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "Яркая мята",
-        "description": "asdsad",
-        "image": [
-          "http://localhost:8888/api/storage/images/63a4419ba4b20e491b20bb3b/1.jpg"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": 322332,
-          "priceCurrency": "RUB",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "NaN,NaN,NaN",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 1000,
-              "currency": "RUB"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "RU"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 15,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 14,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": 322332,
-            "priceCurrency": "RUB"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "RU",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          }
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "sad",
-        "description": "asd",
-        "image": [
-          "http://localhost:8888/api/storage/images/63a56fec633095e5e772f09a/21208407 (2).jpg"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": 3223,
-          "priceCurrency": "RUB",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "NaN,NaN,NaN",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 1000,
-              "currency": "RUB"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "RU"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 15,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 14,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": 3223,
-            "priceCurrency": "RUB"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "RU",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          }
-        }
-      },
-      {
-        "@type": "Product",
-        "name": "asd",
-        "description": "asd",
-        "image": [
-          "http://localhost:8888/api/storage/images/63a572be633095e5e772f0d0/21208234.jpg"
-        ],
-        "offers": {
-          "@type": "Offer",
-          "price": 3223,
-          "priceCurrency": "RUB",
-          "itemCondition": "https://schema.org/NewCondition",
-          "availability": "https://schema.org/InStock",
-          "priceValidUntil": "NaN,NaN,NaN",
-          "shippingDetails": {
-            "@type": "OfferShippingDetails",
-            "shippingRate": {
-              "@type": "MonetaryAmount",
-              "value": 1000,
-              "currency": "RUB"
-            },
-            "shippingDestination": {
-              "@type": "DefinedRegion",
-              "addressCountry": "RU"
-            },
-            "deliveryTime": {
-              "@type": "ShippingDeliveryTime",
-              "handlingTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 0,
-                "maxValue": 15,
-                "unitCode": "DAY"
-              },
-              "transitTime": {
-                "@type": "QuantitativeValue",
-                "minValue": 1,
-                "maxValue": 14,
-                "unitCode": "DAY"
-              }
-            }
-          },
-          "priceSpecification": {
-            "@type": "PriceSpecification",
-            "price": 3223,
-            "priceCurrency": "RUB"
-          },
-          "hasMerchantReturnPolicy": {
-            "@type": "MerchantReturnPolicy",
-            "applicableCountry": "RU",
-            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
-            "merchantReturnDays": 30,
-            "returnMethod": "https://schema.org/ReturnByMail",
-            "returnFees": "https://schema.org/FreeReturn"
-          }
-        }
+        "@type": "ContactPoint",
+        "telephone": "+19179096369",
+        "contactType": "sales",
+        "email": "contact@searchpilot.com",
+        "areaServed": ["US"],
+        "availableLanguage": "en"
       }
     ]
-  ]
-}
+  },
+
+  {
+    "@context": "https://schema.org",
+    "@type": "Corporation",
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": "https://www.searchpilot.com/about",
+      "description": "Meet the SearchPilot team. We’re a group of ambitious SEO experts, engineers, and data scientists committed to changing the world of SEO."
+    },
+    "name": "SearchPilot",
+    "url": "https://www.searchpilot.com/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://7378679.fs1.hubspotusercontent-na1.net/hubfs/7378679/searchpilot-logo.png"
+    },
+    "alternateName": "SearchPilot",
+    "sameAs": [
+      "https://twitter.com/SearchPilot",
+      "https://www.linkedin.com/company/searchpilot/"
+    ],
+    "description": "Rapid SEO A/B testing that delivers attributable ROI.",
+    "contactPoint": [
+      {
+        "@type": "ContactPoint",
+        "telephone": "+442033896339",
+        "contactType": "sales",
+        "email": "contact@searchpilot.com",
+        "areaServed": ["GB", "CA", "150"],
+        "availableLanguage": "en"
+      },
+      {
+        "@type": "ContactPoint",
+        "telephone": "+19179096369",
+        "contactType": "sales",
+        "email": "contact@searchpilot.com",
+        "areaServed": ["US"],
+        "availableLanguage": "en"
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://www.incrementors.com/seo-services/",
+        "url": "https://www.incrementors.com/seo-services/",
+        "name": "Best SEO Services That Double Your Revenue | Incrementors",
+        "isPartOf": { "@id": "https://www.incrementors.com/#website" },
+        "datePublished": "2021-11-10T15:37:19+00:00",
+        "dateModified": "2023-12-06T09:11:28+00:00",
+        "description": "Boost your online visibility with Incrementors' tailored SEO services. Drive traffic, increase rankings, and achieve business growth.",
+        "breadcrumb": {
+          "@id": "https://www.incrementors.com/seo-services/#breadcrumb"
+        },
+        "inLanguage": "en-US",
+        "potentialAction": [
+          {
+            "@type": "ReadAction",
+            "target": ["https://www.incrementors.com/seo-services/"]
+          }
+        ]
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://www.incrementors.com/seo-services/#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://www.incrementors.com/"
+          },
+          { "@type": "ListItem", "position": 2, "name": "SEO Services" }
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.incrementors.com/#website",
+        "url": "https://www.incrementors.com/",
+        "name": "Incrementors",
+        "description": "",
+        "potentialAction": [
+          {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://www.incrementors.com/?s={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        ],
+        "inLanguage": "en-US"
+      }
+    ]
+  }
+]

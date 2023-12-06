@@ -9,7 +9,7 @@ import Categories from "./categories";
 import { getDate } from "@/utils/helpers";
 import { Envs } from "@/utils/config";
 
-export default function Index({ products, categories }) {
+export default function Index({ products, categories, data }) {
   const json = {
     "@context": "https://schema.org",
     "@graph": [
@@ -17,7 +17,7 @@ export default function Index({ products, categories }) {
         "@type": "WebPage",
         "@id": "https://matryoshkaflowers.ru",
         url: "https://matryoshkaflowers.ru",
-        name: title,
+        name: data.title,
         isPartOf: { "@id": "https://matryoshkaflowers.ru" },
         primaryImageOfPage: {
           "@id": "https://matryoshkaflowers.ru/images/8.jpg",
@@ -28,10 +28,8 @@ export default function Index({ products, categories }) {
 
         datePublished: "2023-12-05T17:20:46+00:00",
         dateModified: "2023-12-06T18:18:43+00:00",
-        description: description,
-        breadcrumb: {
-          "@id": "https://matryoshkaflowers.ru",
-        },
+        description: data.description,
+
         inLanguage: "ru-RU",
         potentialAction: [
           {
@@ -48,6 +46,12 @@ export default function Index({ products, categories }) {
         contentUrl: `https://matryoshkaflowers.ru/images/8.jpg`,
         width: 682,
         height: 1024,
+        author: "Юлиана Легкодумова",
+        contentLocation: "Россия, Калининград",
+        contentUrl: "https://matryoshkaflowers.ru/images/8.jpg",
+        datePublished: "2023-09-25",
+        description:
+          "Девушка с букетом красивых цветов, русский национальный стиль, косынка и платье в горошек.",
       },
       {
         "@type": "BreadcrumbList",
