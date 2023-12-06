@@ -118,7 +118,10 @@ export default function Index({ products, categories, data }) {
               availability: "https://schema.org/InStock",
               price: product.price,
               priceCurrency: "RUB",
-              priceValidUntil: getDate(),
+              priceValidUntil: (() => {
+                const d = new Date();
+                return d.toISOString();
+              })(),
               shippingDetails: {
                 "@type": "OfferShippingDetails",
                 shippingRate: {
@@ -153,6 +156,15 @@ export default function Index({ products, categories, data }) {
                 price: product.price,
                 priceCurrency: "RUB",
               },
+              // hasMerchantReturnPolicy: {
+              //   "@type": "MerchantReturnPolicy",
+              //   applicableCountry: "RU",
+              //   returnPolicyCategory:
+              //     "https://schema.org/MerchantReturnFiniteReturnWindow",
+              //   merchantReturnDays: 14,
+              //   returnMethod: "https://schema.org/ReturnByMail",
+              //   returnFees: "https://schema.org/FreeReturn",
+              // },
             },
           })),
         ],
