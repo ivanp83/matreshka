@@ -6,7 +6,7 @@ export default function Story() {
       <style jsx>{`
         .story {
           background-color: var(--main-light);
-
+          width: 100%;
           grid-row-gap: var(--space-small);
           position: relative;
           margin-top: 100vh;
