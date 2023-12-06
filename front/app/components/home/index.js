@@ -181,8 +181,11 @@ export default function Index({ products, categories, data }) {
             height: 100%;
           }
         `}</style>
-        <Banner />
-        <Story />
+        <section style={{ display: "flex", order: "revert" }}>
+          <Banner />
+          <Story />
+        </section>
+
         <Products {...{ products }} />
         <Categories {...{ categories }} />
         <Events />

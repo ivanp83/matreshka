@@ -2,7 +2,7 @@ import Text from "./text";
 
 export default function Story() {
   return (
-    <section className="story">
+    <div className="story">
       <style jsx>{`
         .story {
           background-color: var(--main-light);
@@ -67,6 +67,6 @@ export default function Story() {
           радостью ваш день.
         </p>
       </div>
-    </section>
+    </div>
   );
 }

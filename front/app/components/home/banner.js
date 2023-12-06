@@ -150,7 +150,7 @@ export default function Banner() {
           background: var(--main-red);
           font-weight: 600;
           text-transform: uppercase;
-
+          font-size: 14px;
           transition: all 0.3s linear 0s;
           padding: 0.7rem 2.4rem;
           grid-column: 2/4;
@@ -235,7 +235,7 @@ export default function Banner() {
       </p>
       <div className="hlink">
         <Link href="/categories">
-          <span>Выбери свой</span>
+          <span>Выбери свой букет</span>
         </Link>
       </div>
     </div>
