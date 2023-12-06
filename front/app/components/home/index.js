@@ -174,17 +174,18 @@ export default function Index({ products, categories, data }) {
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
     >
-      <section>
+      <div className="home">
         <style jsx>{`
-          section {
+          section,
+          .home {
             width: 100%;
             height: 100%;
           }
         `}</style>
-        {/* <section style={{ display: "flex", order: "revert" }}>
+        <section style={{ display: "flex", order: "revert" }}>
           <Banner />
           <Story />
-        </section> */}
+        </section>
 
         <Products {...{ products }} />
         <Categories {...{ categories }} />
@@ -194,7 +195,7 @@ export default function Index({ products, categories, data }) {
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
         />
-      </section>
+      </div>
     </motion.div>
   );
 }
