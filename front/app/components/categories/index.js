@@ -1,12 +1,12 @@
 "use client";
 
-import React, { useRef } from "react";
+import React from "react";
 import SubNav from "../sub-nav";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import { getDate } from "@/utils/helpers";
+import Marquee from "react-fast-marquee";
 
-// const Loader = dynamic(() => import("../loader"), { ssr: false });
 const Gallery = dynamic(() => import("./gallery"), {});
 const CanvasBanner = dynamic(() => import("./canvas-banner"), { ssr: false });
 
@@ -163,21 +163,11 @@ export default function Index({ categories, products }) {
             overflow: hidden;
           }
 
-          .scroll {
-            white-space: nowrap;
-            margin: 0 4em;
-          }
-
-          .scroll div {
-            display: flex;
-            gap: 4em;
-          }
-
           .scroll p,
-          .scroll h1 {
+          h1 {
             font-size: var(--main-fs);
-            color: var(--main-light);
-            font-weight: bold;
+
+            font-weight: 400;
             margin-bottom: 0;
             line-height: 10px;
           }
@@ -198,14 +188,15 @@ export default function Index({ categories, products }) {
         <div className="heading">
           <CanvasBanner />
           <div className="markq">
-            <div className="scroll">
-              <div className="RightToLeft">
-                <h1>Продажа букетов онлайн с доставкой по Калининграду</h1>
-                {categories.map((c) => (
-                  <p key={c.id}>{c.name}</p>
-                ))}
-              </div>
-            </div>
+            <Marquee>
+              <h1>Прекрасные букеты с доставкой по Калининграду</h1>&nbsp;
+              <span className="icon">&nbsp; &#128144; &nbsp;</span>
+              {categories.map((c) => (
+                <p key={c.id}>
+                  {c.name} <span className="icon">&nbsp; &#128144; &nbsp;</span>
+                </p>
+              ))}
+            </Marquee>
           </div>
         </div>
         <div className="categories container">
