@@ -72,15 +72,9 @@ export async function generateMetadata({ params: { id } }) {
       siteName: "Цветочная мастерская Матрёшка",
       images: [
         {
-          url: "/images/og_banner.jpg",
-          width: 634,
-          height: 634,
-        },
-        {
-          url: "/images/vk_banner.jpg",
-          width: 1418,
-          height: 634,
-          alt: "Цветочная мастерская Матрёшка",
+          url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
+          width: 768,
+          height: 1024,
         },
       ],
       locale: "ru_RU",
@@ -116,25 +110,79 @@ export default async function Page({ params: { id } }) {
   const { product, products } = await getData(id);
 
   const json = {
-    "@context": "https://schema.org/",
-    "@type": "Product",
-    name: product.name,
-    image: [`${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`],
-    description: product.description,
-    brand: {
-      "@type": "Brand",
-      name: "Цветочная мастерская Матрёшка",
-    },
-    offers: {
-      "@type": "Offer",
-      price: product.price,
-      priceCurrency: "RUB",
-      availability: "https://schema.org/InStock",
-    },
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": process.env.NEXT_PUBLIC_DOMAIN,
+        url: process.env.NEXT_PUBLIC_DOMAIN,
+        name: data.title,
+        isPartOf: {
+          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
+        },
+        primaryImageOfPage: {
+          "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
+        },
+        image: {
+          "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
+        },
 
-    url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
+        description: data.description,
+        breadcrumb: {
+          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
+        },
+        inLanguage: "ru-RU",
+        potentialAction: [
+          {
+            "@type": "ReadAction",
+            target: [
+              `${`${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`}`,
+            ],
+          },
+        ],
+      },
+      {
+        "@type": "Product",
+        name: product.name,
+        image: [`${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`],
+        description: product.description,
+        brand: {
+          "@type": "Brand",
+          name: "Цветочная мастерская Матрёшка",
+        },
+        offers: {
+          "@type": "Offer",
+          price: product.price,
+          priceCurrency: "RUB",
+          availability: "https://schema.org/InStock",
+        },
+
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
+      },
+      {
+        "@type": "Organization",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Россия, Калининград",
+          postalCode: "236011",
+          streetAddress: "ул. Виктора Гакуна д5",
+        },
+        email: "matreshkaflower@bk.ru",
+        name: "Цветочная мастерская «Матрёшка»",
+        telephone: "+7911 493 9999",
+        image: {
+          "@type": "ImageObject",
+          inLanguage: "ru-RU",
+          "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
+          url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
+          contentUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
+          width: 768,
+          height: 1024,
+        },
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
+      },
+    ],
   };
-
   return (
     <>
       <script
