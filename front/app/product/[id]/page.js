@@ -116,7 +116,7 @@ export default async function Page({ params: { id } }) {
         "@type": "WebPage",
         "@id": process.env.NEXT_PUBLIC_DOMAIN,
         url: process.env.NEXT_PUBLIC_DOMAIN,
-        name: data.title,
+        name: product.name,
         isPartOf: {
           "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
         },
@@ -127,7 +127,7 @@ export default async function Page({ params: { id } }) {
           "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
         },
 
-        description: data.description,
+        description: product.description,
         breadcrumb: {
           "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
         },
