@@ -91,7 +91,12 @@ const Index = () => {
           router.push("/");
         }
       }
-      ym(process.env.NEXT_PUBLIC_YANDEX_METRICS, "reachGoal", "makeOrder");
+
+      // window.ym(
+      //   process.env.NEXT_PUBLIC_YANDEX_METRICS,
+      //   "reachGoal",
+      //   "makeOrder"
+      // );
       const { data } = await Api().checkout.create({
         shippingAddress: {
           ...shippingData,
@@ -174,7 +179,14 @@ const Index = () => {
             ))}
           </div>
 
-          <Button actionType="checkout" title="К оплате" type="submit" />
+          <Button
+            actionType="checkout"
+            title="К оплате"
+            type="submit"
+            onClick={() => `ym(${process.env.NEXT_PUBLIC_YANDEX_METRICS},
+              "reachGoal",
+              "makeOrder")`}
+          />
         </form>
       </section>
     </motion.div>

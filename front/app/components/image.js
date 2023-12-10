@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { Envs } from "@/utils/config";
+
 import { priority } from "@/next-sitemap.config";
 
 export default function CustomImage({
@@ -38,7 +38,9 @@ export default function CustomImage({
         sizes={sizes}
         style={{ objectFit: "cover", objectPosition: "top" }}
         onLoadingComplete={onLoadingComplete}
-        src={!direct ? `${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${src}` : src}
+        src={
+          !direct ? `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${src}` : src
+        }
         alt={alt}
         quality={100}
         fill

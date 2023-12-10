@@ -1,24 +1,5 @@
 import { useEffect, useState } from "react";
 import Matrehska from "./shared/matryohska";
-const json = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "📍Россия, Калининград",
-    postalCode: "236000",
-    streetAddress: "Виктора Гакуна, 5",
-    addressCountry: "RU",
-    addressRegion: "Kaliningrad dist",
-  },
-
-  email: "matreshkaflower@bk.ru",
-  name: "Матрёшка",
-  telephone: "📞+7 911 493-99-99",
-  image: "/images/logo.png",
-  url: "https://matryoshkaflowers.ru/",
-};
 
 export default function Footer() {
   const [state, setState] = useState(false);
@@ -381,10 +362,6 @@ export default function Footer() {
           )}
         </div>
       </footer>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
-      />
     </>
   );
 }

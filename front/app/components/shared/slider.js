@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 
 import "swiper/css";
 import Link from "next/link";
-import { Envs } from "@/utils/config";
+
 import { currencyFormat } from "@/utils/helpers";
 import CustomImage from "../image";
 import { Autoplay } from "swiper";
@@ -115,7 +115,7 @@ export default function Slider({ products }) {
                   <CustomImage
                     direct
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 25vw, 20vw"
-                    src={`${Envs.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}
+                    src={`${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${prod.small}`}
                     alt={`Прекрасный букет "${prod.name}" - лучший подарок для людого случая, с доставкой по Калининграду.`}
                   />
                 </span>

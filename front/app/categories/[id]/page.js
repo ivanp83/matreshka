@@ -55,12 +55,14 @@ export async function generateMetadata({ params: { id } }) {
 
     metadataBase: new URL(data.canonical),
     generator: "Next.js",
-    applicationName: "Матрёшка Флаверс",
+    applicationName: "Цветочная мастерская Матрёшка",
     referrer: "origin-when-cross-origin",
     authors: [{ name: "Юлиана Легкодумова" }],
     creator: "Юлиана Легкодумова",
     publisher: "Юлиана Легкодумова",
-
+    alternates: {
+      canonical: data.canonical,
+    },
     verification: {
       google: "thGCiu8ZZJhbDzpkLH9Eg8KNpsrv3s_Z02ispASCl8k",
       yandex: "6ff734a1b919092d",
@@ -75,8 +77,8 @@ export async function generateMetadata({ params: { id } }) {
       nocache: true,
       googleBot: {
         index: true,
-        follow: false,
-        noimageindex: true,
+        follow: true,
+        noimageindex: false,
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
@@ -86,7 +88,7 @@ export async function generateMetadata({ params: { id } }) {
       title: data.title,
       description: data.description,
       url: data.canonical,
-      siteName: "Матрёшка Флаверс",
+      siteName: "Цветочная мастерская Матрёшка",
       images: [
         {
           url: "/images/og_banner.jpg",
@@ -97,7 +99,7 @@ export async function generateMetadata({ params: { id } }) {
           url: "/images/vk_banner.jpg",
           width: 1418,
           height: 634,
-          alt: "Цветочная мастерская Матрёшка Флаверс",
+          alt: "Цветочная мастерская Матрёшка",
         },
       ],
       locale: "ru_RU",

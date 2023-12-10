@@ -1,4 +1,3 @@
-import { Envs } from "@/utils/config";
 import { currencyFormat } from "@/utils/helpers";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";

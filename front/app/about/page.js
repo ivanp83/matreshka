@@ -1,9 +1,10 @@
 import Index from "../components/about";
+
 const data = {
   title: "О студии",
   description:
     "Как хобби стало любимым делом. История создания интернет-магазина Матрёшка.",
-  canonical: "https://matryoshkaflowers.ru/about",
+  canonical: `${process.env.NEXT_PUBLIC_DOMAIN}/about`,
   mainBanner: "/images/1.png",
   text: [
     "Здравствуйте, дорогие мои! Меня зовут Юлиана, и я влюбленна в свою работу и цветы. Я готова поделиться с вами своей страстью к прекрасному и замечательным букетам, которые я создаю своими руками.",
@@ -24,12 +25,14 @@ export const metadata = {
   metadataBase: new URL(data.canonical),
 
   generator: "Next.js",
-  applicationName: "Матрёшка Флаверс",
+  applicationName: "Цветочная мастерская Матрёшка",
   referrer: "origin-when-cross-origin",
   authors: [{ name: "Юлиана Легкодумова" }],
   creator: "Юлиана Легкодумова",
   publisher: "Юлиана Легкодумова",
-
+  alternates: {
+    canonical: data.canonical,
+  },
   verification: {
     google: "thGCiu8ZZJhbDzpkLH9Eg8KNpsrv3s_Z02ispASCl8k",
     yandex: "6ff734a1b919092d",
@@ -44,8 +47,8 @@ export const metadata = {
     nocache: true,
     googleBot: {
       index: true,
-      follow: false,
-      noimageindex: true,
+      follow: true,
+      noimageindex: false,
       "max-video-preview": -1,
       "max-image-preview": "large",
       "max-snippet": -1,
@@ -55,7 +58,7 @@ export const metadata = {
     title: data.title,
     description: data.description,
     url: data.canonical,
-    siteName: "Матрёшка Флаверс",
+    siteName: "Цветочная мастерская Матрёшка",
     type: "article",
     publishedTime: "2023-09-01",
     authors: ["Юлиана Легкодумова"],
@@ -69,16 +72,13 @@ export const metadata = {
         url: "/images/vk_banner.jpg",
         width: 1418,
         height: 634,
-        alt: "Цветочная мастерская Матрёшка Флаверс",
+        alt: "Цветочная мастерская Матрёшка",
       },
     ],
     locale: "ru_RU",
     type: "website",
   },
   icons: {
-    icon: [{ url: "/icon.png" }, new URL("/icon.png", "https://example.com")],
-    shortcut: ["/shortcut-icon.png"],
-
     apple: [
       {
         url: "/favicon/apple-touch-icon.png",
@@ -104,81 +104,123 @@ export const metadata = {
 };
 
 export default function Page() {
-  const json = [
-    {
-      "@context": "http://schema.org/",
-      "@type": "Article",
-      headline: data.title,
-      image: data.mainBanner,
-      description: "История создания цветочного бутика «Матрёшка»",
-      author: "Юлиана Легкодумова",
-      datePublished: "2023-06-21",
-      dateModified: "2023-07-26",
-      mainEntityOfPage: {
+  const json = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
         "@type": "WebPage",
-        "@id": "https://matryoshkaflowers.ru/",
+        "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/about`,
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/about`,
+        name: data.title,
+        isPartOf: { "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/about` },
+        primaryImageOfPage: {
+          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
+        },
+        image: {
+          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
+        },
+
+        datePublished: "2023-10-10T16:18:40+00:00",
+        dateModified: "2023-11-10T12:16:46+00:00",
+        description: data.description,
+        breadcrumb: {
+          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/about`,
+        },
+        inLanguage: "ru-RU",
+        potentialAction: [
+          {
+            "@type": "ReadAction",
+            target: [`${process.env.NEXT_PUBLIC_DOMAIN}/about`],
+          },
+        ],
       },
-      articleBody: String(data.text),
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "BreadcrumbList",
-      itemListElement: [
-        {
-          "@type": "ListItem",
-          position: 1,
+      {
+        "@type": "ImageObject",
+        inLanguage: "ru-RU",
+        "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
+        contentUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
+        width: 554,
+        height: 554,
+      },
+      {
+        "@type": "Organization",
 
-          item: {
-            "@type": "WebPage",
-            "@id": "https://matryoshkaflowers.ru",
-            url: "https://matryoshkaflowers.ru",
-            name: "Главная",
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 2,
-
-          item: {
-            "@type": "WebPage",
-            "@id": "https://matryoshkaflowers.ru/categories",
-            url: "https://matryoshkaflowers.ru/categories",
-            name: "Категории",
-          },
-        },
-        {
-          "@type": "ListItem",
-          position: 3,
-
-          item: {
-            "@type": "WebPage",
-            "@id": "",
-            url: "",
-            name: "About",
-          },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "📍Россия, Калининград",
+          postalCode: "236000",
+          streetAddress: "Виктора Гакуна, 5",
+          addressCountry: "RU",
+          addressRegion: "Kaliningrad dist",
         },
 
-        {
-          "@type": "ListItem",
-          position: 4,
-          item: {
-            "@type": "WebPage",
-            "@id": "https://matryoshkaflowers.ru/contacts",
-            url: "https://matryoshkaflowers.ru/contacts",
-            name: "Контакты",
+        email: "matreshkaflower@bk.ru",
+        name: "Матрёшка",
+        telephone: "📞+7 911 493-99-99",
+        image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/logo.png`,
+        url: process.env.NEXT_PUBLIC_DOMAIN,
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          {
+            "@type": "ListItem",
+            position: 1,
+
+            item: {
+              "@type": "WebPage",
+              "@id": process.env.NEXT_PUBLIC_DOMAIN,
+              url: process.env.NEXT_PUBLIC_DOMAIN,
+              name: "Главная",
+            },
           },
-        },
-      ],
-    },
-  ];
+          {
+            "@type": "ListItem",
+            position: 2,
+
+            item: {
+              "@type": "WebPage",
+              "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/categories`,
+              url: `${process.env.NEXT_PUBLIC_DOMAIN}/categories`,
+              name: "Категории",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 3,
+
+            item: {
+              "@type": "WebPage",
+              "@id": "",
+              url: "",
+              name: "About",
+            },
+          },
+
+          {
+            "@type": "ListItem",
+            position: 4,
+            item: {
+              "@type": "WebPage",
+              "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
+              url: `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
+              name: "Контакты",
+            },
+          },
+        ],
+      },
+    ],
+  };
 
   return (
     <>
-      <Index {...{ data }} />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
       />
+
+      <Index {...{ data }} />
     </>
   );
 }

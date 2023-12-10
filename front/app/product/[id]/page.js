@@ -36,7 +36,7 @@ export async function generateMetadata({ params: { id } }) {
 
     metadataBase: new URL(data.canonical),
     generator: "Next.js",
-    applicationName: "Матрёшка Флаверс",
+    applicationName: "Цветочная мастерская Матрёшка",
     referrer: "origin-when-cross-origin",
     authors: [{ name: "Юлиана Легкодумова" }],
     creator: "Юлиана Легкодумова",
@@ -67,7 +67,7 @@ export async function generateMetadata({ params: { id } }) {
       title: data.title,
       description: data.description,
       url: data.canonical,
-      siteName: "Матрёшка Флаверс",
+      siteName: "Цветочная мастерская Матрёшка",
       images: [
         {
           url: "/images/og_banner.jpg",
@@ -78,7 +78,7 @@ export async function generateMetadata({ params: { id } }) {
           url: "/images/vk_banner.jpg",
           width: 1418,
           height: 634,
-          alt: "Цветочная мастерская Матрёшка Флаверс",
+          alt: "Цветочная мастерская Матрёшка",
         },
       ],
       locale: "ru_RU",
@@ -121,7 +121,7 @@ export default async function Page({ params: { id } }) {
     description: product.description,
     brand: {
       "@type": "Brand",
-      name: "Матрёшка Флаверс",
+      name: "Цветочная мастерская Матрёшка",
     },
     offers: {
       "@type": "Offer",
@@ -130,7 +130,7 @@ export default async function Page({ params: { id } }) {
       availability: "https://schema.org/InStock",
     },
 
-    url: process.env.NEXT_PUBLIC_DOMAIN,
+    url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
   };
 
   return (
