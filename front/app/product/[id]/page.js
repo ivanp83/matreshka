@@ -28,7 +28,7 @@ export async function generateMetadata({ params: { id } }) {
   const data = {
     title: product.name,
     description: `${product.name} - заказать онлайн с доставкой по Калининграду и области.`,
-    canonical: `https://matryoshkaflowers.ru/product/${product.id}`,
+    canonical: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
   };
   return {
     title: data.title,
@@ -41,7 +41,9 @@ export async function generateMetadata({ params: { id } }) {
     authors: [{ name: "Юлиана Легкодумова" }],
     creator: "Юлиана Легкодумова",
     publisher: "Юлиана Легкодумова",
-
+    alternates: {
+      canonical: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
+    },
     verification: {
       google: "thGCiu8ZZJhbDzpkLH9Eg8KNpsrv3s_Z02ispASCl8k",
       yandex: "6ff734a1b919092d",
@@ -56,8 +58,8 @@ export async function generateMetadata({ params: { id } }) {
       nocache: true,
       googleBot: {
         index: true,
-        follow: false,
-        noimageindex: true,
+        follow: true,
+        noimageindex: false,
         "max-video-preview": -1,
         "max-image-preview": "large",
         "max-snippet": -1,
@@ -135,13 +137,13 @@ export default async function Page({ params: { id } }) {
 
   return (
     <>
-      <Suspense fallback={<Loading />}>
-        <Index data={product} faturedData={products} />
-      </Suspense>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
       />
+      <Suspense fallback={<Loading />}>
+        <Index data={product} faturedData={products} />
+      </Suspense>
     </>
   );
 }
