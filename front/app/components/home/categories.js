@@ -37,7 +37,7 @@ export default function Categories({ categories }) {
         }
         .text {
           line-height: 1;
-          font-weight: 500;
+          font-weight: 400;
           font-size: 2rem;
           text-transform: uppercase;
         }
@@ -92,7 +92,7 @@ export default function Categories({ categories }) {
         @media all and (max-width: 1024px) and (orientation: landscape) {
           .text {
             line-height: 1;
-            font-weight: 500;
+            font-weight: 400;
             font-size: 4vw;
             text-transform: uppercase;
           }

@@ -22,7 +22,7 @@ export default function Index({ data }) {
           }
           .headline {
             font-size: 1rem;
-            font-weight: 600;
+            font-weight: 400;
             display: block;
           }
           .wrapp {

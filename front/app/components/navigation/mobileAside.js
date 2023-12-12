@@ -31,7 +31,7 @@ const { className, styles } = css.resolve`
     grid-auto-flow: row;
     font-size: 1.6rem;
 
-    font-weight: 500;
+    font-weight: 400;
     color: var(--main-dark);
   }
   nav ul li {

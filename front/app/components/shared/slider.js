@@ -40,7 +40,7 @@ export default function Slider({ products }) {
           grid-column: 1/2;
         }
         b {
-          font-weight: 600;
+          font-weight: 500;
         }
 
         @media all and (max-width: 1500px) {

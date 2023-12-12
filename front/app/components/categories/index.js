@@ -154,6 +154,7 @@ export default function Index({ categories, products }) {
             position: relative;
             margin-bottom: var(--space-small);
             background: var(--main-pink);
+            overflow: hidden;
           }
 
           .markq {

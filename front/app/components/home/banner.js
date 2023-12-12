@@ -148,7 +148,7 @@ export default function Banner() {
           width: fit-content;
           color: var(--main-light);
           background: var(--main-red);
-          font-weight: 600;
+          font-weight: 400;
           text-transform: uppercase;
           font-size: 14px;
           transition: all 0.3s linear 0s;
@@ -208,6 +208,7 @@ export default function Banner() {
             grid-column: 1/4;
             grid-row: 3;
             margin: 1rem auto;
+            font-weight: 500;
           }
         }
         @media all and (max-width: 950px) and (orientation: landscape) {

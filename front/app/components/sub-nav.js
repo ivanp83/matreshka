@@ -71,7 +71,7 @@ function SubNav({ categories, product }) {
           outline: none;
           background: transparent;
 
-          font-weight: 600;
+          font-weight: 500;
           color: inherit;
         }
         .sub-nav-link.active {

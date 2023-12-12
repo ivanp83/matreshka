@@ -7,7 +7,7 @@ import MobileNav from "./components/navigation/mobileAside";
 import Footer from "./components/footer";
 import { useEffect } from "react";
 import { Router } from "next/router";
-
+import "@/public/font/stylesheet.css";
 export default function RootLayout({ children }) {
   useEffect(() => {
     Router.events.on("routeChangeComplete", () => {

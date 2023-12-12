@@ -69,7 +69,7 @@ export default function Index({ data: product, faturedData }) {
           }
           h1 {
             font-size: 2rem;
-            font-weight: 500;
+            font-weight: 400;
           }
           .descr {
             margin-bottom: 1rem;

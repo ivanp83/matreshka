@@ -63,11 +63,11 @@ ul {
 }
 h1 {
   font-size: var(--title-fs);
-  font-weight: 600;
+  font-weight: 400;
 }
 .h2 {
   font-size: 1rem;
-  font-weight: 600;
+  font-weight: 400;
   color: var(--main-gray);
 }
 .h3 {
@@ -75,7 +75,7 @@ h1 {
   font-weight: 400;
 }
 .h4 {
-  font-weight: 600;
+  font-weight: 400;
 }
 .h5 {
   font-weight: 500;
@@ -100,7 +100,7 @@ h1 {
 }
 .sub-nav-link {
   font-size: 13px;
-  font-weight: 600;
+  font-weight: 500;
 }
 @media screen and (max-width: 767px) {
   select:active {

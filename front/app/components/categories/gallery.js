@@ -40,7 +40,7 @@ export default function Gallery({ data }) {
           font-size: 16px;
         }
         b {
-          font-weight: 600;
+          font-weight: 500;
         }
         @media (hover: hover) and (pointer: fine) {
           li:hover .inner {

@@ -67,7 +67,7 @@ export default function Index() {
             grid-gap: var(--space-small);
             border: 1px dashed;
 
-            font-weight: 600;
+            font-weight: 400;
             height: fit-content;
             padding: 1rem 1rem var(--space-small);
 
