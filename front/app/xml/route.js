@@ -21,7 +21,8 @@ export async function GET() {
     .ele("currencies", { id: "RUB", rate: "1" })
     .up();
   shop.ele("categories").ele("category", { id: "2731707003" }, "Худи");
-  shop.ele("delivery-options").ele("option", { cost: 250, days: "1" });
+  shop.ele("delivery-options").ele("option", { cost: 400, days: "1" });
+  shop.ele("delivery-options").ele("option", { cost: 1200, days: "1" });
 
   const offers = shop.ele("offers");
 
