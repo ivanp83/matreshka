@@ -41,7 +41,7 @@ export default function Products({ products }) {
       <div className="wrapp  container">
         <h2 className="h2">Популярные </h2>
         <p className="h3">
-          Выбор клиентов: подборка самых популярных и роскошных букетов
+          Выбор клиентов: подборка самых актуальных предложений
         </p>
         <div className="button-link">
           <LinkTo href="categories" text="Смотреть все" />
