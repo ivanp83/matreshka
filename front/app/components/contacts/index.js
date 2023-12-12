@@ -47,6 +47,11 @@ export default function Index({ data }) {
         `}</style>
         <div className="wrapp">
           <h1>Контакты</h1>
+          <div>
+            <p className="h4">ООО Л-ДИНАМИКА</p>
+            <p> ИНН 3906230859</p>
+          </div>
+
           <address className="address">
             <span className="block">
               <span className="headline">Адрес</span>
