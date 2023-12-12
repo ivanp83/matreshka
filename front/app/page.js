@@ -232,72 +232,22 @@ export default async function Home() {
           },
         ],
       },
+
       {
-        "@type": "ItemList",
+        "@type": "OfferCatalog",
+        name: "Цветочная мастерская 'Матрёшка",
+        image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/lora.webp`,
+        description: "Коллекция ярких дизайнерских худи от Лоры Бровко",
         itemListElement: [
           products.map((product) => ({
-            "@type": "Product",
+            "@type": "Offer",
             name: product.name,
             description: product.description,
-            image: [
-              `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.small}`,
-            ],
-            offers: {
-              "@type": "Offer",
-              price: product.price,
-              priceCurrency: "RUB",
-              itemCondition: "https://schema.org/NewCondition",
-              availability: "https://schema.org/InStock",
-              price: product.price,
-              priceCurrency: "RUB",
-              priceValidUntil: (() => {
-                const myDate = new Date();
-                return myDate.setDate(myDate.getDate() + parseInt(10));
-              })(),
-              shippingDetails: {
-                "@type": "OfferShippingDetails",
-                shippingRate: {
-                  "@type": "MonetaryAmount",
-                  value: 300,
-                  currency: "RUB",
-                },
-                shippingDestination: {
-                  "@type": "DefinedRegion",
-                  addressCountry: "RU",
-                },
-                "@type": "OfferShippingDetails",
-
-                deliveryTime: {
-                  "@type": "ShippingDeliveryTime",
-                  handlingTime: {
-                    "@type": "QuantitativeValue",
-                    minValue: 0,
-                    maxValue: 1,
-                    unitCode: "DAY",
-                  },
-                  transitTime: {
-                    "@type": "QuantitativeValue",
-                    minValue: 1,
-                    maxValue: 2,
-                    unitCode: "HOUR",
-                  },
-                },
-              },
-              priceSpecification: {
-                "@type": "PriceSpecification",
-                price: product.price,
-                priceCurrency: "RUB",
-              },
-              hasMerchantReturnPolicy: {
-                "@type": "MerchantReturnPolicy",
-                applicableCountry: "RU",
-                returnPolicyCategory:
-                  "https://schema.org/MerchantReturnFiniteReturnWindow",
-                merchantReturnDays: 14,
-                returnMethod: "https://schema.org/ReturnByMail",
-                returnFees: "https://schema.org/FreeReturn",
-              },
-            },
+            url: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
+            price: product.price,
+            priceCurrency: "RUB",
+            image: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.small}`,
+            availability: "https://schema.org/InStock",
           })),
         ],
       },
