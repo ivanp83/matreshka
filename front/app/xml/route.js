@@ -40,7 +40,7 @@ export async function GET() {
   for (let i = 0; i < products.length; i++) {
     offers
       .ele("offer", {
-        id: products[i].name + " " + products[i]._id,
+        id: products[i].name + "-" + products[i]._id,
         available: "true",
       })
       .ele("url", `${process.env.NEXT_PUBLIC_DOMAIN}/product/${products[i].id}`)
