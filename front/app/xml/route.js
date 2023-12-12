@@ -3,6 +3,10 @@ const builder = require("xmlbuilder");
 export async function GET() {
   const p = await fetch(`${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`);
   const products = await p.json();
+  const c = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/categories`
+  );
+  const categories = await c.json();
 
   const feed = builder.create("yml_catalog", {
     encoding: "utf-8",
@@ -12,14 +16,21 @@ export async function GET() {
 
   const shop = feed
     .ele("shop")
-    .ele("name", "Lora Brovko")
+    .ele("name", "Матрёшка")
     .up()
-    .ele("company", "Come Fly With Me")
+    .ele("company", "Цветочная мастерская ")
     .up()
-    .ele("url", "https://lorabrovko.com/")
+    .ele("url", process.env.NEXT_PUBLIC_DOMAIN)
     .up()
     .ele("currencies", { id: "RUB", rate: "1" })
     .up();
+  const cats = shop.ele("categories");
+  for (let i = 0; i < categories.length; i++) {
+    cats
+      .ele("category", { id: categories[i].id }, categories[i].name)
+
+      .up();
+  }
   shop.ele("categories").ele("category", { id: "2731707003" }, "Худи");
   shop.ele("delivery-options").ele("option", { cost: 400, days: "1" });
   shop.ele("delivery-options").ele("option", { cost: 1200, days: "1" });
@@ -35,7 +46,7 @@ export async function GET() {
       .up()
       .ele("currencyId", "RUB")
       .up()
-      .ele("categoryId", "1")
+      .ele("categoryId", products[i].category_id)
       .up()
       .ele(
         "picture",
