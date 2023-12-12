@@ -1,4 +1,3 @@
-import { getDate } from "@/utils/helpers";
 import Index from "./components/home";
 import Loading from "./loading";
 import { Suspense } from "react";
