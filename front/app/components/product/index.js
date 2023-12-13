@@ -61,6 +61,7 @@ export default function Index({ data: product, faturedData }) {
           .details {
             grid-row: 1;
             grid-column: 1/3;
+            max-width: 30rem;
             display: grid;
             height: fit-content;
             grid-gap: var(--space-small);
