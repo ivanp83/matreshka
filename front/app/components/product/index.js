@@ -43,12 +43,15 @@ export default function Index({ data: product, faturedData }) {
             grid-gap: var(--space-big);
           }
           .sub-nav-container {
-            grid-column: 1/4;
+            grid-column: 1/5;
             position: absolute;
+          }
+          .container {
+            grid-template-columns: repeat(4, 1fr);
           }
           .image {
             grid-row: 1;
-            grid-column: 2/4;
+            grid-column: 3/5;
             position: relative;
             width: 65vh;
             height: calc(65vh * 4 / 3);
@@ -57,7 +60,7 @@ export default function Index({ data: product, faturedData }) {
           }
           .details {
             grid-row: 1;
-            grid-column: 1/2;
+            grid-column: 1/3;
             display: grid;
             height: fit-content;
             grid-gap: var(--space-small);
@@ -89,7 +92,7 @@ export default function Index({ data: product, faturedData }) {
             font-weight: 400;
           }
           .featured {
-            grid-column: 1/4;
+            grid-column: 1/5;
             display: grid;
             grid-template-columns: repeat(3, 1fr);
             grid-row-gap: var(--space-small);
@@ -120,12 +123,12 @@ export default function Index({ data: product, faturedData }) {
             .image {
               margin-top: var(--space-small);
               width: 100%;
-              grid-column: 1/4;
+              grid-column: 1/5;
               height: calc((100vw - 40px) * 4 / 3);
             }
 
             .details {
-              grid-column: 1/4;
+              grid-column: 1/5;
             }
           }
           @media all and (max-width: 768px) and (orientation: portrait) {
