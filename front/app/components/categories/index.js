@@ -111,43 +111,29 @@ export default function Index({ categories, products }) {
           .markq {
             display: flex;
             align-items: center;
-            height: 3rem;
+            height: 4rem;
             overflow: hidden;
           }
 
-          .scroll p,
+          .icon,
           h1 {
-            font-size: var(--main-fs);
-
+            font-size: 1.7rem;
             font-weight: 400;
             margin-bottom: 0;
-            line-height: 10px;
-          }
-
-          .RightToLeft {
-            animation: RightToLeft 10s infinite linear;
-          }
-
-          @keyframes RightToLeft {
-            from {
-              transform: translateX(0%);
-            }
-            to {
-              transform: translateX(-50%);
-            }
+            line-height: 1.2;
           }
         `}</style>
         <div className="heading">
           <CanvasBanner />
           <div className="markq">
             <Marquee>
-              <h1>Прекрасные букеты с доставкой по Калининграду</h1>&nbsp;
-              <span className="icon">&nbsp; &#128144; &nbsp;</span>
-              {categories.map((c) => (
-                <p key={c.id}>
-                  {c.name} <span className="icon">&nbsp; &#128144; &nbsp;</span>
-                </p>
-              ))}
+              <h1>Букеты с доставкой по Калининграду</h1>&nbsp;
+              <p className="icon">
+                &nbsp; 🤍 &nbsp;о любви к себе дому и цветам{" "}
+              </p>
+              <p className="icon">
+                &nbsp; 🤍 &nbsp; много не надо, нужно всё и букет цветов
+              </p>
             </Marquee>
           </div>
         </div>
