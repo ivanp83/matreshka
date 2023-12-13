@@ -111,13 +111,13 @@ export default function Index({ categories, products }) {
           .markq {
             display: flex;
             align-items: center;
-            height: 4rem;
+            height: 3.4rem;
             overflow: hidden;
           }
 
           .icon,
           h1 {
-            font-size: 1.7rem;
+            font-size: 1.4rem;
             font-weight: 400;
             margin-bottom: 0;
             line-height: 1.2;
@@ -127,13 +127,13 @@ export default function Index({ categories, products }) {
           <CanvasBanner />
           <div className="markq">
             <Marquee>
-              <h1>Букеты с доставкой по Калининграду</h1>&nbsp;
+              <h1>Много не надо, нужно всё и букет цветов&nbsp; 🤍 &nbsp;</h1>
               <p className="icon">
-                &nbsp; 🤍 &nbsp;о любви к себе дому и цветам{" "}
+                О любви к себе дому и цветам&nbsp; 🤍 &nbsp;
               </p>
               <p className="icon">
-                &nbsp; 🤍 &nbsp; много не надо, нужно всё и букет цветов
-              </p>
+                Порадуй своего внутреннего ребенка&nbsp; 🤍 &nbsp;
+              </p>{" "}
             </Marquee>
           </div>
         </div>
