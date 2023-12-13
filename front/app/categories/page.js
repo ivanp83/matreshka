@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-
+import { getFilteredCategories } from "@/utils/helpers";
 import { Suspense } from "react";
 import Index from "../components/categories";
 import Loading from "../loading";
@@ -7,7 +7,7 @@ import Loading from "../loading";
 const data = {
   title: "Букеты в наличии",
   description:
-    "Доступные для продажи 💐букеты с доставкой по Калининграду и области. Уникальный дизайн, самые качественные цветы - это букеты от Матрёшка Флаверс.",
+    "Онлайн витрина 💐букетов с быстрой доставкой по Калининграду и области. Уникальный дизайн, только свежие и качественные цветы.",
   canonical: `${process.env.NEXT_PUBLIC_DOMAIN}/categories`,
 };
 export const viewport = {
@@ -35,8 +35,8 @@ async function getProductsByCategory(id = 0) {
   const products = data.map((p) => {
     if (p.available === true) return p;
   });
-
-  return { products, categories };
+  const filteredCats = getFilteredCategories(categories, products);
+  return { products, categories: filteredCats };
 }
 
 export async function generateStaticParams() {
@@ -46,10 +46,6 @@ export async function generateStaticParams() {
   return categories.map((p) => ({ id: String(p.id) }));
 }
 export async function generateMetadata({ params: { id } }) {
-  const categories = await fetch(
-    `${process.env.BACKEND_BASE_URL}/categories`
-  ).then((res) => res.json());
-
   return {
     title: data.title,
     description: data.description,
@@ -138,7 +134,7 @@ export default async function Categories({ params: { id } }) {
   return (
     <>
       <Suspense fallback={<Loading />}>
-        <Index {...{ categories, products }} />
+        <Index {...{ products, categories }} />
       </Suspense>
     </>
   );

@@ -21,6 +21,7 @@ export default function Footer() {
             color: var(--main-light);
             position: relative;
             z-index: 1;
+            font-size: 14px;
           }
           .matrehska-logo {
             grid-column: 1/2;
@@ -71,11 +72,7 @@ export default function Footer() {
             flex-direction: column;
             color: var(--main-gray);
           }
-          @media all and (max-width: 1024px) {
-            .footer {
-              font-size: 14px;
-            }
-          }
+
           @media all and (max-width: 600px) and (orientation: portrait) {
             .matrehska-logo {
               grid-row: 5;

@@ -53,6 +53,7 @@ export default function Index({ data: product, faturedData }) {
             width: 65vh;
             height: calc(65vh * 4 / 3);
             display: block;
+            justify-self: end;
           }
           .details {
             grid-row: 1;
@@ -71,14 +72,32 @@ export default function Index({ data: product, faturedData }) {
             font-size: 2rem;
             font-weight: 400;
           }
-          .descr {
+
+          .sub-descr {
+            display: grid;
+            grid-gap: 1rem;
+            font-size: 14px;
+            color: var(--main-gray);
             margin-bottom: 1rem;
           }
+
           .btns {
             display: grid;
             grid-gap: 1rem;
           }
+          b {
+            font-weight: 400;
+          }
+          .featured {
+            grid-column: 1/4;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-row-gap: var(--space-small);
+          }
 
+          .h2 {
+            color: var(--main-dark);
+          }
           @media all and (max-width: 1024px) and (orientation: portrait) {
             .wrapp {
               grid-gap: var(--space-small);
@@ -162,6 +181,26 @@ export default function Index({ data: product, faturedData }) {
             <p>{currencyFormat(product.price)}</p>
           </div>
           <p className="descr">{product.description}</p>
+          <p className="sub-descr">
+            <span>
+              Каждый букет от «Матрёшка» собирается для Вас с особым трепетом и
+              заботой.
+            </span>
+            <span>
+              <b>Цветы</b>&nbsp;подаренные с любовью простоят намного дольше! В
+              этом мы убедились на практике. Свежие поставки, самые красивые
+              сорта, оперативная&nbsp;<b>доставка</b>, рекомендация по уходу в
+              комплекте с каждым &nbsp;<b>букетом</b>&nbsp;- все это мы делаем
+              для того, чтобы Ваши цветы радовали Вас как можно дольше.
+            </span>
+            <span>
+              <q cite="Юлиана Легкодумова">
+                Окружайтесь себя любовью и цветами❤️
+              </q>
+              <br />
+              Юлиана и команда «Матрёшка»
+            </span>
+          </p>
           <div className="btns">
             <Button
               actionType="shop"
@@ -180,7 +219,10 @@ export default function Index({ data: product, faturedData }) {
           </div>
         </div>
 
-        <Slider products={faturedData} />
+        <section className="featured">
+          <h2 className="h2">Другие букеты</h2>
+          <Slider products={faturedData} />
+        </section>
       </section>
     </motion.div>
   );

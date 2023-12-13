@@ -4,7 +4,6 @@ import React from "react";
 import SubNav from "../sub-nav";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import { getDate } from "@/utils/helpers";
 import Marquee from "react-fast-marquee";
 
 const Gallery = dynamic(() => import("./gallery"), {});
@@ -83,6 +82,7 @@ export default function Index({ categories, products }) {
       },
     ],
   };
+
   return (
     <>
       <script

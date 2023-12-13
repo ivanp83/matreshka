@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-
+import { getFilteredCategories } from "@/utils/helpers";
 import { Suspense } from "react";
 import Index from "../../components/categories";
 import Loading from "@/app/loading";
@@ -11,13 +11,20 @@ export const viewport = {
 };
 async function getProductsByCategory(id = 0) {
   const res = await fetch(
-    `https://api.matryoshkaflowers.ru/api/category-with-products/${id}`,
+    `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/category-with-products/${id}`,
     {
       next: { revalidate: 60 },
     }
   );
-
+  const allProductsRes = await fetch(
+    `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/category-with-products/0`,
+    {
+      next: { revalidate: 60 },
+    }
+  );
   const data = await res.json();
+  console.log(data);
+  const allProductsResData = await allProductsRes.json();
 
   if (!res.ok) {
     throw new Error("Ошибка на сервере");
@@ -28,7 +35,8 @@ async function getProductsByCategory(id = 0) {
   const products = data.map((p) => {
     if (p.available === true) return p;
   });
-  return { products, categories };
+  const filteredCats = getFilteredCategories(categories, allProductsResData);
+  return { products, categories: filteredCats };
 }
 
 export async function generateStaticParams() {
