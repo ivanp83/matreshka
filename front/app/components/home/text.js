@@ -7,7 +7,7 @@ export default function Text({ text }) {
         }
         .main-text,
         strong {
-          font-weight: 400;
+          font-weight: var(--main-fw);
           font-size: var(--big-fs);
           font-style: normal;
         }

@@ -5,9 +5,12 @@ import StyledJsxRegistry from "./registry";
 import { AppProvider } from "./context/app.context";
 import MobileNav from "./components/navigation/mobileAside";
 import Footer from "./components/footer";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { Router } from "next/router";
-import "@/public/font/stylesheet.css";
+import "@/public/fonts/stapel/stylesheet.css";
+import "@/public/fonts/cera/stylesheet.css";
+import "@/public/fonts/maregraphe/stylesheet.css";
+import "./Layout.css";
 export default function RootLayout({ children }) {
   useEffect(() => {
     Router.events.on("routeChangeComplete", () => {
@@ -81,11 +84,16 @@ export default function RootLayout({ children }) {
       window.removeEventListener("mousemove", loadMetrica);
     }
   }, []);
+  const [state, setstate] = useState("first-theme");
+
+  const replaceTheme = (newThemeName) => {
+    setstate(newThemeName);
+  };
   return (
     <html lang="ru">
       <StyledJsxRegistry>
         <AppProvider>
-          <body>
+          <body className={state}>
             <div id="root-loader" />
             <div id="portal" />
             <div
@@ -127,6 +135,12 @@ export default function RootLayout({ children }) {
                   WhatsApp
                 </span>
               </a>
+            </div>
+            <div className="theme">
+              <button onClick={() => replaceTheme("first-theme")}>1</button>
+              <button onClick={() => replaceTheme("second-theme")}>2</button>
+              <button onClick={() => replaceTheme("third-theme")}>3</button>
+              <button onClick={() => replaceTheme("forth-theme")}>4</button>
             </div>
             <Header />
             <MobileNav />

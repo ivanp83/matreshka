@@ -38,7 +38,7 @@ export default function Index({ data }) {
           }
           strong,
           b {
-            font-weight: 400;
+            font-weight: var(--main-fw);
           }
           .text {
             grid-column: 2/3;

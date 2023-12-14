@@ -17,7 +17,7 @@ export default function Story() {
           border-top: 1px solid var(--main-gray);
         }
         b {
-          font-weight: 400;
+          font-weight: var(--main-fw);
         }
         h2 {
           grid-column: 1/2;

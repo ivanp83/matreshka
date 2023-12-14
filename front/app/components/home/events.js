@@ -33,7 +33,7 @@ export default function Events({}) {
           grid-column: 1/2;
         }
         strong {
-          font-weight: 400;
+          font-weight: var(--main-fw);
         }
         @media all and (max-width: 768px) and (orientation: portrait) {
           .text-bold {

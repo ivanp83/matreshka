@@ -85,8 +85,7 @@ export default function Index({ data: product, faturedData }) {
             grid-gap: 5px;
           }
           h1 {
-            font-size: 2rem;
-            font-weight: 400;
+            font-weight: var(--main-fw);
           }
 
           .sub-descr {
@@ -102,7 +101,7 @@ export default function Index({ data: product, faturedData }) {
             grid-gap: 1rem;
           }
           b {
-            font-weight: 400;
+            font-weight: var(--main-fw);
           }
           .featured {
             grid-column: 1/5;

@@ -11,7 +11,7 @@ export default function LinkTo({ href, text, style }) {
             display: inline-block;
             width: fit-content;
             color: var(--main-dark);
-            font-weight: 400;
+            font-weight: var(--main-fw);
             text-transform: uppercase;
             font-size: 14px;
             transition: all 0.3s linear 0s;

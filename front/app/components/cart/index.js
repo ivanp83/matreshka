@@ -67,14 +67,14 @@ export default function Index() {
             grid-gap: var(--space-small);
             border: 1px dashed;
 
-            font-weight: 400;
+            font-weight: var(--main-fw);
             height: fit-content;
             padding: 1rem 1rem var(--space-small);
 
             grid-row: 2;
           }
           .shipping-info {
-            font-weight: 400;
+            font-weight: var(--main-fw);
             color: var(--main-gray);
           }
           .price-block {
@@ -90,7 +90,7 @@ export default function Index() {
           }
           .goods,
           .shipping {
-            font-weight: 400;
+            font-weight: var(--main-fw);
           }
           @media all and (max-width: 1024px) and (orientation: portrait) {
             h1 {

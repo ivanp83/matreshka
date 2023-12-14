@@ -118,7 +118,7 @@ export default function Index({ categories, products }) {
           .icon,
           h1 {
             font-size: 1.4rem;
-            font-weight: 400;
+            font-weight: var(--main-fw);
             margin-bottom: 0;
             line-height: 1.2;
           }

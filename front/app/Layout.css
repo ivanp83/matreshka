@@ -1,0 +1,10 @@
+.theme {
+  position: fixed;
+  z-index: 100000;
+  color: black;
+  top: 1rem;
+  left: 31%;
+  display: grid;
+  grid-auto-flow: column;
+  grid-gap: 0.3rem;
+}

@@ -1,7 +1,4 @@
 :root {
-  --main-fs: 18px;
-  --big-fs: 2.4rem;
-  --title-fs: 2.4rem;
   --cont-w: 1400px;
   --space-small: 2rem;
   --space-med: 5rem;
@@ -17,6 +14,117 @@
   --main-dark: rgb(19, 16, 16);
   --main-light: rgb(255, 255, 255);
 }
+
+.first-theme {
+  --main-fs: 18px;
+  --big-fs: 2.4rem;
+  --title-fs: 2.4rem;
+  --main-fw: 400;
+  --main-ff: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
+    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol", "Noto Color Emoji";
+  h1 {
+    font-size: var(--title-fs);
+    font-weight: 400;
+  }
+  .h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--main-gray);
+  }
+  .h3 {
+    font-size: var(--big-fs);
+    font-weight: 400;
+  }
+  .h4 {
+    font-weight: 400;
+  }
+  .h5 {
+    font-weight: 500;
+  }
+}
+.second-theme {
+  --main-fs: 18px;
+  --big-fs: 2.4rem;
+  --title-fs: 2.4rem;
+  --main-ff: "Stapel";
+  --main-fw: 300;
+  h1 {
+    font-size: var(--title-fs);
+    font-weight: 300;
+  }
+  .h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    color: var(--main-gray);
+  }
+  .h3 {
+    font-size: var(--big-fs);
+    font-weight: 300;
+  }
+  .h4 {
+    font-weight: 300;
+  }
+  .h5 {
+    font-weight: 300;
+  }
+}
+.third-theme {
+  --main-fs: 18px;
+  --big-fs: 2.4rem;
+  --title-fs: 2.4rem;
+  --main-ff: "Cera Pro";
+  --main-fw: 400;
+  h1 {
+    font-size: var(--title-fs);
+    font-weight: 400;
+  }
+  .h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--main-gray);
+  }
+  .h3 {
+    font-size: var(--big-fs);
+    font-weight: 400;
+  }
+  .h4 {
+    font-weight: 400;
+  }
+  .h5 {
+    font-weight: 400;
+  }
+}
+.forth-theme {
+  --main-fs: 18px;
+  --big-fs: 3.4rem;
+  --title-fs: 4.4rem;
+  --main-ff: "Cera Pro";
+  --main-fw: 400;
+  h1 {
+    font-size: var(--title-fs);
+    font-weight: 400;
+    font-family: "Maregraphe";
+  }
+  .h2 {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--main-gray);
+    font-family: "Maregraphe";
+  }
+  .h3 {
+    font-size: var(--big-fs);
+    font-weight: 400;
+    font-family: "Maregraphe";
+  }
+  .h4 {
+    font-weight: 400;
+  }
+  .h5 {
+    font-weight: 400;
+  }
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
@@ -26,11 +134,9 @@ body {
   background-color: var(--main-light);
 
   color: var(--main-dark);
-  font-weight: 400;
+  font-weight: var(--main-fw);
   font-size: var(--main-fs);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: var(--main-ff);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -60,25 +166,6 @@ ul {
   z-index: 1000;
   display: flex;
   justify-content: center;
-}
-h1 {
-  font-size: var(--title-fs);
-  font-weight: 400;
-}
-.h2 {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--main-gray);
-}
-.h3 {
-  font-size: var(--big-fs);
-  font-weight: 400;
-}
-.h4 {
-  font-weight: 400;
-}
-.h5 {
-  font-weight: 500;
 }
 
 .container {
