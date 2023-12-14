@@ -11,6 +11,7 @@ import SubNav from "../sub-nav";
 import { AnimatePresence, motion } from "framer-motion";
 import Portal from "../hoc/withPortal";
 import Slider from "../shared/slider";
+import Value from "./value";
 
 const CartAside = dynamic(() => import("../shared/cartAside"), {
   ssr: false,
@@ -19,14 +20,25 @@ const CartAside = dynamic(() => import("../shared/cartAside"), {
 export default function Index({ data: product, faturedData }) {
   const [avatarIsVisible, setstAvatarIsVisible] = useState(false);
   const { onUpdate, cartItems } = useAppContext();
+  const [value, setValue] = useState(product.min_value);
+
   const addToCart = (product) => {
-    onUpdate(product);
+    onUpdate(product, value);
     setstAvatarIsVisible(true);
     setTimeout(() => {
       setstAvatarIsVisible(false);
     }, 4500);
   };
 
+  function incrValue() {
+    setValue((value) => (value += 1));
+  }
+  function decrValue() {
+    if (value == product.min_value) setValue(product.min_value);
+    else {
+      setValue((value) => (value -= 1));
+    }
+  }
   const router = useRouter();
 
   return (
@@ -184,7 +196,15 @@ export default function Index({ data: product, faturedData }) {
 
             <p>{currencyFormat(product.price)}</p>
           </div>
+          <Value
+            {...{ incrValue, decrValue }}
+            value={value}
+            min={product.min_value}
+          />
+
           <p className="descr">{product.description}</p>
+          {product.compound && <p className="descr">{product.compound}</p>}
+
           <p className="sub-descr">
             <span>
               Каждый букет от «Матрёшка» собирается для Вас с особым трепетом и
@@ -205,6 +225,7 @@ export default function Index({ data: product, faturedData }) {
               Юлиана и команда «Матрёшка»
             </span>
           </p>
+
           <div className="btns">
             <Button
               actionType="shop"

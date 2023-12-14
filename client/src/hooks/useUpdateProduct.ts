@@ -13,7 +13,14 @@ const useUpdateProduct = (
     e.preventDefault();
     setLoading(true);
     try {
-      if (!data.category_id || !data.description || !data.name || !data.price) {
+      if (
+        !data.category_id ||
+        !data.description ||
+        !data.compound ||
+        !data.minValue ||
+        !data.name ||
+        !data.price
+      ) {
         alert("Все поля должны быть заполнены!");
         return;
       }

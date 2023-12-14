@@ -1,0 +1,20 @@
+.number {
+  display: grid;
+  grid-row-gap: 5px;
+  position: relative;
+  width: 100px;
+}
+.number input[type="number"] {
+  margin-top: 3px;
+  display: block;
+  height: 32px;
+  line-height: 32px;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-align: center;
+  border: 1px solid var(--light-pink);
+  border-radius: 5px;
+  font-size: var(--main-fs);
+}

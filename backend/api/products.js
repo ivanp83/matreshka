@@ -15,7 +15,10 @@ module.exports = {
     return await products.queryRows(`${sql} WHERE products.id = $1`, [id]);
   },
 
-  async create({ image, category, name, price, description, stock }, isAdmin) {
+  async create(
+    { image, category, name, price, compound, minValue, description, stock },
+    isAdmin,
+  ) {
     if (!isAdmin) return 'Forbidden';
 
     const folder = new Date().getTime().toString();
@@ -28,6 +31,8 @@ module.exports = {
         name,
         price,
         description,
+        compound,
+        min_value: minValue,
         stock,
         available: true,
       })
@@ -43,6 +48,8 @@ module.exports = {
       name,
       price,
       description,
+      compound,
+      minValue,
       stock,
       category_id,
       base64Data,
@@ -59,6 +66,8 @@ module.exports = {
       description,
       stock,
       available,
+      compound,
+      min_value: minValue,
     });
 
     if (base64Data) {

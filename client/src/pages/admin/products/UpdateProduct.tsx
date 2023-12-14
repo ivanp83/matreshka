@@ -11,6 +11,7 @@ import {
   ResolvedCategoriesResponse,
   ResolvedProductResponse,
 } from "../../../types/types";
+import InputValue from "../../../components/input-value/Input";
 type Joined = ResolvedCategoriesResponse & ResolvedProductResponse;
 
 const UpdateProduct = () => {
@@ -20,11 +21,14 @@ const UpdateProduct = () => {
   const currentCatеgory = categories.find(
     (cat) => cat.id == +product.category_id
   ) as CategoryItem;
+
   const [data, setData] = useState({
     id: product.id,
     name: product.name,
     price: product.price,
     description: product.description,
+    compound: product.compound,
+    minValue: product.min_value,
     stock: product.stock,
     available: product.available,
     category_id: currentCatеgory.id,
@@ -40,6 +44,8 @@ const UpdateProduct = () => {
       name: data.name,
       price: data.price,
       description: data.description,
+      compound: data.compound,
+      minValue: data.minValue,
       stock: data.stock,
       category_id: data.category_id,
       base64Data,
@@ -84,6 +90,16 @@ const UpdateProduct = () => {
                   value={data.description}
                 />
               </div>
+              <div>
+                <label htmlFor="compound">Состав</label>
+                <textarea
+                  rows={4}
+                  name="compound"
+                  onChange={handleChange}
+                  value={data.compound}
+                />
+              </div>
+              <InputValue {...{ handleChange }} value={data.minValue} min={1} />
               <div>
                 <label htmlFor="description">Категория</label>
                 <select

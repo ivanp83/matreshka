@@ -34,29 +34,35 @@ export type ProductItem = {
   name: string;
   price: number;
   description: string;
+  compound: string;
   small: string | ArrayBuffer | null;
   big: string | ArrayBuffer | null;
   category_id: string;
   stock: boolean;
   available: boolean;
+  min_value: number;
 };
 export type ProductItemCreate = {
   name: string;
   price: string;
   description: string;
+  compound: string;
   image: string | ArrayBuffer | null;
   category: number;
   stock: boolean;
+  minValue: number;
 };
 export type UpdateProductItem = {
   id: number;
   name: string;
   price: number;
   description: string;
+  compound: string;
   category_id: number;
   base64Data?: string | ArrayBuffer | null;
   stock: boolean;
   available: boolean;
+  minValue: number;
 };
 export type PageItem = {
   name: string;

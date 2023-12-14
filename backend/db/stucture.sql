@@ -24,6 +24,8 @@ CREATE TABLE products (
 	id INT generated always as identity PRIMARY KEY,
 	name VARCHAR(100) NOT NULL,
 	description text NOT NULL,
+	compound text NOT NULL,
+	min_value VARCHAR DEFAULT 1,
     price INT NOT NULL,
 	category_id INT NOT NULL,
 	FOREIGN KEY (category_id) REFERENCES categories(id) ON DELETE CASCADE

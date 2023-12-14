@@ -15,6 +15,8 @@ const useCreateProduct = (
       if (
         !data.category ||
         !data.description ||
+        !data.compound ||
+        !data.minValue ||
         !data.name ||
         !data.price ||
         !data.image
@@ -43,6 +45,7 @@ const useCreateProduct = (
     reader.readAsDataURL(files?.[0] as File);
   },
   handleChange: (event: ChangeEvent<any>) => {
+    console.log();
     setData({ ...data, [event.target.name]: event.target.value });
   },
 });

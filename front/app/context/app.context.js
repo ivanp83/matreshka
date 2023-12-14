@@ -23,7 +23,7 @@ export const AppProvider = ({ children }) => {
   const [cartItems, setCartItems] = useState([]);
   const [cartPosition, setCartPosition] = useState({ x: 0, y: 0 });
 
-  const onUpdate = async (product) => {
+  const onUpdate = async (product, value) => {
     try {
       setLoading(true);
       const exist = cartItems.find((prod) => prod.id === product.id);
@@ -31,17 +31,17 @@ export const AppProvider = ({ children }) => {
       if (!!exist) {
         const item = cartItems.map((prod) =>
           prod.id === product.id
-            ? { ...exist, quantity: exist.quantity + 1 }
+            ? { ...exist, quantity: exist.quantity + value }
             : prod
         );
 
         setCartItems(item);
         localStorage.setItem("cartItems", JSON.stringify(item));
       } else {
-        setCartItems([...cartItems, { ...product, quantity: 1 }]);
+        setCartItems([...cartItems, { ...product, quantity: value }]);
         localStorage.setItem(
           "cartItems",
-          JSON.stringify([...cartItems, { ...product, quantity: 1 }])
+          JSON.stringify([...cartItems, { ...product, quantity: value }])
         );
       }
     } catch (error) {

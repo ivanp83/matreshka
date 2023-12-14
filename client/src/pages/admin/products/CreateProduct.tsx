@@ -17,7 +17,8 @@ import {
   ProductItemCreate,
   ResolvedCategoriesResponse,
 } from "../../../types/types";
-
+import InputValue from "../../../components/input-value/Input";
+// import InputValue from "../../../components/input-value/Input";
 function CreateProduct() {
   const navigate = useNavigate();
   const { loading, setLoading } = useAppContext();
@@ -31,9 +32,11 @@ function CreateProduct() {
     name: "",
     price: "",
     description: "",
+    compound: "",
     stock: false,
     category: categories[0].id,
     image: null,
+    minValue: 1,
   });
 
   const { onClick, handleFileChange, handleChange } = useCreateProduct(
@@ -63,6 +66,16 @@ function CreateProduct() {
                 <label htmlFor="description">Описание</label>
                 <textarea rows={4} name="description" onChange={handleChange} />
               </div>
+              <div>
+                <label htmlFor="compound">Состав</label>
+                <textarea rows={4} name="compound" onChange={handleChange} />
+              </div>
+              <InputValue
+                {...{ handleChange }}
+                value={data.minValue}
+                min={data.minValue}
+              />
+
               <div>
                 <label htmlFor="description">Категория</label>
                 <select name="category" onChange={handleChange}>

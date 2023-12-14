@@ -21,7 +21,7 @@ export default function Footer() {
             color: var(--main-light);
             position: relative;
             z-index: 1;
-            font-size: 14px;
+            font-size: var(--main-fs);
           }
           .matrehska-logo {
             grid-column: 1/2;
@@ -123,15 +123,13 @@ export default function Footer() {
 
             <address className="address">
               <p className="h4">Адрес</p>
-              <span>📍Калининград, улица Виктора Гакуна, 5Б</span>
+              <span>Калининград, улица Виктора Гакуна, 5Б</span>
             </address>
             <div className="contacts">
               <p className="h4">Контакты</p>
               <div>
-                <a href="tel:+79114939999">📞+7 911 493-99-99</a>
-                <a href="mailto:matreshkaflower@bk.ru">
-                  📬matreshkaflower@bk.ru
-                </a>
+                <a href="tel:+79114939999">+7 911 493-99-99</a>
+                <a href="mailto:matreshkaflower@bk.ru">matreshkaflower@bk.ru</a>
               </div>
             </div>
             <div className="social">
