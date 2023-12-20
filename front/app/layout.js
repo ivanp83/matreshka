@@ -136,12 +136,12 @@ export default function RootLayout({ children }) {
                 </span>
               </a>
             </div>
-            <div className="theme">
+            {/* <div className="theme">
               <button onClick={() => replaceTheme("first-theme")}>1</button>
               <button onClick={() => replaceTheme("second-theme")}>2</button>
               <button onClick={() => replaceTheme("third-theme")}>3</button>
               <button onClick={() => replaceTheme("forth-theme")}>4</button>
-            </div>
+            </div> */}
             <Header />
             <MobileNav />
             <main>{children}</main>
