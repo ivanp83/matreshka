@@ -1,11 +1,11 @@
 import Index from "../components/about";
 
 const data = {
-  title: "О студии",
+  title: "Я, цветы и «Матрёшка»",
   description:
     "Как хобби стало любимым делом. История создания интернет-магазина Матрёшка.",
   canonical: `${process.env.NEXT_PUBLIC_DOMAIN}/about`,
-  mainBanner: "/images/1.png",
+  mainBanner: "/images/1.jpg",
   text: [
     "Здравствуйте, дорогие мои! Меня зовут Юлиана, и я влюбленна в свою работу и цветы. Я готова поделиться с вами своей страстью к прекрасному и замечательным букетам, которые я создаю своими руками.",
     "Мне 35, у меня 4-ро детей и все мои драконы мальчики, самому младшему исполнилось 2 месяца. Я люблю цветы, уют и красоту вокруг. Я с детства собирала цветы в поле, по дороге куда-либо, на даче и т.д. И вот уже в сознательном возрасте посреди ночи меня осенило. Сначала пришло название - Матрёшка, русское красивое ( всегда поражали иностранные вывески, живем в России а вокруг Ля флёр - Дэ флёр) которое ассоциируется с цветами. Так вот после названия я решила что хочу вернуться к детскому увлечению.",
@@ -114,10 +114,10 @@ export default function Page() {
         name: data.title,
         isPartOf: { "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/about` },
         primaryImageOfPage: {
-          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
+          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.jpg`,
         },
         image: {
-          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
+          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.jpg`,
         },
 
         datePublished: "2023-10-10T16:18:40+00:00",
@@ -137,9 +137,9 @@ export default function Page() {
       {
         "@type": "ImageObject",
         inLanguage: "ru-RU",
-        "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
-        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
-        contentUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.png`,
+        "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.jpg`,
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.jpg`,
+        contentUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.jpg`,
         width: 554,
         height: 554,
       },
