@@ -6,7 +6,7 @@ import Loading from "@/app/loading";
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 7,
   themeColor: "white",
 };
 async function getProductsByCategory(id = 0) {

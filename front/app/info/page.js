@@ -37,7 +37,7 @@ const data = {
 export const viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  maximumScale: 7,
   themeColor: "white",
 };
 export const metadata = {
