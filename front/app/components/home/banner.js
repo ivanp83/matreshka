@@ -174,6 +174,8 @@ export default function Banner() {
           top: 50%;
           transform: translateY(-50%);
           mix-blend-mode: hard-light;
+          background-image: url("/images/8.jpg");
+          background-size: cover;
         }
 
         @media all and (max-width: 1260px) {
@@ -225,14 +227,7 @@ export default function Banner() {
         <Logo />
       </div>
 
-      <p className="image" ref={imageRef}>
-        <CustomImage
-          src="/images/8.jpg"
-          direct={true}
-          alt="С вами команда классного Калининградского цветочного бренда Матрёшка🪆. Мы создаём уникальные WOW букеты💐. Будем рады активному и дружелюбному общению🥰."
-          sizes="(max-width: 768px) 80vw, 400px"
-        />
-      </p>
+      <div className="image" ref={imageRef}></div>
       <div className="hlink">
         <Link href="/categories">
           <span>Выбери свой букет</span>

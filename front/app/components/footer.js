@@ -22,6 +22,7 @@ export default function Footer() {
             position: relative;
             z-index: 1;
             font-size: var(--main-fs);
+            font-size: 16px;
           }
           .matrehska-logo {
             grid-column: 1/2;

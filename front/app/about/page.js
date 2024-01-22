@@ -144,6 +144,22 @@ export default function Page() {
         height: 554,
       },
       {
+        "@type": "Person",
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Калининград",
+          addressRegion: "Калининградская область",
+          postalCode: "236000",
+          streetAddress: "Виктора Гакунаб д5",
+        },
+
+        email: "matreshkaflower@bk.ru",
+        jobTitle: "Вледелец",
+        name: "Юлиана Легкодумова",
+        telephone: "+7 911 493 9999",
+        url: "https://matryoshkaflowers.ru/",
+      },
+      {
         "@type": "Organization",
 
         address: {

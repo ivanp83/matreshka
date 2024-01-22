@@ -3,9 +3,9 @@ import Loading from "./loading";
 import { Suspense } from "react";
 
 const data = {
-  title: "Интернет-магазин премиальных букетов в Калининграде",
+  title: "Интернет-магазин премиальных букетов и 🌹цветов в Калининграде",
   description:
-    "Роскошные 💐букеты и 🌹цветы для любого 🎉случая с быстрой доставкой по Калининграду и области.",
+    "Мы делаем дорогие и роскошные 💐букеты для любого 🎉случая c быстой доставкой по Калининграду. У нас только лучшие цветы и материалы, любовь и красота в каждом букете от 'Матрёшки'",
   canonical: process.env.NEXT_PUBLIC_DOMAIN,
 };
 
@@ -110,13 +110,6 @@ async function getCategories() {
   return res.json();
 }
 async function getProducts() {
-  const yandexFeedId = await fetch(`https://api.webmaster.yandex.net/v4/user`, {
-    Authorization:
-      "Bearer y0_AgAAAABmz_OTAAruuAAAAADzyerMY2cwaEK7QvSuqPgq-IcIHzb4npk",
-  })
-    .then((res) => res.json())
-    .catch((err) => console.log(err));
-
   const products = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`,
     {
