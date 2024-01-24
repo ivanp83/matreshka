@@ -198,7 +198,7 @@ export default async function Home() {
           },
           {
             "@type": "ListItem",
-            position: 2,
+            position: 1,
 
             item: {
               "@type": "WebPage",
@@ -209,7 +209,7 @@ export default async function Home() {
           },
           {
             "@type": "ListItem",
-            position: 3,
+            position: 2,
 
             item: {
               "@type": "WebPage",
@@ -221,7 +221,7 @@ export default async function Home() {
 
           {
             "@type": "ListItem",
-            position: 4,
+            position: 3,
             item: {
               "@type": "WebPage",
               "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
