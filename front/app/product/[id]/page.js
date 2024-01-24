@@ -26,7 +26,7 @@ export async function generateMetadata({ params: { id } }) {
 
   const product = products.find((p) => p.id == id && p);
   const data = {
-    title: `Цветочный букет - ${product.title}, купить в Калининграде за ${product.price}`,
+    title: `Цветочный букет - ${product.title}, купить в Калининграде за ${product.price} рублей`,
     description: `${product.name} - заказать онлайн с доставкой по Калининграду и области. Премиальное качество цветов и материалов, оригинальный дизайн!`,
     canonical: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
   };
@@ -113,33 +113,61 @@ export default async function Page({ params: { id } }) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
-        "@id": process.env.NEXT_PUBLIC_DOMAIN,
+        "@context": "http://schema.org",
+        "@type": "Florist",
+        name: "Цветочная мастерская «Матрёшка»",
+        description:
+          "Роскошные букеты и цветы с доставкой по Калининграду и области.",
         url: process.env.NEXT_PUBLIC_DOMAIN,
-        name: product.name,
-        isPartOf: {
-          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
-        },
-        primaryImageOfPage: {
-          "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
-        },
-        image: {
-          "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
-        },
+        logo: `${process.env.NEXT_PUBLIC_DOMAIN}/images/logo.png`,
+        openingHours: "Mo-Su 0:00-24:00",
+        image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/8.jpg`,
+        email: "matreshkaflower@bk.ru",
 
-        description: product.description,
-        breadcrumb: {
-          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
-        },
-        inLanguage: "ru-RU",
-        potentialAction: [
-          {
-            "@type": "ReadAction",
-            target: [
-              `${`${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`}`,
-            ],
-          },
+        telephone: "+7911 493 9999",
+        priceRange: "от 2500 руб",
+        sameAs: [
+          "https://www.instagram.com/yulianalegkodumova/",
+          "https://t.me/YulianaLegkodumova",
+          "https://vk.com/matreshkaflower",
         ],
+        potentialAction: {
+          "@type": "ReadAction",
+          agent: {
+            "@type": "Person",
+            name: "Юлиана Легкодумова",
+          },
+          object: {
+            "@type": "WebPage",
+            name: "Цветочная мастерская «Матрёшка»",
+          },
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "matreshkaflower@bk.ru",
+          name: "работа с клиентами",
+          telephone: "+7911 493 9999",
+          contactType: "customer service",
+        },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Россия, Калининград",
+          postalCode: "236011",
+          streetAddress: "ул. Виктора Гакуна д5",
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "4924",
+          worstRating: "1",
+          bestRating: "5",
+        },
+        offers: {
+          "@type": "AggregateOffer",
+          lowPrice: "2500",
+          highPrice: "40000",
+          priceCurrency: "RUB",
+        },
       },
       {
         "@type": "Product",

@@ -14,6 +14,62 @@ export default function Index({ categories, products }) {
     "@context": "https://schema.org",
     "@graph": [
       {
+        "@context": "http://schema.org",
+        "@type": "Florist",
+        name: "Цветочная мастерская «Матрёшка»",
+        description:
+          "Роскошные букеты и цветы с доставкой по Калининграду и области.",
+        url: process.env.NEXT_PUBLIC_DOMAIN,
+        logo: `${process.env.NEXT_PUBLIC_DOMAIN}/images/logo.png`,
+        openingHours: "Mo-Su 0:00-24:00",
+        image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/8.jpg`,
+        email: "matreshkaflower@bk.ru",
+        telephone: "+7911 493 9999",
+        priceRange: "от 2500 руб",
+        sameAs: [
+          "https://www.instagram.com/yulianalegkodumova/",
+          "https://t.me/YulianaLegkodumova",
+          "https://vk.com/matreshkaflower",
+        ],
+        potentialAction: {
+          "@type": "ReadAction",
+          agent: {
+            "@type": "Person",
+            name: "Юлиана Легкодумова",
+          },
+          object: {
+            "@type": "WebPage",
+            name: "Цветочная мастерская «Матрёшка»",
+          },
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "matreshkaflower@bk.ru",
+          name: "работа с клиентами",
+          telephone: "+7911 493 9999",
+          contactType: "customer service",
+        },
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: "Россия, Калининград",
+          postalCode: "236011",
+          streetAddress: "ул. Виктора Гакуна д5",
+        },
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "4924",
+          worstRating: "1",
+          bestRating: "5",
+        },
+        offers: {
+          "@type": "AggregateOffer",
+          lowPrice: "2500",
+          highPrice: "40000",
+          priceCurrency: "RUB",
+        },
+      },
+      {
         "@type": "BreadcrumbList",
         itemListElement: [
           {

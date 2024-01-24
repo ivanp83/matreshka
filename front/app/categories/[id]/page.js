@@ -23,7 +23,7 @@ async function getProductsByCategory(id = 0) {
     }
   );
   const data = await res.json();
-  console.log(data);
+
   const allProductsResData = await allProductsRes.json();
 
   if (!res.ok) {
@@ -52,7 +52,7 @@ export async function generateMetadata({ params: { id } }) {
   const category = categories.find((p) => p.id == id && p);
 
   const data = {
-    title: `Категория - ${category?.name}`,
+    title: `Роскошные ${category?.name}`,
     description: `${category?.description}. Доступные для заказа 💐${category?.name} с быстрой доставкой по Калининграду и области.`,
     canonical: `https://matryoshkaflowers.ru/categories/${category.id}`,
   };
@@ -60,7 +60,6 @@ export async function generateMetadata({ params: { id } }) {
   return {
     title: data.title,
     description: data.description,
-
     metadataBase: new URL(data.canonical),
     generator: "Next.js",
     applicationName: "Цветочная мастерская Матрёшка",
