@@ -27,7 +27,7 @@ export async function generateMetadata({ params: { id } }) {
   const product = products.find((p) => p.id == id && p);
   const data = {
     title: `Цветочный букет - ${product.name}, купить в Калининграде за ${product.price} рублей`,
-    description: `${product.name} - заказать онлайн с доставкой по Калининграду и области. Премиальное качество цветов и материалов, оригинальный дизайн!`,
+    description: `${product.name} - заказать онлайн с доставкой по Калининграду и области. Премиальный дизайн букетов, лучшие цветы и материалы!`,
     canonical: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
   };
   return {
