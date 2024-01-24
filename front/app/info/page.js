@@ -88,7 +88,7 @@ export const metadata = {
         height: 634,
       },
       {
-        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/vk_banner.jpg`,
+        url: "/images/vk_banner.jpg",
         width: 1418,
         height: 634,
         alt: "Цветочная мастерская Матрёшка",
@@ -218,10 +218,19 @@ export default function Page() {
               name: "About",
             },
           },
-
           {
             "@type": "ListItem",
             position: 4,
+            item: {
+              "@type": "WebPage",
+              "@id": "",
+              url: "",
+              name: "Информация",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 5,
             item: {
               "@type": "WebPage",
               "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,

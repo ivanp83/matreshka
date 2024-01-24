@@ -249,6 +249,16 @@ export default function Page() {
             position: 4,
             item: {
               "@type": "WebPage",
+              "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/info`,
+              url: `${process.env.NEXT_PUBLIC_DOMAIN}/info`,
+              name: "Информация",
+            },
+          },
+          {
+            "@type": "ListItem",
+            position: 5,
+            item: {
+              "@type": "WebPage",
               "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
               url: `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
               name: "Контакты",

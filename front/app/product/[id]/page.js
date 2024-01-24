@@ -187,28 +187,6 @@ export default async function Page({ params: { id } }) {
 
         url: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
       },
-      {
-        "@type": "Organization",
-        address: {
-          "@type": "PostalAddress",
-          addressLocality: "Россия, Калининград",
-          postalCode: "236011",
-          streetAddress: "ул. Виктора Гакуна д5",
-        },
-        email: "matreshkaflower@bk.ru",
-        name: "Интернет-магазин букетов и цветов | Матрёшка",
-        telephone: "+7911 493 9999",
-        image: {
-          "@type": "ImageObject",
-          inLanguage: "ru-RU",
-          "@id": `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
-          url: `${process.env.NEXT_PUBLIC_BACKEND_STATIC_URL}/${product.big}`,
-          contentUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
-          width: 768,
-          height: 1024,
-        },
-        url: `${process.env.NEXT_PUBLIC_DOMAIN}/product/${product.id}`,
-      },
     ],
   };
   return (
