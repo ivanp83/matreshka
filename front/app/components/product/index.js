@@ -193,7 +193,7 @@ export default function Index({ data: product, faturedData }) {
           <div className="top">
             <h1>{product.name}</h1>
 
-            <p>{currencyFormat(product.price)}</p>
+            <p>{currencyFormat(product.price * value)}</p>
           </div>
           <Value
             {...{ incrValue, decrValue }}
