@@ -114,6 +114,16 @@ export default function Page(props) {
         image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/8.jpg`,
         email: "matreshkaflower@bk.ru",
         telephone: "+7911 493 9999",
+        currenciesAccepted: "RUB",
+        areaServed: {
+          "@type": "GeoCircle",
+          geoMidpoint: {
+            "@type": "GeoCoordinates",
+            latitude: 54.7069483622634,
+            longitude: 20.51705837830623,
+          },
+          geoRadius: 150000,
+        },
         priceRange: "от 2500 руб",
         sameAs: [
           "https://www.instagram.com/yulianalegkodumova/",
@@ -151,11 +161,11 @@ export default function Page(props) {
           worstRating: "1",
           bestRating: "5",
         },
-        offers: {
-          "@type": "AggregateOffer",
-          lowPrice: "2500",
-          highPrice: "40000",
-          priceCurrency: "RUB",
+        founder: {
+          "@type": "Person",
+          image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/1.jpg`,
+          name: "Юлиана Легкодумова",
+          sameAs: "https://www.instagram.com/yulianalegkodumova/",
         },
       },
 
