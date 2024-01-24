@@ -191,44 +191,11 @@ export default async function Home() {
 
             item: {
               "@type": "WebPage",
-              "@id": "",
-              url: "",
+              "@id": `${process.env.NEXT_PUBLIC_DOMAIN}`,
+              url: `${process.env.NEXT_PUBLIC_DOMAIN}`,
               name: "Главная",
             },
-          },
-          {
-            "@type": "ListItem",
-            position: 1,
-
-            item: {
-              "@type": "WebPage",
-              "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/categories`,
-              url: `${process.env.NEXT_PUBLIC_DOMAIN}/categories`,
-              name: "Категории",
-            },
-          },
-          {
-            "@type": "ListItem",
-            position: 2,
-
-            item: {
-              "@type": "WebPage",
-              "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/about`,
-              url: `${process.env.NEXT_PUBLIC_DOMAIN}/about`,
-              name: "About",
-            },
-          },
-
-          {
-            "@type": "ListItem",
-            position: 3,
-            item: {
-              "@type": "WebPage",
-              "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
-              url: `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
-              name: "Контакты",
-            },
-          },
+  
         ],
       },
 
