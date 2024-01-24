@@ -195,7 +195,7 @@ export default async function Home() {
               url: `${process.env.NEXT_PUBLIC_DOMAIN}`,
               name: "Главная",
             },
-  
+          },
         ],
       },
 
