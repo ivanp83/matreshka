@@ -15,7 +15,7 @@ export const viewport = {
   themeColor: "white",
 };
 export const metadata = {
-  title: "Интернет-магазин премиальных букетов в Калининграде",
+  title: data.title,
   description: data.description,
   metadataBase: new URL(data.canonical),
   generator: "Next.js",
@@ -58,12 +58,12 @@ export const metadata = {
     authors: ["Юлиана Легкодумова"],
     images: [
       {
-        url: "/images/og_banner.jpg",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/og_banner.jpg`,
         width: 634,
         height: 634,
       },
       {
-        url: "/images/vk_banner.jpg",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/vk_banner.jpg`,
         width: 1418,
         height: 634,
         alt: "Цветочная мастерская Матрёшка",

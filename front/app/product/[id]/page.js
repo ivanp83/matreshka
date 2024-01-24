@@ -115,9 +115,9 @@ export default async function Page({ params: { id } }) {
       {
         "@context": "http://schema.org",
         "@type": "Florist",
-        name: "Цветочная мастерская «Матрёшка»",
+        name: "Интернет-магазин букетов и цветов | Матрёшка",
         description:
-          "Роскошные букеты и цветы с доставкой по Калининграду и области.",
+          "Мы изготавливем роскошные и премиальные букеты для любого случая. Только самые лучшие цветы и качественные материалы!  Заказывайте с доставкой по Калининграду и области.",
         url: process.env.NEXT_PUBLIC_DOMAIN,
         logo: `${process.env.NEXT_PUBLIC_DOMAIN}/images/logo.png`,
         openingHours: "Mo-Su 0:00-24:00",
@@ -139,7 +139,7 @@ export default async function Page({ params: { id } }) {
           },
           object: {
             "@type": "WebPage",
-            name: "Цветочная мастерская «Матрёшка»",
+            name: "Интернет-магазин букетов и цветов | Матрёшка",
           },
         },
         contactPoint: {
@@ -196,7 +196,7 @@ export default async function Page({ params: { id } }) {
           streetAddress: "ул. Виктора Гакуна д5",
         },
         email: "matreshkaflower@bk.ru",
-        name: "Цветочная мастерская «Матрёшка»",
+        name: "Интернет-магазин букетов и цветов | Матрёшка",
         telephone: "+7911 493 9999",
         image: {
           "@type": "ImageObject",

@@ -64,12 +64,12 @@ export const metadata = {
     authors: ["Юлиана Легкодумова"],
     images: [
       {
-        url: "/images/og_banner.jpg",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/og_banner.jpg`,
         width: 634,
         height: 634,
       },
       {
-        url: "/images/vk_banner.jpg",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/vk_banner.jpg`,
         width: 1418,
         height: 634,
         alt: "Цветочная мастерская Матрёшка",
@@ -110,9 +110,9 @@ export default function Page() {
       {
         "@context": "http://schema.org",
         "@type": "Florist",
-        name: "Цветочная мастерская «Матрёшка»",
+        name: "Интернет-магазин букетов и цветов | Матрёшка",
         description:
-          "Роскошные букеты и цветы с доставкой по Калининграду и области.",
+          "Мы изготавливем роскошные и премиальные букеты для любого случая. Только самые лучшие цветы и качественные материалы!  Заказывайте с доставкой по Калининграду и области.",
         url: process.env.NEXT_PUBLIC_DOMAIN,
         logo: `${process.env.NEXT_PUBLIC_DOMAIN}/images/logo.png`,
         openingHours: "Mo-Su 0:00-24:00",
@@ -134,7 +134,7 @@ export default function Page() {
           },
           object: {
             "@type": "WebPage",
-            name: "Цветочная мастерская «Матрёшка»",
+            name: "Интернет-магазин букетов и цветов | Матрёшка",
           },
         },
         contactPoint: {

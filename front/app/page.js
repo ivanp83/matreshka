@@ -3,7 +3,7 @@ import Loading from "./loading";
 import { Suspense } from "react";
 
 const data = {
-  title: "Интернет-магазин премиальных букетов и 🌹цветов в Калининграде",
+  title: "Интернет-магазин премиальных букетов и 🌹цветов | Матрёшка",
   description:
     "Мы делаем дорогие и роскошные 💐букеты для любого 🎉случая c быстой доставкой по Калининграду. У нас только лучшие цветы и материалы, любовь и красота в каждом букете от 'Матрёшки'",
   canonical: process.env.NEXT_PUBLIC_DOMAIN,
@@ -16,7 +16,7 @@ export const viewport = {
   themeColor: "white",
 };
 export const metadata = {
-  title: "Интернет-магазин премиальных букетов в Калининграде",
+  title: data.title,
   description: data.description,
   metadataBase: new URL(data.canonical),
   generator: "Next.js",
@@ -59,12 +59,12 @@ export const metadata = {
     authors: ["Юлиана Легкодумова"],
     images: [
       {
-        url: "/images/og_banner.jpg",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/og_banner.jpg`,
         width: 634,
         height: 634,
       },
       {
-        url: "/images/vk_banner.jpg",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/vk_banner.jpg`,
         width: 1418,
         height: 634,
         alt: "Цветочная мастерская Матрёшка",
@@ -128,9 +128,9 @@ export default async function Home() {
       {
         "@context": "http://schema.org",
         "@type": "Florist",
-        name: "Цветочная мастерская «Матрёшка»",
+        name: "Интернет-магазин букетов и цветов | Матрёшка",
         description:
-          "Роскошные букеты и цветы с доставкой по Калининграду и области.",
+          "Мы изготавливем роскошные и премиальные букеты для любого случая. Только самые лучшие цветы и качественные материалы!  Заказывайте с доставкой по Калининграду и области.",
         url: process.env.NEXT_PUBLIC_DOMAIN,
         logo: `${process.env.NEXT_PUBLIC_DOMAIN}/images/logo.png`,
         openingHours: "Mo-Su 0:00-24:00",
@@ -151,7 +151,7 @@ export default async function Home() {
           },
           object: {
             "@type": "WebPage",
-            name: "Цветочная мастерская «Матрёшка»",
+            name: "Интернет-магазин букетов и цветов | Матрёшка",
           },
         },
         contactPoint: {
@@ -236,7 +236,7 @@ export default async function Home() {
         "@type": "OfferCatalog",
         name: "Цветочная мастерская 'Матрёшка",
         image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/lora.webp`,
-        description: "Коллекция ярких дизайнерских худи от Лоры Бровко",
+        description: "Роскошные букеты для любого случая",
         itemListElement: [
           products.map((product) => ({
             "@type": "Offer",

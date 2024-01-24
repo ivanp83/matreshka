@@ -98,12 +98,12 @@ export async function generateMetadata({ params: { id } }) {
       siteName: "Цветочная мастерская Матрёшка",
       images: [
         {
-          url: "/images/og_banner.jpg",
+          url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/og_banner.jpg`,
           width: 634,
           height: 634,
         },
         {
-          url: "/images/vk_banner.jpg",
+          url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/vk_banner.jpg`,
           width: 1418,
           height: 634,
           alt: "Цветочная мастерская Матрёшка",

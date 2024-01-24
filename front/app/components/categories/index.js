@@ -16,9 +16,9 @@ export default function Index({ categories, products }) {
       {
         "@context": "http://schema.org",
         "@type": "Florist",
-        name: "Цветочная мастерская «Матрёшка»",
+        name: "Интернет-магазин букетов и цветов | Матрёшка",
         description:
-          "Роскошные букеты и цветы с доставкой по Калининграду и области.",
+          "Мы изготавливем роскошные и премиальные букеты для любого случая. Только самые лучшие цветы и качественные материалы!  Заказывайте с доставкой по Калининграду и области.",
         url: process.env.NEXT_PUBLIC_DOMAIN,
         logo: `${process.env.NEXT_PUBLIC_DOMAIN}/images/logo.png`,
         openingHours: "Mo-Su 0:00-24:00",
@@ -39,7 +39,7 @@ export default function Index({ categories, products }) {
           },
           object: {
             "@type": "WebPage",
-            name: "Цветочная мастерская «Матрёшка»",
+            name: "Интернет-магазин букетов и цветов | Матрёшка",
           },
         },
         contactPoint: {
@@ -122,7 +122,7 @@ export default function Index({ categories, products }) {
         "@type": "OfferCatalog",
         name: "Цветочная мастерская 'Матрёшка",
         image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/lora.webp`,
-        description: "Коллекция ярких дизайнерских худи от Лоры Бровко",
+        description: "Роскошные букеты для любого случая",
         itemListElement: [
           products.map((product) => ({
             "@type": "Offer",

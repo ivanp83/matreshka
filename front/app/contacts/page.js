@@ -60,12 +60,12 @@ export const metadata = {
     authors: ["Юлиана Легкодумова"],
     images: [
       {
-        url: "/images/og_banner.jpg",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/og_banner.jpg`,
         width: 634,
         height: 634,
       },
       {
-        url: "/images/vk_banner.jpg",
+        url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/vk_banner.jpg`,
         width: 1418,
         height: 634,
         alt: "Цветочная мастерская Матрёшка",
@@ -133,7 +133,7 @@ export default function Page(props) {
           streetAddress: "ул. Виктора Гакуна д5",
         },
         email: "matreshkaflower@bk.ru",
-        name: "Цветочная мастерская «Матрёшка»",
+        name: "Интернет-магазин букетов и цветов | Матрёшка",
         telephone: "+7911 493 9999",
         image: {
           "@type": "ImageObject",
