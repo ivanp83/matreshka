@@ -103,49 +103,62 @@ export default function Page(props) {
     "@context": "https://schema.org",
     "@graph": [
       {
-        "@type": "WebPage",
-        "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
-        url: `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
-        name: data.title,
-        isPartOf: { "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/contacts` },
-
-        datePublished: "2023-10-10T16:18:40+00:00",
-        dateModified: "2023-11-10T12:16:46+00:00",
-        description: data.description,
-        breadcrumb: {
-          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/contacts`,
-        },
-        inLanguage: "ru-RU",
-        potentialAction: [
-          {
-            "@type": "ReadAction",
-            target: [`${process.env.NEXT_PUBLIC_DOMAIN}/contacts`],
-          },
+        "@context": "http://schema.org",
+        "@type": "Florist",
+        name: "Интернет-магазин букетов и цветов | Матрёшка",
+        description:
+          "Мы изготавливем роскошные и премиальные букеты для любого случая. Только самые лучшие цветы и качественные материалы!  Заказывайте с доставкой по Калининграду и области.",
+        url: process.env.NEXT_PUBLIC_DOMAIN,
+        logo: `${process.env.NEXT_PUBLIC_DOMAIN}/images/logo.png`,
+        openingHours: "Mo-Su 0:00-24:00",
+        image: `${process.env.NEXT_PUBLIC_DOMAIN}/images/8.jpg`,
+        email: "matreshkaflower@bk.ru",
+        telephone: "+7911 493 9999",
+        priceRange: "от 2500 руб",
+        sameAs: [
+          "https://www.instagram.com/yulianalegkodumova/",
+          "https://t.me/YulianaLegkodumova",
+          "https://vk.com/matreshkaflower",
         ],
-      },
-
-      {
-        "@type": "Organization",
+        potentialAction: {
+          "@type": "ReadAction",
+          agent: {
+            "@type": "Person",
+            name: "Юлиана Легкодумова",
+          },
+          object: {
+            "@type": "WebPage",
+            name: "Интернет-магазин букетов и цветов | Матрёшка",
+          },
+        },
+        contactPoint: {
+          "@type": "ContactPoint",
+          email: "matreshkaflower@bk.ru",
+          name: "работа с клиентами",
+          telephone: "+7911 493 9999",
+          contactType: "customer service",
+        },
         address: {
           "@type": "PostalAddress",
           addressLocality: "Россия, Калининград",
           postalCode: "236011",
           streetAddress: "ул. Виктора Гакуна д5",
         },
-        email: "matreshkaflower@bk.ru",
-        name: "Интернет-магазин букетов и цветов | Матрёшка",
-        telephone: "+7911 493 9999",
-        image: {
-          "@type": "ImageObject",
-          inLanguage: "ru-RU",
-          "@id": `${process.env.NEXT_PUBLIC_DOMAIN}/images/8.jpg`,
-          url: `${process.env.NEXT_PUBLIC_DOMAIN}/images/8.jpg`,
-          contentUrl: `${process.env.NEXT_PUBLIC_DOMAIN}/images/8.jpg`,
-          width: 682,
-          height: 1024,
+        aggregateRating: {
+          "@type": "AggregateRating",
+          ratingValue: "4.9",
+          reviewCount: "4924",
+          worstRating: "1",
+          bestRating: "5",
         },
-        url: process.env.NEXT_PUBLIC_DOMAIN,
+        offers: {
+          "@type": "AggregateOffer",
+          lowPrice: "2500",
+          highPrice: "40000",
+          priceCurrency: "RUB",
+        },
       },
+
       {
         "@type": "BreadcrumbList",
         itemListElement: [
