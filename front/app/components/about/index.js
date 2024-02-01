@@ -20,10 +20,10 @@ export default function Index({ data }) {
           }
 
           .image {
-            grid-column: 2/4;
+            grid-column: 3/4;
             left: 0;
-            max-width: 1000px;
-            height: calc(1000px * 4 / 3);
+
+            height: 70vh;
             position: relative;
             grid-row: 1;
           }
@@ -32,7 +32,7 @@ export default function Index({ data }) {
             font-weight: var(--main-fw);
           }
           .text {
-            grid-column: 1/2;
+            grid-column: 1/3;
             display: grid;
             grid-row: 1;
             grid-gap: 1rem;
@@ -41,6 +41,9 @@ export default function Index({ data }) {
           .text p {
             display: grid;
             grid-gap: 1rem;
+            height: fit-content;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             height: fit-content;
           }
           @media all and (max-width: 1024px) {
@@ -60,8 +63,8 @@ export default function Index({ data }) {
               grid-column: 1/4;
             }
             .image {
-              width: 90vw;
-              height: 90vw;
+              width: 100%;
+              height: calc(100vw * 4 / 3);
               position: relative;
               grid-row: 1;
               margin: 0 auto;
@@ -70,6 +73,10 @@ export default function Index({ data }) {
             .text {
               grid-column: 1/4;
               grid-row: 2;
+            }
+            .text p {
+              grid-column: 1/4;
+              grid-template-columns: 1fr;
             }
             .text span {
               grid-column: 1/4;
@@ -104,12 +111,8 @@ export default function Index({ data }) {
               Здравствуйте, дорогие мои! Меня зовут Юлиана, и я влюбленна в свою
               работу и <b>цветы</b>. Я готова поделиться с вами своей страстью к
               прекрасному и замечательным букетам, которые я создаю своими
-              руками.
-            </span>
-
-            <span>
-              Мне 35, у меня 4-ро детей и все мои драконы мальчики, самому
-              младшему исполнилось 2 месяца. Я люблю цветы, уют и красоту
+              руками. Мне 35, у меня 4-ро детей и все мои драконы мальчики,
+              самому младшему исполнилось 2 месяца. Я люблю цветы, уют и красоту
               вокруг. Я с детства собирала цветы в поле, по дороге куда-либо, на
               даче и т.д. И вот уже в сознательном возрасте посреди ночи меня
               осенило. Сначала пришло название - Матрёшка, русское красивое (
