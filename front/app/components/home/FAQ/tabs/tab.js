@@ -25,11 +25,12 @@ export default function Tab({ data }) {
           grid-template-rows: 0fr;
           overflow: hidden;
           transition: grid-template-rows 0.5s;
+          color: var(--main-gray);
           border-bottom: 1px solid var(--main-gray);
           padding-bottom: 1rem;
         }
         dt {
-          font-weight: 700;
+          font-weight: 400;
           cursor: pointer;
           width: 100%;
           display: flex;
@@ -41,7 +42,7 @@ export default function Tab({ data }) {
         }
         dt p {
           max-width: 90%;
-          font-size: var(--main-fs);
+          font-size: 22px;
           display: flex;
         }
         .num {
