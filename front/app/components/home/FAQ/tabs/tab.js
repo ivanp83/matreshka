@@ -60,7 +60,7 @@ export default function Tab({ data }) {
           min-height: 0;
           transition: opacity 0.5s;
           opacity: 0;
-          padding-left: 1.8rem;
+          padding-left: 32px;
         }
 
         .total-days {
