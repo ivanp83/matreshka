@@ -42,7 +42,7 @@ export default function Tab({ data }) {
         }
         dt p {
           max-width: 90%;
-          font-size: 22px;
+          font-size: 26px;
           display: flex;
         }
         .num {
