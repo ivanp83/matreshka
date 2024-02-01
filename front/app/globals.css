@@ -13,8 +13,8 @@
   --dark-red: rgb(162, 5, 5);
   --main-dark: rgb(19, 16, 16);
   --main-light: rgb(255, 255, 255);
-  --main-fs: 18px;
-  --big-fs: 2.4rem;
+  --main-fs: 16px;
+  --big-fs: 3rem;
   --title-fs: 2.4rem;
   --main-fw: 400;
   --main-ff: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
@@ -118,8 +118,6 @@ ul {
 }
 @media all and (max-width: 1500px) {
   :root {
-    --main-fs: 18px;
-    --big-fs: 2.4rem;
     --cont-w: 100vw;
   }
   .container {

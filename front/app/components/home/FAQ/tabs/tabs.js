@@ -14,7 +14,7 @@ export default function Tabs({ data }) {
         }
         .tabs-list {
           display: grid;
-          grid-gap: 1rem;
+
           grid-column: 1/2;
         }
         @media all and (max-width: 768px) {

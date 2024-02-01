@@ -17,6 +17,7 @@ export default function Tab({ data }) {
           width: 100%;
           display: flex;
           flex-direction: column;
+          gap: 1rem;
         }
 
         .expander {
@@ -25,9 +26,9 @@ export default function Tab({ data }) {
           overflow: hidden;
           transition: grid-template-rows 0.5s;
           border-bottom: 1px solid var(--main-gray);
+          padding-bottom: 1rem;
         }
         dt {
-          font-size: calc(1.5 * var(--main-fs));
           font-weight: 700;
           cursor: pointer;
           width: 100%;
@@ -36,6 +37,7 @@ export default function Tab({ data }) {
           align-items: center;
           justify-content: space-between;
           position: relative;
+          margin-top: 1rem;
         }
         dt p {
           max-width: 90%;
@@ -45,7 +47,7 @@ export default function Tab({ data }) {
         .num {
           display: inline-flex;
           margin-right: 10px;
-          line-height: 1;
+          line-height: 1.7;
           font-size: 12px;
           color: var(--main-dark);
           font-weight: 400;
@@ -57,7 +59,7 @@ export default function Tab({ data }) {
           min-height: 0;
           transition: opacity 0.5s;
           opacity: 0;
-          padding-left: 2.2rem;
+          padding-left: 1.8rem;
         }
 
         .total-days {
@@ -170,11 +172,7 @@ export default function Tab({ data }) {
       </dt>
 
       <dd className={`expander  ${state ? "expanded" : ""}`}>
-        <p className="expander-content">
-          {data.text}
-
-          <br></br>
-        </p>
+        <p className="expander-content">{data.text}</p>
       </dd>
     </>
   );

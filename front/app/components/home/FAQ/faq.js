@@ -75,7 +75,7 @@ export default function FAQ() {
           }
 
           h2 {
-            margin-bottom: var(--space-med);
+            margin-bottom: var(--space-small);
             grid-column: 1/2;
           }
           @media all and (max-width: 768px) {

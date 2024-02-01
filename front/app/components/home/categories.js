@@ -44,7 +44,7 @@ export default function Categories({ categories }) {
         .num {
           display: inline-flex;
           margin-right: 10px;
-          line-height: 1;
+          line-height: normal;
           font-size: 16px;
           color: var(--main-dark);
         }
