@@ -1,6 +1,6 @@
 export default function Text({ text }) {
   return (
-    <span className="text h3 main-text">
+    <h3 className="text h3 main-text">
       <style jsx>{`
         .text {
           grid-column: 2/4;
@@ -18,6 +18,6 @@ export default function Text({ text }) {
         }
       `}</style>
       <strong>{text}</strong>
-    </span>
+    </h3>
   );
 }

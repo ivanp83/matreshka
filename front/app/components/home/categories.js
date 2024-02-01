@@ -8,7 +8,7 @@ export default function Categories({ categories }) {
       <style jsx>{`
         .categories {
           grid-column: 1/4;
-          padding: var(--space-small) 0 var(--space-med);
+          padding: var(--space-small) 0 var(--space-big);
         }
         h2 {
           grid-column: 1/2;

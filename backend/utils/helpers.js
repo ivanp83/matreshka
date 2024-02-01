@@ -93,6 +93,8 @@ const sendAlertOrderSuccess = (
   const messageHTML = `
  <b>Новый заказ #</b>
 <pre>${yookassaId}</pre>\n
+ <b>Статус</b>
+<pre>оплачен</pre>\n
 <b>Товары:</b>
 <pre>${serializedItems}</pre>\n
 <b>Покупатель:</b>
@@ -102,7 +104,7 @@ const sendAlertOrderSuccess = (
 <b>Адрес доставки:</b>
 <pre>${city}</pre>
 <pre>${address}</pre>\n
-<b>Площадка:</b>
+<b>ресурс:</b>
 <pre>${resource}</pre>
   
   `;

@@ -7,6 +7,7 @@ import Events from "./events";
 import Products from "./products";
 import Categories from "./categories";
 import { getDate } from "@/utils/helpers";
+import FAQ from "./FAQ/faq";
 
 export default function Index({ products, categories, data }) {
   return (
@@ -31,6 +32,7 @@ export default function Index({ products, categories, data }) {
         <Products {...{ products }} />
         <Categories {...{ categories }} />
         <Events />
+        <FAQ />
       </div>
     </motion.div>
   );

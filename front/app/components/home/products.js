@@ -9,7 +9,7 @@ export default function Products({ products }) {
           grid-column: 1/4;
           display: grid;
           padding-top: var(--space-small);
-          padding-bottom: var(--space-med);
+          padding-bottom: var(--space-big);
           background: var(--main-light);
           position: relative;
           background: var(--light-pink);
@@ -40,9 +40,9 @@ export default function Products({ products }) {
       `}</style>
       <div className="wrapp  container">
         <h2 className="h2">Популярные </h2>
-        <p className="h3">
+        <h3 className="h3">
           Выбор клиентов: подборка самых актуальных предложений
-        </p>
+        </h3>
         <div className="button-link">
           <LinkTo href="categories" text="Смотреть все" />
         </div>

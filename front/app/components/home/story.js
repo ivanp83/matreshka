@@ -13,7 +13,7 @@ export default function Story() {
         }
         .wrapp {
           padding-top: var(--space-small);
-          padding-bottom: var(--space-med);
+          padding-bottom: var(--space-big);
           border-top: 1px solid var(--main-gray);
         }
         b,
