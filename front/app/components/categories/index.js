@@ -174,7 +174,8 @@ export default function Index({ categories, products }) {
             height: 100%;
             align-items: start;
           }
-          .heading {
+           {
+            /* .heading {
             grid-column: 1/4;
             grid-row: 1;
             position: relative;
@@ -196,9 +197,10 @@ export default function Index({ categories, products }) {
             font-weight: var(--main-fw);
             margin-bottom: 0;
             line-height: 1.2;
+          } */
           }
         `}</style>
-        <div className="heading">
+        {/* <div className="heading">
           <CanvasBanner />
           <div className="markq">
             <Marquee>
@@ -211,7 +213,7 @@ export default function Index({ categories, products }) {
               </p>{" "}
             </Marquee>
           </div>
-        </div>
+        </div> */}
         <div className="categories container">
           <SubNav {...{ categories }} />
           <Gallery data={products} />

@@ -80,7 +80,7 @@ module.exports = {
       const res = await categories.queryRows(sql, [id]);
 
       const toRemove1 = res[0].image.split('/');
-      const toRemove2 = res[0].image_big.split('/');
+      const toRemove2 = res[0]?.image_big.split('/');
       const folderPath1 = path.join(
         process.cwd(),
         'public',
