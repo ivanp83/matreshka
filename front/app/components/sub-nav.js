@@ -31,10 +31,11 @@ function SubNav({ categories, product }) {
           width: 100%;
           justify-content: space-between;
           grid-gap: var(--space-small);
-          margin-bottom: 1rem;
+          margin-bottom: var(--space-small);
         }
         .cat-nav {
-          display: ${route.includes("product") ? "none" : "block"};
+          display: ${route.includes("product") ? "none" : "grid"};
+          margin: 0 auto var(--space-small);
         }
         .nav ol {
           display: flex;
@@ -46,7 +47,7 @@ function SubNav({ categories, product }) {
           display: grid;
           grid-auto-flow: column;
           align-items: end;
-          font-size: 13px;
+
           color: var(--main-gray);
           display: flex;
           align-items: center;
@@ -58,11 +59,21 @@ function SubNav({ categories, product }) {
         .categories-list {
           display: grid;
           grid-gap: 10px;
+          grid-auto-flow: column;
+          width: fit-content;
         }
         .list-item {
+          width: -webkit-fit-content;
+          width: -moz-fit-content;
           width: fit-content;
           display: grid;
+          align-content: center;
+          justify-content: center;
           place-content: center;
+          background: var(--main-dark);
+          border-radius: 65px;
+          color: var(--main-light);
+          padding: 3px 28px;
         }
 
         .sub-nav-link {
@@ -71,15 +82,12 @@ function SubNav({ categories, product }) {
           outline: none;
           background: transparent;
 
-          font-weight: 500;
           color: inherit;
         }
         .sub-nav-link.active {
           color: var(--main-gray);
         }
-        .select {
-          display: none;
-        }
+
         @media all and (max-width: 1024px) and (orientation: portrait) {
           .sub-nav {
             grid-column: 1/4;
@@ -87,30 +95,6 @@ function SubNav({ categories, product }) {
             z-index: 10;
             flex-direction: row;
             align-items: center;
-          }
-          .categories-list {
-            display: none;
-          }
-          .select {
-            display: block;
-            grid-column: 3/4;
-            color: var(--main-gray);
-            border: 1px solid var(--main-gray);
-            border-radius: 2px;
-            box-shadow: none;
-            color: var(--main-gray);
-            font-size: 13px;
-            margin: 0;
-            overflow: hidden;
-            padding-top: 2px;
-            padding-bottom: 2px;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-            border: 1px solid var(--main-gray);
-            background: var(--main-light);
-            border-radius: 5px;
-            outline: none !important;
-            outline: 0px;
           }
         }
 
@@ -130,28 +114,6 @@ function SubNav({ categories, product }) {
           }
         }
       `}</style>
-      <nav aria-label="Дополнительная навигация по товарам" className="nav">
-        <ol>
-          <li>
-            <Link href="/">
-              <span className="sub-nav-link"> Главная</span>
-            </Link>
-          </li>
-          {route.includes("product") && (
-            <li className={`list-item list-item--sub`}>
-              <Link href={`/categories`}>
-                <span className={`${id == 0 ? "active" : ""} sub-nav-link`}>
-                  Все категории
-                </span>
-              </Link>
-            </li>
-          )}
-
-          <li>
-            <span className="sub-nav-link">{product}</span>
-          </li>
-        </ol>
-      </nav>
 
       <nav className="cat-nav" aria-label="Основная навигация по категориям">
         <ol className="categories-list">
@@ -174,21 +136,6 @@ function SubNav({ categories, product }) {
             </li>
           ))}
         </ol>
-
-        <select
-          defaultValue={id}
-          name="categories-list"
-          className="select"
-          id="category-select"
-          onChange={(e) => router.push(`/categories/${e.target.value}`)}
-        >
-          <option value={0}>Все категории</option>
-          {categories?.map((cat) => (
-            <option value={cat.id} key={cat.id}>
-              {cat.name}
-            </option>
-          ))}
-        </select>
       </nav>
     </header>
   );

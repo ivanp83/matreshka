@@ -1,33 +1,14 @@
 import { useAppContext } from "../context/app.context";
 
-export default function Humburger() {
+export default function Humburger({ styles }) {
   const { menuIsOpen, setMenuIsOpen } = useAppContext();
 
   return (
     <button
-      className="humburger"
+      className={styles}
       onClick={() => setMenuIsOpen(!menuIsOpen)}
       aria-label="Открыть меню сайта"
     >
-      <style jsx>{`
-        .humburger {
-          border: none;
-          outline: none;
-          background: transparent;
-          width: fit-content;
-          height: fit-content;
-          grid-column: 3/4;
-          grid-row: 1;
-          justify-self: end;
-          display: none;
-        }
-        @media all and (max-width: 700px) and (orientation: portrait) {
-          .humburger {
-            display: inline-flex;
-          }
-        }
-      `}</style>
-
       {!menuIsOpen ? (
         <svg
           fill="var(--main-dark)"

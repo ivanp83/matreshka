@@ -1,54 +1,27 @@
 :root {
-  --cont-w: 1400px;
+  --cont-w: 1800px;
   --space-small: 2rem;
   --space-med: 5rem;
-  --space-big: 8rem;
-  --main-blue: #7569ff;
-  --main-gray: rgb(176, 172, 172);
-  --main-green: #acff87;
-  --dark-green: rgb(97, 223, 43);
-  --main-pink: #f9a7b5;
-  --light-pink: #fde6ea;
-  --main-red: rgb(214, 3, 3);
-  --dark-red: rgb(162, 5, 5);
-  --main-dark: rgb(19, 16, 16);
+  --space-big: clamp(8rem, 20vw, 16rem);
+  --main-red: red;
+  --main-gray: #b2b2b2;
+  --main-dark: #181717;
   --main-light: rgb(255, 255, 255);
-  --main-fs: 17px;
+  --main-fs: 18px;
+  --med-fs: 2.6rem;
   --big-fs: 3rem;
-  --title-fs: 2.4rem;
+  --title-fs: clamp(2rem, 13vw, 7rem);
   --main-fw: 400;
-  --main-ff: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue",
-    Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
-    "Segoe UI Symbol", "Noto Color Emoji";
-}
-h1 {
-  font-size: var(--title-fs);
-  font-weight: 400;
-}
-.h2 {
-  font-size: 1rem;
-  font-weight: 400;
-  color: var(--main-gray);
-}
-.h3 {
-  font-size: var(--big-fs);
-  font-weight: 400;
-}
-.h4 {
-  font-weight: 400;
-}
-.h5 {
-  font-weight: 500;
+  --main-ff: "Futura PT";
 }
 
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;
 }
-html,
+
 body {
   background-color: var(--main-light);
-
   color: var(--main-dark);
   font-weight: var(--main-fw);
   font-size: var(--main-fs);
@@ -60,6 +33,26 @@ body {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
+}
+h1 {
+  font-size: var(--title-fs);
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--main-red);
+}
+h2 {
+  font-size: var(--med-fs);
+  font-weight: 400;
+}
+h3 {
+  font-size: var(--main-fs);
+  font-weight: 400;
+}
+.h4 {
+  font-weight: 400;
+}
+.h5 {
+  font-weight: 500;
 }
 button {
   font-family: inherit;
@@ -96,15 +89,7 @@ ul {
 .price {
   font-size: 16px;
 }
-.nav-link {
-  font-size: 13px;
-  font-weight: 500;
-  text-transform: uppercase;
-}
-.sub-nav-link {
-  font-size: 13px;
-  font-weight: 500;
-}
+
 @media screen and (max-width: 767px) {
   select:active {
     font-size: 16px;

@@ -3,7 +3,7 @@ import "./globals.css";
 import Header from "./header/header";
 import StyledJsxRegistry from "./registry";
 import { AppProvider } from "./context/app.context";
-import MobileNav from "./components/navigation/mobileAside";
+import MobileNav from "./header/navigation/mobileAside";
 import Footer from "./components/footer";
 import { useEffect, useState } from "react";
 import { Router } from "next/router";

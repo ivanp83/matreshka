@@ -1,0 +1,111 @@
+.header {
+  display: grid;
+  position: fixed;
+  top: 0;
+  z-index: 100;
+
+  width: 100vw;
+  background: var(--main-light);
+  .wrapp {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+
+    display: grid;
+    grid-row-gap: 1rem;
+    grid-auto-flow: row;
+    align-items: center;
+    .row1 {
+      grid-column: 1/4;
+      justify-self: center;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+      width: 100%;
+      .nav {
+        grid-column: 1/2;
+        justify-self: start;
+        .ul {
+          display: grid;
+          grid-auto-flow: column;
+          grid-gap: 1rem;
+          width: fit-content;
+          li {
+            display: flex;
+            grid-gap: 10px;
+            position: relative;
+            height: fit-content;
+            overflow: hidden;
+            &:before {
+              content: "";
+              position: absolute;
+              bottom: 0;
+              width: 100%;
+              height: 1px;
+              background-color: var(--main-dark);
+              transform: translateX(-100%);
+              transition: 0.2s ease-in;
+            }
+            @media (hover: hover) and (pointer: fine) {
+              &:hover:before {
+                transform: translateX(0);
+              }
+            }
+
+            &.active {
+              color: var(--main-red);
+            }
+            .link {
+              font-size: var(--main-fs);
+            }
+          }
+        }
+      }
+      .logo {
+        justify-self: center;
+      }
+      .cart {
+        display: grid;
+        position: relative;
+        justify-self: end;
+
+        .num {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -32%);
+          font-size: 14px;
+        }
+      }
+      .humburger {
+        border: none;
+        outline: none;
+        background: transparent;
+        width: fit-content;
+        height: fit-content;
+        grid-column: 3/4;
+        grid-row: 1;
+        justify-self: end;
+        display: none;
+      }
+      @media all and (max-width: 700px) and (orientation: portrait) {
+        .humburger {
+          display: inline-flex;
+        }
+      }
+    }
+  }
+}
+
+@media all and (max-width: 700px) and (orientation: portrait) {
+  .header {
+    align-items: center;
+  }
+  .cart-icon {
+    margin-right: 3rem;
+  }
+}
+@media all and (max-width: 700px) and (orientation: portrait) {
+  .nav {
+    display: none;
+  }
+}

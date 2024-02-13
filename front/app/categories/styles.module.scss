@@ -1,0 +1,116 @@
+.categories {
+  margin: 0 auto;
+  width: var(--cont-w);
+  grid-column: 1/4;
+}
+.layout {
+  display: grid;
+  grid-gap: var(--space-big);
+  .header {
+    grid-column: 1/4;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    .video_container {
+      grid-column: 1/2;
+      position: relative;
+      video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+    .heading {
+      grid-column: 2/3;
+      background-color: var(--main-dark);
+      height: 100%;
+      color: var(--main-light);
+      display: grid;
+      grid-gap: var(--space-small);
+      place-content: center;
+      padding: var(--space-med);
+    }
+  }
+}
+
+.gallery {
+  margin: 0 auto;
+  grid-column: 1/4;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: var(--space-small);
+  grid-column-gap: 20px;
+  .wrapper {
+    overflow: hidden;
+  }
+  .image {
+    overflow: hidden;
+    width: 100%;
+    height: calc((var(--cont-w) / 3) * 4 / 3);
+  }
+  .inner {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    transition: 0.5s ease;
+    transform-origin: bottom;
+  }
+  .text {
+    text-align: center;
+    margin-top: 5px;
+    & > * {
+      font-size: 16px;
+    }
+    b {
+      font-weight: 500;
+    }
+  }
+}
+@media (hover: hover) and (pointer: fine) {
+  li:hover .inner {
+    transform: scale(1.02);
+  }
+}
+@media all and (max-width: 1024px) {
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-row-gap: 2rem;
+    grid-column-gap: 1rem;
+    .image {
+      height: calc((100vw / 2 - 20px) * 4 / 3);
+    }
+  }
+}
+@media all and (max-width: 1024px) and (orientation: portrait) {
+  .gallery {
+    grid-column: 1/4;
+  }
+}
+@media all and (max-width: 1024px) and (orientation: landscape) {
+  .image {
+    height: calc((70vw / 2 - var(--space-small)) * 4 / 3);
+  }
+}
+/* .heading {
+    grid-column: 1/4;
+    grid-row: 1;
+    position: relative;
+    margin-bottom: var(--space-small);
+    background: var(--main-pink);
+    overflow: hidden;
+  }
+
+  .markq {
+    display: flex;
+    align-items: center;
+    height: 3.4rem;
+    overflow: hidden;
+  }
+
+  .icon,
+  h1 {
+    font-size: 1.4rem;
+    font-weight: var(--main-fw);
+    margin-bottom: 0;
+    line-height: 1.2;
+  } */

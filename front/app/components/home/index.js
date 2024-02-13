@@ -5,9 +5,12 @@ import Banner from "./banner";
 import Story from "./story";
 import Events from "./events";
 import Products from "./products";
-import Categories from "./categories";
+
 import { getDate } from "@/utils/helpers";
 import FAQ from "./FAQ/faq";
+import ShowOffGallery from "./showOffGallery";
+import Categories from "./categories/index";
+import Process from "./process";
 
 export default function Index({ products, categories, data }) {
   return (
@@ -24,15 +27,14 @@ export default function Index({ products, categories, data }) {
             height: 100%;
           }
         `}</style>
-        <section style={{ display: "flex", order: "revert" }}>
-          <Banner />
-          <Story />
-        </section>
-
-        <Products {...{ products }} />
+        <Banner />
         <Categories {...{ categories }} />
-        <Events />
-        <FAQ />
+        <Story />
+        <ShowOffGallery />
+        <Products {...{ products }} />
+        <Process />
+        {/*   <Events />
+        <FAQ />  */}
       </div>
     </motion.div>
   );

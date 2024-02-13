@@ -26,7 +26,7 @@ const nextConfig = {
 
   generateRobotsTxt: true,
   images: {
-    domains: ["localhost", "static.matryoshkaflowers.ru"],
+    domains: ["localhost", "static.matryoshkaflowers.ru", "img.freepik.com"],
     formats: ["image/webp"],
   },
 };

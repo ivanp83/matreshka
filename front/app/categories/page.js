@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { getFilteredCategories } from "@/utils/helpers";
 import { Suspense } from "react";
-import Index from "../components/categories";
+import Index from "./components";
 import Loading from "../loading";
 
 const data = {
