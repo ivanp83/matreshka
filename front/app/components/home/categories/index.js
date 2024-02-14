@@ -6,7 +6,7 @@ import Card from "./card/index";
 import { useScroll } from "framer-motion";
 import { useEffect, useRef } from "react";
 import Image from "next/image";
-import CustomImage from "../../image";
+import CustomImage from "../../shared/image";
 import Link from "next/link";
 
 export default function Categories({ categories }) {

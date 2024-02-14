@@ -1,6 +1,7 @@
-import Index from "@/app/components/product";
+import Index from "@/app/product/components";
 import React, { Suspense } from "react";
 import Loading from "../../loading";
+
 async function getData(id) {
   const productsRes = await fetch(
     `${process.env.NEXT_PUBLIC_BACKEND_BASE_URL}/products`,
@@ -191,13 +192,13 @@ export default async function Page({ params: { id } }) {
   };
   return (
     <>
+      <Suspense fallback={<Loading />}>
+        <Index data={product} faturedData={products} />
+      </Suspense>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
       />
-      <Suspense fallback={<Loading />}>
-        <Index data={product} faturedData={products} />
-      </Suspense>
     </>
   );
 }

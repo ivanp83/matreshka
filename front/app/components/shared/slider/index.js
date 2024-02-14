@@ -5,7 +5,7 @@ import "swiper/css";
 import Link from "next/link";
 
 import { currencyFormat } from "@/utils/helpers";
-import CustomImage from "../../image";
+import CustomImage from "../image";
 import { Autoplay } from "swiper";
 
 export default function Slider({ products }) {

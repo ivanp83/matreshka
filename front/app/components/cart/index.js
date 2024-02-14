@@ -1,7 +1,7 @@
 "use client";
 import { useAppContext } from "@/app/context/app.context";
 import { currencyFormat } from "@/utils/helpers";
-import Button from "../buttons/button";
+import Button from "../shared/buttons/button";
 import CartItem from "./cartItem";
 import { useRouter } from "next/navigation";
 import { motion } from "framer-motion";

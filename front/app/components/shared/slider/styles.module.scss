@@ -2,6 +2,7 @@
   grid-column: 1/4;
   grid-gap: var(--space-small);
   color: var(--main-light);
+
   .image {
     width: calc(var(--cont-w) / 5 - 22px);
     height: calc(((var(--cont-w) / 5) - 20px) * 4 / 3);

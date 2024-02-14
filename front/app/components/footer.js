@@ -16,7 +16,7 @@ export default function Footer() {
         <style jsx>{`
           .footer {
             padding: var(--space-small) 0;
-            margin-top: var(--space-med);
+
             background: var(--main-dark);
             color: var(--main-light);
             position: relative;

@@ -9,7 +9,6 @@ export default function Layout({ children }) {
     <div className="layout">
       <style jsx>{`
         .layout {
-          margin-top: var(--space-med);
           min-height: 100vh;
         }
       `}</style>

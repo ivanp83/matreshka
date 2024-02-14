@@ -35,8 +35,8 @@ async function getProductsByCategory(id = 0) {
   const products = data.map((p) => {
     if (p.available === true) return p;
   });
-  const filteredCats = getFilteredCategories(categories, products);
-  return { products, categories: filteredCats };
+  // const filteredCats = getFilteredCategories(categories, products);
+  return { products, categories };
 }
 
 export async function generateStaticParams() {
@@ -45,7 +45,8 @@ export async function generateStaticParams() {
   ).then((res) => res.json());
   return categories.map((p) => ({ id: String(p.id) }));
 }
-export async function generateMetadata({ params: { id } }) {
+export async function generateMetadata({ searchParams }) {
+  console.log(searchParams);
   return {
     title: data.title,
     description: data.description,
@@ -128,8 +129,11 @@ export async function generateMetadata({ params: { id } }) {
     },
   };
 }
-export default async function Categories({ params: { id } }) {
-  const { products, categories } = await getProductsByCategory(id);
+export default async function Categories({ searchParams }) {
+  console.log({ searchParams });
+  const { products, categories } = await getProductsByCategory(
+    searchParams.categoryId
+  );
 
   return (
     <>

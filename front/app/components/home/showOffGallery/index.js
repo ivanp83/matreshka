@@ -60,7 +60,7 @@ export default function ShowOffGallery() {
                         loop
                         playsInline
                         muted
-                        // poster={current.mainVideoPoster}
+                        poster={"/images/poster2.jpg"}
                       >
                         <source src={"./video/1.mp4"} type="video/mp4" />
                       </video>

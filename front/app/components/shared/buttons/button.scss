@@ -1,0 +1,80 @@
+.button {
+  text-align: center;
+  border: none;
+  outline: none;
+
+  cursor: pointer;
+  font-size: var(--main-fs);
+  font-family: inherit;
+
+  color: var(--main-light);
+
+  transition: all 0.5s;
+}
+.btn-text {
+  letter-spacing: 1px;
+}
+.button.shop {
+  padding: 0.8rem 3rem;
+  width: 100%;
+  background-color: var(--main-dark);
+}
+
+.button.proceed {
+  padding: 0.8rem 3rem;
+  width: 100%;
+  border: 1px solid;
+  color: var(--main-dark);
+  background: transparent;
+}
+.button.add,
+.button.remove {
+  background-color: transparent;
+  width: 20px;
+  height: 20px;
+}
+
+.button.back {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.button.back svg {
+  height: 25px;
+  width: 25px;
+}
+
+.button.checkout {
+  width: 100%;
+  padding: 0.8rem 3rem;
+  background: var(--main-dark);
+  color: var(--main-light);
+  outline: none;
+  cursor: pointer;
+}
+
+.button:active {
+  transform: scale(0.98);
+}
+
+.button.checkout:active {
+  background-color: var(--main-green);
+}
+@media (hover: hover) and (pointer: fine) {
+  // .button.shop:hover {
+  //   background-color: var(--dark-green);
+  // }
+  .button.proceed:hover {
+    color: var(--main-light);
+    background-color: var(--main-dark);
+  }
+
+  .button.checkout:hover {
+    background-color: var(--dark-green);
+  }
+}
+@media all and (max-width: 320px) and (orientation: portrait) {
+  .button {
+    font-size: 12px;
+  }
+}

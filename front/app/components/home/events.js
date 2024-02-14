@@ -1,6 +1,6 @@
 import React from "react";
 import Text from "./text";
-import CustomImage from "../image";
+import CustomImage from "../shared/image";
 
 export default function Events({}) {
   return (

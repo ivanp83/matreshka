@@ -99,11 +99,11 @@ export default function RootLayout({ children }) {
             <div
               style={{
                 position: "fixed",
-                bottom: "10px",
-                right: "1rem",
-
+                bottom: "2rem",
+                right: "2rem",
+                boxShadow: "8px 9px 33px rgba(0,0,0,0.4)",
                 zIndex: 100,
-                background: "#128C7E",
+                background: "var(--main-red)",
                 padding: "0.5rem 1rem",
                 borderRadius: "20px",
                 display: "flex",
@@ -117,8 +117,8 @@ export default function RootLayout({ children }) {
               >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
-                  width="20"
-                  height="20"
+                  width="22"
+                  height="22"
                   fill="var(--main-light)"
                   className="bi bi-whatsapp"
                   viewBox="0 0 16 16"
@@ -128,8 +128,8 @@ export default function RootLayout({ children }) {
                 <span
                   style={{
                     marginLeft: "5px",
-                    fontWeight: "600",
-                    fontSize: "14px",
+                    fontWeight: "400",
+                    fontSize: "18px",
                   }}
                 >
                   WhatsApp

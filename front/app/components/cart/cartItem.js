@@ -1,9 +1,9 @@
 "use client";
 
 import React from "react";
-import CustomImage from "../image";
+import CustomImage from "../shared/image";
 import { currencyFormat } from "@/utils/helpers";
-import Btns from "./btns";
+import Btns from "../shared/cartAside/btns";
 import { useAppContext } from "@/app/context/app.context";
 import Link from "next/link";
 
@@ -13,7 +13,7 @@ export default function CartItem({ item }) {
   return (
     <li key={item.id}>
       <style jsx>{`
-        figure {
+        .item {
           display: grid;
           grid-auto-flow: column;
           grid-gap: 1rem;
@@ -57,7 +57,7 @@ export default function CartItem({ item }) {
           }
         }
       `}</style>
-      <figure>
+      <div className="item">
         <Link href={`product/${item.id}`}>
           <div className="image">
             <CustomImage
@@ -68,16 +68,15 @@ export default function CartItem({ item }) {
             />
           </div>
         </Link>
-        <figcaption>
-          <div>
-            <h4>{item.name}</h4>
-            <span className="price">{currencyFormat(item.price)}</span>
-          </div>
-          <span className="count">{count?.quantity}</span>
 
-          <Btns data={item} />
-        </figcaption>
-      </figure>
+        <div className="caption">
+          <h4>{item.name}</h4>
+          <span className="price">{currencyFormat(item.price)}</span>
+        </div>
+        <span className="count">{count?.quantity}</span>
+
+        <Btns data={item} />
+      </div>
     </li>
   );
 }

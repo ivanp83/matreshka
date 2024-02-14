@@ -5,6 +5,14 @@ const nextConfig = {
   experimental: {
     appDir: true,
   },
+  compilerOptions: {
+    baseUrl: ".",
+    paths: {
+      "@/app/*": ["app/*"],
+      "@/app/product*": ["app/product/*"],
+      "@/*": ["*"],
+    },
+  },
   env: {
     NEXT_PUBLIC_DOMAIN: isProd
       ? "https://matryoshkaflowers.ru"

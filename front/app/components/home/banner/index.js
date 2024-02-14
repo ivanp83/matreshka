@@ -9,10 +9,6 @@ export default function Banner() {
 
   return (
     <div className={styles.banner} ref={masterRef}>
-      {/* <canvas id="canvas" />
-      <div className="logo-title">
-        <Logo />
-      </div> */}
       <div className={styles.video_container} ref={imageRef}>
         <video
           className={styles.video}
@@ -20,7 +16,7 @@ export default function Banner() {
           loop
           playsInline
           muted
-          // poster={current.mainVideoPoster}
+          poster={"/images/poster1.jpg"}
         >
           <source src={"./video/2.mp4"} type="video/mp4" />
         </video>

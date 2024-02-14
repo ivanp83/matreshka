@@ -14,6 +14,24 @@ module.exports = {
     if (!id) return await products.queryRows(sql);
     return await products.queryRows(`${sql} WHERE products.id = $1`, [id]);
   },
+  // async read(id, isAdmin, fields = ['*']) {
+  //   const names = fields.join(', ');
+  //   if (isAdmin) {
+  //     const sql = `SELECT ${names} FROM products
+  //     WHERE product.available=true
+  //     INNER JOIN images ON products.id=images.product_id
+  //    `;
+  //     if (!id) return await products.queryRows(sql);
+
+  //     return await products.queryRows(`${sql} AND products.id = $1`, [id]);
+  //   } else {
+  //     const sql = `SELECT ${names} FROM products WHERE product.available=false
+  //   INNER JOIN images ON products.id=images.product_id;`;
+  //     if (!id) return await products.queryRows(sql);
+
+  //     return await products.queryRows(`${sql} WHERE products.id = $1`, [id]);
+  //   }
+  // },
 
   async create(
     { image, category, name, price, compound, minValue, description, stock },

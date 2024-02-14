@@ -2,13 +2,13 @@
 "use client";
 import styles from "../styles.module.scss";
 import React, { Fragment } from "react";
-import CustomImage from "../../components/image";
+import CustomImage from "../../components/shared/image";
 import { currencyFormat } from "@/utils/helpers";
 import Link from "next/link";
 
 export default function Gallery({ data }) {
   return (
-    <ul className={styles.gallery}>
+    <ul className={`${styles.gallery} container`}>
       {data.map((prod) => (
         <Fragment key={prod.id}>
           <li>

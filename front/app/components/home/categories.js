@@ -1,4 +1,4 @@
-import CustomImage from "../image";
+import CustomImage from "../shared/image";
 
 import Link from "next/link";
 

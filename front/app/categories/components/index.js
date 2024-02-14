@@ -1,10 +1,11 @@
 "use client";
 import styles from "../styles.module.scss";
 import React from "react";
-import SubNav from "../../components/sub-nav";
+import SubNav from "../../components/shared/sub-nav";
 import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
 import Marquee from "react-fast-marquee";
+import Heading from "./heading";
 
 const Gallery = dynamic(() => import("./gallery"), {});
 const CanvasBanner = dynamic(() => import("./canvas-banner"), { ssr: false });
@@ -161,6 +162,7 @@ export default function Index({ categories, products }) {
   return (
     <>
       <div className={styles.categories}>
+        <Heading />
         <SubNav {...{ categories }} />
         <Gallery data={products} />
       </div>
