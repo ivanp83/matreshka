@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+
 const Index = dynamic(() => import("@/app/components/form"), {
   ssr: false,
 });
@@ -97,5 +98,9 @@ export const metadata = {
   },
 };
 export default function Page() {
-  return <Index />;
+  return (
+    <>
+      <Index />
+    </>
+  );
 }

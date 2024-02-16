@@ -10,6 +10,7 @@ const nextConfig = {
     paths: {
       "@/app/*": ["app/*"],
       "@/app/product*": ["app/product/*"],
+      "@/utils*": ["utils/*"],
       "@/*": ["*"],
     },
   },
@@ -30,6 +31,7 @@ const nextConfig = {
 
     NEXT_PUBLIC_GA_MEASUREMENT_ID: "G-4PF6XCTC4L",
     NEXT_PUBLIC_YANDEX_METRICS: "93453434",
+    NEXT_PUBLIC_YANDEX_API_KEY: "298fe433-f45b-4311-8173-979d7c2828a1",
   },
 
   generateRobotsTxt: true,

@@ -40,9 +40,13 @@ const getFilteredCategories = (categories, products) => {
     if (!index.includes(String(c.id))) return c;
   });
 };
+function getProperty(obj, key) {
+  return obj[key];
+}
 
 module.exports = {
   currencyFormat,
   getDate,
   getFilteredCategories,
+  getProperty,
 };

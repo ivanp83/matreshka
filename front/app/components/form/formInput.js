@@ -23,8 +23,8 @@ const FormInput = (props) => {
           width: 100%;
           display: block;
           transition: all 0.3s;
-          padding: 10px 20px;
-          margin: 5px 0px;
+          padding: 1rem 2rem;
+          margin: 1rem 0 0;
           border-radius: 5px;
           border: 1px solid gray;
         }
@@ -47,7 +47,6 @@ const FormInput = (props) => {
         }
 
         .input-label {
-          margin-top: 5px;
           display: block;
           transition: all 0.3s;
           padding-left: 20px;

@@ -9,7 +9,7 @@ const config = require('../config.js');
 const { appEmitter } = require('../utils/EventEmitter');
 
 module.exports = {
-  async create({ shippingAddress, orderProducts }) {
+  async create({ shippingAddress, orderProducts, details, shippingPrice }) {
     try {
       const ids = [...orderProducts.map((p) => p.id)];
 
@@ -25,10 +25,13 @@ module.exports = {
         });
         map.set(prod.id, { ...prod, quantity });
       }
-      const orderTotal = [...map.values()].reduce(
-        (acc, val) => acc + val.quantity * val.price,
-        0,
-      );
+      const orderTotal =
+        shippingPrice +
+        0 +
+        [...map.values()].reduce(
+          (acc, val) => acc + val.quantity * val.price,
+          0,
+        );
 
       let customer;
       customer = await customers.queryRows(
@@ -38,10 +41,8 @@ module.exports = {
 
       if (!customer.length) {
         customer = await customers.queryRows(
-          `INSERT INTO customers ("first_name", "last_name", "phone", "token") 
-          VALUES ('${shippingAddress.first_name}','${
-            shippingAddress.last_name
-          }',
+          `INSERT INTO customers ("first_name",  "phone", "token") 
+          VALUES ('${shippingAddress.first_name}',
           '${shippingAddress.phone.replace(/[^0-9]/g, '')}', 
           '${shippingAddress.first_name}');`,
         );
@@ -98,7 +99,13 @@ module.exports = {
         .then((result) => result);
       appEmitter.emit(
         'siteNewOrderEvent',
-        JSON.stringify({ yookassaResponse, customer: customer[0] }),
+        JSON.stringify({
+          yookassaResponse,
+          customer: customer[0],
+          details,
+          orderTotal,
+          shippingPrice: shippingPrice ?? 0,
+        }),
       );
       await orders.queryRows(
         `UPDATE orders

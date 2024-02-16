@@ -74,8 +74,9 @@ const FormTextArea = ({ onChange, label }) => {
         onChange={onChange}
         onBlur={handleFocus}
         data-focused={focused.toString()}
+        placeholder={label}
       />
-      <label className="label">{label}</label>
+
       {/* <span className="input-error">{errorMessage}</span> */}
     </div>
   );

@@ -79,7 +79,6 @@ const sendAlertOrderSuccess = (
   orderItems,
   phone,
   firstName,
-  lastName,
   city,
   address,
   resource,
@@ -99,7 +98,6 @@ const sendAlertOrderSuccess = (
 <pre>${serializedItems}</pre>\n
 <b>Покупатель:</b>
 <pre>${firstName}</pre>
-<pre>${lastName}</pre>
 <pre>тел. ${phone}</pre>\n
 <b>Адрес доставки:</b>
 <pre>${city}</pre>

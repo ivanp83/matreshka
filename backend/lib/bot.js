@@ -68,10 +68,11 @@ module.exports = (config, adminId, console) => {
   });
   appEmitter.on('siteNewOrderEvent', async (data) => {
     try {
-      const { yookassaResponse, customer } = JSON.parse(data);
+      const { yookassaResponse, customer, details, orderTotal, shippingPrice } =
+        JSON.parse(data);
 
       const { id, description, status } = yookassaResponse;
-      const { first_name, last_name, phone } = customer;
+      const { first_name, phone } = customer;
 
       const HTML = `
 <b>Новый заказ # </b>
@@ -82,9 +83,16 @@ module.exports = (config, adminId, console) => {
 <pre>${description}</pre>\n
 <b>Покупатель:</b>
 <pre>${first_name}</pre>
-<pre>${last_name}</pre>
-<pre>тел. ${phone}</pre>\n
-      `;
+<pre>тел. ${phone}</pre>\n\n
+<b>Доставка RUB</b>
+<pre>${shippingPrice}</pre>\n
+<b>Итог RUB</b>
+<pre>${orderTotal}</pre>\n\n
+${
+  details.message &&
+  `<b>Сопроводительное письмо</b>\n
+  <pre>${details.message}</pre>\n`
+}`;
 
       return await bot.telegram.sendMessage(adminId, HTML, {
         parse_mode: 'html',
@@ -215,7 +223,6 @@ module.exports = (config, adminId, console) => {
       getorderItems(updatedOrder.order_items),
       customer.phone,
       customer.first_name,
-      customer.last_name,
       updatedOrder.shipping_address.city,
       updatedOrder.shipping_address.address,
       'Телеграм Бот',
