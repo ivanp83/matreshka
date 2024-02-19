@@ -84,6 +84,7 @@ function SubNav({ categories }) {
           background: transparent;
           white-space: nowrap;
           color: inherit;
+          font-size: 16px;
         }
 
         @media all and (max-width: 1024px) and (orientation: portrait) {

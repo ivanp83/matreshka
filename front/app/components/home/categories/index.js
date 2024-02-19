@@ -1,23 +1,13 @@
 "use client";
 import { Fragment } from "react";
 import styles from "./styles.module.scss";
-import { projects } from "./data";
-import Card from "./card/index";
-import { useScroll } from "framer-motion";
-import { useEffect, useRef } from "react";
 import Image from "next/image";
 import CustomImage from "../../shared/image";
 import Link from "next/link";
 
 export default function Categories({ categories }) {
-  const container = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: container,
-    offset: ["start start", "end end"],
-  });
-
   return (
-    <div ref={container} className={styles.categories}>
+    <div className={styles.categories}>
       <div className={styles.gallery_wrap}>
         {categories.map((cat, i) => (
           <Fragment key={`p_${i}`}>

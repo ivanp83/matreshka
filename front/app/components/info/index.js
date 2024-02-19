@@ -53,7 +53,7 @@ export default function Index({ tabs }) {
               cursor: pointer;
             }
             .nav-button.active {
-              color: var(--main-gray);
+              color: var(--light-gray);
             }
             .content {
               grid-column: 2/4;

@@ -1,9 +1,8 @@
-import React, { useEffect, useState, useRef } from "react";
-import styles from "./styles.module.scss";
+import React, { useState, useRef } from "react";
+import styles from "@/app/styles/home.module.scss";
 import Link from "next/link";
 
 export default function Banner() {
-  const [state, setState] = useState(true);
   const masterRef = useRef(null);
   const imageRef = useRef(null);
 
@@ -16,9 +15,21 @@ export default function Banner() {
           loop
           playsInline
           muted
-          poster={"/images/poster1.jpg"}
+          poster={"/images/poster2.jpg"}
         >
           <source src={"./video/2.mp4"} type="video/mp4" />
+        </video>
+      </div>
+      <div className={styles.video_container__mobile} ref={imageRef}>
+        <video
+          className={styles.video}
+          autoPlay
+          loop
+          playsInline
+          muted
+          poster={"/images/poster2a.jpg"}
+        >
+          <source src={"./video/2a.mp4"} type="video/mp4" />
         </video>
       </div>
 

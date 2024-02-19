@@ -40,13 +40,27 @@ const getFilteredCategories = (categories, products) => {
     if (!index.includes(String(c.id))) return c;
   });
 };
-function getProperty(obj, key) {
+const getProperty = (obj, key) => {
   return obj[key];
-}
-
+};
+const debounce = (func, ms) => {
+  let timeout;
+  return function () {
+    clearTimeout(timeout);
+    timeout = setTimeout(() => func.apply(this, arguments), ms);
+  };
+};
+const calcTotal = (items, shippingPrice) => {
+  const res = items.reduce(function (acc, obj) {
+    return acc + obj.quantity * obj.price;
+  }, 0);
+  return Number(res) + Number(shippingPrice);
+};
 module.exports = {
   currencyFormat,
   getDate,
   getFilteredCategories,
   getProperty,
+  debounce,
+  calcTotal,
 };

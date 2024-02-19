@@ -10,6 +10,7 @@ import { Router } from "next/router";
 import "@/public/fonts/stapel/stylesheet.css";
 import "@/public/fonts/cera/stylesheet.css";
 import "@/public/fonts/maregraphe/stylesheet.css";
+import Script from "next/script";
 
 export default function RootLayout({ children }) {
   useEffect(() => {
@@ -91,6 +92,10 @@ export default function RootLayout({ children }) {
   };
   return (
     <html lang="ru">
+      <Script
+        src="https://api-maps.yandex.ru/2.1/?apikey=298fe433-f45b-4311-8173-979d7c2828a1&suggest_apikey=8e4b5cc1-6ae2-479c-87d0-fe13469aea78&lang=ru_RU"
+        type="text/javascript"
+      ></Script>
       <StyledJsxRegistry>
         <AppProvider>
           <body className={state}>

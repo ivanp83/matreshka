@@ -1,8 +1,9 @@
-import styles from "./styles.module.scss";
+import styles from "@/app/styles/home.module.scss";
 
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
+import VideoComponent from "../../shared/video";
 
 export default function ShowOffGallery() {
   const container = useRef(null);
@@ -39,30 +40,97 @@ export default function ShowOffGallery() {
 
   return (
     <>
-      <div className={`${styles.heading} container`}></div>
-
-      <div ref={container} className={styles.container}>
+      <div ref={container} className={styles.gallery}>
         <div className={styles.sticky}>
-          {pictures.map(({ src, scale, type }, index) => {
+          <motion.div
+            style={{ scale: pictures[0].scale }}
+            className={styles.el}
+          >
+            <div className={styles.imageContainer}>
+              <video
+                className={styles.video}
+                autoPlay
+                loop
+                playsInline
+                muted
+                poster={"/images/poster2.jpg"}
+              >
+                <source src={"./video/2.mp4"} type="video/mp4" />
+              </video>
+            </div>
+          </motion.div>
+          <motion.div
+            style={{ scale: pictures[1].scale }}
+            className={`${styles.el}`}
+          >
+            <div className={styles.imageContainer}>
+              <Image src={pictures[1].src} fill alt="image" />
+            </div>
+          </motion.div>
+          <motion.div
+            style={{ scale: pictures[2].scale }}
+            className={`${styles.el}`}
+          >
+            <div className={styles.imageContainer}>
+              <Image src={pictures[2].src} fill alt="image" />
+            </div>
+          </motion.div>
+          <motion.div
+            style={{ scale: pictures[3].scale }}
+            className={`${styles.el}`}
+          >
+            <div className={styles.imageContainer}>
+              <Image src={pictures[3].src} fill alt="image" />
+            </div>
+          </motion.div>
+          <motion.div
+            style={{ scale: pictures[4].scale }}
+            className={`${styles.el}`}
+          >
+            <div className={styles.imageContainer}>
+              <Image src={pictures[4].src} fill alt="image" />
+            </div>
+          </motion.div>
+          <motion.div
+            style={{ scale: pictures[5].scale }}
+            className={`${styles.el}`}
+          >
+            <div className={styles.imageContainer}>
+              <Image src={pictures[5].src} fill alt="image" />
+            </div>
+          </motion.div>
+
+          {/* {pictures.map(({ src, scale, type }, index) => {
             return (
               <motion.div
                 key={index}
                 style={{ scale }}
-                className={`${styles.el} ${styles.el}__${index}`}
+                className={styles.el}
               >
                 <div className={styles.imageContainer}>
                   <motion.div style={{ scale4 }} className={styles.el}>
                     <div className={styles.imageContainer}>
                       <video
                         style={{ display: type === "video" ? "block" : "none" }}
-                        className="video"
+                        className={styles.video}
                         autoPlay
                         loop
                         playsInline
                         muted
                         poster={"/images/poster2.jpg"}
                       >
-                        <source src={"./video/1.mp4"} type="video/mp4" />
+                        <source src={"./video/2.mp4"} type="video/mp4" />
+                      </video>
+                      <video
+                        style={{ display: type === "video" ? "block" : "none" }}
+                        className={styles.video__mobile}
+                        autoPlay
+                        loop
+                        playsInline
+                        muted
+                        poster={"/images/poster2a.jpg"}
+                      >
+                        <source src={"./video/2a.mp4"} type="video/mp4" />
                       </video>
                     </div>
                   </motion.div>
@@ -75,7 +143,8 @@ export default function ShowOffGallery() {
                 </div>
               </motion.div>
             );
-          })}
+          })} */}
+
           <motion.div
             className={styles.text}
             style={{

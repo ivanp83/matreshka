@@ -1,15 +1,19 @@
 /** @type {import('next').NextConfig} */
-
+const path = require("path");
 const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
   experimental: {
     appDir: true,
+  },
+  sassOptions: {
+    includePaths: [path.join(__dirname, "styles")],
   },
   compilerOptions: {
     baseUrl: ".",
     paths: {
       "@/app/*": ["app/*"],
       "@/app/product*": ["app/product/*"],
+      "@/app/components*": ["app/components/*"],
       "@/utils*": ["utils/*"],
       "@/*": ["*"],
     },

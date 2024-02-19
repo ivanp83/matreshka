@@ -9,7 +9,7 @@ const config = require('../config.js');
 const { appEmitter } = require('../utils/EventEmitter');
 
 module.exports = {
-  async create({ shippingAddress, orderProducts, details, shippingPrice }) {
+  async create({ shippingDetails, orderProducts, details }) {
     try {
       const ids = [...orderProducts.map((p) => p.id)];
 
@@ -26,25 +26,26 @@ module.exports = {
         map.set(prod.id, { ...prod, quantity });
       }
       const orderTotal =
-        shippingPrice +
-        0 +
-        [...map.values()].reduce(
-          (acc, val) => acc + val.quantity * val.price,
-          0,
+        Number(shippingDetails.price) +
+        Number(
+          [...map.values()].reduce(
+            (acc, val) => acc + val.quantity * val.price,
+            0,
+          ),
         );
 
       let customer;
       customer = await customers.queryRows(
         `SELECT * FROM customers WHERE customers.phone =$1`,
-        [shippingAddress.phone],
+        [shippingDetails.phone],
       );
 
       if (!customer.length) {
         customer = await customers.queryRows(
           `INSERT INTO customers ("first_name",  "phone", "token") 
-          VALUES ('${shippingAddress.first_name}',
-          '${shippingAddress.phone.replace(/[^0-9]/g, '')}', 
-          '${shippingAddress.first_name}');`,
+          VALUES ('${shippingDetails.first_name}',
+          '${shippingDetails.phone.replace(/[^0-9]/g, '')}', 
+          '${shippingDetails.first_name}');`,
         );
       }
 
@@ -104,9 +105,10 @@ module.exports = {
           customer: customer[0],
           details,
           orderTotal,
-          shippingPrice: shippingPrice ?? 0,
+          shippingPrice: shippingDetails.price,
         }),
       );
+
       await orders.queryRows(
         `UPDATE orders
    SET yookassa_id = $2, amount = $3, currency=$4, order_status=$5, 
@@ -119,9 +121,9 @@ module.exports = {
           yookassaResponse.status,
           JSON.stringify(
             {
-              city: shippingAddress.city,
-              zip: shippingAddress.zip,
-              address: shippingAddress.address,
+              city: shippingDetails.city,
+              zip: shippingDetails.zip,
+              address: shippingDetails.address,
             },
             null,
             2,

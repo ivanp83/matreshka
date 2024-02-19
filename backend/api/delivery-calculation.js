@@ -4,8 +4,8 @@ const { db } = require('../db');
 const delivery = db('delivery-calculation ');
 
 module.exports = {
-  async create({ coords }) {
-    console.log({ coords });
+  async create(data) {
+    console.log({ data });
     const sourceSQL = `SELECT * FROM store WHERE id=1;`;
     const source = await delivery.queryRows(sourceSQL);
 
@@ -14,14 +14,14 @@ module.exports = {
 
     const newDelivery = await delivery.queryRows(sql1, [
       source[0].id,
-      coords.latitude,
-      coords.longitude,
+      data.latitude,
+      data.longitude,
     ]);
 
     const distanceSQL = `WITH points AS (
   SELECT 
     ST_GeogFromText('SRID=4326;POINT
-    ( ${coords.latitude} ${coords.longitude})') AS point1,
+    ( ${data.latitude} ${data.longitude})') AS point1,
     ST_GeogFromText('SRID=4326;POINT( 54.713356 20.443751 )') AS point2
 )
 SELECT ST_Distance(point1, point2, false) AS distance

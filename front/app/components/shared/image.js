@@ -1,8 +1,6 @@
 "use client";
 import Image from "next/image";
 
-import { priority } from "@/next-sitemap.config";
-
 export default function CustomImage({
   src,
   alt,

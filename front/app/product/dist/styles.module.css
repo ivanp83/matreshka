@@ -1,0 +1,134 @@
+.product {
+  grid-gap: var(--space-big);
+}
+.product .top {
+  justify-self: center;
+  grid-column: 1/4;
+  grid-gap: 5px;
+  width: calc(400px + 65vh + var(--space-med));
+  display: grid;
+  grid-template-columns: 400px 65vh;
+  grid-gap: var(--space-med);
+}
+.product .top .details {
+  display: grid;
+  height: fit-content;
+  grid-gap: var(--space-small);
+  margin-top: var(--space-med);
+}
+.product .top .btns {
+  display: grid;
+  grid-gap: 1rem;
+}
+.product .top .image {
+  grid-row: 1;
+  grid-column: 2/3;
+  position: relative;
+  width: 65vh;
+  height: calc(65vh * 4 / 3);
+  display: block;
+  justify-self: end;
+}
+
+.sub-nav-container {
+  grid-column: 1/5;
+  position: absolute;
+}
+
+.h1 {
+  font-weight: var(--main-fw);
+  color: var(--main-dark);
+  font-size: 3rem;
+}
+
+.sub_descr {
+  display: grid;
+  grid-gap: 1rem;
+  font-size: 14px;
+  color: var(--main-gray);
+  margin-bottom: 1rem;
+}
+
+.b {
+  font-weight: var(--main-fw);
+}
+
+.featured {
+  grid-column: 1/5;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-row-gap: var(--space-small);
+}
+
+.h2 {
+  color: var(--main-dark);
+}
+
+@media all and (max-width: 1024px) and (orientation: portrait) {
+  .product {
+    grid-gap: var(--space-small);
+  }
+
+  .content {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .h1 {
+    font-size: 22px;
+  }
+
+  .details {
+    grid-row: 2;
+    margin-top: 0;
+    margin-bottom: var(--space-med);
+  }
+
+  .product {
+    width: 100%;
+  }
+
+  .image {
+    margin-top: var(--space-small);
+    width: 100%;
+    grid-column: 1/5;
+    height: calc((100vw - 40px) * 4 / 3);
+  }
+
+  .details {
+    grid-column: 1/5;
+  }
+}
+@media all and (max-width: 768px) and (orientation: portrait) {
+  .content {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .h1 {
+    font-size: 22px;
+  }
+}
+@media all and (max-width: 1024px) and (orientation: landscape) {
+  .product {
+    width: 100%;
+  }
+}
+@media all and (max-width: 1000px) and (orientation: landscape) {
+  .details {
+    margin-top: 2rem;
+  }
+
+  .image {
+    width: 90vh;
+    height: calc(90vh * 4 / 3);
+  }
+
+  .descr {
+    font-size: 13px;
+  }
+
+  .h1 {
+    font-size: 20px;
+  }
+}

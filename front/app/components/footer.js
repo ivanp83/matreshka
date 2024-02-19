@@ -29,7 +29,7 @@ export default function Footer() {
           }
 
           .h4 {
-            color: var(--main-gray);
+            color: var(--light-gray);
           }
           address {
             font-style: normal;
@@ -71,7 +71,7 @@ export default function Footer() {
             grid-auto-flow: row;
             grid-gap: 1rem;
             flex-direction: column;
-            color: var(--main-gray);
+            color: var(--light-gray);
           }
 
           @media all and (max-width: 600px) and (orientation: portrait) {

@@ -5,13 +5,14 @@
   --space-big: clamp(8rem, 20vw, 16rem);
   --main-red: red;
   --main-yellow: gold;
-  --main-gray: #ececec;
+  --main-gray: #b1b1b1;
+  --light-gray: #ececec;
   --main-dark: #181717;
   --main-light: rgb(255, 255, 255);
   --main-fs: 18px;
-  --med-fs: 2.6rem;
+  --med-fs: 3.6rem;
   --big-fs: 3rem;
-  --title-fs: clamp(2rem, 9vw, 7rem);
+  --title-fs: clamp(2rem, 9vw, 9rem);
   --main-fw: 400;
   --main-ff: "Futura PT";
 }

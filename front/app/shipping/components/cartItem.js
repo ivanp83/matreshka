@@ -16,7 +16,7 @@ export default function CartItem({ prod }) {
           {currencyFormat(prod.price * prod.quantity)}
         </span>
 
-        <strong className={styles.quantity_selector}>{prod.quantity}шт.</strong>
+        <span className={styles.quantity_selector}>{prod.quantity}шт.</span>
       </div>
     </li>
   );

@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import Banner from "./banner";
 import Story from "./story";
 import Events from "./events";
-import Products from "./products";
+import Products from "./sale";
 
 import { getDate } from "@/utils/helpers";
 import FAQ from "./FAQ/faq";
@@ -32,6 +32,7 @@ export default function Index({ products, categories, data }) {
         <Story />
         <ShowOffGallery />
         <Products {...{ products }} />
+
         <Process />
         {/*   <Events />
         <FAQ />  */}

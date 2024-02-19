@@ -108,10 +108,32 @@ const sendAlertOrderSuccess = (
   `;
   return messageHTML;
 };
+
+function convertDurationToISO8601(duration) {
+  let hours = Math.floor(duration / 3600);
+  let minutes = Math.floor((duration % 3600) / 60);
+  let seconds = Math.floor(duration % 60);
+
+  // Add leading zeros if needed
+  let formattedDuration = 'PT';
+  if (hours > 0) {
+    formattedDuration += `${hours}H`;
+  }
+  if (minutes > 0) {
+    formattedDuration += `${minutes}M`;
+  }
+  if (seconds > 0) {
+    formattedDuration += `${seconds}S`;
+  }
+
+  return formattedDuration;
+}
+
 module.exports = {
   convertImage,
   productsToDB,
   getorderItems,
   sendAlertOrderSuccess,
   getInvoice,
+  convertDurationToISO8601,
 };

@@ -37,13 +37,15 @@
 
 .h1 {
   font-weight: var(--main-fw);
+  color: var(--main-dark);
+  font-size: 3rem;
 }
 
 .sub_descr {
   display: grid;
   grid-gap: 1rem;
   font-size: 14px;
-
+  color: var(--main-gray);
   margin-bottom: 1rem;
 }
 

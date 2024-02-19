@@ -46,7 +46,6 @@ export async function generateStaticParams() {
   return categories.map((p) => ({ id: String(p.id) }));
 }
 export async function generateMetadata({ searchParams }) {
-  console.log(searchParams);
   return {
     title: data.title,
     description: data.description,

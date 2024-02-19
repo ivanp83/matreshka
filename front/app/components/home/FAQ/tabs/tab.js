@@ -25,8 +25,8 @@ export default function Tab({ data }) {
           grid-template-rows: 0fr;
           overflow: hidden;
           transition: grid-template-rows 0.5s;
-          color: var(--main-gray);
-          border-bottom: 1px solid var(--main-gray);
+          color: var(--light-gray);
+          border-bottom: 1px solid var(--light-gray);
           padding-bottom: 1rem;
         }
         dt {

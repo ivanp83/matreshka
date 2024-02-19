@@ -21,7 +21,7 @@ export default function Categories({ categories }) {
         }
         article {
           display: flex;
-          border-bottom: 1px solid var(--main-gray);
+          border-bottom: 1px solid var(--light-gray);
           padding: 1rem 0;
           position: relative;
         }

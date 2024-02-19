@@ -12,7 +12,7 @@ export default function Events({}) {
         }
         .wrapp {
           padding-top: var(--space-small);
-          border-top: 1px solid var(--main-gray);
+          border-top: 1px solid var(--light-gray);
           grid-row-gap: var(--space-small);
         }
         .image {

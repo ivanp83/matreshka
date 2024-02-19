@@ -12,11 +12,11 @@ export default function LinkTo({ href, text, style }) {
             width: fit-content;
             color: var(--main-dark);
             font-weight: var(--main-fw);
-            text-transform: uppercase;
-            font-size: 14px;
+
+            font-size: 16px;
             transition: all 0.3s linear 0s;
             border: 1px solid;
-            padding: 0.7rem 2.4rem;
+            padding: 0.7rem 7.4rem;
           }
         `}</style>
         {text}

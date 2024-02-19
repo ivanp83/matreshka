@@ -75,7 +75,7 @@ export default function Index() {
           }
           .shipping-info {
             font-weight: var(--main-fw);
-            color: var(--main-gray);
+            color: var(--light-gray);
           }
           .price-block {
             display: grid;

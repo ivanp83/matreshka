@@ -67,7 +67,7 @@ export default function Index({ data: product, faturedData }) {
           </div> */}
           <div className={styles.details}>
             <div className={styles.heading}>
-              <h1 className={styles.h2}>{product.name}</h1>
+              <h1 className={styles.h1}>{product.name}</h1>
 
               <p>{currencyFormat(product.price * value)}</p>
             </div>

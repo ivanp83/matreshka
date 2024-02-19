@@ -2,12 +2,13 @@
 import styles from "../styles.module.scss";
 import React from "react";
 import SubNav from "../../components/shared/sub-nav";
-import { motion } from "framer-motion";
 import dynamic from "next/dynamic";
-import Marquee from "react-fast-marquee";
 import Heading from "./heading";
+import Loader from "@/app/components/loader";
 
-const Gallery = dynamic(() => import("./gallery"), {});
+const Gallery = dynamic(() => import("./gallery"), {
+  loading: () => <Loader />,
+});
 const CanvasBanner = dynamic(() => import("./canvas-banner"), { ssr: false });
 
 export default function Index({ categories, products }) {

@@ -1,0 +1,51 @@
+.process {
+  padding-top: var(--space-big);
+}
+.process .canvas {
+  width: 100%;
+  height: 200vh;
+  position: absolute;
+  transform: translateY(var(--space-big));
+  z-index: 1;
+}
+.process_inner {
+  padding: 1rem;
+  max-width: 1000px;
+  margin: 20vh auto;
+  display: grid;
+  grid-column-gap: 7vw;
+  grid-row-gap: 0.5rem;
+  color: var(--main-light);
+  position: relative;
+}
+.process_inner__intro {
+  grid-template-columns: 1fr;
+  grid-template-areas: "label-name" "name" "label-date" "date" "title" "label-mission" "mission";
+}
+.process_inner p {
+  line-height: 1.4;
+  margin: 0;
+  color: var(--color-text-alt);
+}
+.process_inner_label {
+  color: var(--light-gray);
+  grid-column: 1/2;
+}
+.process_inner_mission {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: var(--space-small);
+}
+.process_inner_title {
+  grid-column: 1/3;
+  grid-row: 1;
+  line-height: 1;
+  margin-bottom: var(--space-med);
+  color: var(--main-red);
+}
+.process_inner_heading {
+  color: var(--color-label);
+  font-weight: inherit;
+  font-size: inherit;
+  margin: 0;
+}
