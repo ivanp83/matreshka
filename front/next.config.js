@@ -2,22 +2,20 @@
 const path = require("path");
 const isProd = process.env.NODE_ENV === "production";
 const nextConfig = {
+  baseUrl: ".",
+  paths: {
+    "@/public/*": ["public/*"],
+    "@/app/*": ["app/*"],
+    "@/styles/*": ["styles/*"],
+    "@/components/*": ["components/*"],
+  },
   experimental: {
     appDir: true,
   },
   sassOptions: {
     includePaths: [path.join(__dirname, "styles")],
   },
-  compilerOptions: {
-    baseUrl: ".",
-    paths: {
-      "@/app/*": ["app/*"],
-      "@/app/product*": ["app/product/*"],
-      "@/app/components*": ["app/components/*"],
-      "@/utils*": ["utils/*"],
-      "@/*": ["*"],
-    },
-  },
+  compilerOptions: {},
   env: {
     NEXT_PUBLIC_DOMAIN: isProd
       ? "https://matryoshkaflowers.ru"

@@ -1,34 +1,7 @@
-.story {
-  height: 100vh;
-}
-.story .body,
-.story .mask {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: var(--med-fs);
-  cursor: default;
-}
-.story .body p,
-.story .mask p {
-  width: 1000px;
-  padding: 40px;
-}
-.story .mask {
-  mask-image: url("../../../../public/icons/mask.svg");
-  mask-repeat: no-repeat;
-  mask-size: 40px;
-  background: #ec4e39;
-  position: absolute;
-  color: black;
-}
-
 .project {
   padding: 1rem;
   max-width: 1000px;
-  margin: 20vh auto;
+  margin: var(--space-med) auto;
   display: grid;
   grid-column-gap: 7vw;
   grid-row-gap: 0.5rem;
@@ -43,7 +16,7 @@
   color: var(--color-text-alt);
 }
 .project_label {
-  color: var(--light-gray);
+  color: var(--main-gray);
   grid-column: 1/2;
 }
 .project_mission {

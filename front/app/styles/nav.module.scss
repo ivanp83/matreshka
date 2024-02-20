@@ -1,0 +1,39 @@
+.nav {
+  grid-column: 1/2;
+  justify-self: start;
+  .ul {
+    display: grid;
+    grid-auto-flow: column;
+    grid-gap: 1rem;
+    width: fit-content;
+    li {
+      display: flex;
+      grid-gap: 10px;
+      position: relative;
+      height: fit-content;
+      overflow: hidden;
+      &:before {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 1px;
+        background-color: var(--main-dark);
+        transform: translateX(-100%);
+        transition: 0.2s ease-in;
+      }
+      @media (hover: hover) and (pointer: fine) {
+        &:hover:before {
+          transform: translateX(0);
+        }
+      }
+
+      &.active {
+        color: var(--main-red);
+      }
+      .link {
+        font-size: var(--main-fs);
+      }
+    }
+  }
+}

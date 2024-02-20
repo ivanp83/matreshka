@@ -26,6 +26,10 @@
       padding: var(--space-med);
       h1 {
         color: var(--main-yellow);
+        max-width: 62rem;
+      }
+      p {
+        max-width: 62rem;
       }
     }
   }

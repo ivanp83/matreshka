@@ -10,9 +10,9 @@
   --main-dark: #181717;
   --main-light: rgb(255, 255, 255);
   --main-fs: 18px;
-  --med-fs: 3.6rem;
+  --med-fs: 3.2rem;
   --big-fs: 3rem;
-  --title-fs: clamp(2rem, 9vw, 9rem);
+  --title-fs: clamp(2rem, 9vw, 6rem);
   --main-fw: 400;
   --main-ff: "Futura PT";
 }
@@ -40,7 +40,6 @@ h1 {
   font-size: var(--title-fs);
   font-weight: 400;
   text-transform: uppercase;
-  color: var(--main-red);
 }
 h2 {
   font-size: var(--med-fs);
@@ -125,9 +124,10 @@ ul {
   }
 }
 
-@media all and (max-width: 600px) and (orientation: portrait) {
+@media all and (max-width: 700px) and (orientation: portrait) {
   :root {
     --space-big: 5rem;
+    --med-fs: 2.2rem;
   }
 
   .container {

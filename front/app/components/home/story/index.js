@@ -1,13 +1,6 @@
 import styles from "./styles.module.scss";
-import { useState } from "react";
-import { motion } from "framer-motion";
-import useMousePosition from "@/app/hooks/useMousePosition";
 
 export default function Story() {
-  const [isHovered, setIsHovered] = useState(false);
-  const { x, y } = useMousePosition();
-  const size = isHovered ? 400 : 40;
-
   return (
     <section className={styles.project}>
       <h1 className={styles.project_title}>

@@ -1,0 +1,67 @@
+.header {
+  display: grid;
+  width: 100%;
+  background: var(--main-light);
+}
+.header .wrapp {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  display: grid;
+  grid-row-gap: 1rem;
+  grid-auto-flow: row;
+  align-items: center;
+}
+.header .wrapp .row1 {
+  grid-column: 1/4;
+  justify-self: center;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  align-items: center;
+  width: 100%;
+}
+.header .wrapp .row1 .logo {
+  justify-self: center;
+}
+.header .wrapp .row1 .cart {
+  display: grid;
+  position: relative;
+  justify-self: end;
+}
+.header .wrapp .row1 .cart .num {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -32%);
+  font-size: 14px;
+}
+.header .wrapp .row1 .humburger {
+  border: none;
+  outline: none;
+  background: transparent;
+  width: fit-content;
+  height: fit-content;
+  grid-column: 3/4;
+  grid-row: 1;
+  justify-self: end;
+  display: none;
+}
+@media all and (max-width: 700px) and (orientation: portrait) {
+  .header .wrapp .row1 .humburger {
+    display: inline-flex;
+  }
+}
+
+@media all and (max-width: 700px) and (orientation: portrait) {
+  .header {
+    align-items: center;
+  }
+
+  .cart-icon {
+    margin-right: 3rem;
+  }
+}
+@media all and (max-width: 700px) and (orientation: portrait) {
+  .nav {
+    display: none;
+  }
+}

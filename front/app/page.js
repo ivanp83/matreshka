@@ -273,14 +273,13 @@ export default async function Home() {
 
   return (
     <>
+      <Suspense fallback={<Loading />}>
+        <Index {...{ products, categories, data }} />
+      </Suspense>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(json) }}
       />
-
-      <Suspense fallback={<Loading />}>
-        <Index {...{ products, categories, data }} />
-      </Suspense>
     </>
   );
 }

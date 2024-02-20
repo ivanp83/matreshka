@@ -1,9 +1,9 @@
 "use client";
 
-import styles from "./styles.module.scss";
+import styles from "@/app/styles/header.module.scss";
 
 import Humburger from "./humburger";
-import Nav from "./navigation/navigation";
+import Nav from "../components/shared/navigation/navigation";
 import Logo from "../components/shared/UI/logo";
 
 import CartIcon from "./cartIcon";
@@ -12,12 +12,10 @@ export default function Header() {
   return (
     <header className={styles.header}>
       <div className={`container ${styles.wrapp}`}>
-        <div className={styles.row1}>
-          <Nav />
-          <Logo styles={styles.logo} />
-          <CartIcon />
-          <Humburger styles={styles.humburger} />
-        </div>
+        <Logo />
+        <Nav />
+        <CartIcon />
+        <Humburger styles={styles.humburger} />
       </div>
     </header>
   );

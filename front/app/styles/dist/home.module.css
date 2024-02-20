@@ -12,7 +12,7 @@
   top: 0;
   left: 0;
 }
-.banner .video_container .video, .banner .video_container .gallery .sticky .el .imageContainer .video__mobile, .gallery .sticky .el .imageContainer .banner .video_container .video__mobile, .banner .video_container__mobile .video, .banner .video_container__mobile .gallery .sticky .el .imageContainer .video__mobile, .gallery .sticky .el .imageContainer .banner .video_container__mobile .video__mobile {
+.banner .video_container .video, .banner .video_container__mobile .video {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -26,6 +26,126 @@
   font-size: 2rem;
   border: 1px solid;
   padding: 1rem 4rem;
+}
+
+.categories {
+  margin-top: 10px;
+}
+.categories .gallery_wrap {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 70vh;
+}
+.categories .gallery_wrap .item {
+  flex: 1;
+  height: 100%;
+  transition: flex 0.8s ease;
+  display: grid;
+  place-content: center;
+  position: relative;
+  color: var(--main-light);
+}
+.categories .gallery_wrap .item:hover {
+  flex: 2;
+}
+.categories .gallery_wrap .item .image {
+  width: 100%;
+  height: 100%;
+}
+.categories .gallery_wrap .item h3 {
+  text-align: center;
+  z-index: 1;
+  font-size: 2rem;
+}
+.categories .gallery_wrap .item img {
+  position: absolute;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+@media all and (orientation: portrait) {
+  .categories .gallery_wrap {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    height: fit-content;
+  }
+  .categories .gallery_wrap .item {
+    height: calc(100vw / 2 * 4 / 3);
+    display: grid;
+    place-content: center;
+    position: relative;
+    color: var(--main-light);
+  }
+}
+
+.cardContainer {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: sticky;
+  top: 0px;
+}
+.cardContainer .card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  top: -25%;
+  height: 500px;
+  width: 1000px;
+  border-radius: 25px;
+  padding: 50px;
+  transform-origin: top;
+}
+.cardContainer .card h2 {
+  text-align: center;
+  margin: 0px;
+  font-size: 28px;
+}
+.cardContainer .card .body {
+  display: flex;
+  height: 100%;
+  margin-top: 50px;
+  gap: 50px;
+}
+.cardContainer .card .body .description {
+  width: 40%;
+  position: relative;
+  top: 10%;
+}
+.cardContainer .card .body .description p {
+  font-size: 16px;
+}
+.cardContainer .card .body .description p::first-letter {
+  font-size: 28px;
+  font-family: "Title";
+}
+.cardContainer .card .body .description span {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.cardContainer .card .body .description span a {
+  font-size: 12px;
+  text-decoration: underline;
+  cursor: pointer;
+}
+.cardContainer .card .body .imageContainer {
+  position: relative;
+  width: 60%;
+  height: 100%;
+  border-radius: 25px;
+  overflow: hidden;
+}
+.cardContainer .card .body .imageContainer .inner {
+  width: 100%;
+  height: 100%;
+}
+.cardContainer .card .body .imageContainer img {
+  object-fit: cover;
 }
 
 .gallery {
@@ -67,12 +187,15 @@
 .gallery .sticky .el .imageContainer img {
   object-fit: cover;
 }
-.gallery .sticky .el .imageContainer .video, .gallery .sticky .el .imageContainer .video__mobile {
+.gallery .sticky .el .imageContainer .video {
   object-fit: cover;
   width: 100%;
   height: 100%;
 }
 .gallery .sticky .el .imageContainer .video__mobile {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
   display: none;
 }
 .gallery .sticky .el:nth-of-type(2) .imageContainer {
@@ -127,7 +250,7 @@
     height: 60vh;
     padding: var(--space-med) var(--space-small);
   }
-  .gallery .sticky .el .imageContainer .video, .gallery .sticky .el .imageContainer .video__mobile {
+  .gallery .sticky .el .imageContainer .video {
     display: none;
   }
   .gallery .sticky .el .imageContainer .video__mobile {
@@ -137,7 +260,7 @@
 .sale {
   grid-column: 1/4;
   display: grid;
-  padding-top: var(--space-big);
+  padding-top: var(--space-med);
   position: relative;
 }
 .sale .wrapp {

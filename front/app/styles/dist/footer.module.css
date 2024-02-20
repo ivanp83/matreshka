@@ -1,0 +1,106 @@
+.footer {
+  padding: var(--space-small) 0;
+  background: var(--main-dark);
+  color: var(--main-light);
+  position: relative;
+  z-index: 1;
+}
+.footer .wrapp {
+  width: 100%;
+  display: grid;
+  grid-gap: var(--space-small);
+}
+.footer .wrapp .logo {
+  grid-column: 3/4;
+  max-width: 22rem;
+  grid-row: 1;
+  width: 32rem;
+  justify-self: end;
+}
+.footer .wrapp .rating {
+  grid-column: 1/2;
+  max-width: 25rem;
+  grid-row: 2;
+  align-self: end;
+}
+.footer .wrapp .nav {
+  grid-column: 2/3;
+}
+.footer .wrapp .nav_social {
+  grid-column: 3/4;
+  justify-self: end;
+  grid-row: 1;
+  align-self: end;
+}
+.footer .wrapp .nav_social__list {
+  display: flex;
+  color: var(--main-gray);
+  grid-gap: 1rem;
+}
+.footer .wrapp .creds {
+  grid-column: 1/2;
+  grid-row: 1;
+}
+.footer .wrapp .creds .address {
+  font-style: normal;
+  display: flex;
+  flex-direction: column;
+}
+.footer .wrapp .creds .address a {
+  display: inline-block;
+}
+.footer .wrapp .small {
+  grid-column: 1/2;
+  grid-row: 3;
+  margin-top: var(--space-small);
+  display: block;
+  color: var(--main-gray);
+}
+
+@media all and (orientation: portrait) {
+  .footer .wrapp {
+    width: 100%;
+    display: grid;
+    grid-gap: var(--space-small);
+  }
+  .footer .wrapp .logo,
+.footer .wrapp .nav,
+.footer .wrapp .nav_social,
+.footer .wrapp .creds,
+.footer .wrapp .rating {
+    grid-column: 1/4;
+  }
+  .footer .wrapp .nav {
+    display: flex;
+    justify-content: center;
+    grid-row: 1;
+  }
+  .footer .wrapp .nav ul {
+    display: flex;
+    grid-gap: 2rem;
+  }
+  .footer .wrapp .logo {
+    max-width: 38rem;
+    grid-row: 2;
+    justify-self: center;
+  }
+  .footer .wrapp .creds {
+    grid-row: 3;
+    justify-self: center;
+    text-align: center;
+  }
+  .footer .wrapp .creds .nav_social {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+  .footer .wrapp .small {
+    grid-row: 6;
+    grid-column: 1/4;
+    text-align: center;
+  }
+  .footer .wrapp .rating {
+    justify-self: center;
+    grid-row: 5;
+  }
+}

@@ -3,7 +3,6 @@ import styles from "@/app/styles/home.module.scss";
 import Image from "next/image";
 import { useScroll, useTransform, motion } from "framer-motion";
 import { useRef } from "react";
-import VideoComponent from "../../shared/video";
 
 export default function ShowOffGallery() {
   const container = useRef(null);
@@ -56,6 +55,16 @@ export default function ShowOffGallery() {
                 poster={"/images/poster2.jpg"}
               >
                 <source src={"./video/2.mp4"} type="video/mp4" />
+              </video>
+              <video
+                className={styles.video__mobile}
+                autoPlay
+                loop
+                playsInline
+                muted
+                poster={"/images/poster2a.jpg"}
+              >
+                <source src={"./video/2a.mp4"} type="video/mp4" />
               </video>
             </div>
           </motion.div>
@@ -190,4 +199,78 @@ export default function ShowOffGallery() {
       </div>
     </>
   );
+}
+{
+  /* <script type="application/ld+json">
+{
+  "@context": "https://schema.org/",
+  "@type": "Recipe",
+  "name": "Peanut Butter Cookies",
+  "image": [
+    "https://example.com/photos/1x1/photo.jpg",
+    "https://example.com/photos/4x3/photo.jpg",
+    "https://example.com/photos/16x9/photo.jpg"
+  ],
+  "author": {
+    "@type": "Person",
+    "name": "Wendy Darling"
+  },
+  "datePublished": "2018-03-10",
+  "description": "This Peanut Butter Cookie recipe is everyone's favorite",
+  "prepTime": "PT10M",
+  "cookTime": "PT25M",
+  "totalTime": "PT35M",
+  "recipeCuisine": "French",
+  "recipeCategory": "Cookies",
+  "keywords": "peanut butter, cookies",
+  "recipeYield": "24",
+  "nutrition": {
+    "@type": "NutritionInformation",
+    "calories": "120 calories"
+  },
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "ratingCount": "18"
+  },
+  "recipeIngredient": [
+    "2 cups of peanut butter",
+    "1/3 cup of sugar"
+  ],
+  "recipeInstructions": [
+    {
+      "@type": "HowToStep",
+      "text": "Mix together the peanut butter and sugar."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Roll cookie dough into small balls and place on a cookie sheet."
+    },
+    {
+      "@type": "HowToStep",
+      "text": "Bake for 25 minutes."
+    }
+  ],
+  "video": {
+    "@type": "VideoObject",
+    "name": "How to Peanut Butter Cookies",
+    "description": "This is how you make peanut butter cookies.",
+    "thumbnailUrl": [
+      "https://example.com/photos/1x1/photo.jpg",
+      "https://example.com/photos/4x3/photo.jpg",
+      "https://example.com/photos/16x9/photo.jpg"
+     ],
+    "contentUrl": "https://www.example.com/video123.mp4",
+    "embedUrl": "https://www.example.com/videoplayer?video=123",
+    "uploadDate": "2018-02-05T08:00:00+08:00",
+    "duration": "PT1M33S",
+    "interactionStatistic": {
+      "@type": "InteractionCounter",
+      "interactionType": { "@type": "WatchAction" },
+      "userInteractionCount": 2347
+    },
+    "expires": "2019-02-05T08:00:00+08:00"
+   }
+}
+</script> */
 }

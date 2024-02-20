@@ -1,6 +1,6 @@
 "use client";
 import { Fragment } from "react";
-import styles from "./styles.module.scss";
+import styles from "@/app/styles/home.module.scss";
 import Image from "next/image";
 import CustomImage from "../../shared/image";
 import Link from "next/link";

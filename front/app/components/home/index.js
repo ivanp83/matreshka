@@ -33,7 +33,7 @@ export default function Index({ products, categories, data }) {
         <ShowOffGallery />
         <Products {...{ products }} />
 
-        <Process />
+        {/* <Process /> */}
         {/*   <Events />
         <FAQ />  */}
       </div>
